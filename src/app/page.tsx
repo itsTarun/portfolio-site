@@ -45,7 +45,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="block"
           >
-            Hi, I'm{' '}
+            Hi, I&apos;m{' '}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Tarun
             </span>
