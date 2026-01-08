@@ -33,7 +33,10 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-lg">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-primary">
+          <Link 
+            href="/" 
+            className="text-xl font-bold text-primary transition-colors hover:text-primary/80"
+          >
             itstarun
           </Link>
 
@@ -42,13 +45,21 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
                   pathname === link.href
                     ? 'text-primary'
                     : 'text-muted-foreground'
                 }`}
               >
                 {link.label}
+                {pathname === link.href && (
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                    initial={false}
+                    animate
+                  />
+                )}
               </Link>
             ))}
             {mounted && (
@@ -57,6 +68,7 @@ export function Header() {
                 size="icon"
                 onClick={toggleTheme}
                 aria-label="Toggle theme"
+                className="ml-4"
               >
                 {theme === 'dark' ? (
                   <Sun className="h-4 w-4" />
@@ -110,9 +122,9 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block px-2 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                    className={`block px-2 py-2 text-sm font-medium transition-colors hover:text-primary hover:bg-muted rounded-lg ${
                       pathname === link.href
-                        ? 'text-primary'
+                        ? 'text-primary bg-muted'
                         : 'text-muted-foreground'
                     }`}
                     onClick={() => setIsMenuOpen(false)}

@@ -28,12 +28,12 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/itsTarun',
+    href: 'https://www.linkedin.com/in/iamtarun/',
     icon: Linkedin,
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/itsTarun',
+    name: 'Twitter/X',
+    href: 'https://x.com/itstarun1381995',
     icon: Twitter,
   },
 ]

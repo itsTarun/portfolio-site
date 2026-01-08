@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 
 const socialLinks = [
   { href: 'https://github.com/itsTarun', icon: Github, label: 'GitHub' },
@@ -8,7 +8,6 @@ const socialLinks = [
     icon: Linkedin,
     label: 'LinkedIn',
   },
-  { href: 'https://x.com/itstarun1381995', icon: Twitter, label: 'Twitter/X' },
   { href: 'mailto:itstarun1994@gmail.com', icon: Mail, label: 'Email' },
 ]
 
@@ -26,7 +25,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <h3 className="mb-4 text-xl font-bold text-primary">itstarun</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
+            <p className="mb-6 text-sm text-muted-foreground">
               Building modern web experiences with cutting-edge technologies.
               Passionate about creating seamless user interfaces and scalable
               applications.
@@ -38,7 +37,7 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground transition-colors hover:text-primary"
+                  className="rounded-lg bg-muted p-2 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
                   aria-label={link.label}
                 >
                   <link.icon className="h-5 w-5" />
@@ -80,7 +79,15 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Tarun. All rights reserved.</p>
+          <div className="flex flex-col items-center justify-center gap-2 md:flex-row">
+            <p>© {new Date().getFullYear()} Tarun. All rights reserved.</p>
+            <span className="hidden md:inline">•</span>
+            <span className="flex items-center gap-1">
+              Built with
+              <Heart className="h-4 w-4 fill-red-500 text-red-500" />
+              by Tarun
+            </span>
+          </div>
         </div>
       </div>
     </footer>
