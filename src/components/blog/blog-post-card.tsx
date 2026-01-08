@@ -48,7 +48,8 @@ export function PostCard({ post, index }: PostCardProps) {
 					{post.tags.slice(0, 3).map((tag) => (
 						<Link
 							key={tag}
-							href={`/blog/tags/${tag}`}
+							// eslint-disable-next-line @typescript-eslint/no-explicit-any
+							href={`/blog/tags/${tag}` as any}
 							onClick={(e) => e.stopPropagation()}
 							className="hover:underline"
 						>

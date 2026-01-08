@@ -38,7 +38,8 @@ export function TagBadge({ tag, count, isActive, onClick }: TagBadgeProps) {
 		</motion.button>
 	) : (
 		<Link
-			href={`/blog/tags/${tag}`}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			href={`/blog/tags/${tag}` as any}
 			className={`
 				inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm transition-all
 				${

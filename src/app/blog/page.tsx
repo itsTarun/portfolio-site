@@ -1,20 +1,16 @@
 import { promises as fsPromises } from "fs";
-import { join } from "path";
 import matter from "gray-matter";
-import readingTime from "reading-time";
-import type { BlogPost, BlogFrontmatter } from "@/lib/blog-utils";
-import { calculateReadingTime, formatDate } from "@/lib/blog-utils";
+import { Sparkles } from "lucide-react";
+import { join } from "path";
 import { PostCard } from "@/components/blog/blog-post-card";
 import { CategoryFilter } from "@/components/blog/category-filter";
 import { SearchBar } from "@/components/blog/search-bar";
-import { TagBadge } from "@/components/blog/tag-badge";
+import type { BlogFrontmatter, BlogPost } from "@/lib/blog-utils";
 import {
-	getUniqueTags,
-	getUniqueCategories,
+	calculateReadingTime,
 	getFeaturedPosts,
+	getUniqueCategories,
 } from "@/lib/blog-utils";
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "blog");
 
@@ -64,18 +60,8 @@ export default async function BlogPage() {
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
 			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					className="mx-auto max-w-7xl"
-				>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mb-16 text-center"
-					>
+				<div className="mx-auto max-w-7xl">
+					<div className="mb-16 text-center">
 						<div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-2 text-sm font-semibold text-primary">
 							<Sparkles className="h-4 w-4" />
 							<span>Blog</span>
@@ -86,59 +72,36 @@ export default async function BlogPage() {
 						<p className="mx-auto max-w-2xl text-lg text-muted-foreground">
 							Sharing my journey in web development, one post at a time.
 						</p>
-					</motion.div>
+					</div>
 
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.3 }}
-						className="mb-12"
-					>
+					<div className="mb-12">
 						<SearchBar placeholder="Search posts..." />
-					</motion.div>
+					</div>
 
 					{featuredPosts.length > 0 && (
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.4 }}
-							className="mb-12"
-						>
+						<div className="mb-12">
 							<h2 className="mb-6 text-2xl font-bold">Featured Posts</h2>
 							<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 								{featuredPosts.map((post, index) => (
 									<PostCard key={post.id} post={post} index={index} />
 								))}
 							</div>
-						</motion.div>
+						</div>
 					)}
 
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.5 }}
-						className="mb-12"
-					>
-						<CategoryFilter
-							categories={categories}
-							selectedCategory={null}
-							onSelect={() => {}}
-						/>
-					</motion.div>
+					<div className="mb-12">
+						<CategoryFilter categories={categories} />
+					</div>
 
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.6 }}
-					>
+					<div>
 						<h2 className="mb-6 text-2xl font-bold">All Posts</h2>
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 							{posts.map((post, index) => (
 								<PostCard key={post.id} post={post} index={index} />
 							))}
 						</div>
-					</motion.div>
-				</motion.div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

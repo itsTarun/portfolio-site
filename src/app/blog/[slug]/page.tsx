@@ -1,16 +1,19 @@
-import { promises as fsPromises } from "fs";
-import { join } from "path";
-import matter from "gray-matter";
-import notFound from "next/navigation";
 import { motion } from "framer-motion";
+import { promises as fsPromises } from "fs";
+import matter from "gray-matter";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { TableOfContents } from "@/components/blog/table-of-contents";
+import { notFound } from "next/navigation";
+import { join } from "path";
 import { MarkdownRenderer } from "@/components/blog/markdown-renderer";
-import { formatDate, getRelatedPosts } from "@/lib/blog-utils";
-import type { BlogPost, BlogFrontmatter } from "@/lib/blog-utils";
-import { calculateReadingTime, type BlogFrontmatter } from "@/lib/blog-utils";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { Badge } from "@/components/ui/badge";
+import type { BlogFrontmatter, BlogPost } from "@/lib/blog-utils";
+import {
+	calculateReadingTime,
+	formatDate,
+	getRelatedPosts,
+} from "@/lib/blog-utils";
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "blog");
 

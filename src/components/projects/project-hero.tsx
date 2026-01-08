@@ -1,26 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+	ArrowLeft,
+	Calendar,
+	ExternalLink,
+	Github,
+} from "lucide-react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Calendar, ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
 
-interface ProjectHeroProps {
+export function ProjectHero({
+	project,
+}: {
 	project: {
 		id: string;
 		title: string;
 		tagline: string;
-		category: "mobile" | "web";
+		category: string;
 		liveUrl?: string | null;
 		githubUrl?: string | null;
 		featured: boolean;
 	};
-}
-
-export function ProjectHero({ project }: ProjectHeroProps) {
+}) {
 	return (
-		<section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+		<div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10">
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -69,7 +74,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 							{project.category === "mobile" ? "Mobile App" : "Web Application"}
 						</Badge>
 
-						<h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+						<h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
 							{project.title}
 						</h1>
 
@@ -80,21 +85,29 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 						<div className="flex flex-wrap gap-4">
 							{project.liveUrl && (
 								<Button asChild size="lg" className="gap-2">
-									<Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+									<a
+										href={project.liveUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										<ExternalLink className="h-4 w-4" />
 										<span className="hidden sm:inline">View Live Demo</span>
 										<span className="sm:hidden">Live</span>
-									</Link>
+									</a>
 								</Button>
 							)}
 
 							{project.githubUrl && (
 								<Button asChild variant="outline" size="lg" className="gap-2">
-									<Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+									<a
+										href={project.githubUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										<Github className="h-4 w-4" />
 										<span className="hidden sm:inline">View Source Code</span>
 										<span className="sm:hidden">Source</span>
-									</Link>
+									</a>
 								</Button>
 							)}
 						</div>
@@ -102,7 +115,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 						<motion.div
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.5 }}
+							transition={{ duration: 0.5 }}
 							className="mt-6 flex items-center gap-2 text-sm text-muted-foreground"
 						>
 							<Calendar className="h-4 w-4" />
@@ -119,6 +132,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 				>
 					<div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
 				</motion.div>
-			</section>
-		);
+			</motion.div>
+		</div>
+	);
 }

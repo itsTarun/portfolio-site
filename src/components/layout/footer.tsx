@@ -53,7 +53,8 @@ export function Footer() {
 							{footerLinks.map((link) => (
 								<li key={link.href}>
 									<Link
-										href={link.href}
+										// eslint-disable-next-line @typescript-eslint/no-explicit-any
+										href={link.href as any}
 										className="text-sm text-muted-foreground transition-colors hover:text-primary"
 									>
 										{link.label}

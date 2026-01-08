@@ -1,10 +1,8 @@
-import { motion } from "framer-motion";
-import { Globe, Users, Zap, Shield, Clock, GitBranch } from "lucide-react";
-import { ProjectHero } from "@/components/projects/project-hero";
+import { Clock, GitBranch, Globe, Shield, Users, Zap } from "lucide-react";
 import { FeatureSection } from "@/components/projects/feature-section";
-import { TechStackDetails } from "@/components/projects/tech-stack-details";
-import { ProjectGallery } from "@/components/projects/project-gallery";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
+import { ProjectHero } from "@/components/projects/project-hero";
+import { TechStackDetails } from "@/components/projects/tech-stack-details";
 
 const openTribeData = {
 	id: "opentribe",
@@ -24,7 +22,6 @@ export default function OpenTribeCaseStudy() {
 			<FeatureSection
 				title="The Web3 Talent Marketplace"
 				description="OpenTribe addresses the core challenge of connecting skilled contributors with blockchain organizations through a unified, user-friendly platform."
-				icon={Globe}
 				features={[
 					"Polkadot Blockchain Integration",
 					"Grant Marketplace Aggregation",
@@ -35,26 +32,14 @@ export default function OpenTribeCaseStudy() {
 				]}
 			/>
 
-			<motion.section
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="py-16"
+			<section className="py-16"
 			>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mx-auto max-w-5xl"
+					<div className="mx-auto max-w-5xl"
 					>
 						<h2 className="mb-8 text-3xl font-bold">The Challenge</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<motion.div
-								initial={{ opacity: 0, x: -20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border border-border bg-muted/30 p-6"
+							<div className="rounded-xl border border-border bg-muted/30 p-6"
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<Users className="h-6 w-6 text-primary" />
@@ -66,13 +51,9 @@ export default function OpenTribeCaseStudy() {
 									Contributors struggle to find relevant opportunities, while
 									organizations spend hours searching for skilled developers.
 								</p>
-							</motion.div>
+							</div>
 
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border border-border bg-muted/30 p-6"
+							<div className="rounded-xl border border-border bg-muted/30 p-6"
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<Clock className="h-6 w-6 text-primary" />
@@ -86,32 +67,20 @@ export default function OpenTribeCaseStudy() {
 									hiring processes across different timezones and communication
 									channels.
 								</p>
-							</motion.div>
+							</div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
-			<motion.section
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"
+			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"
 			>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mx-auto max-w-5xl"
+					<div className="mx-auto max-w-5xl"
 					>
 						<h2 className="mb-8 text-3xl font-bold">The Solution</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<motion.div
-								initial={{ opacity: 0, x: -20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border-2 border-border bg-card p-6"
+							<div className="rounded-xl border-2 border-border bg-card p-6"
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Zap className="h-6 w-6" />
@@ -124,13 +93,9 @@ export default function OpenTribeCaseStudy() {
 									grants and bounties, and for contributors to discover and
 									apply for opportunities across the entire Polkadot ecosystem.
 								</p>
-							</motion.div>
+							</div>
 
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border-2 border-border bg-card p-6"
+							<div className="rounded-xl border-2 border-border bg-card p-6"
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Shield className="h-6 w-6" />
@@ -143,13 +108,9 @@ export default function OpenTribeCaseStudy() {
 									collaboration tools to streamline the entire hiring and
 									contribution workflow from discovery to delivery.
 								</p>
-							</motion.div>
+							</div>
 
-							<motion.div
-								initial={{ opacity: 0, x: -20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border-2 border-border bg-card p-6"
+							<div className="rounded-xl border-2 border-border bg-card p-6"
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<GitBranch className="h-6 w-6" />
@@ -160,11 +121,11 @@ export default function OpenTribeCaseStudy() {
 									automatic deadline tracking, and milestone-based payments for
 									complex projects.
 								</p>
-							</motion.div>
+							</div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
 			<TechStackDetails
 				technologies={[
@@ -183,18 +144,10 @@ export default function OpenTribeCaseStudy() {
 				description="Built with modern web technologies including Next.js 15's App Router, React 19 Server Components, Prisma ORM, and Polkadot blockchain integration."
 			/>
 
-			<motion.section
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="py-16"
+			<section className="py-16"
 			>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mx-auto max-w-5xl"
+					<div className="mx-auto max-w-5xl"
 					>
 						<h2 className="mb-8 text-3xl font-bold">Key Features</h2>
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -258,22 +211,14 @@ export default function OpenTribeCaseStudy() {
 								</p>
 							</div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
-			<motion.section
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="py-16 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5"
+			<section className="py-16 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5"
 			>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mx-auto max-w-5xl text-center"
+					<div className="mx-auto max-w-5xl text-center"
 					>
 						<h2 className="mb-8 text-3xl font-bold">Development Journey</h2>
 						<p className="mb-8 text-xl text-muted-foreground">
@@ -281,55 +226,35 @@ export default function OpenTribeCaseStudy() {
 							collaboration tools and blockchain integration.
 						</p>
 						<div className="grid gap-6 md:grid-cols-3">
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border border-border bg-card p-6 text-center"
+							<div className="rounded-xl border border-border bg-card p-6 text-center"
 							>
 								<div className="text-4xl font-bold text-primary mb-2">6</div>
 								<div>Months</div>
 								<div>Development</div>
-							</motion.div>
+							</div>
 
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border border-border bg-card p-6 text-center"
+							<div className="rounded-xl border border-border bg-card p-6 text-center"
 							>
 								<div className="text-4xl font-bold text-primary mb-2">20+</div>
 								<div>Features</div>
 								<div>Implemented</div>
-							</motion.div>
+							</div>
 
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5 }}
-								className="rounded-xl border border-border bg-card p-6 text-center"
+							<div className="rounded-xl border border-border bg-card p-6 text-center"
 							>
 								<div className="text-4xl font-bold text-primary mb-2">100%</div>
 								<div>TypeScript</div>
 								<div>Coverage</div>
-							</motion.div>
+							</div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
-			<motion.section
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="py-16"
+			<section className="py-16"
 			>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mx-auto max-w-5xl"
+					<div className="mx-auto max-w-5xl"
 					>
 						<h2 className="mb-8 text-3xl font-bold">Results & Impact</h2>
 						<div className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
@@ -396,11 +321,7 @@ export default function OpenTribeCaseStudy() {
 							</div>
 						</div>
 
-						<motion.div
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.3 }}
-							className="mt-8"
+						<div className="mt-8"
 						>
 							<h3 className="mb-4 text-2xl font-semibold">What I Learned</h3>
 							<ul className="space-y-3">
@@ -441,10 +362,10 @@ export default function OpenTribeCaseStudy() {
 									</p>
 								</li>
 							</ul>
-						</motion.div>
-					</motion.div>
+						</div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
 			<NextProjectNav
 				nextProject={{

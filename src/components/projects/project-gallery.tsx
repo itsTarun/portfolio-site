@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { AnimatePresence, motion } from "framer-motion";
 import { Expand, ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 interface Screenshot {
 	url: string;
@@ -86,7 +84,7 @@ export function ProjectGallery({
 						>
 							{liveUrl && (
 								<Button asChild size="lg" className="gap-2">
-									<Link
+									<a
 										href={liveUrl}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -94,13 +92,13 @@ export function ProjectGallery({
 										<ExternalLink className="h-4 w-4" />
 										<span className="hidden sm:inline">View Live Demo</span>
 										<span className="sm:hidden">Live</span>
-									</Link>
+									</a>
 								</Button>
 							)}
 
 							{githubUrl && (
 								<Button asChild variant="outline" size="lg" className="gap-2">
-									<Link
+									<a
 										href={githubUrl}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -108,7 +106,7 @@ export function ProjectGallery({
 										<Github className="h-4 w-4" />
 										<span className="hidden sm:inline">View Source Code</span>
 										<span className="sm:hidden">Source</span>
-									</Link>
+									</a>
 								</Button>
 							)}
 						</motion.div>

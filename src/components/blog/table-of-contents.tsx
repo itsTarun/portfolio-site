@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Hash } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface TableOfContentsProps {
 	headings: { id: string; text: string; level: number }[];
@@ -20,22 +20,22 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 					}
 				});
 			},
-			{ rootMargin: "-80px 0px -80px 0px" },
-		);
+		{ rootMargin: "-80px 0px -80px 0px" },
+	);
 
-		headingElements = headings
-			.map((heading) => document.getElementById(heading.id))
-			.filter(Boolean) as HTMLElement[];
+	const headingElements = headings
+		.map((heading) => document.getElementById(heading.id))
+		.filter(Boolean) as HTMLElement[];
 
+	headingElements.forEach((element) => {
+		observer.observe(element);
+	});
+
+	return () => {
 		headingElements.forEach((element) => {
-			observer.observe(element);
+			observer.unobserve(element);
 		});
-
-		return () => {
-			headingElements.forEach((element) => {
-				observer.unobserve(element);
-			});
-		};
+	};
 	}, [headings]);
 
 	return (

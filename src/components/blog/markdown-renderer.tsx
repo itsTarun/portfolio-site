@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 interface MarkdownRendererProps {
 	content: string;
 }
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
-	const [htmlContent, setHtmlContent] = useState("");
-
-	useEffect(() => {
+	// Use useMemo to compute HTML from markdown content
+	// This avoids the React warning about setState in effects
+	const htmlContent = useMemo(() => {
 		// Simple markdown parser
-		const html = content
+		return content
 			// Headers
 			.replace(
 				/^### (.*$)/gim,
@@ -61,8 +60,6 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
 			.replace(/\n\n/g, '</p><p class="leading-relaxed">')
 			.replace(/^/, '<p class="leading-relaxed">')
 			.concat("</p>");
-
-		setHtmlContent(html);
 	}, [content]);
 
 	return (

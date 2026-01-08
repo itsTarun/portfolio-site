@@ -1,7 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Database, Globe, Github, Linkedin, Mail, Sparkles, Twitter } from "lucide-react";
+import {
+	ArrowRight,
+	Code2,
+	Database,
+	Github,
+	Globe,
+	Linkedin,
+	Mail,
+	Sparkles,
+	Twitter,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -77,14 +87,9 @@ export default function Home() {
 						>
 							Full Stack Developer building modern web applications. For past
 							3-4 years, I&apos;ve been focused on three major projects:{" "}
-							<span className="font-semibold text-foreground">
-								Chargespot
-							</span>
-							,{" "}
-							<span className="font-semibold text-foreground">
-								OpenTribe
-							</span>
-							, and{" "}
+							<span className="font-semibold text-foreground">Chargespot</span>,{" "}
+							<span className="font-semibold text-foreground">OpenTribe</span>,
+							and{" "}
 							<span className="font-semibold text-foreground">
 								Domain Collective
 							</span>
@@ -168,19 +173,22 @@ export default function Home() {
 							{
 								icon: Database,
 								title: "Chargespot",
-								description: "EV Charging Platform - Flutter, Google Maps, Razorpay",
+								description:
+									"EV Charging Platform - Flutter, Google Maps, Razorpay",
 								gradient: "from-blue-500 to-blue-600",
 							},
 							{
 								icon: Globe,
 								title: "OpenTribe",
-								description: "Polkadot Talent Marketplace - Next.js 15, React 19",
+								description:
+									"Polkadot Talent Marketplace - Next.js 15, React 19",
 								gradient: "from-purple-500 to-purple-600",
 							},
 							{
 								icon: Code2,
 								title: "Domain Collective",
-								description: "Multi-Registrar Platform - Next.js 15, PostgreSQL",
+								description:
+									"Multi-Registrar Platform - Next.js 15, PostgreSQL",
 								gradient: "from-pink-500 to-pink-600",
 							},
 						].map((card) => (
@@ -215,8 +223,8 @@ export default function Home() {
 					>
 						<h2 className="mb-4 text-2xl font-bold">Ready to collaborate?</h2>
 						<p className="mb-6 text-muted-foreground">
-							I&apos;m currently available for freelance projects and full-time opportunities.
-							Let&apos;s build something amazing together!
+							I&apos;m currently available for freelance projects and full-time
+							opportunities. Let&apos;s build something amazing together!
 						</p>
 						<Link href="/contact">
 							<Button size="lg" className="w-full gap-2 sm:w-auto">

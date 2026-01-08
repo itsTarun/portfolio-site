@@ -1,17 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Layout, Smartphone, Sparkles } from "lucide-react";
-import Link from "next/link";
+import {
+	ExternalLink,
+	Globe,
+	Layout,
+	Smartphone,
+	Sparkles,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 
 const flagshipProjects = [
 	{
 		id: "chargespot",
 		title: "Chargespot",
-		description: "Comprehensive EV charging station finder and management platform for India",
+		description:
+			"Comprehensive EV charging station finder and management platform for India",
 		longDescription:
 			"Chargespot serves as a unified solution for discovering charging stations, managing charging sessions, planning trips, and handling payments - all from a single mobile application. Features real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island integration, multi-wallet payments, and comprehensive vehicle management.",
 		technologies: [
@@ -41,7 +53,8 @@ const flagshipProjects = [
 	{
 		id: "opentribe",
 		title: "OpenTribe",
-		description: "Talent marketplace for Polkadot ecosystem connecting organizations with contributors",
+		description:
+			"Talent marketplace for Polkadot ecosystem connecting organizations with contributors",
 		longDescription:
 			"OpenTribe is talent layer for Polkadot ecosystem - a centralized marketplace that connects Web3 organizations with skilled developers, designers, and contributors. Features include grant marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.",
 		technologies: [
@@ -72,7 +85,8 @@ const flagshipProjects = [
 	{
 		id: "domain-collective",
 		title: "Domain Collective",
-		description: "Unified domain management platform for multi-registrar portfolios",
+		description:
+			"Unified domain management platform for multi-registrar portfolios",
 		longDescription:
 			"Domain Collective standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations.",
 		technologies: [
@@ -139,7 +153,8 @@ export default function ProjectsPage() {
 							Flagship Projects
 						</h1>
 						<p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-							Three major projects I&apos;ve been working on for the past 3-4 years
+							Three major projects I&apos;ve been working on for the past 3-4
+							years
 						</p>
 					</motion.div>
 
@@ -174,7 +189,7 @@ export default function ProjectsPage() {
 											</div>
 											{project.liveUrl && (
 												<Button asChild className="shrink-0">
-													<Link
+													<a
 														href={project.liveUrl}
 														target="_blank"
 														rel="noopener noreferrer"
@@ -183,7 +198,7 @@ export default function ProjectsPage() {
 														<ExternalLink className="h-4 w-4" />
 														<span className="hidden sm:inline">View Live</span>
 														<span className="sm:hidden">Live</span>
-													</Link>
+													</a>
 												</Button>
 											)}
 										</div>
@@ -221,7 +236,11 @@ export default function ProjectsPage() {
 											</h4>
 											<div className="flex flex-wrap gap-2">
 												{project.technologies.map((tech) => (
-													<Badge key={tech} variant="secondary" className="font-medium">
+													<Badge
+														key={tech}
+														variant="secondary"
+														className="font-medium"
+													>
 														{tech}
 													</Badge>
 												))}

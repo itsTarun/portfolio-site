@@ -36,7 +36,10 @@ export function NextProjectNav({
 							transition={{ duration: 0.5, delay: 0.1 }}
 						>
 							<Button asChild variant="outline" className="gap-2">
-								<Link href={`/projects/${previousProject.slug}`}>
+								<Link
+									// eslint-disable-next-line @typescript-eslint/no-explicit-any
+									href={`/projects/${previousProject.slug}` as any}
+								>
 									Previous
 									<ArrowRight className="h-4 w-4 rotate-180" />
 									{previousProject.title}
@@ -53,7 +56,10 @@ export function NextProjectNav({
 							className="ml-auto"
 						>
 							<Button asChild className="gap-2">
-								<Link href={`/projects/${nextProject.slug}`}>
+								<Link
+									// eslint-disable-next-line @typescript-eslint/no-explicit-any
+									href={`/projects/${nextProject.slug}` as any}
+								>
 									{nextProject.title}
 									Next
 									<ArrowRight className="h-4 w-4" />

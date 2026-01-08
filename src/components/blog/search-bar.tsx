@@ -1,11 +1,12 @@
 "use client";
 
 import { Search, X } from "lucide-react";
-import { useDebounce } from "@/lib/hooks/use-debounce";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useDebounce } from "@/lib/hooks/use-debounce";
 
 interface SearchBarProps {
-	onSearch: (query: string) => void;
+	onSearch?: (query: string) => void;
 	placeholder?: string;
 }
 
@@ -16,7 +17,7 @@ export function SearchBar({
 	const [query, setQuery] = useState("");
 
 	const debouncedSearch = useDebounce((value: string) => {
-		onSearch(value);
+		onSearch?.(value);
 	}, 300);
 
 	useEffect(() => {
@@ -37,7 +38,7 @@ export function SearchBar({
 				<button
 					onClick={() => {
 						setQuery("");
-						onSearch("");
+						onSearch?.("");
 					}}
 					className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:bg-muted transition-colors"
 					aria-label="Clear search"

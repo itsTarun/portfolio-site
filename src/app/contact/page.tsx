@@ -23,8 +23,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema } from "@/lib/validation";
 
 type ContactFormData = z.infer<typeof contactFormSchema>;

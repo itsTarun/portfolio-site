@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle, Zap } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import * as React from "react";
 
 interface FeatureSectionProps {
 	title: string;
@@ -17,8 +17,6 @@ export function FeatureSection({
 	features,
 	icon,
 }: FeatureSectionProps) {
-	const Icon = icon;
-
 	return (
 		<motion.section
 			initial={{ opacity: 0, y: 20 }}
@@ -34,9 +32,9 @@ export function FeatureSection({
 					className="mb-8 text-center"
 				>
 					<div className="mb-6 flex justify-center">
-						{Icon && (
+						{icon && (
 							<div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-								<Icon className="h-8 w-8" />
+								{React.createElement(icon, { className: "h-8 w-8" })}
 							</div>
 						)}
 					</div>
@@ -82,7 +80,7 @@ export function FeatureSection({
 						<div>
 							<h3 className="mb-2 text-xl font-semibold">Ready to explore?</h3>
 							<p className="text-sm text-muted-foreground">
-								Dive deep into the technical details, architecture, and
+								Dive deep into technical details, architecture, and
 								implementation.
 							</p>
 						</div>

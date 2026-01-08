@@ -5,13 +5,13 @@ import { Filter } from "lucide-react";
 
 interface CategoryFilterProps {
 	categories: string[];
-	selectedCategory: string | null;
-	onSelect: (category: string | null) => void;
+	selectedCategory?: string | null;
+	onSelect?: (category: string | null) => void;
 }
 
 export function CategoryFilter({
 	categories,
-	selectedCategory,
+	selectedCategory = null,
 	onSelect,
 }: CategoryFilterProps) {
 	return (
@@ -21,7 +21,7 @@ export function CategoryFilter({
 			className="mb-6 flex flex-wrap items-center gap-2"
 		>
 			<motion.button
-				onClick={() => onSelect(null)}
+				onClick={() => onSelect?.(null)}
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
 				className={`
@@ -40,7 +40,7 @@ export function CategoryFilter({
 			{categories.map((category) => (
 				<motion.button
 					key={category}
-					onClick={() => onSelect(category)}
+					onClick={() => onSelect?.(category)}
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					className={`

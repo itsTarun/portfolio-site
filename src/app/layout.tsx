@@ -3,8 +3,8 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { ThemeProvider } from "@/components/theme-provider";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
 	variable: "--font-inter",
