@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -17,8 +17,38 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: 'Tarun - Full Stack Developer',
-  description: 'Modern personal portfolio website showcasing projects, skills, and experience.',
-  keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'Portfolio'],
+  description: 'Modern personal portfolio website showcasing projects, skills, and experience. Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies.',
+  keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'Portfolio', 'Web Developer', 'Tailwind CSS'],
+  authors: [{ name: 'Tarun' }],
+  creator: 'Tarun',
+  publisher: 'Tarun',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://itstarun.fyi',
+    title: 'Tarun - Full Stack Developer',
+    description: 'Modern personal portfolio website showcasing projects, skills, and experience.',
+    siteName: 'Tarun Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tarun - Full Stack Developer',
+    description: 'Modern personal portfolio website showcasing projects, skills, and experience.',
+    creator: '@itsTarun',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  metadataBase: new URL('https://itstarun.fyi'),
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Code2, Rocket, Sparkles } from 'lucide-react'
+import { ArrowRight, Code2, Rocket, Sparkles, Zap, Globe, Database } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
@@ -66,9 +66,20 @@ export default function Home() {
           transition={{ delay: 0.4 }}
           className="mb-8 text-lg text-muted-foreground sm:text-xl"
         >
-          I build modern web applications with cutting-edge technologies.
-          Passionate about creating seamless user experiences and scalable
-          solutions.
+          I build modern web and mobile applications with cutting-edge technologies.
+          For the past 3-4 years, I've been working on{' '}
+          <span className="font-semibold text-foreground">
+            Chargespot
+          </span>
+          (EV charging platform),{' '}
+          <span className="font-semibold text-foreground">
+            OpenTribe
+          </span>
+          (Polkadot talent marketplace), and{' '}
+          <span className="font-semibold text-foreground">
+            Domain Collective
+          </span>
+          (unified domain management).
         </motion.p>
 
         <motion.div
@@ -100,35 +111,41 @@ export default function Home() {
           transition={{ delay: 0.6 }}
           className="grid gap-8 md:grid-cols-3"
         >
-          <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-              <Code2 className="h-6 w-6 text-primary" />
+          <Link href="/projects">
+            <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm transition-all hover:scale-105 hover:shadow-md cursor-pointer">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold">Chargespot</h3>
+              <p className="text-sm text-muted-foreground">
+                EV charging platform for India with real-time station discovery and AI-powered trip planning
+              </p>
             </div>
-            <h3 className="mb-2 text-lg font-semibold">Frontend</h3>
-            <p className="text-sm text-muted-foreground">
-              React, Next.js, TypeScript, Tailwind CSS
-            </p>
-          </div>
+          </Link>
 
-          <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-              <Rocket className="h-6 w-6 text-primary" />
+          <Link href="/projects">
+            <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm transition-all hover:scale-105 hover:shadow-md cursor-pointer">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <Globe className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold">OpenTribe</h3>
+              <p className="text-sm text-muted-foreground">
+                Talent marketplace for the Polkadot ecosystem connecting organizations with contributors
+              </p>
             </div>
-            <h3 className="mb-2 text-lg font-semibold">Full Stack</h3>
-            <p className="text-sm text-muted-foreground">
-              Node.js, Express, PostgreSQL, MongoDB
-            </p>
-          </div>
+          </Link>
 
-          <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-              <Sparkles className="h-6 w-6 text-primary" />
+          <Link href="/projects">
+            <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm transition-all hover:scale-105 hover:shadow-md cursor-pointer">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <Database className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold">Domain Collective</h3>
+              <p className="text-sm text-muted-foreground">
+                Unified domain management platform consolidating multiple registrars into one dashboard
+              </p>
             </div>
-            <h3 className="mb-2 text-lg font-semibold">Design</h3>
-            <p className="text-sm text-muted-foreground">
-              Framer Motion, Responsive Design, UX/UI
-            </p>
-          </div>
+          </Link>
         </motion.div>
       </motion.div>
     </div>
