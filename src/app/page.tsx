@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight, Code2, Rocket, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
