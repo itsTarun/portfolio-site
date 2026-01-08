@@ -1,36 +1,36 @@
-import { NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import { z } from 'zod'
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { z } from "zod";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-})
+	name: z.string().min(2, "Name must be at least 2 characters"),
+	email: z.string().email("Invalid email address"),
+	subject: z.string().min(5, "Subject must be at least 5 characters"),
+	message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json()
+	try {
+		const body = await request.json();
 
-    const result = contactFormSchema.safeParse(body)
+		const result = contactFormSchema.safeParse(body);
 
-    if (!result.success) {
-      return NextResponse.json(
-        { error: 'Invalid input data', details: result.error },
-        { status: 400 }
-      )
-    }
+		if (!result.success) {
+			return NextResponse.json(
+				{ error: "Invalid input data", details: result.error },
+				{ status: 400 },
+			);
+		}
 
-    const { name, email, subject, message } = result.data
+		const { name, email, subject, message } = result.data;
 
-    const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: process.env.CONTACT_EMAIL || 'itstarun1994@gmail.com',
-      subject: `Portfolio Contact: ${subject}`,
-      html: `
+		const { data, error } = await resend.emails.send({
+			from: "Portfolio Contact <onboarding@resend.dev>",
+			to: process.env.CONTACT_EMAIL || "itstarun1994@gmail.com",
+			subject: `Portfolio Contact: ${subject}`,
+			html: `
         <!DOCTYPE html>
         <html>
           <head>
@@ -109,7 +109,7 @@ export async function POST(request: Request) {
                 </div>
                 <div class="message">
                   <div class="label">Message:</div>
-                  <div class="value">${message.replace(/\n/g, '<br>')}</div>
+                  <div class="value">${message.replace(/\n/g, "<br>")}</div>
                 </div>
               </div>
               <div class="footer">
@@ -119,25 +119,25 @@ export async function POST(request: Request) {
           </body>
         </html>
       `,
-    })
+		});
 
-    if (error) {
-      console.error('Resend API error:', error)
-      return NextResponse.json(
-        { error: 'Failed to send email', details: error },
-        { status: 500 }
-      )
-    }
+		if (error) {
+			console.error("Resend API error:", error);
+			return NextResponse.json(
+				{ error: "Failed to send email", details: error },
+				{ status: 500 },
+			);
+		}
 
-    return NextResponse.json(
-      { success: true, messageId: data.id },
-      { status: 200 }
-    )
-  } catch (error) {
-    console.error('Contact form error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
-  }
+		return NextResponse.json(
+			{ success: true, messageId: data.id },
+			{ status: 200 },
+		);
+	} catch (error) {
+		console.error("Contact form error:", error);
+		return NextResponse.json(
+			{ error: "Internal server error" },
+			{ status: 500 },
+		);
+	}
 }
