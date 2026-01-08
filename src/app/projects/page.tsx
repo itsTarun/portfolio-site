@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Github, ExternalLink, Filter } from 'lucide-react'
+import { Github, ExternalLink, Sparkles, Smartphone, Globe, Layout } from 'lucide-react'
 
 const flagshipProjects = [
   {
@@ -16,7 +16,7 @@ const flagshipProjects = [
     longDescription: 'Chargespot serves as a unified solution for discovering charging stations, managing charging sessions, planning trips, and handling payments - all from a single mobile application. Features real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island integration, multi-wallet payments, and comprehensive vehicle management.',
     technologies: ['Flutter', 'Dart', 'Google Maps', 'Razorpay', 'Firebase', 'PostgreSQL', 'Isar DB', 'Provider', 'OneSignal', 'Google Navigation SDK'],
     category: 'mobile',
-    image: 'ev',
+    icon: Smartphone,
     highlights: ['iOS Live Activities & Widgets', 'AI-Powered Trip Planning', '100% Bilingual Support (EN/HI)', 'Multi-Wallet Integration', 'Offline-First Architecture'],
     githubUrl: null,
     liveUrl: null,
@@ -24,11 +24,11 @@ const flagshipProjects = [
   {
     id: 'opentribe',
     title: 'OpenTribe',
-    description: 'Talent marketplace for the Polkadot ecosystem connecting organizations with contributors',
-    longDescription: 'OpenTribe is the talent layer for the Polkadot ecosystem - a centralized marketplace that connects Web3 organizations with skilled developers, designers, and contributors. Features include grant marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.',
-    technologies: ['Next.js 15', 'React 19', 'TypeScript', 'PostgreSQL', 'Prisma', 'Polkadot (Dedot)', 'Tailwind CSS', 'shadcn/ui', 'Better Auth', 'TanStack Query', 'React Email'],
+    description: 'Talent marketplace for Polkadot ecosystem connecting organizations with contributors',
+    longDescription: 'OpenTribe is talent layer for Polkadot ecosystem - a centralized marketplace that connects Web3 organizations with skilled developers, designers, and contributors. Features include grant marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.',
+    technologies: ['Next.js 15', 'React 19', 'TypeScript', 'PostgreSQL', 'Prisma', 'Polkadot (Dot)', 'Tailwind CSS', 'shadcn/ui', 'Better Auth', 'TanStack Query', 'React Email'],
     category: 'web',
-    image: 'web3',
+    icon: Globe,
     highlights: ['Polkadot Blockchain Integration', 'Grant Marketplace Aggregation', 'Multi-Winner Bounties', 'Real-time Collaboration', 'Monorepo with Turborepo'],
     githubUrl: null,
     liveUrl: 'https://opentribe.io',
@@ -40,7 +40,7 @@ const flagshipProjects = [
     longDescription: 'Domain Collective standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations.',
     technologies: ['Next.js 15', 'React 19', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'shadcn/ui', 'Better Auth', 'Resend', 'Biome'],
     category: 'web',
-    image: 'domain',
+    icon: Layout,
     highlights: ['6+ Registrar Integrations', 'Real-time Synchronization', 'Provider Abstraction Layer', 'Encrypted Credential Storage', 'Background Job Processing'],
     githubUrl: null,
     liveUrl: null,
@@ -99,7 +99,7 @@ const otherProjects = [
     longDescription: 'The website you&apos;re viewing! Built with Next.js, featuring smooth animations, dark/light mode, and responsive design.',
     technologies: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
     category: 'web',
-    featured: false,
+    featured: true,
     githubUrl: 'https://github.com/itsTarun/portfolio-site',
     liveUrl: 'https://itstarun.fyi',
   },
@@ -135,227 +135,235 @@ export default function ProjectsPage() {
   })
 
   return (
-    <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mx-auto max-w-6xl"
-      >
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
+      <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-7xl"
         >
-          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
-            Projects
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            A showcase of my flagship projects and other work
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mb-16"
-        >
-          <h2 className="mb-8 text-2xl font-bold">Flagship Projects</h2>
           <motion.div
-            variants={containerVariants}
-            initial="initial"
-            animate="animate"
-            className="grid gap-8 lg:grid-cols-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-12 text-center"
           >
-            {flagshipProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={fadeInUp}
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Card className="overflow-hidden">
-                  <CardHeader className="border-b bg-muted/50">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <div className="mb-2 flex items-center gap-2">
-                          <CardTitle className="text-2xl">{project.title}</CardTitle>
-                          <Badge className="bg-primary" variant="secondary">
-                            Flagship
-                          </Badge>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+              Projects
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              A showcase of my flagship projects and other work
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-16"
+          >
+            <div className="mb-8 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-primary" />
+              <h2 className="text-2xl font-bold">Flagship Projects</h2>
+            </div>
+            <motion.div
+              variants={containerVariants}
+              initial="initial"
+              animate="animate"
+              className="grid gap-8 lg:grid-cols-1"
+            >
+              {flagshipProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  variants={fadeInUp}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="overflow-hidden border-2 border-primary/20 shadow-2xl">
+                    <CardHeader className="border-b bg-gradient-to-r from-primary/5 to-secondary/5">
+                      <div className="flex items-start justify-between">
+                        <div className="mb-2 flex items-center gap-3">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                            <project.icon className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <CardTitle className="text-2xl">{project.title}</CardTitle>
+                            <Badge className="mt-1 bg-primary" variant="secondary">
+                              Flagship
+                            </Badge>
+                          </div>
                         </div>
-                        <CardDescription className="text-base">
-                          {project.description}
-                        </CardDescription>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <p className="mb-6 text-sm text-muted-foreground">
-                      {project.longDescription}
-                    </p>
+                      <CardDescription className="text-base">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-6">
+                      <p className="mb-6 text-sm text-muted-foreground">
+                        {project.longDescription}
+                      </p>
 
-                    <div className="mb-6">
-                      <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                        Key Highlights
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.highlights.map((highlight, idx) => (
-                          <Badge key={idx} variant="outline" className="border-primary/50">
-                            {highlight}
+                      <div className="mb-6">
+                        <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                          Key Highlights
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.highlights.map((highlight, idx) => (
+                            <Badge key={idx} variant="outline" className="border-primary/50">
+                              {highlight}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mb-6">
+                        <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                          Technologies
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <Badge key={tech} variant="secondary">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                    <CardFooter className="flex gap-2 border-t bg-muted/30">
+                      {project.githubUrl && (
+                        <Button variant="outline" className="flex-1" asChild>
+                          <Link
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="gap-2"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </Link>
+                        </Button>
+                      )}
+                      {project.liveUrl && (
+                        <Button className="flex-1" asChild>
+                          <Link
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="gap-2"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            Live
+                          </Link>
+                        </Button>
+                      )}
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="text-2xl font-bold">Other Projects</h2>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <Button
+                    key={category.id}
+                    variant={selectedCategory === category.id ? 'default' : 'outline'}
+                    onClick={() => setSelectedCategory(category.id)}
+                    size="sm"
+                  >
+                    {category.label}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              variants={containerVariants}
+              initial="initial"
+              animate="animate"
+              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {filteredProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  variants={fadeInUp}
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="flex h-full flex-col shadow-lg">
+                    <CardHeader>
+                      <div className="mb-2 flex items-start justify-between">
+                        <CardTitle className="text-xl">{project.title}</CardTitle>
+                        {project.featured && (
+                          <Badge className="ml-2" variant="secondary">
+                            Featured
                           </Badge>
-                        ))}
+                        )}
                       </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                        Technologies
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-1">
+                      <div className="mb-4 flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary">
+                          <Badge key={tech} variant="outline">
                             {tech}
                           </Badge>
                         ))}
                       </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="flex gap-2 border-t bg-muted/30">
-                    {project.githubUrl && (
-                      <Button variant="outline" className="flex-1" asChild>
-                        <Link
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gap-2"
-                        >
-                          <Github className="h-4 w-4" />
-                          Code
-                        </Link>
-                      </Button>
-                    )}
-                    {project.liveUrl && (
-                      <Button className="flex-1" asChild>
-                        <Link
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gap-2"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Live
-                        </Link>
-                      </Button>
-                    )}
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-bold">Other Projects</h2>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={selectedCategory === category.id ? 'default' : 'outline'}
-                  onClick={() => setSelectedCategory(category.id)}
-                  size="sm"
-                >
-                  {category.label}
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="initial"
-            animate="animate"
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Card className="flex h-full flex-col">
-                  <CardHeader>
-                    <div className="mb-2 flex items-start justify-between">
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
-                      {project.featured && (
-                        <Badge className="ml-2" variant="secondary">
-                          Featured
-                        </Badge>
+                    </CardContent>
+                    <CardFooter className="flex gap-2">
+                      {project.githubUrl && (
+                        <Button variant="outline" className="flex-1" asChild>
+                          <Link
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="gap-2"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </Link>
+                        </Button>
                       )}
-                    </div>
-                    <CardDescription>{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                  <CardFooter className="flex gap-2">
-                    {project.githubUrl && (
-                      <Button variant="outline" className="flex-1" asChild>
-                        <Link
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gap-2"
-                        >
-                          <Github className="h-4 w-4" />
-                          Code
-                        </Link>
-                      </Button>
-                    )}
-                    {project.liveUrl && (
-                      <Button className="flex-1" asChild>
-                        <Link
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gap-2"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Live
-                        </Link>
-                      </Button>
-                    )}
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {filteredProjects.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="py-12 text-center text-muted-foreground"
-            >
-              No projects found in this category.
+                      {project.liveUrl && (
+                        <Button className="flex-1" asChild>
+                          <Link
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="gap-2"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            Live
+                          </Link>
+                        </Button>
+                      )}
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
             </motion.div>
-          )}
+
+            {filteredProjects.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="py-12 text-center text-muted-foreground"
+              >
+                No projects found in this category.
+              </motion.div>
+            )}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   )
 }
