@@ -27,47 +27,74 @@ const containerVariants = {
 };
 
 const skills = [
-	{ category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'HTML/CSS'], icon: Code2 },
-	{ category: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs', 'GraphQL'], icon: Rocket },
-	{ category: 'Tools & Others', items: ['Git', 'Docker', 'AWS', 'Vercel', 'Figma', 'Jest'], icon: Sparkles },
+	{
+		category: "Frontend",
+		items: [
+			"React",
+			"Next.js",
+			"TypeScript",
+			"Tailwind CSS",
+			"Framer Motion",
+			"HTML/CSS",
+		],
+		icon: Code2,
+	},
+	{
+		category: "Backend",
+		items: [
+			"Node.js",
+			"Express",
+			"PostgreSQL",
+			"MongoDB",
+			"REST APIs",
+			"GraphQL",
+		],
+		icon: Rocket,
+	},
+	{
+		category: "Tools & Others",
+		items: ["Git", "Docker", "AWS", "Vercel", "Figma", "Jest"],
+		icon: Sparkles,
+	},
 ];
 
 const experience = [
 	{
 		id: 1,
-		title: 'Full Stack Developer',
-		company: 'Tech Company',
-		location: 'Remote',
-		period: '2023 - Present',
+		title: "Full Stack Developer",
+		company: "Tech Company",
+		location: "Remote",
+		period: "2023 - Present",
 		description: [
-			'Developed and maintained web applications using Next.js and React',
-			'Implemented RESTful APIs and integrated with third-party services',
-			'Optimized application performance and improved page load times',
+			"Developed and maintained web applications using Next.js and React",
+			"Implemented RESTful APIs and integrated with third-party services",
+			"Optimized application performance and improved page load times",
 		],
-		technologies: ['React', 'Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
+		technologies: ["React", "Next.js", "TypeScript", "PostgreSQL", "AWS"],
 	},
 	{
 		id: 2,
-		title: 'Frontend Developer',
-		company: 'Digital Agency',
-		location: 'New York',
-		period: '2021 - 2023',
+		title: "Frontend Developer",
+		company: "Digital Agency",
+		location: "New York",
+		period: "2021 - 2023",
 		description: [
-			'Built responsive and accessible user interfaces',
-			'Collaborated with designers to implement pixel-perfect designs',
-			'Created reusable component libraries',
+			"Built responsive and accessible user interfaces",
+			"Collaborated with designers to implement pixel-perfect designs",
+			"Created reusable component libraries",
 		],
-		technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion'],
+		technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
 	},
 ];
 
 const education = [
 	{
 		id: 1,
-		degree: 'Bachelor of Science in Computer Science',
-		school: 'University',
-		period: '2017 - 2021',
-		description: 'Focus on software engineering, algorithms, and web development',
+		degree: "Bachelor of Science in Computer Science",
+		school: "University",
+		period: "2017 - 2021",
+		description:
+			"Focus on software engineering, algorithms, and web development",
 	},
 ];
 
@@ -102,14 +129,16 @@ export default function AboutPage() {
 						className="mb-12 rounded-2xl border border-border bg-gradient-to-br from-card to-muted/30 p-8 text-card-foreground shadow-lg"
 					>
 						<p className="mb-4 text-lg leading-relaxed">
-							I&apos;m a Full Stack Developer with a passion for building modern, scalable web
-							applications. With expertise in both frontend and backend technologies, I create
-							seamless user experiences and robust solutions.
+							I&apos;m a Full Stack Developer with a passion for building
+							modern, scalable web applications. With expertise in both frontend
+							and backend technologies, I create seamless user experiences and
+							robust solutions.
 						</p>
 						<p className="text-lg leading-relaxed text-muted-foreground">
-							I love solving complex problems and turning ideas into reality. When I&apos;m not
-							coding, you can find me exploring new technologies, contributing to open-source
-							projects, or sharing knowledge with developer community.
+							I love solving complex problems and turning ideas into reality.
+							When I&apos;m not coding, you can find me exploring new
+							technologies, contributing to open-source projects, or sharing
+							knowledge with developer community.
 						</p>
 					</motion.div>
 
@@ -137,11 +166,17 @@ export default function AboutPage() {
 											<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
 												<skillGroup.icon className="h-6 w-6" />
 											</div>
-											<h3 className="text-xl font-semibold">{skillGroup.category}</h3>
+											<h3 className="text-xl font-semibold">
+												{skillGroup.category}
+											</h3>
 										</div>
 										<div className="flex flex-wrap gap-2">
 											{skillGroup.items.map((skill) => (
-												<Badge key={skill} variant="secondary" className="text-sm">
+												<Badge
+													key={skill}
+													variant="secondary"
+													className="text-sm"
+												>
 													{skill}
 												</Badge>
 											))}
@@ -162,7 +197,7 @@ export default function AboutPage() {
 							Experience
 						</motion.h2>
 						<div className="space-y-6">
-							{experience.map((exp, index) => (
+							{experience.map((exp) => (
 								<motion.div
 									key={exp.id}
 									variants={fadeInUp}
@@ -223,10 +258,18 @@ export default function AboutPage() {
 									<GraduationCap className="h-5 w-5 text-primary" />
 								</div>
 								<div className="flex-1">
-									<h3 className="mb-1 text-xl font-semibold">{education[0].degree}</h3>
-									<p className="mb-2 text-muted-foreground">{education[0].school}</p>
-									<p className="text-sm text-muted-foreground">{education[0].period}</p>
-									<p className="mt-2 text-muted-foreground">{education[0].description}</p>
+									<h3 className="mb-1 text-xl font-semibold">
+										{education[0].degree}
+									</h3>
+									<p className="mb-2 text-muted-foreground">
+										{education[0].school}
+									</p>
+									<p className="text-sm text-muted-foreground">
+										{education[0].period}
+									</p>
+									<p className="mt-2 text-muted-foreground">
+										{education[0].description}
+									</p>
 								</div>
 							</div>
 						</motion.div>
@@ -238,7 +281,9 @@ export default function AboutPage() {
 						transition={{ delay: 0.5 }}
 						className="rounded-2xl border border-border bg-gradient-to-br from-primary/10 to-secondary/10 p-8 text-center shadow-lg"
 					>
-						<h2 className="mb-4 text-2xl font-bold">Let&apos;s Work Together</h2>
+						<h2 className="mb-4 text-2xl font-bold">
+							Let&apos;s Work Together
+						</h2>
 						<p className="mb-6 text-muted-foreground">
 							Interested in collaborating on a project or have a question?
 						</p>

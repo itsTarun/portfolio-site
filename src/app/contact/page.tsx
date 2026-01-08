@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { contactFormSchema } from "@/lib/validation";
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -261,7 +262,7 @@ export default function ContactPage() {
 											disabled={isSubmitting}
 										>
 											{isSubmitting ? (
-												"Sending..."
+												<LoadingSpinner size="sm" />
 											) : (
 												<>
 													<Send className="h-4 w-4" />
