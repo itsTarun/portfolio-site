@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { CookieConsent } from "@/components/layout/cookie-consent";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AnalyticsProvider } from "./providers/analytics-provider";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -75,6 +78,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "https://itstarun.fyi",
 	},
+	verification: {
+		google: process.env.NEXT_PUBLIC_GSC_VERIFICATION_CODE,
+	},
 };
 
 export const viewport: Viewport = {
@@ -93,20 +99,41 @@ export default function RootLayout({
 			<body
 				className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
 			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<ScrollProgress />
-					<div className="flex min-h-screen flex-col">
-						<Header />
-						<main className="flex-1">{children}</main>
-						<Footer />
-					</div>
-				</ThemeProvider>
+				<AnalyticsProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<ScrollProgress />
+						<div className="flex min-h-screen flex-col">
+							<Header />
+							<main className="flex-1">{children}</main>
+							<Footer />
+							<CookieConsent />
+						</div>
+					</ThemeProvider>
+				</AnalyticsProvider>
 			</body>
+			{/* Google tag (gtag.js) */}
+			{process.env.NODE_ENV === "production" &&
+				process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+					<>
+						<Script
+							async
+							src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+						/>
+						<Script id="google-analytics" strategy="afterInteractive">
+							{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+							`}
+						</Script>
+					</>
+				)}
 		</html>
 	);
 }
