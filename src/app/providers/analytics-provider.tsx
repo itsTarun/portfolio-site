@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { hasAcceptedAnalytics } from "@/lib/cookie-consent";
 import { getFirebaseAnalytics } from "@/lib/firebase";
+import { initPostHog } from "@/lib/posthog";
 
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
@@ -12,6 +13,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 		if (isProduction && consent) {
 			initMicrosoftClarity();
 			initFirebaseAnalytics();
+			initPostHog();
 		}
 	}, []);
 

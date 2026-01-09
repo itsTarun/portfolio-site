@@ -8,6 +8,7 @@ import { CookieConsent } from "@/components/layout/cookie-consent";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsProvider } from "./providers/analytics-provider";
+import { PostHogProvider } from "./providers/posthog-provider";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -99,41 +100,25 @@ export default function RootLayout({
 			<body
 				className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
 			>
-				<AnalyticsProvider>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
-					>
-						<ScrollProgress />
-						<div className="flex min-h-screen flex-col">
-							<Header />
-							<main className="flex-1">{children}</main>
-							<Footer />
-							<CookieConsent />
-						</div>
-					</ThemeProvider>
-				</AnalyticsProvider>
+				<PostHogProvider>
+					<AnalyticsProvider>
+						<ThemeProvider
+							attribute="class"
+							defaultTheme="system"
+							enableSystem
+							disableTransitionOnChange
+						>
+							<ScrollProgress />
+							<div className="flex min-h-screen flex-col">
+								<Header />
+								<main className="flex-1">{children}</main>
+								<Footer />
+								<CookieConsent />
+							</div>
+						</ThemeProvider>
+					</AnalyticsProvider>
+				</PostHogProvider>
 			</body>
-			{/* Google tag (gtag.js) */}
-			{process.env.NODE_ENV === "production" &&
-				process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-					<>
-						<Script
-							async
-							src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-						/>
-						<Script id="google-analytics" strategy="afterInteractive">
-							{`
-								window.dataLayer = window.dataLayer || [];
-								function gtag(){dataLayer.push(arguments);}
-								gtag('js', new Date());
-								gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-							`}
-						</Script>
-					</>
-				)}
 		</html>
 	);
 }
