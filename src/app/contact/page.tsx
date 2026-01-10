@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema } from "@/lib/validation";
+import { trackFormSubmission, trackExternalLinkClick } from "@/lib/unified-tracking";
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
@@ -92,12 +93,18 @@ export default function ContactPage() {
 			if (response.ok) {
 				setSubmitStatus("success");
 				reset();
+				// Track successful form submission
+				trackFormSubmission("contact", true);
 			} else {
 				setSubmitStatus("error");
+				// Track failed form submission
+				trackFormSubmission("contact", false);
 			}
 		} catch (error) {
 			setSubmitStatus("error");
 			console.error("Error submitting form:", error);
+			// Track failed form submission
+			trackFormSubmission("contact", false);
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -314,6 +321,7 @@ export default function ContactPage() {
 													href={social.href}
 													target="_blank"
 													rel="noopener noreferrer"
+													onClick={() => trackExternalLinkClick(social.href, social.name)}
 													className="flex items-center gap-3 rounded-lg p-3 transition-all hover:bg-muted hover:scale-105"
 												>
 													<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">

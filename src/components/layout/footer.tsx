@@ -1,5 +1,8 @@
+"use client";
+
 import { Github, Heart, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { trackExternalLinkClick } from "@/lib/unified-tracking";
 
 const socialLinks = [
 	{ href: "https://github.com/itsTarun", icon: Github, label: "GitHub" },
@@ -38,6 +41,7 @@ export function Footer() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
+									onClick={() => trackExternalLinkClick(link.href, link.label)}
 									className="rounded-lg bg-muted p-2 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
 									aria-label={link.label}
 								>

@@ -28,6 +28,9 @@ export function CookieConsent() {
 		localStorage.setItem("analytics-consent", "accepted");
 		setIsVisible(false);
 
+		// Dispatch custom event to notify analytics scripts
+		window.dispatchEvent(new CustomEvent("analytics-consent-changed"));
+
 		if (process.env.NODE_ENV === "production") {
 			window.location.reload();
 		}
@@ -36,6 +39,9 @@ export function CookieConsent() {
 	const handleReject = () => {
 		localStorage.setItem("analytics-consent", "rejected");
 		setIsVisible(false);
+
+		// Dispatch custom event to notify analytics scripts
+		window.dispatchEvent(new CustomEvent("analytics-consent-changed"));
 	};
 
 	return (

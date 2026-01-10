@@ -1,21 +1,57 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { hasAcceptedAnalytics } from "@/lib/cookie-consent";
 import { getFirebaseAnalytics } from "@/lib/firebase";
-import { initPostHog } from "@/lib/posthog";
+import { trackPageView } from "@/lib/unified-tracking";
+import { shouldSendAnalyticsData } from "@/lib/analytics-config";
 
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
+
+	// Initialize analytics tools
 	useEffect(() => {
-		const isProduction = process.env.NODE_ENV === "production";
 		const consent = hasAcceptedAnalytics();
 
-		if (isProduction && consent) {
+		if (consent) {
+			// Initialize in both dev and production
+			// Dev mode will log to console, production will send data
 			initMicrosoftClarity();
 			initFirebaseAnalytics();
-			initPostHog();
+
+			if (!shouldSendAnalyticsData()) {
+				console.log("[Analytics] Initialized in development mode (console logging only)");
+			}
+		} else {
+			if (!shouldSendAnalyticsData()) {
+				console.log("[Analytics] Waiting for user consent");
+			}
 		}
 	}, []);
+
+	// Track page views on route changes
+	useEffect(() => {
+		const consent = hasAcceptedAnalytics();
+
+		if (!consent) {
+			return;
+		}
+
+		// Get page title from document or use pathname
+		const pageTitle = typeof document !== "undefined" 
+			? document.title 
+			: pathname || "Page";
+
+		// Build full path with search params if they exist
+		const fullPath = searchParams?.toString() 
+			? `${pathname}?${searchParams.toString()}`
+			: pathname || "/";
+
+		// Track page view
+		trackPageView(fullPath, pageTitle);
+	}, [pathname, searchParams]);
 
 	return <>{children}</>;
 }

@@ -11,14 +11,17 @@ export function trackGAEvent(
 	}
 
 	if (process.env.NODE_ENV === "development") {
-		console.log(`[Analytics] Event: ${eventName}`, parameters);
-		return;
+		console.log(`[GA4] Event: ${eventName}`, parameters);
+		// In development, still try to send if gtag is available (for testing)
+		// but don't fail if it's not
 	}
 
-	try {
-		window.gtag("event", eventName, parameters);
-	} catch (error) {
-		console.error("[Analytics] Error tracking event:", error);
+	if (process.env.NODE_ENV === "production") {
+		try {
+			window.gtag("event", eventName, parameters);
+		} catch (error) {
+			console.error("[GA4] Error tracking event:", error);
+		}
 	}
 }
 

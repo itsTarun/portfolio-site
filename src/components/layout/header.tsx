@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
+import { trackNavigationClick, trackThemeToggle } from "@/lib/unified-tracking";
 
 const navLinks = [
 	{ href: "/", label: "Home" },
@@ -27,7 +28,10 @@ export function Header() {
 	}, []);
 
 	const toggleTheme = () => {
-		setTheme(theme === "dark" ? "light" : "dark");
+		const newTheme = theme === "dark" ? "light" : "dark";
+		setTheme(newTheme);
+		// Track theme toggle
+		trackThemeToggle(newTheme);
 	};
 
 	return (
@@ -47,6 +51,10 @@ export function Header() {
 								key={link.href}
 								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								href={link.href as any}
+								onClick={() => {
+									// Track navigation click
+									trackNavigationClick(link.href);
+								}}
 								className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
 									pathname === link.href
 										? "text-primary"
@@ -130,7 +138,11 @@ export function Header() {
 												? "text-primary bg-muted"
 												: "text-muted-foreground"
 										}`}
-										onClick={() => setIsMenuOpen(false)}
+										onClick={() => {
+											setIsMenuOpen(false);
+											// Track navigation click
+											trackNavigationClick(link.href);
+										}}
 									>
 										{link.label}
 									</Link>

@@ -9,6 +9,7 @@ import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsProvider } from "./providers/analytics-provider";
 import { PostHogProvider } from "./providers/posthog-provider";
+import { GAScripts } from "@/components/analytics/ga-scripts";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -100,6 +101,7 @@ export default function RootLayout({
 			<body
 				className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
 			>
+				<GAScripts />
 				<PostHogProvider>
 					<AnalyticsProvider>
 						<ThemeProvider
