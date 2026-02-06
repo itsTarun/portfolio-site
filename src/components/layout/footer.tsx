@@ -23,15 +23,16 @@ const footerLinks = [
 
 export function Footer() {
 	return (
-		<footer className="border-t border-border/40 bg-muted/30">
+		<footer className="border-t-2 border-border bg-background">
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-				<div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-					<div className="md:col-span-2">
-						<h3 className="mb-4 text-xl font-bold text-gradient">itstarun</h3>
+				<div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+					<div>
+						<h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.18em]">
+							itstarun
+						</h3>
 						<p className="mb-6 text-sm text-muted-foreground leading-relaxed max-w-md">
-							Building modern web experiences with cutting-edge technologies.
-							Passionate about creating seamless user interfaces and scalable
-							applications.
+							Mobile developer building thoughtful iOS and Flutter products with
+							a focus on clarity, performance, and stable releases.
 						</p>
 						<div className="flex gap-3">
 							{socialLinks.map((link) => (
@@ -40,26 +41,25 @@ export function Footer() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="relative group"
+									className="flex h-10 w-10 items-center justify-center border-2 border-border bg-background text-muted-foreground transition-colors hover:text-foreground neo-shadow-sm"
 									aria-label={link.label}
 								>
-									<div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary to-secondary opacity-0 blur-md transition-all duration-300 group-hover:opacity-30" />
-									<div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 backdrop-blur-sm border border-border/50 text-muted-foreground transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
-										<link.icon className="h-5 w-5" />
-									</div>
+									<link.icon className="h-4 w-4" />
 								</a>
 							))}
 						</div>
 					</div>
 
 					<div>
-						<h4 className="mb-4 text-sm font-semibold">Quick Links</h4>
+						<h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+							Quick Links
+						</h4>
 						<ul className="space-y-2">
 							{footerLinks.map((link) => (
 								<li key={link.href}>
 									<Link
 										href={link.href}
-										className="text-sm text-muted-foreground transition-colors hover:text-primary"
+										className="text-sm text-muted-foreground transition-colors hover:text-foreground"
 									>
 										{link.label}
 									</Link>
@@ -69,13 +69,15 @@ export function Footer() {
 					</div>
 
 					<div>
-						<h4 className="mb-4 text-sm font-semibold">Contact</h4>
+						<h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+							Contact
+						</h4>
 						<ul className="space-y-2 text-sm text-muted-foreground">
 							<li>itstarun1994@gmail.com</li>
 							<li>
 								<Link
 									href="/contact"
-									className="transition-colors hover:text-primary"
+									className="link-underline transition-colors hover:text-foreground"
 								>
 									Send a message
 								</Link>
@@ -84,14 +86,13 @@ export function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-10 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
-					<div className="flex flex-col items-center justify-center gap-2 md:flex-row">
+				<div className="mt-10 border-t-2 border-border pt-6 text-sm text-muted-foreground">
+					<div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
 						<p>© {new Date().getFullYear()} Tarun. All rights reserved.</p>
-						<span className="hidden md:inline">•</span>
 						<span className="flex items-center gap-1">
 							Built with
 							<Heart
-								className="h-4 w-4 fill-red-500 text-red-500"
+								className="h-4 w-4 fill-foreground text-foreground"
 								aria-hidden="true"
 							/>
 							by Tarun

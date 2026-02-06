@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -8,18 +9,30 @@ import { PersonSchema } from "@/components/seo/person-schema";
 import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
 
+const displayFont = Bricolage_Grotesque({
+	subsets: ["latin"],
+	weight: ["400", "600", "700", "800"],
+	variable: "--font-display",
+});
+
+const bodyFont = Instrument_Sans({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+	variable: "--font-body",
+});
+
 export const metadata: Metadata = {
-	title: "Tarun - Full Stack Developer | itstarun.fyi",
+	title: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
 	description:
-		"Modern personal portfolio website showcasing projects, skills, and experience. Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies.",
+		"Personal portfolio showcasing iOS and Flutter work, experience, and case studies. Mobile app developer focused on stable releases and product quality.",
 	keywords: [
-		"Full Stack Developer",
-		"React",
-		"Next.js",
-		"TypeScript",
+		"Mobile App Developer",
+		"iOS Developer",
+		"Flutter Developer",
+		"Dart",
 		"Portfolio",
-		"Web Developer",
-		"Tailwind CSS",
+		"App Store",
+		"Firebase",
 	],
 	authors: [{ name: "Tarun" }],
 	creator: "Tarun",
@@ -31,7 +44,7 @@ export const metadata: Metadata = {
 		url: "https://itstarun.fyi",
 		title: "Tarun",
 		description:
-			"Modern personal portfolio website showcasing projects, skills, and experience.",
+			"Portfolio showcasing iOS and Flutter work, experience, and case studies.",
 		siteName: "Tarun Portfolio",
 		images: [
 			{
@@ -46,7 +59,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "Tarun",
 		description:
-			"Modern personal portfolio website showcasing projects, skills, and experience.",
+			"Portfolio showcasing iOS and Flutter work, experience, and case studies.",
 		creator: "@itsTarun",
 		site: "@itsTarun",
 		images: [
@@ -92,7 +105,7 @@ export default function RootLayout({
 				<PersonSchema />
 			</head>
 			<body
-				className="font-sans antialiased"
+				className={`${bodyFont.variable} ${displayFont.variable} font-sans antialiased`}
 				style={{ colorScheme: "light dark" }}
 			>
 				<ThemeProvider

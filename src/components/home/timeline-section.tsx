@@ -1,110 +1,114 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge, Briefcase, Calendar, Code2 } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
 const experiences = [
 	{
-		title: "Full Stack Developer",
+		title: "Mobile Developer",
 		company: "Chargespot",
-		period: "2022 - Present",
-		description:
-			"Building an EV charging platform with Flutter, Google Maps, and Razorpay integration. Led development of core features including real-time charging status and payment processing.",
-		technologies: ["Flutter", "Google Maps", "Razorpay", "Firebase"],
-		icon: Briefcase,
+		period: "Jul 2023 - Present",
+		description: "Building the Chargespot mobile app and shipping new releases.",
+		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
 	},
 	{
-		title: "Full Stack Developer",
-		company: "OpenTribe",
-		period: "2023 - Present",
+		title: "Software Engineer (Flutter)",
+		company: "Droidsize Technologies",
+		period: "Oct 2022 - Jul 2023",
 		description:
-			"Developing a Polkadot-based talent marketplace platform using Next.js 15 and React 19. Implemented advanced features including Web3 integration and decentralized identity management.",
-		technologies: ["Next.js 15", "React 19", "TypeScript", "Polkadot"],
-		icon: Code2,
+			"Developed and maintained UI components for backend-driven layouts and built product UI with Firebase-backed workflows.",
+		technologies: ["Flutter", "Firebase", "GitLab", "Jira"],
 	},
 	{
-		title: "Full Stack Developer",
-		company: "Domain Collective",
-		period: "2024 - Present",
+		title: "iOS Developer",
+		company: "Eyemyeye.com",
+		period: "Aug 2021 - Oct 2022",
 		description:
-			"Creating a multi-registrar domain management platform with PostgreSQL and Next.js 15. Built comprehensive domain search, registration, and management tools.",
-		technologies: ["Next.js 15", "PostgreSQL", "Tailwind CSS", "TypeScript"],
-		icon: Badge,
+			"Built the EyeMyEye app from the ground up, set up VIPER architecture, and shipped App Store updates with a 99% crash-free user base.",
+		technologies: ["iOS", "VIPER", "UIKit", "App Store"],
+	},
+	{
+		title: "Lead iOS Engineer",
+		company: "DailyObjects",
+		period: "Jan 2020 - Aug 2021",
+		description:
+			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates.",
+		technologies: ["iOS", "FCM", "REST APIs", "UIKit"],
+	},
+	{
+		title: "iOS Developer",
+		company: "DailyObjects",
+		period: "Jul 2019 - Jan 2020",
+		description:
+			"Improved stability with Crashlytics, tested APIs with Postman, and shipped features using Coordinator pattern and protocol-oriented programming.",
+		technologies: ["Crashlytics", "Postman", "UIKit", "Unit Tests"],
+	},
+	{
+		title: "iOS Developer",
+		company: "Startxlabs Technologies",
+		period: "May 2018 - Jun 2019",
+		description:
+			"Refined product tickets, shipped rating/share features, and crafted reusable components while mentoring junior developers.",
+		technologies: ["iOS", "Reusable Components", "Mentorship", "App Features"],
 	},
 ];
 
 export function TimelineSection() {
 	return (
-		<section className="py-16 md:py-20 lg:py-24 relative overflow-hidden gradient-fade-top gradient-fade-bottom">
-			<div className="blob-bg absolute inset-0 -z-10">
-				<div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-				<div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
-			</div>
-
-			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
-					<div className="mb-16 text-center">
-						<h2 className="mb-4 text-3xl font-bold sm:text-4xl text-balance">
-							Experience & Projects
-						</h2>
-						<p className="mx-auto max-w-2xl text-muted-foreground">
-							My journey through building impactful projects and solving complex
-							problems
+					<div className="mb-12">
+						<p className="eyebrow mb-4">Credibility</p>
+						<h2 className="section-title">Experience that ships.</h2>
+						<p className="section-subtitle mt-4 max-w-2xl">
+							A focused timeline of web and mobile products delivered with
+							reliable engineering and clear outcomes.
 						</p>
 					</div>
 				</ScrollReveal>
 
-				<div className="relative mx-auto max-w-4xl">
-					<div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary via-secondary to-primary/20 hidden md:block" />
-
+				<div className="space-y-6">
 					{experiences.map((exp, idx) => (
-						<ScrollReveal key={`${exp.company}-${idx}`} delay={idx * 150}>
+						<ScrollReveal key={`${exp.company}-${idx}`} delay={idx * 120}>
 							<motion.div
-								className={`relative mb-8 md:mb-16 w-full md:w-1/2 ${
-									idx % 2 === 0
-										? "md:pr-1/2 md:text-right"
-										: "md:pl-1/2 md:ml-auto"
-								}`}
-								whileHover={{ scale: 1.02 }}
+								initial={{ opacity: 0, y: 12 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								className="neo-panel p-6"
 							>
-								<div className="relative rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-									{idx % 2 === 0 ? (
-										<div className="absolute left-1/2 top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary to-secondary md:block ring-4 ring-background" />
-									) : (
-										<div className="absolute right-1/2 top-1/2 hidden h-4 w-4 translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-secondary to-primary md:block ring-4 ring-background" />
-									)}
-
-									<div className="flex items-start gap-3 mb-4">
-										<div className="rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 p-2.5">
-											<exp.icon className="h-5 w-5 text-primary" />
-										</div>
-										<div className="flex-1">
-											<h3 className="text-lg font-bold">{exp.title}</h3>
-											<p className="text-gradient font-medium">{exp.company}</p>
-										</div>
+								<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+									<div>
+										<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+											Role
+										</p>
+										<h3 className="text-2xl font-semibold">{exp.title}</h3>
+										<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+											{exp.company}
+										</p>
 									</div>
-
-									<div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
-										<Calendar className="h-4 w-4" />
-										<span>{exp.period}</span>
+									<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+										<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+											<Calendar className="h-4 w-4" />
+										</span>
+										<span className="border-2 border-border bg-background px-3 py-1 text-foreground">
+											{exp.period}
+										</span>
 									</div>
-
-									<p className="mb-4 text-muted-foreground line-clamp-3">
-										{exp.description}
-									</p>
-
-									<div className="flex flex-wrap gap-2">
-										{exp.technologies.map((tech) => (
-											<motion.span
-												key={tech}
-												whileHover={{ scale: 1.05 }}
-												className="rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 px-3 py-1 text-xs font-medium text-primary border border-primary/20"
-											>
-												{tech}
-											</motion.span>
-										))}
-									</div>
+								</div>
+								<p className="mt-4 text-sm text-muted-foreground">
+									{exp.description}
+								</p>
+								<div className="mt-4 flex flex-wrap gap-2">
+									{exp.technologies.map((tech) => (
+										<span
+											key={tech}
+											className="border-2 border-border bg-background px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+										>
+											{tech}
+										</span>
+									))}
 								</div>
 							</motion.div>
 						</ScrollReveal>

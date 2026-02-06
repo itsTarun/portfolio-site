@@ -51,7 +51,7 @@ export default async function Image() {
 						letterSpacing: "0.01em",
 					}}
 				>
-					Passionate Full Stack Developer creating modern web experiences
+					Mobile app developer focused on iOS and Flutter experiences
 				</div>
 			</div>
 		</div>,

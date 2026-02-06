@@ -220,7 +220,7 @@ export default function PrivacyPage() {
 						href="https://resend.com/privacy"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-primary underline"
+						className="link-underline"
 					>
 						resend.com/privacy
 					</a>
@@ -234,7 +234,7 @@ export default function PrivacyPage() {
 						href="https://policies.google.com/privacy"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-primary underline"
+						className="link-underline"
 					>
 						policies.google.com/privacy
 					</a>
@@ -247,7 +247,7 @@ export default function PrivacyPage() {
 						href="https://privacy.microsoft.com"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-primary underline"
+						className="link-underline"
 					>
 						privacy.microsoft.com
 					</a>

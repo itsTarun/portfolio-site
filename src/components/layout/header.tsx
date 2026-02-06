@@ -32,45 +32,47 @@ export function Header() {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
+		<header className="sticky top-0 z-50 w-full border-b-2 border-border bg-background">
 			<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex h-16 items-center justify-between">
 					<Link
 						href="/"
-						className="text-xl font-bold text-gradient transition-all hover:scale-105"
+						className="text-lg font-semibold uppercase tracking-[0.22em]"
 					>
 						itstarun
 					</Link>
 
-					<div className="hidden md:flex md:items-center md:gap-1">
+					<div className="hidden md:flex md:items-center md:gap-6">
 						{navLinks.map((link) => (
 							<Link
 								key={link.href}
 								href={link.href}
-								className={`relative px-4 py-2 text-sm font-medium transition-colors hover:text-primary rounded-lg ${
+								className={`relative text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
 									pathname === link.href
-										? "text-primary bg-primary/10"
-										: "text-muted-foreground hover:bg-muted"
+										? "text-foreground"
+										: "text-muted-foreground hover:text-foreground"
 								}`}
 							>
 								{link.label}
 								{pathname === link.href && (
 									<motion.div
 										layoutId="underline"
-										className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+										className="absolute -bottom-2 left-0 right-0 h-0.5 bg-foreground"
 										initial={false}
 										animate
 									/>
 								)}
 							</Link>
 						))}
+						<Button asChild size="sm" className="ml-2">
+							<Link href="/contact">Let&apos;s Talk</Link>
+						</Button>
 						{mounted && (
 							<Button
 								variant="ghost"
 								size="icon"
 								onClick={toggleTheme}
 								aria-label="Toggle theme"
-								className="ml-2"
 							>
 								{theme === "dark" ? (
 									<Sun className="h-5 w-5" />
@@ -112,31 +114,39 @@ export function Header() {
 				</div>
 
 				<AnimatePresence>
-					{isMenuOpen && (
-						<motion.div
-							initial={{ opacity: 0, height: 0 }}
-							animate={{ opacity: 1, height: "auto" }}
-							exit={{ opacity: 0, height: 0 }}
-							className="md:hidden border-t border-border/50 pb-4 pt-4"
-						>
-							<div className="flex flex-col space-y-2">
-								{navLinks.map((link) => (
-									<Link
-										key={link.href}
-										href={link.href}
-										className={`block px-4 py-2.5 text-sm font-medium transition-all rounded-lg ${
-											pathname === link.href
-												? "text-primary bg-primary/10"
-												: "text-muted-foreground hover:bg-muted hover:text-primary"
-										}`}
-										onClick={() => setIsMenuOpen(false)}
-									>
-										{link.label}
-									</Link>
-								))}
-							</div>
-						</motion.div>
-					)}
+				{isMenuOpen && (
+					<motion.div
+						initial={{ opacity: 0, height: 0 }}
+						animate={{ opacity: 1, height: "auto" }}
+						exit={{ opacity: 0, height: 0 }}
+						className="md:hidden border-t-2 border-border pb-4 pt-4"
+					>
+						<div className="flex flex-col space-y-2">
+							{navLinks.map((link) => (
+								<Link
+									key={link.href}
+									href={link.href}
+									className={`block px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
+										pathname === link.href
+											? "text-foreground"
+											: "text-muted-foreground hover:text-foreground"
+									}`}
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{link.label}
+								</Link>
+							))}
+							<Button
+								asChild
+								size="sm"
+								className="ml-4 mt-2 w-fit"
+								onClick={() => setIsMenuOpen(false)}
+							>
+								<Link href="/contact">Let&apos;s Talk</Link>
+							</Button>
+						</div>
+					</motion.div>
+				)}
 				</AnimatePresence>
 			</nav>
 		</header>

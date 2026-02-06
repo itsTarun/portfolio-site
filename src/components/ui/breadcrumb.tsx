@@ -20,7 +20,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 						{index === 0 && <Home className="h-4 w-4" />}
 						<Link
 							href={item.href}
-							className={`transition-colors hover:text-primary ${
+							className={`transition-colors hover:text-foreground ${
 								index === items.length - 1
 									? "font-semibold text-foreground"
 									: ""

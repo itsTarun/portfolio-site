@@ -46,13 +46,8 @@ const socialLinks = [
 
 export default function ContactPage() {
 	return (
-		<div className="min-h-screen relative overflow-hidden">
-			<div className="blob-bg absolute inset-0 -z-10">
-				<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-				<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-			</div>
-
-			<div className="container max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8 relative z-10">
+		<div className="min-h-screen">
+			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -63,13 +58,13 @@ export default function ContactPage() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.2 }}
-						className="mb-12 text-center"
+						className="mb-12"
 					>
-						<h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
-							Get In Touch
-						</h1>
-						<p className="text-lg text-muted-foreground">
-							Feel free to reach out through any of these channels
+						<p className="eyebrow mb-3">Contact</p>
+						<h1 className="section-title">Let&apos;s start a conversation.</h1>
+						<p className="section-subtitle mt-4">
+							I&apos;m always open to new projects, collaborations, or product
+							consulting.
 						</p>
 					</motion.div>
 
@@ -81,22 +76,23 @@ export default function ContactPage() {
 							transition={{ delay: 0.3 }}
 							className="md:col-span-2"
 						>
-							<Card className="border-2 shadow-xl bg-gradient-to-br from-primary/5 to-secondary/5">
+							<Card className="border border-border bg-card">
 								<CardHeader>
-									<CardTitle className="text-2xl">Let&apos;s Connect</CardTitle>
+									<CardTitle className="text-2xl font-semibold">
+										Let&apos;s Connect
+									</CardTitle>
 									<CardDescription>
 										I&apos;m always open to discussing new projects,
 										opportunities, or just having a chat about technology.
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
-									<a
-										href="mailto:itstarun1994@gmail.com"
-										className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:scale-105"
-									>
-										<Mail className="h-4 w-4" />
-										Send me an email
-									</a>
+									<Button asChild size="lg">
+										<a href="mailto:itstarun1994@gmail.com">
+											<Mail className="h-4 w-4" />
+											Send me an email
+										</a>
+									</Button>
 								</CardContent>
 							</Card>
 						</motion.div>
@@ -108,12 +104,14 @@ export default function ContactPage() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.4 + index * 0.1 }}
 							>
-								<Card className="h-full transition-all hover:scale-105">
+								<Card className="h-full">
 									<CardHeader>
-										<div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-											<social.icon className="h-6 w-6" />
+										<div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+											<social.icon className="h-5 w-5" />
 										</div>
-										<CardTitle>{social.name}</CardTitle>
+										<CardTitle className="text-lg font-semibold">
+											{social.name}
+										</CardTitle>
 										<CardDescription>{social.description}</CardDescription>
 									</CardHeader>
 									<CardContent>

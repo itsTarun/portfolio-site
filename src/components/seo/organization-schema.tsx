@@ -13,7 +13,7 @@ export function OrganizationSchema() {
 			height: 512,
 		},
 		description:
-			"Modern personal portfolio website showcasing projects, skills, and experience. Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies.",
+			"Personal portfolio showcasing iOS and Flutter work, experience, and case studies.",
 		sameAs: [
 			"https://github.com/itsTarun",
 			"https://www.linkedin.com/in/iamtarun/",

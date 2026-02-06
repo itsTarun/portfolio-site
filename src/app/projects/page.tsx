@@ -6,7 +6,6 @@ import {
 	Globe,
 	Layout,
 	Smartphone,
-	Sparkles,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -131,13 +130,8 @@ const containerVariants = {
 
 export default function ProjectsPage() {
 	return (
-		<div className="min-h-screen relative overflow-hidden">
-			<div className="blob-bg absolute inset-0 -z-10">
-				<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-				<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-			</div>
-
-			<div className="container max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8 relative z-10">
+		<div className="min-h-screen">
+			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -148,18 +142,13 @@ export default function ProjectsPage() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.2 }}
-						className="mb-16 text-center"
+						className="mb-12"
 					>
-						<div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-2 text-sm font-semibold text-primary">
-							<Sparkles className="h-4 w-4" />
-							<span>My Work</span>
-						</div>
-						<h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-							Flagship Projects
-						</h1>
-						<p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-							Three major projects I&apos;ve been working on for the past 3-4
-							years
+						<p className="eyebrow mb-3">Projects</p>
+						<h1 className="section-title">Flagship case studies</h1>
+						<p className="section-subtitle mt-4 max-w-2xl">
+							Deep dives into the products I&apos;ve shaped across web and
+							mobile.
 						</p>
 					</motion.div>
 
@@ -173,23 +162,19 @@ export default function ProjectsPage() {
 							<motion.div
 								key={project.id}
 								variants={fadeInUp}
-								whileHover={{ scale: 1.02 }}
-								transition={{ duration: 0.2 }}
 							>
-								<Card className="overflow-hidden border-2 border-primary/20 shadow-xl">
-									<CardHeader className="space-y-4 border-b bg-gradient-to-r from-primary/5 via-primary/10 to-secondary/5 pb-6">
+								<Card className="overflow-hidden border border-border">
+									<CardHeader className="space-y-4 border-b border-border pb-6">
 										<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 											<div className="flex items-start gap-4">
-												<div className="hidden h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg sm:flex">
+												<div className="hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-border sm:flex">
 													<project.icon className="h-7 w-7" />
 												</div>
 												<div className="flex-1">
-													<CardTitle className="mb-2 text-2xl sm:text-3xl font-bold">
+													<CardTitle className="mb-2 text-2xl sm:text-3xl font-semibold">
 														{project.title}
 													</CardTitle>
-													<Badge className="bg-gradient-to-r from-primary to-secondary">
-														Flagship Project
-													</Badge>
+													<Badge>Flagship Project</Badge>
 												</div>
 											</div>
 											{project.liveUrl && (
@@ -218,7 +203,7 @@ export default function ProjectsPage() {
 											</p>
 										</div>
 
-										<div className="rounded-xl bg-muted/50 p-4">
+										<div className="rounded-lg border border-border/60 p-4">
 											<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
 												Key Highlights
 											</h4>
@@ -227,7 +212,7 @@ export default function ProjectsPage() {
 													<Badge
 														key={idx}
 														variant="outline"
-														className="border-primary/50 bg-background"
+														className="bg-background"
 													>
 														{highlight}
 													</Badge>

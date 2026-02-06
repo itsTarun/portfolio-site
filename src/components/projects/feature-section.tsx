@@ -29,17 +29,18 @@ export function FeatureSection({
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2 }}
-					className="mb-8 text-center"
+					className="mb-8"
 				>
-					<div className="mb-6 flex justify-center">
+					<div className="mb-4 flex items-center gap-3">
 						{icon && (
-							<div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-								{React.createElement(icon, { className: "h-8 w-8" })}
+							<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border">
+								{React.createElement(icon, { className: "h-5 w-5" })}
 							</div>
 						)}
+						<p className="eyebrow">Focus</p>
 					</div>
-					<h2 className="mb-4 text-3xl font-bold">{title}</h2>
-					<p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+					<h2 className="mb-3 text-3xl font-semibold">{title}</h2>
+					<p className="max-w-2xl text-lg text-muted-foreground">
 						{description}
 					</p>
 				</motion.div>
@@ -48,9 +49,9 @@ export function FeatureSection({
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.3 }}
-					className="mb-12 rounded-2xl border-2 border-border bg-muted/30 p-8"
+					className="mb-12 rounded-lg border border-border bg-card p-8"
 				>
-					<h3 className="mb-6 text-xl font-bold">Key Features</h3>
+					<h3 className="mb-6 text-xl font-semibold">Key Features</h3>
 					<div className="grid gap-4 md:grid-cols-2">
 						{features.map((feature, index) => (
 							<motion.div
@@ -60,8 +61,8 @@ export function FeatureSection({
 								transition={{ duration: 0.5, delay: index * 0.1 }}
 								className="flex items-start gap-4"
 							>
-								<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 mt-1">
-									<CheckCircle className="h-5 w-5 text-primary" />
+								<div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border mt-1">
+									<CheckCircle className="h-4 w-4" />
 								</div>
 								<span className="text-muted-foreground">{feature}</span>
 							</motion.div>
@@ -73,10 +74,10 @@ export function FeatureSection({
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.4 }}
-					className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5 p-8 text-center"
+					className="rounded-lg border border-border bg-card p-8 text-center"
 				>
 					<div className="flex flex-col items-center gap-4">
-						<Zap className="h-12 w-12 text-primary" />
+						<Zap className="h-10 w-10" />
 						<div>
 							<h3 className="mb-2 text-xl font-semibold">Ready to explore?</h3>
 							<p className="text-sm text-muted-foreground">

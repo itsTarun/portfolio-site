@@ -51,7 +51,7 @@ export default async function Image() {
 						letterSpacing: "0.01em",
 					}}
 				>
-					Full Stack Developer
+					Mobile App Developer
 				</div>
 			</div>
 		</div>,

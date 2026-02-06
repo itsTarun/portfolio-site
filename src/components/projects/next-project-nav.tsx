@@ -25,7 +25,7 @@ export function NextProjectNav({
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6 }}
-			className="border-t border-border bg-muted/30 pt-12 pb-20"
+			className="border-t border-border bg-background pt-12 pb-20"
 		>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="mx-auto max-w-5xl flex justify-between">
@@ -71,7 +71,7 @@ export function NextProjectNav({
 					{!nextProject && !previousProject && (
 						<Link
 							href="/projects"
-							className="rounded-lg bg-muted px-6 py-3 text-sm font-medium text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground"
+							className="rounded-md border border-border px-6 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-all hover:text-foreground"
 						>
 							View All Projects
 						</Link>

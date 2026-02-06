@@ -24,7 +24,7 @@ const domainCollectiveData = {
 
 export default function DomainCollectiveCaseStudy() {
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
+		<div className="min-h-screen">
 			<ProjectHero project={domainCollectiveData} />
 
 			<FeatureSection
@@ -43,11 +43,11 @@ export default function DomainCollectiveCaseStudy() {
 			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<h2 className="mb-8 text-3xl font-bold">The Challenge</h2>
+						<h2 className="mb-8 text-3xl font-semibold">The Challenge</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<div className="rounded-xl border border-border bg-muted/30 p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Layout className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Layout className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									Fragmented Infrastructure
@@ -59,9 +59,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Lock className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Lock className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Security Risks</h3>
 								<p className="text-muted-foreground">
@@ -70,9 +70,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<CreditCard className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<CreditCard className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									Inefficient Management
@@ -83,9 +83,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Globe className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Globe className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									No Unified Overview
@@ -100,14 +100,14 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5">
+			<section className="py-16 bg-muted/30">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<h2 className="mb-8 text-3xl font-bold">The Solution</h2>
+						<h2 className="mb-8 text-3xl font-semibold">The Solution</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<div className="rounded-xl border-2 border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-									<Zap className="h-6 w-6" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Zap className="h-5 w-5" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									Provider Abstraction Layer
@@ -118,9 +118,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-									<Lock className="h-6 w-6" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Lock className="h-5 w-5" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									Encrypted Credentials
@@ -131,9 +131,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-									<Database className="h-6 w-6" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Database className="h-5 w-5" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Real-Time Sync</h3>
 								<p className="text-muted-foreground">
@@ -142,9 +142,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-									<Clock className="h-6 w-6" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Clock className="h-5 w-5" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									Background Processing
@@ -180,11 +180,11 @@ export default function DomainCollectiveCaseStudy() {
 			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<h2 className="mb-8 text-3xl font-bold">Key Features</h2>
+						<h2 className="mb-8 text-3xl font-semibold">Key Features</h2>
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-							<div className="rounded-xl border border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Layout className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Layout className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">
 									6+ Registrar APIs
@@ -195,9 +195,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Globe className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Globe className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Live Dashboard</h3>
 								<p className="text-muted-foreground">
@@ -206,9 +206,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Zap className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Zap className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Bulk Operations</h3>
 								<p className="text-muted-foreground">
@@ -217,9 +217,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Database className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Database className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Smart Caching</h3>
 								<p className="text-muted-foreground">
@@ -228,9 +228,9 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
-								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-									<Lock className="h-6 w-6 text-primary" />
+							<div className="rounded-lg border border-border bg-card p-6">
+								<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<Lock className="h-5 w-5 text-foreground" />
 								</div>
 								<h3 className="mb-3 text-xl font-semibold">Security First</h3>
 								<p className="text-muted-foreground">
@@ -243,29 +243,29 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5">
+			<section className="py-16 bg-muted/30">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl text-center">
-						<h2 className="mb-8 text-3xl font-bold">Development Journey</h2>
+						<h2 className="mb-8 text-3xl font-semibold">Development Journey</h2>
 						<p className="mb-8 text-xl text-muted-foreground">
 							From API research to production-ready platform, solving complex
 							integration and security challenges.
 						</p>
 						<div className="grid gap-6 md:grid-cols-3">
-							<div className="rounded-xl border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-bold text-primary mb-2">4</div>
+							<div className="rounded-lg border border-border bg-card p-6 text-center">
+								<div className="text-4xl font-semibold text-foreground mb-2">4</div>
 								<div>Months</div>
 								<div>Research & Design</div>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-bold text-primary mb-2">12+</div>
+							<div className="rounded-lg border border-border bg-card p-6 text-center">
+								<div className="text-4xl font-semibold text-foreground mb-2">12+</div>
 								<div>Providers</div>
 								<div>Integrated</div>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-bold text-primary mb-2">84%</div>
+							<div className="rounded-lg border border-border bg-card p-6 text-center">
+								<div className="text-4xl font-semibold text-foreground mb-2">84%</div>
 								<div>API Call</div>
 								<div>Reduction</div>
 							</div>
@@ -277,11 +277,11 @@ export default function DomainCollectiveCaseStudy() {
 			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<h2 className="mb-8 text-3xl font-bold">Results & Impact</h2>
-						<div className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
+						<h2 className="mb-8 text-3xl font-semibold">Results & Impact</h2>
+						<div className="rounded-lg border border-border bg-card p-8">
 							<div className="grid gap-6 md:grid-cols-3">
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										1,200+
 									</div>
 									<div className="text-sm text-muted-foreground">Users</div>
@@ -291,7 +291,7 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										8,500+
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -303,7 +303,7 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										85%
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -315,7 +315,7 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">8K</div>
+									<div className="text-4xl font-semibold text-foreground mb-2">8K</div>
 									<div className="text-sm text-muted-foreground">
 										API Calls/Day
 									</div>
@@ -325,7 +325,7 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										99.8%
 									</div>
 									<div className="text-sm text-muted-foreground">Uptime</div>
@@ -337,7 +337,7 @@ export default function DomainCollectiveCaseStudy() {
 
 							<div className="mt-8 grid gap-6 md:grid-cols-2">
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										2 hours
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -349,7 +349,7 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										84%
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -382,38 +382,38 @@ export default function DomainCollectiveCaseStudy() {
 			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<h2 className="mb-8 text-3xl font-bold">What I Learned</h2>
+						<h2 className="mb-8 text-3xl font-semibold">What I Learned</h2>
 						<div className="space-y-4">
 							<p className="text-muted-foreground">
-								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold mr-3">
+								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold mr-3">
 									1
 								</span>
 								<strong>Abstraction is key</strong> - Normalizing different APIs
 								into a unified interface made everything manageable.
 							</p>
 							<p className="text-muted-foreground">
-								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold mr-3">
+								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold mr-3">
 									2
 								</span>
 								<strong>Security first</strong> - Encrypting credentials from
 								day one prevented data exposure risks.
 							</p>
 							<p className="text-muted-foreground">
-								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold mr-3">
+								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold mr-3">
 									3
 								</span>
 								<strong>Background processing</strong> - Synchronous API calls
 								would have made the app unusable.
 							</p>
 							<p className="text-muted-foreground">
-								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold mr-3">
+								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold mr-3">
 									4
 								</span>
 								<strong>Cache everything</strong> - Reduced API calls by 84% and
 								improved UX dramatically.
 							</p>
 							<p className="text-muted-foreground">
-								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold mr-3">
+								<span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold mr-3">
 									5
 								</span>
 								<strong>Error handling</strong> - Each provider can fail
@@ -424,12 +424,12 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5">
+			<section className="py-16 bg-muted/30">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl text-center">
-						<h2 className="mb-8 text-3xl font-bold">Future Enhancements</h2>
+						<h2 className="mb-8 text-3xl font-semibold">Future Enhancements</h2>
 						<div className="grid gap-4 md:grid-cols-3">
-							<div className="rounded-xl border border-border bg-card p-6">
+							<div className="rounded-lg border border-border bg-card p-6">
 								<h3 className="mb-2 text-lg font-semibold">
 									Add 3+ Registrars
 								</h3>
@@ -438,14 +438,14 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
+							<div className="rounded-lg border border-border bg-card p-6">
 								<h3 className="mb-2 text-lg font-semibold">AI Suggestions</h3>
 								<p className="text-sm text-muted-foreground">
 									Intelligent domain recommendations and portfolio optimization
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
+							<div className="rounded-lg border border-border bg-card p-6">
 								<h3 className="mb-2 text-lg font-semibold">
 									Automated Renewals
 								</h3>
@@ -454,14 +454,14 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
+							<div className="rounded-lg border border-border bg-card p-6">
 								<h3 className="mb-2 text-lg font-semibold">DNS Analytics</h3>
 								<p className="text-sm text-muted-foreground">
 									Performance monitoring and issue detection
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6">
+							<div className="rounded-lg border border-border bg-card p-6">
 								<h3 className="mb-2 text-lg font-semibold">Mobile App</h3>
 								<p className="text-sm text-muted-foreground">
 									React Native app for on-the-go management

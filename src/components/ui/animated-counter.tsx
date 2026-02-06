@@ -64,7 +64,7 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, delay: 0.4 }}
-			className="grid grid-cols-2 gap-6 md:grid-cols-4"
+			className="grid grid-cols-2 gap-4"
 		>
 			{items.map((item, index) => (
 				<motion.div
@@ -72,21 +72,19 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-					className="group relative"
+					className="border-2 border-border bg-background px-3 py-3"
 				>
-					<div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-					<div className="relative rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1">
-						<div className="mb-3 flex justify-center text-primary">
-							{item.icon}
-						</div>
-						<div className="text-3xl font-bold text-gradient mb-1">
-							+
+					<div className="flex items-center justify-between gap-2">
+						<div className="text-2xl font-semibold text-foreground">
 							<Counter value={item.value} />
 							{item.suffix}
 						</div>
-						<div className="text-sm text-muted-foreground font-medium">
-							{item.label}
-						</div>
+						<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+							{item.icon}
+						</span>
+					</div>
+					<div className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+						{item.label}
 					</div>
 				</motion.div>
 			))}

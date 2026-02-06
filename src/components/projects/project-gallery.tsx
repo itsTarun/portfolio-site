@@ -41,7 +41,7 @@ export function ProjectGallery({
 						transition={{ delay: 0.2 }}
 						className="mx-auto max-w-7xl"
 					>
-						<h2 className="mb-8 text-3xl font-bold">Project Gallery</h2>
+						<h2 className="mb-8 text-2xl font-semibold">Project Gallery</h2>
 
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 							{screenshots.map((screenshot, index) => (
@@ -51,18 +51,18 @@ export function ProjectGallery({
 									animate={{ opacity: 1, scale: 1 }}
 									transition={{ duration: 0.5, delay: index * 0.1 }}
 									whileHover={{ y: -8 }}
-									className="group cursor-pointer"
-									onClick={() => setSelectedImage(screenshot)}
-								>
-									<div className="overflow-hidden rounded-xl border-2 border-border bg-card shadow-lg transition-all group-hover:border-primary/50 group-hover:shadow-xl">
+								className="group cursor-pointer"
+								onClick={() => setSelectedImage(screenshot)}
+							>
+									<div className="overflow-hidden rounded-lg border border-border bg-card transition-all group-hover:border-foreground/40">
 										<div className="relative aspect-video bg-muted">
 											<img
 												src={screenshot.url}
 												alt={screenshot.alt}
 												className="h-full w-full object-cover transition-transform group-hover:scale-105"
 											/>
-											<div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-												<Expand className="h-12 w-12 text-white" />
+											<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+												<Expand className="h-10 w-10 text-white" />
 											</div>
 										</div>
 

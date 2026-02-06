@@ -88,39 +88,33 @@ export default function ChargespotPage() {
 				category={projectData.category}
 			/>
 			<BreadcrumbSchema breadcrumbs={breadcrumbs} />
-			<div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
+			<div className="min-h-screen">
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
 						<div className="mb-8">
 							<Link
 								href="/projects"
-								className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary"
+								className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
 							>
 								← Back to all projects
 							</Link>
 						</div>
 
-						<div className="mb-12 rounded-2xl border border-border bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
-							<h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+							<p className="eyebrow mb-3">Mobile product</p>
+							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								{projectData.title}
 							</h1>
 							<p className="mb-6 text-xl text-muted-foreground">
 								{projectData.tagline}
 							</p>
 							<div className="flex flex-wrap gap-2">
-								<Badge className="bg-gradient-to-r from-primary to-secondary text-white">
-									Flagship Project
-								</Badge>
-								<Badge
-									variant="outline"
-									className="border-primary/50 bg-background"
-								>
-									Mobile App
-								</Badge>
+								<Badge>Flagship Project</Badge>
+								<Badge variant="outline">Mobile App</Badge>
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-xl border border-border bg-muted/30 p-6">
+						<div className="mb-12 rounded-lg border border-border bg-card p-6">
 							<h2 className="mb-4 text-2xl font-semibold">Why Chargespot?</h2>
 							<p className="text-muted-foreground mb-4">
 								Chargespot serves as a unified solution for EV owners and
@@ -130,8 +124,8 @@ export default function ChargespotPage() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
-											<MapIcon className="h-6 w-6 text-primary" />
+										<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border mb-4">
+											<MapIcon className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Real-time Station Discovery</CardTitle>
 										<CardDescription>
@@ -141,8 +135,8 @@ export default function ChargespotPage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
-											<Zap className="h-6 w-6 text-primary" />
+										<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border mb-4">
+											<Zap className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>AI-Powered Trip Planning</CardTitle>
 										<CardDescription>
@@ -153,7 +147,7 @@ export default function ChargespotPage() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-xl border-2 border-border bg-card p-8">
+						<div className="mb-12 rounded-lg border border-border bg-card p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
 							<div className="mb-4">
 								<p className="text-muted-foreground">
@@ -175,11 +169,11 @@ export default function ChargespotPage() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-xl border border-border bg-muted/30 p-6">
+						<div className="mb-12 rounded-lg border border-border bg-card p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
 							<ul className="space-y-4">
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
 										1
 									</div>
 									<p className="text-muted-foreground">
@@ -187,7 +181,7 @@ export default function ChargespotPage() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
 										2
 									</div>
 									<p className="text-muted-foreground">
@@ -195,7 +189,7 @@ export default function ChargespotPage() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
 										3
 									</div>
 									<p className="text-muted-foreground">
@@ -205,11 +199,11 @@ export default function ChargespotPage() {
 							</ul>
 						</div>
 
-						<div className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
-							<h2 className="mb-4 text-2xl font-bold">Results</h2>
+						<div className="rounded-lg border border-border bg-card p-8">
+							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<div className="grid gap-6 md:grid-cols-3">
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										100%
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -217,7 +211,7 @@ export default function ChargespotPage() {
 									</div>
 								</div>
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										50+
 									</div>
 									<div className="text-sm text-muted-foreground">
@@ -225,7 +219,7 @@ export default function ChargespotPage() {
 									</div>
 								</div>
 								<div>
-									<div className="text-4xl font-bold text-primary mb-2">
+									<div className="text-4xl font-semibold text-foreground mb-2">
 										4.8
 									</div>
 									<div className="text-sm text-muted-foreground">

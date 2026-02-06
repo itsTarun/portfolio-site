@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
 	return (
-		<div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-background via-background to-muted/50">
+		<div className="flex min-h-screen items-center justify-center bg-background">
 			<div className="text-center">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.9 }}
@@ -15,7 +15,7 @@ export default function NotFound() {
 					transition={{ duration: 0.5 }}
 					className="mb-8"
 				>
-					<h1 className="mb-4 text-6xl font-bold tracking-tight text-primary sm:text-7xl md:text-8xl">
+					<h1 className="mb-4 text-6xl font-semibold tracking-tight text-foreground sm:text-7xl md:text-8xl">
 						404
 					</h1>
 					<p className="mb-8 text-xl font-semibold text-muted-foreground">
@@ -62,7 +62,7 @@ export default function NotFound() {
 				>
 					<Link
 						href="/"
-						className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+						className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
 					>
 						Return to itstarun.fyi
 					</Link>

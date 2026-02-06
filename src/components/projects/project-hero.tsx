@@ -20,7 +20,7 @@ export function ProjectHero({
 	};
 }) {
 	return (
-		<div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+		<div className="border-b border-border/60 bg-background">
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ export function ProjectHero({
 					>
 						<Link
 							href="/projects"
-							className="inline-flex items-center gap-2 rounded-full bg-muted/50 px-4 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
+							className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground"
 						>
 							<ArrowLeft className="h-4 w-4" />
 							All Projects
@@ -49,9 +49,7 @@ export function ProjectHero({
 								transition={{ duration: 0.5, delay: 0.3 }}
 								className="mt-4"
 							>
-								<Badge className="bg-gradient-to-r from-primary to-secondary text-white">
-									Featured Flagship Project
-								</Badge>
+								<Badge>Featured Flagship Project</Badge>
 							</motion.div>
 						)}
 					</motion.div>
@@ -62,14 +60,11 @@ export function ProjectHero({
 						transition={{ duration: 0.5, delay: 0.4 }}
 						className="order-1 lg:order-2"
 					>
-						<Badge
-							variant="outline"
-							className="mb-4 border-primary/50 bg-background"
-						>
+						<Badge variant="outline" className="mb-4 bg-background">
 							{project.category === "mobile" ? "Mobile App" : "Web Application"}
 						</Badge>
 
-						<h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
+						<h1 className="mb-6 text-4xl font-semibold tracking-tight sm:text-5xl">
 							{project.title}
 						</h1>
 
@@ -118,15 +113,6 @@ export function ProjectHero({
 						</motion.div>
 					</motion.div>
 				</div>
-
-				<motion.div
-					initial={{ opacity: 0, scale: 1.2 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 0.8 }}
-					className="absolute inset-0 -z-10 opacity-30"
-				>
-					<div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
-				</motion.div>
 			</motion.div>
 		</div>
 	);

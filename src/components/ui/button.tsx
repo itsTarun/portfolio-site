@@ -24,20 +24,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		return (
 			<Comp
 				className={cn(
-					"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+					"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none border-2 border-border font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
 					{
-						"bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg":
+						"bg-primary text-primary-foreground shadow-[4px_4px_0_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]":
 							variant === "default",
-						"border-2 border-border bg-background hover:bg-muted hover:border-primary/50":
+						"bg-background text-foreground shadow-[4px_4px_0_hsl(var(--border))] hover:bg-muted hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]":
 							variant === "outline",
-						"hover:bg-muted hover:text-foreground": variant === "ghost",
-						"text-primary underline-offset-4 hover:underline":
+						"border-transparent bg-transparent text-foreground hover:bg-muted":
+							variant === "ghost",
+						"border-transparent bg-transparent text-foreground underline underline-offset-4":
 							variant === "link",
 					},
 					{
-						"h-9 px-4 py-2": size === "default",
-						"h-8 px-3 text-sm": size === "sm",
-						"h-11 px-8": size === "lg",
+						"h-10 px-5 text-sm tracking-[0.08em]":
+							size === "default",
+						"h-9 px-4 text-xs tracking-[0.16em]": size === "sm",
+						"h-12 px-8 text-sm tracking-[0.1em]": size === "lg",
 						"h-10 w-10": size === "icon",
 					},
 					className,

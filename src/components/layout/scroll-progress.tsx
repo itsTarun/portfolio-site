@@ -27,10 +27,10 @@ export function ScrollProgress() {
 					initial={{ opacity: 0, scaleX: 0.9, scaleY: 0.9 }}
 					animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
 					exit={{ opacity: 0, scaleX: 0.9, scaleY: 0.9 }}
-					className="fixed top-0 left-0 right-0 z-50 p-1"
+					className="fixed top-0 left-0 right-0 z-50 px-4 py-2"
 				>
-					<div className="mx-auto max-w-4xl">
-						<div className="overflow-hidden rounded-full bg-muted h-1.5 shadow-lg">
+					<div className="mx-auto max-w-4xl border-2 border-border bg-background neo-shadow-sm">
+						<div className="h-2 bg-muted">
 							<motion.div
 								className="h-full bg-primary transition-colors"
 								style={{ width: `${scrollProgress}%` }}
