@@ -1,25 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { CookieConsent } from "@/components/layout/cookie-consent";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
+import { OrganizationSchema } from "@/components/seo/organization-schema";
+import { PersonSchema } from "@/components/seo/person-schema";
+import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AnalyticsProvider } from "./providers/analytics-provider";
-import { PostHogProvider } from "./providers/posthog-provider";
-import { GAScripts } from "@/components/analytics/ga-scripts";
-
-const inter = Inter({
-	variable: "--font-inter",
-	subsets: ["latin"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-	variable: "--font-plus-jakarta",
-	subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
 	title: "Tarun - Full Stack Developer | itstarun.fyi",
@@ -77,6 +64,7 @@ export const metadata: Metadata = {
 		apple: "/favicon.svg",
 	},
 	metadataBase: new URL("https://itstarun.fyi"),
+	manifest: "/manifest.json",
 	alternates: {
 		canonical: "https://itstarun.fyi",
 	},
@@ -98,28 +86,28 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<head>
+				<OrganizationSchema />
+				<WebSiteSchema />
+				<PersonSchema />
+			</head>
 			<body
-				className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
+				className="font-sans antialiased"
+				style={{ colorScheme: "light dark" }}
 			>
-				<GAScripts />
-				<PostHogProvider>
-					<AnalyticsProvider>
-						<ThemeProvider
-							attribute="class"
-							defaultTheme="system"
-							enableSystem
-							disableTransitionOnChange
-						>
-							<ScrollProgress />
-							<div className="flex min-h-screen flex-col">
-								<Header />
-								<main className="flex-1">{children}</main>
-								<Footer />
-								<CookieConsent />
-							</div>
-						</ThemeProvider>
-					</AnalyticsProvider>
-				</PostHogProvider>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<ScrollProgress />
+					<div className="flex min-h-screen flex-col">
+						<Header />
+						<main className="flex-1">{children}</main>
+						<Footer />
+					</div>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

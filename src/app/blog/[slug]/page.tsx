@@ -1,165 +1,100 @@
 import { motion } from "framer-motion";
-import { promises as fsPromises } from "fs";
-import matter from "gray-matter";
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { join } from "path";
-import { MarkdownRenderer } from "@/components/blog/markdown-renderer";
-import { TableOfContents } from "@/components/blog/table-of-contents";
-import { Badge } from "@/components/ui/badge";
-import type { BlogFrontmatter, BlogPost } from "@/lib/blog-utils";
-import {
-	calculateReadingTime,
-	formatDate,
-	getRelatedPosts,
-} from "@/lib/blog-utils";
+import { getRelatedPosts } from "@/lib/blog-utils";
+import { getAllBlogPosts } from "@/lib/load-blog-posts";
 
-const CONTENT_DIR = join(process.cwd(), "src", "content", "blog");
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
-async function getBlogPost(id: string): Promise<BlogPost | null> {
-	try {
-		const filePath = join(CONTENT_DIR, `${id}.md`);
-		const fileContent = await fsPromises.readFile(filePath, "utf-8");
-		const { data, content } = matter(fileContent);
-
-		const frontmatter = data as BlogFrontmatter;
-		const readingMinutes = calculateReadingTime(content);
-
-		return {
-			id,
-			title: frontmatter.title,
-			date: frontmatter.date,
-			excerpt: frontmatter.excerpt,
-			content,
-			tags: frontmatter.tags || [],
-			category: frontmatter.category,
-			featured: frontmatter.featured,
-			readingTime: readingMinutes,
-		};
-	} catch {
-		return null;
-	}
-}
-
-async function getAllBlogPosts(): Promise<BlogPost[]> {
-	try {
-		const files = await fsPromises.readdir(CONTENT_DIR);
-		const markdownFiles = files.filter((file) => file.endsWith(".md"));
-
-		const posts: BlogPost[] = [];
-
-		for (const file of markdownFiles) {
-			const filePath = join(CONTENT_DIR, file);
-			const fileContent = await fsPromises.readFile(filePath, "utf-8");
-			const { data, content } = matter(fileContent);
-
-			const frontmatter = data as BlogFrontmatter;
-			const slug = file.replace(/\.md$/, "");
-			const readingMinutes = calculateReadingTime(content);
-
-			posts.push({
-				id: slug,
-				title: frontmatter.title,
-				date: frontmatter.date,
-				excerpt: frontmatter.excerpt,
-				content,
-				tags: frontmatter.tags || [],
-				category: frontmatter.category,
-				featured: frontmatter.featured,
-				readingTime: readingMinutes,
-			});
-		}
-
-		return posts.sort(
-			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-		);
-	} catch (error) {
-		console.error("Error reading blog posts:", error);
-		return [];
-	}
-}
-
-function extractHeadings(
-	content: string,
-): { id: string; text: string; level: number }[] {
-	const headings: { id: string; text: string; level: number }[] = [];
-
-	// Match headers (##, ###, etc.)
-	const headerRegex = /^(#{1,3})\s+(.+)$/gm;
-	let match;
-
-	while ((match = headerRegex.exec(content)) !== null) {
-		const hashes = match[1];
-		const text = match[2].trim();
-		const level = hashes.length;
-		const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-
-		headings.push({ id, text, level });
-	}
-
-	return headings;
-}
-
-interface PageProps {
+interface BlogPageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export async function generateMetadata({
+	params,
+}: BlogPageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const post = await getBlogPost(slug);
-	const allPosts = await getAllBlogPosts();
+	const posts = await getAllBlogPosts();
+	const post = posts.find((p) => p.id === slug);
+
+	if (!post) {
+		return {
+			title: "Post Not Found",
+		};
+	}
+
+	return {
+		title: `${post.title} | itstarun.fyi`,
+		description: post.excerpt,
+	};
+}
+
+export default async function BlogPage({ params }: BlogPageProps) {
+	const { slug } = await params;
+	const posts = await getAllBlogPosts();
+	const post = posts.find((p) => p.id === slug);
 
 	if (!post) {
 		notFound();
 	}
 
-	const headings = extractHeadings(post.content);
-	const relatedPosts = getRelatedPosts(post, allPosts);
+	const relatedPosts = getRelatedPosts(post, posts, 3);
 
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
-			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					className="mx-auto max-w-7xl"
-				>
+		<main>
+			<section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+				<div className="blob-bg absolute inset-0 -z-10">
+					<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+					<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+				</div>
+
+				<div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
 						className="mb-8"
 					>
 						<Link
 							href="/blog"
-							className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+							className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
 						>
 							<ArrowLeft className="h-4 w-4" />
-							Back to all posts
+							Back to Blog
 						</Link>
 					</motion.div>
 
-					<motion.article
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.3 }}
-						className="mb-16"
-					>
-						<header className="mb-8 space-y-4 border-b border-border pb-8">
-							<Badge className="bg-gradient-to-r from-primary to-secondary text-white">
-								{post.category}
-							</Badge>
+					<article className="mb-16">
+						<motion.header
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.1 }}
+							className="mb-8 border-b border-border/50 pb-8"
+						>
+							<div className="mb-6">
+								<motion.span
+									initial={{ opacity: 0, scale: 0.9 }}
+									animate={{ opacity: 1, scale: 1 }}
+									className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 px-4 py-1.5 text-sm font-semibold text-primary border border-primary/20 backdrop-blur-sm"
+								>
+									{post.category}
+								</motion.span>
+							</div>
 
-							<h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+							<h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-balance">
 								{post.title}
 							</h1>
 
 							<div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
 								<span className="flex items-center gap-2">
 									<Calendar className="h-4 w-4" />
-									{formatDate(post.date)}
+									{new Date(post.date).toLocaleDateString("en-US", {
+										month: "long",
+										day: "numeric",
+										year: "numeric",
+									})}
 								</span>
 								{post.readingTime && (
 									<span className="flex items-center gap-2">
@@ -169,99 +104,65 @@ export default async function BlogPostPage({ params }: PageProps) {
 								)}
 							</div>
 
-							<div className="flex flex-wrap gap-2">
-								{post.tags.map((tag) => (
-									<Badge key={tag} variant="secondary">
-										{tag}
-									</Badge>
-								))}
-							</div>
-						</header>
-
-						<div className="grid gap-8 lg:grid-cols-[1fr,280px]">
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: 0.4 }}
-								className="lg:order-2"
-							>
-								<MarkdownRenderer content={post.content} />
-							</motion.div>
-
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ delay: 0.5 }}
-								className="lg:order-1"
-							>
-								<TableOfContents headings={headings} />
-
-								<div className="mt-8 rounded-xl border border-border bg-muted/30 p-6">
-									<h3 className="mb-4 text-lg font-semibold">
-										Share this post
-									</h3>
-									<div className="space-y-3">
-										<a
-											href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-												`Check out: ${post.title} - by @itstarun1381995`,
-											)}`}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="flex items-center gap-2 rounded-lg bg-[#1DA1F2] p-3 text-white transition-colors hover:bg-[#1a91da]"
+							{post.tags.length > 0 && (
+								<div className="flex flex-wrap gap-2 mt-4">
+									{post.tags.map((tag) => (
+										<motion.span
+											key={tag}
+											initial={{ opacity: 0, scale: 0.9 }}
+											animate={{ opacity: 1, scale: 1 }}
+											className="flex items-center gap-1.5 rounded-full bg-muted/50 px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border/30 backdrop-blur-sm"
 										>
-											<Share2 className="h-4 w-4" />
-											<span>Share on Twitter</span>
-										</a>
-										<a
-											href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-												typeof window !== "undefined"
-													? window.location.href
-													: "",
-											)}&title=${encodeURIComponent(post.title)}`}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="flex items-center gap-2 rounded-lg bg-[#0077B5] p-3 text-white transition-colors hover:bg-[#006699]"
-										>
-											<Share2 className="h-4 w-4" />
-											<span>Share on LinkedIn</span>
-										</a>
-									</div>
+											<Tag className="h-3 w-3" />
+											{tag}
+										</motion.span>
+									))}
 								</div>
-							</motion.div>
-						</div>
-					</motion.article>
+							)}
+						</motion.header>
 
-					{relatedPosts.length > 0 && (
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.6 }}
-							className="mt-16 rounded-2xl border-2 border-border bg-muted/30 p-8"
-						>
-							<h2 className="mb-6 text-2xl font-bold">Related Posts</h2>
-							<div className="grid gap-4 md:grid-cols-3">
-								{relatedPosts.map((relatedPost, index) => (
-									<motion.a
-										key={relatedPost.id}
-										href={`/blog/${relatedPost.id}`}
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ duration: 0.5, delay: index * 0.1 }}
-										className="block rounded-xl border border-border bg-card p-6 shadow-lg transition-all hover:border-primary/50 hover:shadow-xl"
-									>
-										<h3 className="mb-2 text-lg font-semibold">
-											{relatedPost.title}
-										</h3>
-										<p className="text-sm text-muted-foreground line-clamp-2">
-											{relatedPost.excerpt}
-										</p>
-									</motion.a>
-								))}
-							</div>
-						</motion.div>
-					)}
-				</motion.div>
-			</div>
-		</div>
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ delay: 0.2 }}
+							className="prose prose-lg max-w-none text-foreground prose-headings:font-bold prose-a:text-primary prose-code:text-primary prose-pre:bg-muted/50 prose-pre:border prose-pre:border-border/50"
+							dangerouslySetInnerHTML={{ __html: post.content }}
+						/>
+
+						{relatedPosts.length > 0 && (
+							<motion.section
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.3 }}
+								className="border-t border-border/50 pt-12"
+							>
+								<h2 className="mb-8 text-2xl font-bold">Related Posts</h2>
+								<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+									{relatedPosts.map((relatedPost) => (
+										<Link
+											key={relatedPost.id}
+											href={`/blog/${relatedPost.id}`}
+											className="group"
+										>
+											<div className="relative overflow-hidden rounded-xl border border-border/50 bg-card/30 backdrop-blur-md transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1">
+												<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+												<div className="p-6">
+													<h3 className="mb-2 text-lg font-semibold group-hover:text-gradient transition-all duration-300">
+														{relatedPost.title}
+													</h3>
+													<p className="text-sm text-muted-foreground line-clamp-2">
+														{relatedPost.excerpt}
+													</p>
+												</div>
+											</div>
+										</Link>
+									))}
+								</div>
+							</motion.section>
+						)}
+					</article>
+				</div>
+			</section>
+		</main>
 	);
 }

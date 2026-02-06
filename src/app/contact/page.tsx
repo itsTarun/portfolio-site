@@ -1,19 +1,7 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import {
-	AlertCircle,
-	CheckCircle,
-	Github,
-	Linkedin,
-	Mail,
-	Send,
-	Twitter,
-} from "lucide-react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -22,13 +10,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
-import { Textarea } from "@/components/ui/textarea";
-import { contactFormSchema } from "@/lib/validation";
-import { trackFormSubmission, trackExternalLinkClick } from "@/lib/unified-tracking";
-
-type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
@@ -36,83 +17,42 @@ const fadeInUp = {
 	transition: { duration: 0.5 },
 };
 
-const containerVariants = {
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
-		},
-	},
-};
-
 const socialLinks = [
+	{
+		name: "Email",
+		href: "mailto:itstarun1994@gmail.com",
+		icon: Mail,
+		description: "itstarun1994@gmail.com",
+	},
 	{
 		name: "GitHub",
 		href: "https://github.com/itsTarun",
 		icon: Github,
+		description: "github.com/itsTarun",
 	},
 	{
 		name: "LinkedIn",
 		href: "https://www.linkedin.com/in/iamtarun/",
 		icon: Linkedin,
+		description: "linkedin.com/in/iamtarun",
 	},
 	{
 		name: "Twitter",
 		href: "https://x.com/itstarun1381995",
 		icon: Twitter,
+		description: "x.com/itstarun1381995",
 	},
 ];
 
 export default function ContactPage() {
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [submitStatus, setSubmitStatus] = useState<
-		"idle" | "success" | "error"
-	>("idle");
-
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors },
-	} = useForm<ContactFormData>({
-		resolver: zodResolver(contactFormSchema),
-	});
-
-	const onSubmit = async (data: ContactFormData) => {
-		setIsSubmitting(true);
-		setSubmitStatus("idle");
-
-		try {
-			const response = await fetch("/api/contact", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
-			});
-
-			if (response.ok) {
-				setSubmitStatus("success");
-				reset();
-				// Track successful form submission
-				trackFormSubmission("contact", true);
-			} else {
-				setSubmitStatus("error");
-				// Track failed form submission
-				trackFormSubmission("contact", false);
-			}
-		} catch (error) {
-			setSubmitStatus("error");
-			console.error("Error submitting form:", error);
-			// Track failed form submission
-			trackFormSubmission("contact", false);
-		} finally {
-			setIsSubmitting(false);
-		}
-	};
-
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
-			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+		<div className="min-h-screen relative overflow-hidden">
+			<div className="blob-bg absolute inset-0 -z-10">
+				<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+				<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+			</div>
+
+			<div className="container max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8 relative z-10">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -129,225 +69,67 @@ export default function ContactPage() {
 							Get In Touch
 						</h1>
 						<p className="text-lg text-muted-foreground">
-							Have a question or want to work together? Send me a message!
+							Feel free to reach out through any of these channels
 						</p>
 					</motion.div>
 
-					<div className="grid gap-8 lg:grid-cols-2">
-						<motion.div
-							variants={containerVariants}
-							initial="initial"
-							animate="animate"
-						>
-							<Card className="border-2 shadow-2xl">
-								<CardHeader className="bg-gradient-to-r from-primary/5 to-secondary/5">
-									<CardTitle className="text-2xl">Send a Message</CardTitle>
-									<CardDescription>
-										Fill out form below and I&apos;ll get back to you as soon as
-										possible.
-									</CardDescription>
-								</CardHeader>
-								<CardContent className="pt-6">
-									<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-										<div>
-											<label
-												htmlFor="name"
-												className="mb-2 block text-sm font-medium"
-											>
-												Name
-											</label>
-											<Input
-												id="name"
-												placeholder="Your name"
-												{...register("name")}
-												className={errors.name ? "border-destructive" : ""}
-											/>
-											{errors.name && (
-												<p className="mt-1 text-sm text-destructive">
-													{errors.name.message}
-												</p>
-											)}
-										</div>
-
-										<div>
-											<label
-												htmlFor="email"
-												className="mb-2 block text-sm font-medium"
-											>
-												Email
-											</label>
-											<Input
-												id="email"
-												type="email"
-												placeholder="your.email@example.com"
-												{...register("email")}
-												className={errors.email ? "border-destructive" : ""}
-											/>
-											{errors.email && (
-												<p className="mt-1 text-sm text-destructive">
-													{errors.email.message}
-												</p>
-											)}
-										</div>
-
-										<div>
-											<label
-												htmlFor="subject"
-												className="mb-2 block text-sm font-medium"
-											>
-												Subject
-											</label>
-											<Input
-												id="subject"
-												placeholder="What is this about?"
-												{...register("subject")}
-												className={errors.subject ? "border-destructive" : ""}
-											/>
-											{errors.subject && (
-												<p className="mt-1 text-sm text-destructive">
-													{errors.subject.message}
-												</p>
-											)}
-										</div>
-
-										<div>
-											<label
-												htmlFor="message"
-												className="mb-2 block text-sm font-medium"
-											>
-												Message
-											</label>
-											<Textarea
-												id="message"
-												placeholder="Your message..."
-												rows={6}
-												{...register("message")}
-												className={errors.message ? "border-destructive" : ""}
-											/>
-											{errors.message && (
-												<p className="mt-1 text-sm text-destructive">
-													{errors.message.message}
-												</p>
-											)}
-										</div>
-
-										{submitStatus === "success" && (
-											<motion.div
-												initial={{ opacity: 0, y: -10 }}
-												animate={{ opacity: 1, y: 0 }}
-												className="rounded-lg bg-green-50 p-4 text-green-900 dark:bg-green-900/20 dark:text-green-300 border border-green-200"
-											>
-												<div className="flex items-center gap-2">
-													<CheckCircle className="h-5 w-5" />
-													<span>
-														Message sent successfully! I&apos;ll get back to you
-														soon.
-													</span>
-												</div>
-											</motion.div>
-										)}
-
-										{submitStatus === "error" && (
-											<motion.div
-												initial={{ opacity: 0, y: -10 }}
-												animate={{ opacity: 1, y: 0 }}
-												className="rounded-lg bg-red-50 p-4 text-red-900 dark:bg-red-900/20 dark:text-red-300 border border-red-200"
-											>
-												<div className="flex items-center gap-2">
-													<AlertCircle className="h-5 w-5" />
-													<span>
-														Something went wrong. Please try again or email me
-														directly.
-													</span>
-												</div>
-											</motion.div>
-										)}
-
-										<Button
-											type="submit"
-											className="w-full gap-2"
-											disabled={isSubmitting}
-										>
-											{isSubmitting ? (
-												<LoadingSpinner size="sm" />
-											) : (
-												<>
-													<Send className="h-4 w-4" />
-													Send Message
-												</>
-											)}
-										</Button>
-									</form>
-								</CardContent>
-							</Card>
-						</motion.div>
-
+					<div className="grid gap-6 md:grid-cols-2">
 						<motion.div
 							variants={fadeInUp}
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.4 }}
-							className="space-y-6"
+							transition={{ delay: 0.3 }}
+							className="md:col-span-2"
 						>
-							<Card className="shadow-lg">
+							<Card className="border-2 shadow-xl bg-gradient-to-br from-primary/5 to-secondary/5">
 								<CardHeader>
-									<CardTitle>Contact Information</CardTitle>
+									<CardTitle className="text-2xl">Let&apos;s Connect</CardTitle>
 									<CardDescription>
-										Feel free to reach out through any of these channels.
+										I&apos;m always open to discussing new projects,
+										opportunities, or just having a chat about technology.
 									</CardDescription>
 								</CardHeader>
-								<CardContent className="space-y-4">
+								<CardContent>
 									<a
 										href="mailto:itstarun1994@gmail.com"
-										className="flex items-center gap-3 rounded-lg p-3 transition-all hover:bg-muted hover:scale-105"
+										className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:scale-105"
 									>
-										<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-											<Mail className="h-5 w-5 text-primary" />
-										</div>
-										<div>
-											<p className="text-sm font-medium">Email</p>
-											<p className="text-sm text-muted-foreground">
-												itstarun1994@gmail.com
-											</p>
-										</div>
+										<Mail className="h-4 w-4" />
+										Send me an email
 									</a>
-
-									<div className="space-y-3">
-										<p className="text-sm font-medium">Social Media</p>
-										<div className="space-y-2">
-											{socialLinks.map((social) => (
-												<a
-													key={social.name}
-													href={social.href}
-													target="_blank"
-													rel="noopener noreferrer"
-													onClick={() => trackExternalLinkClick(social.href, social.name)}
-													className="flex items-center gap-3 rounded-lg p-3 transition-all hover:bg-muted hover:scale-105"
-												>
-													<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-														<social.icon className="h-5 w-5 text-primary" />
-													</div>
-													<span className="text-sm">{social.name}</span>
-												</a>
-											))}
-										</div>
-									</div>
-								</CardContent>
-							</Card>
-
-							<Card className="bg-gradient-to-br from-primary/5 to-secondary/5">
-								<CardHeader>
-									<CardTitle>Response Time</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p className="text-sm text-muted-foreground">
-										I typically respond to emails within 24-48 hours on business
-										days. For urgent matters, please include
-										&quot;[URGENT]&quot; in subject line.
-									</p>
 								</CardContent>
 							</Card>
 						</motion.div>
+
+						{socialLinks.map((social, index) => (
+							<motion.div
+								key={social.name}
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: 0.4 + index * 0.1 }}
+							>
+								<Card className="h-full transition-all hover:scale-105">
+									<CardHeader>
+										<div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+											<social.icon className="h-6 w-6" />
+										</div>
+										<CardTitle>{social.name}</CardTitle>
+										<CardDescription>{social.description}</CardDescription>
+									</CardHeader>
+									<CardContent>
+										<Button asChild variant="outline" className="w-full">
+											<a
+												href={social.href}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Connect
+											</a>
+										</Button>
+									</CardContent>
+								</Card>
+							</motion.div>
+						))}
 					</div>
 				</motion.div>
 			</div>

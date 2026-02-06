@@ -40,15 +40,12 @@ export default function DomainCollectiveCaseStudy() {
 				]}
 			/>
 
-			<section className="py-16"
-			>
+			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl"
-					>
+					<div className="mx-auto max-w-5xl">
 						<h2 className="mb-8 text-3xl font-bold">The Challenge</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<div className="rounded-xl border border-border bg-muted/30 p-6"
-							>
+							<div className="rounded-xl border border-border bg-muted/30 p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<Layout className="h-6 w-6 text-primary" />
 								</div>
@@ -62,8 +59,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6"
-							>
+							<div className="rounded-xl border border-border bg-muted/30 p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<Lock className="h-6 w-6 text-primary" />
 								</div>
@@ -74,8 +70,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6"
-							>
+							<div className="rounded-xl border border-border bg-muted/30 p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<CreditCard className="h-6 w-6 text-primary" />
 								</div>
@@ -88,8 +83,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border border-border bg-muted/30 p-6"
-							>
+							<div className="rounded-xl border border-border bg-muted/30 p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
 									<Globe className="h-6 w-6 text-primary" />
 								</div>
@@ -106,15 +100,12 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"
-			>
+			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl"
-					>
+					<div className="mx-auto max-w-5xl">
 						<h2 className="mb-8 text-3xl font-bold">The Solution</h2>
 						<div className="grid gap-6 md:grid-cols-2">
-							<div className="rounded-xl border-2 border-border bg-card p-6"
-							>
+							<div className="rounded-xl border-2 border-border bg-card p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Zap className="h-6 w-6" />
 								</div>
@@ -127,8 +118,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6"
-							>
+							<div className="rounded-xl border-2 border-border bg-card p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Lock className="h-6 w-6" />
 								</div>
@@ -141,8 +131,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6"
-							>
+							<div className="rounded-xl border-2 border-border bg-card p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Database className="h-6 w-6" />
 								</div>
@@ -153,8 +142,7 @@ export default function DomainCollectiveCaseStudy() {
 								</p>
 							</div>
 
-							<div className="rounded-xl border-2 border-border bg-card p-6"
-							>
+							<div className="rounded-xl border-2 border-border bg-card p-6">
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
 									<Clock className="h-6 w-6" />
 								</div>
@@ -189,11 +177,9 @@ export default function DomainCollectiveCaseStudy() {
 				description="Built with Next.js 15's App Router, React 19 Server Components, Prisma ORM for database management, and BullMQ for background job processing."
 			/>
 
-			<section className="py-16"
-			>
+			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl"
-					>
+					<div className="mx-auto max-w-5xl">
 						<h2 className="mb-8 text-3xl font-bold">Key Features</h2>
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 							<div className="rounded-xl border border-border bg-card p-6">
@@ -257,33 +243,28 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5"
-			>
+			<section className="py-16 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl text-center"
-					>
+					<div className="mx-auto max-w-5xl text-center">
 						<h2 className="mb-8 text-3xl font-bold">Development Journey</h2>
 						<p className="mb-8 text-xl text-muted-foreground">
 							From API research to production-ready platform, solving complex
 							integration and security challenges.
 						</p>
 						<div className="grid gap-6 md:grid-cols-3">
-							<div className="rounded-xl border border-border bg-card p-6 text-center"
-							>
+							<div className="rounded-xl border border-border bg-card p-6 text-center">
 								<div className="text-4xl font-bold text-primary mb-2">4</div>
 								<div>Months</div>
 								<div>Research & Design</div>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6 text-center"
-							>
+							<div className="rounded-xl border border-border bg-card p-6 text-center">
 								<div className="text-4xl font-bold text-primary mb-2">12+</div>
 								<div>Providers</div>
 								<div>Integrated</div>
 							</div>
 
-							<div className="rounded-xl border border-border bg-card p-6 text-center"
-							>
+							<div className="rounded-xl border border-border bg-card p-6 text-center">
 								<div className="text-4xl font-bold text-primary mb-2">84%</div>
 								<div>API Call</div>
 								<div>Reduction</div>
@@ -293,11 +274,9 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16"
-			>
+			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl"
-					>
+					<div className="mx-auto max-w-5xl">
 						<h2 className="mb-8 text-3xl font-bold">Results & Impact</h2>
 						<div className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
 							<div className="grid gap-6 md:grid-cols-3">
@@ -383,8 +362,7 @@ export default function DomainCollectiveCaseStudy() {
 							</div>
 						</div>
 
-						<div className="mt-8"
-						>
+						<div className="mt-8">
 							<h3 className="mb-4 text-2xl font-semibold">User Feedback</h3>
 							<div className="space-y-4">
 								<p className="text-muted-foreground">
@@ -401,11 +379,9 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16"
-			>
+			<section className="py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl"
-					>
+					<div className="mx-auto max-w-5xl">
 						<h2 className="mb-8 text-3xl font-bold">What I Learned</h2>
 						<div className="space-y-4">
 							<p className="text-muted-foreground">
@@ -448,11 +424,9 @@ export default function DomainCollectiveCaseStudy() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"
-			>
+			<section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="mx-auto max-w-5xl text-center"
-					>
+					<div className="mx-auto max-w-5xl text-center">
 						<h2 className="mb-8 text-3xl font-bold">Future Enhancements</h2>
 						<div className="grid gap-4 md:grid-cols-3">
 							<div className="rounded-xl border border-border bg-card p-6">
