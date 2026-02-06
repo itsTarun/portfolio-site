@@ -11,12 +11,7 @@ export default function PrivacyPage() {
 			<h1 className="mb-8 text-4xl font-bold">Privacy Policy</h1>
 
 			<p className="mb-8 text-muted-foreground">
-				Last updated:{" "}
-				{new Date().toLocaleDateString("en-US", {
-					year: "numeric",
-					month: "long",
-					day: "numeric",
-				})}
+				Last updated: January 10, 2026
 			</p>
 
 			<section className="mb-8">

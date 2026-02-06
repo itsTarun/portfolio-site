@@ -2,7 +2,6 @@
 
 import { Github, Heart, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { trackExternalLinkClick } from "@/lib/unified-tracking";
 
 const socialLinks = [
 	{ href: "https://github.com/itsTarun", icon: Github, label: "GitHub" },
@@ -24,28 +23,30 @@ const footerLinks = [
 
 export function Footer() {
 	return (
-		<footer className="border-t border-border bg-muted/50">
+		<footer className="border-t border-border/40 bg-muted/30">
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-4">
 					<div className="md:col-span-2">
-						<h3 className="mb-4 text-xl font-bold text-primary">itstarun</h3>
-						<p className="mb-6 text-sm text-muted-foreground">
+						<h3 className="mb-4 text-xl font-bold text-gradient">itstarun</h3>
+						<p className="mb-6 text-sm text-muted-foreground leading-relaxed max-w-md">
 							Building modern web experiences with cutting-edge technologies.
 							Passionate about creating seamless user interfaces and scalable
 							applications.
 						</p>
-						<div className="flex gap-4">
+						<div className="flex gap-3">
 							{socialLinks.map((link) => (
 								<a
 									key={link.href}
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									onClick={() => trackExternalLinkClick(link.href, link.label)}
-									className="rounded-lg bg-muted p-2 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
+									className="relative group"
 									aria-label={link.label}
 								>
-									<link.icon className="h-5 w-5" />
+									<div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary to-secondary opacity-0 blur-md transition-all duration-300 group-hover:opacity-30" />
+									<div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 backdrop-blur-sm border border-border/50 text-muted-foreground transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
+										<link.icon className="h-5 w-5" />
+									</div>
 								</a>
 							))}
 						</div>
@@ -57,8 +58,7 @@ export function Footer() {
 							{footerLinks.map((link) => (
 								<li key={link.href}>
 									<Link
-										// eslint-disable-next-line @typescript-eslint/no-explicit-any
-										href={link.href as any}
+										href={link.href}
 										className="text-sm text-muted-foreground transition-colors hover:text-primary"
 									>
 										{link.label}
@@ -84,13 +84,16 @@ export function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
+				<div className="mt-10 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
 					<div className="flex flex-col items-center justify-center gap-2 md:flex-row">
 						<p>© {new Date().getFullYear()} Tarun. All rights reserved.</p>
 						<span className="hidden md:inline">•</span>
 						<span className="flex items-center gap-1">
 							Built with
-							<Heart className="h-4 w-4 fill-red-500 text-red-500" />
+							<Heart
+								className="h-4 w-4 fill-red-500 text-red-500"
+								aria-hidden="true"
+							/>
 							by Tarun
 						</span>
 					</div>

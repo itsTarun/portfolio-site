@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+
 import { AnimatePresence, motion } from "framer-motion";
 import { Expand, ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
@@ -84,11 +86,7 @@ export function ProjectGallery({
 						>
 							{liveUrl && (
 								<Button asChild size="lg" className="gap-2">
-									<a
-										href={liveUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={liveUrl} target="_blank" rel="noopener noreferrer">
 										<ExternalLink className="h-4 w-4" />
 										<span className="hidden sm:inline">View Live Demo</span>
 										<span className="sm:hidden">Live</span>
@@ -98,11 +96,7 @@ export function ProjectGallery({
 
 							{githubUrl && (
 								<Button asChild variant="outline" size="lg" className="gap-2">
-									<a
-										href={githubUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={githubUrl} target="_blank" rel="noopener noreferrer">
 										<Github className="h-4 w-4" />
 										<span className="hidden sm:inline">View Source Code</span>
 										<span className="sm:hidden">Source</span>
