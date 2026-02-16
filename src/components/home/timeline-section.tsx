@@ -8,13 +8,16 @@ const experiences = [
 	{
 		title: "Mobile Developer",
 		company: "Chargespot",
+		companyUrl: "https://chargespot.app/",
 		period: "Jul 2023 - Present",
-		description: "Building the Chargespot mobile app and shipping new releases.",
+		description:
+			"Building the Chargespot mobile app and shipping new releases.",
 		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
 	},
 	{
 		title: "Software Engineer (Flutter)",
 		company: "Droidsize Technologies",
+		companyUrl: "https://www.droidsize.com/",
 		period: "Oct 2022 - Jul 2023",
 		description:
 			"Developed and maintained UI components for backend-driven layouts and built product UI with Firebase-backed workflows.",
@@ -33,8 +36,8 @@ const experiences = [
 		company: "DailyObjects",
 		period: "Jan 2020 - Aug 2021",
 		description:
-			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates.",
-		technologies: ["iOS", "FCM", "REST APIs", "UIKit"],
+			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates. Improved organic search visibility and paid ad conversion rates through SEO-optimized app store listings and targeted ASO strategies.",
+		technologies: ["iOS", "FCM", "REST APIs", "UIKit", "ASO", "SEO"],
 	},
 	{
 		title: "iOS Developer",
@@ -84,9 +87,22 @@ export function TimelineSection() {
 											Role
 										</p>
 										<h3 className="text-2xl font-semibold">{exp.title}</h3>
-										<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
-											{exp.company}
-										</p>
+										{exp.companyUrl ? (
+											<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+												<a
+													href={exp.companyUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="hover:underline"
+												>
+													{exp.company}
+												</a>
+											</p>
+										) : (
+											<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+												{exp.company}
+											</p>
+										)}
 									</div>
 									<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
 										<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">

@@ -1,11 +1,16 @@
-import { Map as MapIcon, Zap } from "lucide-react";
+import { Map as MapIcon, Zap, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 
 const technologies = [
 	"Flutter",
@@ -26,7 +31,7 @@ const projectData = {
 	tagline: "Your EV charging companion - Find, charge, track, repeat",
 	category: "mobile",
 	featured: true,
-	liveUrl: null,
+	liveUrl: "https://chargespot.app/",
 	githubUrl: null,
 };
 
@@ -103,15 +108,40 @@ export default function ChargespotPage() {
 						<div className="mb-12 rounded-lg border border-border bg-card p-8">
 							<p className="eyebrow mb-3">Mobile product</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-								{projectData.title}
+								<a
+									href="https://chargespot.app/"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="hover:underline"
+								>
+									{projectData.title}
+								</a>
 							</h1>
 							<p className="mb-6 text-xl text-muted-foreground">
 								{projectData.tagline}
+							</p>
+							<p className="mb-6 text-sm text-muted-foreground">
+								Built by <strong>CHARGE23 LABS PVT. LTD.</strong>
 							</p>
 							<div className="flex flex-wrap gap-2">
 								<Badge>Flagship Project</Badge>
 								<Badge variant="outline">Mobile App</Badge>
 							</div>
+							{projectData.liveUrl && (
+								<div className="mt-6">
+									<Button asChild>
+										<a
+											href={projectData.liveUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="gap-2"
+										>
+											<ExternalLink className="h-4 w-4" />
+											View Live
+										</a>
+									</Button>
+								</div>
+							)}
 						</div>
 
 						<div className="mb-12 rounded-lg border border-border bg-card p-6">
