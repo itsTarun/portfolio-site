@@ -1,0 +1,9 @@
+{
+	"$schema": "https://openapi.vercel.sh/schema.json",
+	"headers": [
+		{
+			"key": "X-Robots-Tag",
+			"value": "noindex, nofollow"
+		}
+	]
+}

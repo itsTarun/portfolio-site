@@ -1,12 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-	ExternalLink,
-	Globe,
-	Layout,
-	Smartphone,
-} from "lucide-react";
+import { ExternalLink, Globe, Layout, Smartphone } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,9 +18,9 @@ const flagshipProjects = [
 		id: "chargespot",
 		title: "Chargespot",
 		description:
-			"Comprehensive EV charging station finder and management platform for India",
+			"EV charging station finder and management platform for India by CHARGE23 LABS PVT. LTD.",
 		longDescription:
-			"Chargespot serves as a unified solution for discovering charging stations, managing charging sessions, planning trips, and handling payments - all from a single mobile application. Features real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island integration, multi-wallet payments, and comprehensive vehicle management.",
+			"<a href='https://chargespot.app/' target='_blank' rel='noopener noreferrer' class='underline'>Chargespot</a> serves as a unified solution for discovering charging stations, managing charging sessions, planning trips, and handling payments - all from a single mobile application. Built by <strong>CHARGE23 LABS PVT. LTD.</strong>, it features real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island integration, multi-wallet payments, and comprehensive vehicle management.",
 		technologies: [
 			"Flutter",
 			"Dart",
@@ -47,7 +43,7 @@ const flagshipProjects = [
 			"Offline-First Architecture",
 		],
 		githubUrl: null,
-		liveUrl: null,
+		liveUrl: "https://chargespot.app/",
 	},
 	{
 		id: "opentribe",
@@ -55,7 +51,7 @@ const flagshipProjects = [
 		description:
 			"Talent marketplace for Polkadot ecosystem connecting organizations with contributors",
 		longDescription:
-			"OpenTribe is talent layer for Polkadot ecosystem - a centralized marketplace that connects Web3 organizations with skilled developers, designers, and contributors. Features include grant marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.",
+			"<a href='https://opentribe.io/' target='_blank' rel='noopener noreferrer' class='underline'>OpenTribe</a> is talent layer for <a href='https://polkadot.com/' target='_blank' rel='noopener noreferrer' class='underline'>Polkadot</a> ecosystem - a centralized marketplace that connects <a href='https://web3.foundation/' target='_blank' rel='noopener noreferrer' class='underline'>Web3</a> organizations with skilled developers, designers, and contributors. Features include <a href='https://opentribe.io/grants' target='_blank' rel='noopener noreferrer' class='underline'>grant</a> marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.",
 		technologies: [
 			"Next.js 15",
 			"React 19",
@@ -80,6 +76,8 @@ const flagshipProjects = [
 		],
 		githubUrl: null,
 		liveUrl: "https://opentribe.io",
+		secondaryUrl: "/projects/opentribe",
+		secondaryLabel: "About",
 	},
 	{
 		id: "domain-collective",
@@ -87,7 +85,7 @@ const flagshipProjects = [
 		description:
 			"Unified domain management platform for multi-registrar portfolios",
 		longDescription:
-			"Domain Collective standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations.",
+			"<a href='https://domaincollective.io/' target='_blank' rel='noopener noreferrer' class='underline'>Domain Collective</a> standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations as a comprehensive <a href='https://domaincollective.io/' target='_blank' rel='noopener noreferrer' class='underline'>domain management platform</a>.",
 		technologies: [
 			"Next.js 15",
 			"React 19",
@@ -159,10 +157,7 @@ export default function ProjectsPage() {
 						className="grid gap-8 lg:gap-12"
 					>
 						{flagshipProjects.map((project) => (
-							<motion.div
-								key={project.id}
-								variants={fadeInUp}
-							>
+							<motion.div key={project.id} variants={fadeInUp}>
 								<Card className="overflow-hidden border border-border">
 									<CardHeader className="space-y-4 border-b border-border pb-6">
 										<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -178,18 +173,33 @@ export default function ProjectsPage() {
 												</div>
 											</div>
 											{project.liveUrl && (
-												<Button asChild className="shrink-0">
-													<a
-														href={project.liveUrl}
-														target="_blank"
-														rel="noopener noreferrer"
-														className="gap-2"
-													>
-														<ExternalLink className="h-4 w-4" />
-														<span className="hidden sm:inline">View Live</span>
-														<span className="sm:hidden">Live</span>
-													</a>
-												</Button>
+												<div className="flex gap-2">
+													<Button asChild className="shrink-0">
+														<a
+															href={project.liveUrl}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="gap-2"
+														>
+															<ExternalLink className="h-4 w-4" />
+															<span className="hidden sm:inline">
+																View Live
+															</span>
+															<span className="sm:hidden">Live</span>
+														</a>
+													</Button>
+													{project.secondaryUrl && (
+														<Button
+															asChild
+															variant="outline"
+															className="shrink-0"
+														>
+															<Link href={project.secondaryUrl}>
+																{project.secondaryLabel || "About"}
+															</Link>
+														</Button>
+													)}
+												</div>
 											)}
 										</div>
 										<CardDescription className="text-base leading-relaxed">
@@ -198,9 +208,12 @@ export default function ProjectsPage() {
 									</CardHeader>
 									<CardContent className="space-y-6 p-6">
 										<div>
-											<p className="text-base leading-relaxed text-muted-foreground">
-												{project.longDescription}
-											</p>
+											<p
+												className="text-base leading-relaxed text-muted-foreground"
+												dangerouslySetInnerHTML={{
+													__html: project.longDescription,
+												}}
+											/>
 										</div>
 
 										<div className="rounded-lg border border-border/60 p-4">
