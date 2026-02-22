@@ -152,7 +152,9 @@ export function HeroSection() {
 								</div>
 								<div className="flex items-center justify-between">
 									<span>Stack</span>
-									<span className="text-foreground">iOS, Flutter, Firebase</span>
+									<span className="text-foreground">
+										iOS, Flutter, Firebase
+									</span>
 								</div>
 							</div>
 						</div>

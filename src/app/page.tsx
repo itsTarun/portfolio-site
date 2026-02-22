@@ -7,11 +7,11 @@ import { TimelineSection } from "@/components/home/timeline-section";
 
 export default function Home() {
 	return (
-		<main>
+		<>
 			<HeroSection />
 			<TimelineSection />
 			<ProjectsSection />
 			<CtaSection />
-		</main>
+		</>
 	);
 }

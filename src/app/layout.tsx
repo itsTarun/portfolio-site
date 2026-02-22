@@ -114,6 +114,12 @@ export default function RootLayout({
 				className={`${bodyFont.variable} ${displayFont.variable} font-sans antialiased`}
 				style={{ colorScheme: "light dark" }}
 			>
+				<a
+					href="#main-content"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+				>
+					Skip to main content
+				</a>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -123,7 +129,9 @@ export default function RootLayout({
 					<ScrollProgress />
 					<div className="flex min-h-screen flex-col">
 						<Header />
-						<main className="flex-1">{children}</main>
+						<main id="main-content" className="flex-1">
+							{children}
+						</main>
 						<Footer />
 					</div>
 				</ThemeProvider>

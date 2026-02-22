@@ -7,6 +7,7 @@ import {
 	Lock,
 	Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { FeatureSection } from "@/components/projects/feature-section";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { ProjectHero } from "@/components/projects/project-hero";
@@ -20,6 +21,40 @@ const domainCollectiveData = {
 	featured: false,
 	liveUrl: null,
 	githubUrl: null,
+};
+
+const baseUrl = "https://itstarun.fyi";
+
+export const metadata: Metadata = {
+	title: "Domain Collective - Multi-Registrar Management | Tarun Portfolio",
+	description:
+		"Domain Collective standardizes registrar APIs into one platform for domain, DNS, and renewal workflows.",
+	alternates: {
+		canonical: `${baseUrl}/projects/domain-collective`,
+	},
+	openGraph: {
+		type: "website",
+		url: `${baseUrl}/projects/domain-collective`,
+		title: "Domain Collective - Multi-Registrar Management",
+		description:
+			"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
+		siteName: "Tarun Portfolio",
+		images: [
+			{
+				url: "/opengraph-image",
+				width: 1200,
+				height: 630,
+				alt: "Domain Collective project case study",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Domain Collective - Multi-Registrar Management",
+		description:
+			"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
+		images: ["/opengraph-image"],
+	},
 };
 
 export default function DomainCollectiveCaseStudy() {
@@ -253,19 +288,25 @@ export default function DomainCollectiveCaseStudy() {
 						</p>
 						<div className="grid gap-6 md:grid-cols-3">
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">4</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									4
+								</div>
 								<div>Months</div>
 								<div>Research & Design</div>
 							</div>
 
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">12+</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									12+
+								</div>
 								<div>Providers</div>
 								<div>Integrated</div>
 							</div>
 
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">84%</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									84%
+								</div>
 								<div>API Call</div>
 								<div>Reduction</div>
 							</div>
@@ -315,7 +356,9 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-semibold text-foreground mb-2">8K</div>
+									<div className="text-4xl font-semibold text-foreground mb-2">
+										8K
+									</div>
 									<div className="text-sm text-muted-foreground">
 										API Calls/Day
 									</div>

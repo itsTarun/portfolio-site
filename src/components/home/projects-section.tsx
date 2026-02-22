@@ -5,13 +5,14 @@ import { Code2, Database, Globe, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { Button } from "@/components/ui/button";
+import { type ProjectSlug, toProjectRoute } from "@/types";
 
 interface ProjectCardProps {
 	title: string;
 	description: string;
 	icon: LucideIcon;
 	index: number;
-	slug: string;
+	slug: ProjectSlug;
 }
 
 function ProjectCard({
@@ -30,7 +31,7 @@ function ProjectCard({
 				className="h-full"
 			>
 				<Link
-					href={`/projects/${slug}`}
+					href={toProjectRoute(slug)}
 					className="neo-panel flex h-full flex-col justify-between p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 				>
 					<div>
@@ -52,7 +53,7 @@ function ProjectCard({
 }
 
 export function ProjectsSection() {
-	const projects = [
+	const projects: Omit<ProjectCardProps, "index">[] = [
 		{
 			icon: Database,
 			title: "Chargespot",

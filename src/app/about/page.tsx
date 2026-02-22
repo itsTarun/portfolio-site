@@ -53,7 +53,14 @@ const skills = [
 	},
 	{
 		category: "Tools & Workflow",
-		items: ["Git", "GitLab", "Jira", "Confluence", "Postman", "Unit & UI Tests"],
+		items: [
+			"Git",
+			"GitLab",
+			"Jira",
+			"Confluence",
+			"Postman",
+			"Unit & UI Tests",
+		],
 		icon: Sparkles,
 	},
 ];
@@ -172,7 +179,9 @@ export default function AboutPage() {
 							className="mb-12"
 						>
 							<p className="eyebrow mb-3">About</p>
-							<h1 className="section-title">Building mobile products with clarity.</h1>
+							<h1 className="section-title">
+								Building mobile products with clarity.
+							</h1>
 							<p className="section-subtitle mt-4 max-w-2xl">
 								Mobile developer focused on iOS and Flutter apps that feel calm,
 								intuitive, and reliable.
@@ -191,8 +200,8 @@ export default function AboutPage() {
 								App Store releases with stability as the north star.
 							</p>
 							<p className="text-lg leading-relaxed text-muted-foreground">
-								I love the R&amp;D phase, clear architecture, and hands-on QA.
-								I partner closely with PM, QA, and UX to improve user experience,
+								I love the R&amp;D phase, clear architecture, and hands-on QA. I
+								partner closely with PM, QA, and UX to improve user experience,
 								keep releases stable, and maintain parity across platforms.
 							</p>
 						</motion.div>
