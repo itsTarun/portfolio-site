@@ -12,7 +12,11 @@ interface BlogClientProps {
 	tags: string[];
 }
 
-export function BlogClient({ initialPosts, categories, tags }: BlogClientProps) {
+export function BlogClient({
+	initialPosts,
+	categories,
+	tags,
+}: BlogClientProps) {
 	const [selectedCategory, setSelectedCategory] = React.useState<string | null>(
 		null,
 	);

@@ -70,7 +70,11 @@ function extractInternalRoutesFromHtml(html) {
 		if (!href || href.startsWith("mailto:") || href.startsWith("tel:")) {
 			continue;
 		}
-		if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")) {
+		if (
+			href.startsWith("http://") ||
+			href.startsWith("https://") ||
+			href.startsWith("//")
+		) {
 			continue;
 		}
 
@@ -100,7 +104,9 @@ async function waitForServerReady(timeoutMs = 30000) {
 }
 
 async function run() {
-	console.log(`Starting Next.js server on port ${PORT} for internal link smoke checks...`);
+	console.log(
+		`Starting Next.js server on port ${PORT} for internal link smoke checks...`,
+	);
 	const server = spawn("npm", ["run", "start", "--", "--port", String(PORT)], {
 		stdio: ["ignore", "pipe", "pipe"],
 		env: {
@@ -115,7 +121,9 @@ async function run() {
 	try {
 		await waitForServerReady();
 
-		const queue = [...CORE_ROUTES, ...EXTRA_ROUTES].map(normalizeRoute).filter(Boolean);
+		const queue = [...CORE_ROUTES, ...EXTRA_ROUTES]
+			.map(normalizeRoute)
+			.filter(Boolean);
 		const visited = new Set();
 		const failures = [];
 
@@ -154,7 +162,9 @@ async function run() {
 			);
 		}
 
-		console.log(`Internal link smoke check passed. Checked ${visited.size} route(s).`);
+		console.log(
+			`Internal link smoke check passed. Checked ${visited.size} route(s).`,
+		);
 	} finally {
 		server.kill("SIGTERM");
 	}

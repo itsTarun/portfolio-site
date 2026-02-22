@@ -288,19 +288,25 @@ export default function DomainCollectiveCaseStudy() {
 						</p>
 						<div className="grid gap-6 md:grid-cols-3">
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">4</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									4
+								</div>
 								<div>Months</div>
 								<div>Research & Design</div>
 							</div>
 
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">12+</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									12+
+								</div>
 								<div>Providers</div>
 								<div>Integrated</div>
 							</div>
 
 							<div className="rounded-lg border border-border bg-card p-6 text-center">
-								<div className="text-4xl font-semibold text-foreground mb-2">84%</div>
+								<div className="text-4xl font-semibold text-foreground mb-2">
+									84%
+								</div>
 								<div>API Call</div>
 								<div>Reduction</div>
 							</div>
@@ -350,7 +356,9 @@ export default function DomainCollectiveCaseStudy() {
 								</div>
 
 								<div>
-									<div className="text-4xl font-semibold text-foreground mb-2">8K</div>
+									<div className="text-4xl font-semibold text-foreground mb-2">
+										8K
+									</div>
 									<div className="text-sm text-muted-foreground">
 										API Calls/Day
 									</div>

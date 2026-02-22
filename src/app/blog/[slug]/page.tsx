@@ -16,7 +16,9 @@ export async function generateStaticParams() {
 	return posts.map((post) => ({ slug: post.id }));
 }
 
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: BlogPageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const posts = await getAllBlogPosts();
 	const post = posts.find((p) => p.id === slug);

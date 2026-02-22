@@ -5,7 +5,12 @@ import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 
 const baseUrl = "https://itstarun.fyi";

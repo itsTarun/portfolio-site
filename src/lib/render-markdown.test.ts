@@ -14,7 +14,8 @@ describe("renderMarkdownToHtml", () => {
 	});
 
 	it("sanitizes unsafe HTML from markdown", async () => {
-		const markdown = "Safe text <script>alert('xss')</script><img src='x' onerror='alert(1)' />";
+		const markdown =
+			"Safe text <script>alert('xss')</script><img src='x' onerror='alert(1)' />";
 
 		const html = await renderMarkdownToHtml(markdown);
 

@@ -51,9 +51,9 @@ export function ProjectGallery({
 									animate={{ opacity: 1, scale: 1 }}
 									transition={{ duration: 0.5, delay: index * 0.1 }}
 									whileHover={{ y: -8 }}
-								className="group cursor-pointer"
-								onClick={() => setSelectedImage(screenshot)}
-							>
+									className="group cursor-pointer"
+									onClick={() => setSelectedImage(screenshot)}
+								>
 									<div className="overflow-hidden rounded-lg border border-border bg-card transition-all group-hover:border-foreground/40">
 										<div className="relative aspect-video bg-muted">
 											<img

@@ -46,8 +46,8 @@ export default async function Image() {
 					lineHeight: 1.3,
 				}}
 			>
-				EV charging platform with real-time station discovery, trip planning, and
-				in-app charging flows.
+				EV charging platform with real-time station discovery, trip planning,
+				and in-app charging flows.
 			</div>
 		</div>,
 		{ ...size },

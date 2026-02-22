@@ -26,7 +26,11 @@ export default async function BlogPage() {
 					</p>
 				</div>
 
-				<BlogClient initialPosts={allPosts} categories={categories} tags={tags} />
+				<BlogClient
+					initialPosts={allPosts}
+					categories={categories}
+					tags={tags}
+				/>
 			</div>
 		</section>
 	);

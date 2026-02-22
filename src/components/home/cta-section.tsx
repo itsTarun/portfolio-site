@@ -34,9 +34,7 @@ export function CtaSection() {
 		<section className="py-16 md:py-20 lg:py-24">
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
-					<motion.div
-						className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12"
-					>
+					<motion.div className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12">
 						<motion.div
 							initial={{ opacity: 0, scale: 0.9 }}
 							whileInView={{ opacity: 1, scale: 1 }}
@@ -77,9 +75,7 @@ export function CtaSection() {
 								size="lg"
 								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
 							>
-								<Link href="/projects">
-									View Selected Work
-								</Link>
+								<Link href="/projects">View Selected Work</Link>
 							</Button>
 						</motion.div>
 
