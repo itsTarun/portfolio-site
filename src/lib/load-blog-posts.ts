@@ -6,6 +6,7 @@ import {
 	type BlogPost,
 	calculateReadingTime,
 } from "./blog-utils";
+import { renderMarkdownToHtml } from "./render-markdown";
 
 const BLOG_DIR = join(process.cwd(), "src/content/blog");
 
@@ -19,6 +20,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 				const filePath = join(BLOG_DIR, filename);
 				const fileContent = await readFile(filePath, "utf-8");
 				const { data, content } = matter(fileContent);
+				const contentHtml = await renderMarkdownToHtml(content);
 
 				const frontmatter = data as BlogFrontmatter;
 				const slug = filename.replace(/\.md$/, "");
@@ -29,7 +31,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 					title: frontmatter.title,
 					date: frontmatter.date,
 					excerpt: frontmatter.excerpt,
-					content,
+					contentMarkdown: content,
+					contentHtml,
 					tags: frontmatter.tags,
 					category: frontmatter.category,
 					featured: frontmatter.featured,
@@ -54,6 +57,7 @@ export async function getBlogPostBySlug(
 		const filePath = join(BLOG_DIR, `${slug}.md`);
 		const fileContent = await readFile(filePath, "utf-8");
 		const { data, content } = matter(fileContent);
+		const contentHtml = await renderMarkdownToHtml(content);
 
 		const frontmatter = data as BlogFrontmatter;
 		const readingTime = calculateReadingTime(content);
@@ -63,7 +67,8 @@ export async function getBlogPostBySlug(
 			title: frontmatter.title,
 			date: frontmatter.date,
 			excerpt: frontmatter.excerpt,
-			content,
+			contentMarkdown: content,
+			contentHtml,
 			tags: frontmatter.tags,
 			category: frontmatter.category,
 			featured: frontmatter.featured,

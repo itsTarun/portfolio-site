@@ -59,26 +59,28 @@ export function CtaSection() {
 							transition={{ delay: 0.2, duration: 0.5 }}
 							className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:justify-center"
 						>
-							<Link href="/contact">
-								<Button
-									size="lg"
-									variant="outline"
-									className="gap-2 bg-background text-foreground"
-								>
+							<Button
+								asChild
+								size="lg"
+								variant="outline"
+								className="gap-2 bg-background text-foreground"
+							>
+								<Link href="/contact">
 									<Mail className="h-4 w-4" />
 									Start a Conversation
 									<ArrowRight className="h-4 w-4" />
-								</Button>
-							</Link>
-							<Link href="/projects">
-								<Button
-									variant="outline"
-									size="lg"
-									className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
-								>
+								</Link>
+							</Button>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
+							>
+								<Link href="/projects">
 									View Selected Work
-								</Button>
-							</Link>
+								</Link>
+							</Button>
 						</motion.div>
 
 						<motion.div
