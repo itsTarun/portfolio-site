@@ -50,6 +50,9 @@
 | 2026-02-21 15:15:08 UTC | `npm run test` | ✅ Pass (3 files, 5 tests) |
 | 2026-02-21 15:15:08 UTC | `npm run build` | ✅ Pass (`/blog` static ISR, `/blog/[slug]` SSG with `generateStaticParams`) |
 | 2026-02-21 15:15:08 UTC | `npm run test:links` | ✅ Pass (16 internal routes checked) |
+| 2026-02-23 08:02:58 UTC | `pnpm format` | ✅ Pass (no fixes applied after final pass) |
+| 2026-02-23 08:02:58 UTC | `pnpm lint` | ✅ Pass |
+| 2026-02-23 08:02:58 UTC | `pnpm build` | ✅ Pass |
 
 ## Daily Updates
 
@@ -60,3 +63,10 @@
 - Added documentation for link checks, metadata conventions, and this tracker.
 - Verified all quality gates: lint, tests, build, and link smoke checks.
 - Confirmed guardrail failure behavior with `INTERNAL_LINK_EXTRA_ROUTES=/__intentionally-broken npm run test:links` (expected 404 failure).
+
+### 2026-02-23
+
+- Aligned `/projects/domain-collective` page structure with Chargespot/OpenTribe card-hero pattern.
+- Added schema parity on Domain Collective page (`CreativeWorkSchema` + `BreadcrumbSchema`).
+- Updated Domain Collective live CTA to `https://collective.domains/`.
+- Captured refreshed comparison screenshots and added `docs/screenshots/p1-regression/screenshots-index.csv`.
