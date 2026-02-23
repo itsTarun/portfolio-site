@@ -8,11 +8,6 @@ export function WebSiteSchema() {
 		name: "Tarun Portfolio",
 		description:
 			"Personal portfolio showcasing iOS and Flutter work, experience, and case studies.",
-		potentialAction: {
-			"@type": "SearchAction",
-			target: `${baseUrl}/blog?search={search_term_string}`,
-			"query-input": "required name=search_term_string",
-		},
 		publisher: {
 			"@id": `${baseUrl}/#organization`,
 		},

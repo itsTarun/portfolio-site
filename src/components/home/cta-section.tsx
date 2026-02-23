@@ -34,9 +34,7 @@ export function CtaSection() {
 		<section className="py-16 md:py-20 lg:py-24">
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
-					<motion.div
-						className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12"
-					>
+					<motion.div className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12">
 						<motion.div
 							initial={{ opacity: 0, scale: 0.9 }}
 							whileInView={{ opacity: 1, scale: 1 }}
@@ -59,26 +57,26 @@ export function CtaSection() {
 							transition={{ delay: 0.2, duration: 0.5 }}
 							className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:justify-center"
 						>
-							<Link href="/contact">
-								<Button
-									size="lg"
-									variant="outline"
-									className="gap-2 bg-background text-foreground"
-								>
+							<Button
+								asChild
+								size="lg"
+								variant="outline"
+								className="gap-2 bg-background text-foreground"
+							>
+								<Link href="/contact">
 									<Mail className="h-4 w-4" />
 									Start a Conversation
 									<ArrowRight className="h-4 w-4" />
-								</Button>
-							</Link>
-							<Link href="/projects">
-								<Button
-									variant="outline"
-									size="lg"
-									className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
-								>
-									View Selected Work
-								</Button>
-							</Link>
+								</Link>
+							</Button>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
+							>
+								<Link href="/projects">View Selected Work</Link>
+							</Button>
 						</motion.div>
 
 						<motion.div

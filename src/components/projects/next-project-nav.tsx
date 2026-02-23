@@ -4,15 +4,16 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { type ProjectSlug, toProjectRoute } from "@/types";
 
 interface NextProjectNavProps {
 	nextProject?: {
 		title: string;
-		slug: string;
+		slug: ProjectSlug;
 	};
 	previousProject?: {
 		title: string;
-		slug: string;
+		slug: ProjectSlug;
 	};
 }
 
@@ -36,10 +37,7 @@ export function NextProjectNav({
 							transition={{ duration: 0.5, delay: 0.1 }}
 						>
 							<Button asChild variant="outline" className="gap-2">
-								<Link
-									// eslint-disable-next-line @typescript-eslint/no-explicit-any
-									href={`/projects/${previousProject.slug}` as any}
-								>
+								<Link href={toProjectRoute(previousProject.slug)}>
 									Previous
 									<ArrowRight className="h-4 w-4 rotate-180" />
 									{previousProject.title}
@@ -56,10 +54,7 @@ export function NextProjectNav({
 							className="ml-auto"
 						>
 							<Button asChild className="gap-2">
-								<Link
-									// eslint-disable-next-line @typescript-eslint/no-explicit-any
-									href={`/projects/${nextProject.slug}` as any}
-								>
+								<Link href={toProjectRoute(nextProject.slug)}>
 									{nextProject.title}
 									Next
 									<ArrowRight className="h-4 w-4" />

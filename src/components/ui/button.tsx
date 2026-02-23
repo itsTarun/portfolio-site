@@ -36,8 +36,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 							variant === "link",
 					},
 					{
-						"h-10 px-5 text-sm tracking-[0.08em]":
-							size === "default",
+						"h-10 px-5 text-sm tracking-[0.08em]": size === "default",
 						"h-9 px-4 text-xs tracking-[0.16em]": size === "sm",
 						"h-12 px-8 text-sm tracking-[0.1em]": size === "lg",
 						"h-10 w-10": size === "icon",

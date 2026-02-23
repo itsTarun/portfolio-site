@@ -1,0 +1,14 @@
+filename,absolute_path,source,notes
+blog-getting-started-with-nextjs-react-19.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/blog-getting-started-with-nextjs-react-19.png,local,http://localhost:3001/blog/getting-started-with-nextjs-react-19
+blog.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/blog.png,local,http://localhost:3001/blog
+contact.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/contact.png,local,http://localhost:3001/contact
+domain-collective-live-reference.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/domain-collective-live-reference.png,live,https://collective.domains/
+home.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/home.png,local,http://localhost:3001/
+privacy.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/privacy.png,local,http://localhost:3001/privacy
+projects-chargespot-current.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-chargespot-current.png,local,http://localhost:3001/projects/chargespot
+projects-chargespot.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-chargespot.png,local,legacy capture
+projects-domain-collective-updated.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-domain-collective-updated.png,local,http://localhost:3001/projects/domain-collective
+projects-domain-collective.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-domain-collective.png,local,legacy capture
+projects-opentribe-current.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-opentribe-current.png,local,http://localhost:3001/projects/opentribe
+projects-opentribe.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects-opentribe.png,local,legacy capture
+projects.png,/Users/tarun/Downloads/projects/personal-portfolio/itstarun-fyi/docs/screenshots/p1-regression/projects.png,local,http://localhost:3001/projects

@@ -1,3 +1,16 @@
+export const PROJECT_SLUGS = [
+	"chargespot",
+	"domain-collective",
+	"opentribe",
+] as const;
+
+export type ProjectSlug = (typeof PROJECT_SLUGS)[number];
+export type ProjectRoute = `/projects/${ProjectSlug}`;
+
+export function toProjectRoute(slug: ProjectSlug): ProjectRoute {
+	return `/projects/${slug}`;
+}
+
 export interface Project {
 	id: string;
 	title: string;

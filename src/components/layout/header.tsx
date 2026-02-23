@@ -19,12 +19,39 @@ const navLinks = [
 export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 	const [mounted, setMounted] = React.useState(false);
+	const menuButtonRef = React.useRef<HTMLButtonElement>(null);
+	const firstMenuLinkRef = React.useRef<HTMLAnchorElement>(null);
+	const mobileMenuId = React.useId();
 	const pathname = usePathname();
 	const { theme, setTheme } = useTheme();
 
 	React.useEffect(() => {
 		setMounted(true);
 	}, []);
+
+	React.useEffect(() => {
+		setIsMenuOpen(false);
+	}, [pathname]);
+
+	React.useEffect(() => {
+		if (!isMenuOpen) {
+			return;
+		}
+
+		firstMenuLinkRef.current?.focus();
+
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key !== "Escape") {
+				return;
+			}
+
+			setIsMenuOpen(false);
+			menuButtonRef.current?.focus();
+		};
+
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [isMenuOpen]);
 
 	const toggleTheme = () => {
 		const newTheme = theme === "dark" ? "light" : "dark";
@@ -47,6 +74,7 @@ export function Header() {
 							<Link
 								key={link.href}
 								href={link.href}
+								aria-current={pathname === link.href ? "page" : undefined}
 								className={`relative text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
 									pathname === link.href
 										? "text-foreground"
@@ -101,8 +129,11 @@ export function Header() {
 						<Button
 							variant="ghost"
 							size="icon"
+							ref={menuButtonRef}
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
 							aria-label="Toggle menu"
+							aria-expanded={isMenuOpen}
+							aria-controls={mobileMenuId}
 						>
 							{isMenuOpen ? (
 								<X className="h-5 w-5" />
@@ -114,39 +145,39 @@ export function Header() {
 				</div>
 
 				<AnimatePresence>
-				{isMenuOpen && (
-					<motion.div
-						initial={{ opacity: 0, height: 0 }}
-						animate={{ opacity: 1, height: "auto" }}
-						exit={{ opacity: 0, height: 0 }}
-						className="md:hidden border-t-2 border-border pb-4 pt-4"
-					>
-						<div className="flex flex-col space-y-2">
-							{navLinks.map((link) => (
-								<Link
-									key={link.href}
-									href={link.href}
-									className={`block px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
-										pathname === link.href
-											? "text-foreground"
-											: "text-muted-foreground hover:text-foreground"
-									}`}
-									onClick={() => setIsMenuOpen(false)}
-								>
-									{link.label}
-								</Link>
-							))}
-							<Button
-								asChild
-								size="sm"
-								className="ml-4 mt-2 w-fit"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								<Link href="/contact">Let&apos;s Talk</Link>
-							</Button>
-						</div>
-					</motion.div>
-				)}
+					{isMenuOpen && (
+						<motion.div
+							id={mobileMenuId}
+							initial={{ opacity: 0, height: 0 }}
+							animate={{ opacity: 1, height: "auto" }}
+							exit={{ opacity: 0, height: 0 }}
+							className="md:hidden border-t-2 border-border pb-4 pt-4"
+						>
+							<div className="flex flex-col space-y-2">
+								{navLinks.map((link, index) => (
+									<Link
+										key={link.href}
+										ref={index === 0 ? firstMenuLinkRef : undefined}
+										href={link.href}
+										aria-current={pathname === link.href ? "page" : undefined}
+										className={`block px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
+											pathname === link.href
+												? "text-foreground"
+												: "text-muted-foreground hover:text-foreground"
+										}`}
+										onClick={() => setIsMenuOpen(false)}
+									>
+										{link.label}
+									</Link>
+								))}
+								<Button asChild size="sm" className="ml-4 mt-2 w-fit">
+									<Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+										Let&apos;s Talk
+									</Link>
+								</Button>
+							</div>
+						</motion.div>
+					)}
 				</AnimatePresence>
 			</nav>
 		</header>
