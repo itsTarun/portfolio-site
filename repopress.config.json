@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "defaults": {
+    "branch": "main",
+    "framework": "auto",
+    "preview": {
+      "entry": ".repopress/mdx-preview.tsx"
+    }
+  },
+  "projects": [
+    {
+      "id": "main",
+      "name": "portfolio-site Content",
+      "contentRoot": "content",
+      "framework": "custom",
+      "contentType": "custom",
+      "branch": "main"
+    }
+  ]
+}
