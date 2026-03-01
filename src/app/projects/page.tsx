@@ -158,11 +158,11 @@ export default function ProjectsPage() {
 					>
 						{flagshipProjects.map((project) => (
 							<motion.div key={project.id} variants={fadeInUp}>
-								<Card className="overflow-hidden border border-border">
-									<CardHeader className="space-y-4 border-b border-border pb-6">
+								<Card className="overflow-hidden">
+									<CardHeader className="space-y-4 border-b-2 border-border pb-6">
 										<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 											<div className="flex items-start gap-4">
-												<div className="hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-border sm:flex">
+												<div className="hidden h-12 w-12 flex-shrink-0 items-center justify-center border-2 border-border sm:flex">
 													<project.icon className="h-7 w-7" />
 												</div>
 												<div className="flex-1">
@@ -216,7 +216,7 @@ export default function ProjectsPage() {
 											/>
 										</div>
 
-										<div className="rounded-lg border border-border/60 p-4">
+										<div className="border-2 border-border p-4">
 											<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
 												Key Highlights
 											</h4>
