@@ -76,7 +76,7 @@ export function BlogClient({
 							<button
 								type="button"
 								onClick={() => setSelectedCategory(null)}
-								className={`rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
+								className={`rounded-none border-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
 									selectedCategory === null
 										? "border-foreground bg-foreground text-background"
 										: "border-border text-muted-foreground hover:text-foreground"
@@ -89,7 +89,7 @@ export function BlogClient({
 									type="button"
 									key={category}
 									onClick={() => setSelectedCategory(category)}
-									className={`rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
+									className={`rounded-none border-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
 										selectedCategory === category
 											? "border-foreground bg-foreground text-background"
 											: "border-border text-muted-foreground hover:text-foreground"
@@ -107,7 +107,7 @@ export function BlogClient({
 									onClick={() => toggleTag(tag)}
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}
-									className={`rounded-full border px-3 py-1.5 text-[11px] uppercase tracking-wider transition-all ${
+									className={`rounded-none border-2 px-3 py-1.5 text-[11px] uppercase tracking-wider transition-all ${
 										selectedTags.includes(tag)
 											? "border-foreground bg-foreground text-background"
 											: "border-border text-muted-foreground hover:text-foreground"
@@ -126,7 +126,7 @@ export function BlogClient({
 							onChange={(e) =>
 								setSortBy(e.target.value as "date" | "readingTime")
 							}
-							className="rounded-md bg-background border border-border px-4 py-2 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+							className="rounded-none bg-background border-2 border-border px-4 py-2 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
 						>
 							<option value="date">Newest First</option>
 							<option value="readingTime">Reading Time</option>
@@ -151,7 +151,7 @@ export function BlogClient({
 								setSelectedCategory(null);
 								setSelectedTags([]);
 							}}
-							className="rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-all"
+							className="rounded-none border-2 border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-all"
 						>
 							<X className="h-3.5 w-3.5" />
 						</button>
@@ -180,7 +180,7 @@ export function BlogClient({
 							setSelectedCategory(null);
 							setSelectedTags([]);
 						}}
-						className="inline-flex items-center gap-2 rounded-md bg-foreground px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-background hover:bg-foreground/90 transition-colors"
+						className="inline-flex items-center gap-2 rounded-none border-2 bg-foreground px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-background hover:bg-foreground/90 transition-colors"
 					>
 						<X className="h-4 w-4" />
 						Clear Filters

@@ -60,7 +60,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 				</div>
 
 				<article className="mb-16">
-					<header className="mb-8 border-b border-border/60 pb-8">
+					<header className="mb-8 border-b-2 border-border pb-8">
 						<p className="eyebrow mb-4">{post.category}</p>
 
 						<h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-semibold text-balance">
@@ -89,7 +89,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 								{post.tags.map((tag) => (
 									<span
 										key={tag}
-										className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-[11px] uppercase tracking-wider text-muted-foreground"
+										className="flex items-center gap-1.5 rounded-none border-2 border-border px-3 py-1 text-[11px] uppercase tracking-wider text-muted-foreground"
 									>
 										<Tag className="h-3 w-3" />
 										{tag}
@@ -105,7 +105,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 					/>
 
 					{relatedPosts.length > 0 && (
-						<section className="border-t border-border/60 pt-12">
+						<section className="border-t-2 border-border pt-12">
 							<h2 className="mb-8 text-2xl font-semibold">Related Posts</h2>
 							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 								{relatedPosts.map((relatedPost) => (
@@ -114,7 +114,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 										href={`/blog/${relatedPost.id}`}
 										className="group"
 									>
-										<div className="relative overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-foreground/40">
+										<div className="relative overflow-hidden neo-panel transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
 											<div className="p-6">
 												<h3 className="mb-2 text-lg font-semibold">
 													{relatedPost.title}
