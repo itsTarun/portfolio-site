@@ -7,14 +7,13 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
 	return (
-		<div className="container mx-auto max-w-4xl px-4 py-12">
-			<h1 className="mb-8 text-4xl font-bold">Privacy Policy</h1>
+		<div className="container mx-auto max-w-4xl px-4 py-16 md:py-20 lg:py-24">
+			<span className="eyebrow mb-4 block">Legal</span>
+			<h1 className="section-title mb-4">Privacy Policy</h1>
 
-			<p className="mb-8 text-muted-foreground">
-				Last updated: February 21, 2026
-			</p>
+			<p className="section-subtitle mb-12">Last updated: February 21, 2026</p>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">1. Introduction</h2>
 				<p className="text-muted-foreground">
 					This Privacy Policy explains what information is collected when you
@@ -22,7 +21,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">
 					2. Information We Collect
 				</h2>
@@ -42,7 +41,7 @@ export default function PrivacyPage() {
 				</ul>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">3. Cookies and Tracking</h2>
 				<p className="text-muted-foreground">
 					This website does not currently provide a cookie consent banner and
@@ -52,7 +51,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">
 					4. How Information Is Used
 				</h2>
@@ -62,7 +61,7 @@ export default function PrivacyPage() {
 				</ul>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">5. Third-Party Links</h2>
 				<p className="text-muted-foreground">
 					This site includes links to third-party websites (for example, GitHub,
@@ -71,7 +70,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">6. Data Retention</h2>
 				<p className="text-muted-foreground">
 					Messages sent directly by email are retained only as long as needed to
@@ -79,7 +78,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">7. Your Rights</h2>
 				<p className="mb-3 text-muted-foreground">
 					Depending on your jurisdiction, you may request access to, correction
@@ -90,7 +89,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">
 					8. Updates to This Policy
 				</h2>
@@ -100,7 +99,7 @@ export default function PrivacyPage() {
 				</p>
 			</section>
 
-			<section className="mb-8">
+			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">9. Contact</h2>
 				<p className="text-muted-foreground">
 					For privacy questions, email: <strong>itstarun1994@gmail.com</strong>

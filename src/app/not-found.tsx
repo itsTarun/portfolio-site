@@ -8,19 +8,16 @@ import { Button } from "@/components/ui/button";
 export default function NotFound() {
 	return (
 		<div className="flex min-h-screen items-center justify-center bg-background">
-			<div className="text-center">
+			<div className="neo-panel p-8 md:p-12 text-center">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.5 }}
 					className="mb-8"
 				>
-					<h1 className="mb-4 text-6xl font-semibold tracking-tight text-foreground sm:text-7xl md:text-8xl">
-						404
-					</h1>
-					<p className="mb-8 text-xl font-semibold text-muted-foreground">
-						Page Not Found
-					</p>
+					<span className="eyebrow mb-4 block">Error 404</span>
+					<h1 className="section-title mb-4">404</h1>
+					<p className="section-subtitle">Page Not Found</p>
 				</motion.div>
 
 				<motion.p
