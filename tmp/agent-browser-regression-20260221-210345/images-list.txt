@@ -1,0 +1,9 @@
+tmp/agent-browser-regression-20260221-210345/blog-getting-started-with-nextjs-react-19.png
+tmp/agent-browser-regression-20260221-210345/blog.png
+tmp/agent-browser-regression-20260221-210345/contact.png
+tmp/agent-browser-regression-20260221-210345/home.png
+tmp/agent-browser-regression-20260221-210345/privacy.png
+tmp/agent-browser-regression-20260221-210345/projects-chargespot.png
+tmp/agent-browser-regression-20260221-210345/projects-domain-collective.png
+tmp/agent-browser-regression-20260221-210345/projects-opentribe.png
+tmp/agent-browser-regression-20260221-210345/projects.png
