@@ -104,7 +104,7 @@ export default function ContactPage() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.4 + index * 0.1 }}
 							>
-								<Card className="h-full">
+								<Card className="h-full transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
 									<CardHeader>
 										<div className="mb-2 flex h-10 w-10 items-center justify-center border-2 border-border">
 											<social.icon className="h-5 w-5" />

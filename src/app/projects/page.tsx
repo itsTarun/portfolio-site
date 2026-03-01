@@ -158,7 +158,7 @@ export default function ProjectsPage() {
 					>
 						{flagshipProjects.map((project) => (
 							<motion.div key={project.id} variants={fadeInUp}>
-								<Card className="overflow-hidden">
+								<Card className="overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
 									<CardHeader className="space-y-4 border-b-2 border-border pb-6">
 										<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 											<div className="flex items-start gap-4">
