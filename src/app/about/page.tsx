@@ -12,6 +12,7 @@ import {
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
@@ -177,16 +178,27 @@ export default function AboutPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.2 }}
-							className="mb-12"
+							className="mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start"
 						>
-							<p className="eyebrow mb-3">About</p>
-							<h1 className="section-title">
-								Building mobile products with clarity.
-							</h1>
-							<p className="section-subtitle mt-4 max-w-2xl">
-								Mobile developer focused on iOS and Flutter apps that feel calm,
-								intuitive, and reliable.
-							</p>
+							<div>
+								<p className="eyebrow mb-3">About</p>
+								<h1 className="section-title">
+									Building mobile products with clarity.
+								</h1>
+								<p className="section-subtitle mt-4 max-w-2xl">
+									Mobile developer focused on iOS and Flutter apps that feel
+									calm, intuitive, and reliable.
+								</p>
+							</div>
+							<div className="neo-panel overflow-hidden p-2">
+								<Image
+									src="/images/headshot.webp"
+									alt="Tarun Sharma"
+									width={600}
+									height={600}
+									className="w-full h-auto object-cover"
+								/>
+							</div>
 						</motion.div>
 
 						<motion.div
