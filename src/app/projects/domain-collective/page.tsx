@@ -7,7 +7,6 @@ import {
 	Lock,
 } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
@@ -98,15 +97,6 @@ export default function DomainCollectiveCaseStudy() {
 			<div className="min-h-screen">
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
-						<div className="mb-8">
-							<Link
-								href="/projects"
-								className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
-							>
-								← Back to all projects
-							</Link>
-						</div>
-
 						<div className="mb-12 neo-panel p-8">
 							<p className="eyebrow mb-3">Web application</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
