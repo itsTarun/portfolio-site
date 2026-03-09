@@ -64,9 +64,14 @@ export function Header() {
 				<div className="flex h-16 items-center justify-between">
 					<Link
 						href="/"
-						className="text-lg font-semibold uppercase tracking-[0.22em]"
+						className="flex flex-col items-start justify-center gap-0.5"
 					>
-						itstarun
+						<span className="text-lg font-semibold uppercase tracking-[0.22em] leading-none">
+							Tarun
+						</span>
+						<span className="text-[10px] font-medium tracking-widest text-muted-foreground uppercase leading-none">
+							itstarun.fyi
+						</span>
 					</Link>
 
 					<div className="hidden md:flex md:items-center md:gap-6">
