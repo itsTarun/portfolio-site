@@ -12,7 +12,6 @@ import {
 	Twitter,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 
@@ -76,7 +75,7 @@ export function HeroSection() {
 			<div className="absolute -right-6 top-10 hidden h-28 w-28 border-2 border-border bg-primary/90 shadow-[6px_6px_0_hsl(var(--border))] lg:block" />
 			<div className="absolute -left-6 bottom-10 hidden h-16 w-40 border-2 border-border bg-accent shadow-[6px_6px_0_hsl(var(--border))] lg:block" />
 			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-				<div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+				<div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
 					<motion.div
 						initial={{ opacity: 0, y: 16 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -138,16 +137,6 @@ export function HeroSection() {
 						transition={{ duration: 0.6, delay: 0.1 }}
 						className="space-y-6"
 					>
-						<div className="neo-panel overflow-hidden p-2">
-							<Image
-								src="/images/headshot.webp"
-								alt="Tarun Sharma - Mobile App Developer"
-								width={800}
-								height={800}
-								className="w-full h-auto object-cover"
-								priority
-							/>
-						</div>
 						<div className="neo-panel p-6">
 							<div className="mb-6 flex items-center justify-between">
 								<p className="eyebrow">Impact board</p>
