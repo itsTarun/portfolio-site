@@ -9,10 +9,10 @@ import {
 	Rocket,
 	Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },

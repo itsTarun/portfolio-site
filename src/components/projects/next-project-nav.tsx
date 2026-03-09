@@ -13,11 +13,20 @@ interface NextProjectNavProps {
 	};
 }
 
-export function NextProjectNav({ nextProject, previousProject }: NextProjectNavProps) {
+export function NextProjectNav({
+	nextProject,
+	previousProject,
+}: NextProjectNavProps) {
 	if (!nextProject && !previousProject) {
 		return (
-			<nav aria-label="Project navigation" className="mt-12 pt-8 border-t-2 border-border">
-				<Link href="/projects" className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-center justify-center text-center">
+			<nav
+				aria-label="Project navigation"
+				className="mt-12 pt-8 border-t-2 border-border"
+			>
+				<Link
+					href="/projects"
+					className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-center justify-center text-center"
+				>
 					<span className="text-xl font-semibold group-hover:underline">
 						View All Projects
 					</span>
@@ -27,9 +36,15 @@ export function NextProjectNav({ nextProject, previousProject }: NextProjectNavP
 	}
 
 	return (
-		<nav aria-label="Project navigation" className="mt-12 pt-8 border-t-2 border-border grid grid-cols-1 sm:grid-cols-2 gap-4">
+		<nav
+			aria-label="Project navigation"
+			className="mt-12 pt-8 border-t-2 border-border grid grid-cols-1 sm:grid-cols-2 gap-4"
+		>
 			{previousProject ? (
-				<Link href={toProjectRoute(previousProject.slug)} className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-start">
+				<Link
+					href={toProjectRoute(previousProject.slug)}
+					className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-start"
+				>
 					<span className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2 mb-3">
 						<ArrowRight className="h-4 w-4 rotate-180" /> Previous
 					</span>
@@ -37,9 +52,14 @@ export function NextProjectNav({ nextProject, previousProject }: NextProjectNavP
 						{previousProject.title}
 					</span>
 				</Link>
-			) : <div />}
+			) : (
+				<div />
+			)}
 			{nextProject && (
-				<Link href={toProjectRoute(nextProject.slug)} className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-end text-right">
+				<Link
+					href={toProjectRoute(nextProject.slug)}
+					className="neo-panel p-6 hover:bg-accent transition-colors group flex flex-col items-end text-right"
+				>
 					<span className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2 mb-3">
 						Next <ArrowRight className="h-4 w-4" />
 					</span>

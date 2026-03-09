@@ -7,8 +7,8 @@ import {
 	Github,
 	Linkedin,
 	Mail,
-	Sparkles,
 	Smartphone,
+	Sparkles,
 	Twitter,
 } from "lucide-react";
 import Link from "next/link";

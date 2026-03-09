@@ -1,12 +1,13 @@
 import {
 	Blocks,
+	Clock,
 	ExternalLink,
 	LayoutDashboard,
 	LinkIcon,
 	Users,
-	Clock,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +18,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { NextProjectNav } from "@/components/projects/next-project-nav";
 
 const baseUrl = "https://itstarun.fyi";
 

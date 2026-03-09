@@ -1,4 +1,4 @@
-import { Map as MapIcon, Zap, ExternalLink } from "lucide-react";
+import { ExternalLink, Map as MapIcon, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
