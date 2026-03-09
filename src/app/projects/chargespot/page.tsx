@@ -105,7 +105,7 @@ export default function ChargespotPage() {
 							</Link>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<p className="eyebrow mb-3">Mobile product</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
@@ -144,7 +144,7 @@ export default function ChargespotPage() {
 							)}
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-6">
+						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">Why Chargespot?</h2>
 							<p className="text-muted-foreground mb-4">
 								Chargespot serves as a unified solution for EV owners and
@@ -154,7 +154,7 @@ export default function ChargespotPage() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border mb-4">
+										<div className="flex h-10 w-10 items-center justify-center border-2 border-border mb-4">
 											<MapIcon className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Real-time Station Discovery</CardTitle>
@@ -165,7 +165,7 @@ export default function ChargespotPage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border mb-4">
+										<div className="flex h-10 w-10 items-center justify-center border-2 border-border mb-4">
 											<Zap className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>AI-Powered Trip Planning</CardTitle>
@@ -177,7 +177,7 @@ export default function ChargespotPage() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
 							<div className="mb-4">
 								<p className="text-muted-foreground">
@@ -199,11 +199,11 @@ export default function ChargespotPage() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-6">
+						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
 							<ul className="space-y-4">
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										1
 									</div>
 									<p className="text-muted-foreground">
@@ -211,7 +211,7 @@ export default function ChargespotPage() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										2
 									</div>
 									<p className="text-muted-foreground">
@@ -219,7 +219,7 @@ export default function ChargespotPage() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										3
 									</div>
 									<p className="text-muted-foreground">
@@ -229,7 +229,7 @@ export default function ChargespotPage() {
 							</ul>
 						</div>
 
-						<div className="rounded-lg border border-border bg-card p-8">
+						<div className="neo-panel p-8">
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<div className="grid gap-6 md:grid-cols-3">
 								<div>

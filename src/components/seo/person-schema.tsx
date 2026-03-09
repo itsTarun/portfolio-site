@@ -6,7 +6,7 @@ export function PersonSchema() {
 		"@id": `${baseUrl}/#person`,
 		name: "Tarun Sharma",
 		url: baseUrl,
-		image: `${baseUrl}/favicon.svg`,
+		image: `${baseUrl}/images/headshot.webp`,
 		jobTitle: "Mobile App Developer",
 		description:
 			"Mobile app developer focused on iOS and Flutter apps, stability, and release quality.",

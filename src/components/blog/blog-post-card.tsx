@@ -20,7 +20,7 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
 			className="h-full"
 		>
 			<Link href={`/blog/${post.id}`} className="h-full">
-				<div className="flex h-full flex-col justify-between rounded-lg border border-border bg-card p-6 transition-colors hover:border-foreground/40">
+				<div className="flex h-full flex-col justify-between neo-panel p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
 					<div>
 						<span className="eyebrow">{post.category}</span>
 						<h3 className="mt-3 text-xl font-semibold leading-tight">
@@ -35,7 +35,7 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
 							{post.tags.slice(0, 3).map((tag) => (
 								<span
 									key={tag}
-									className="rounded-full border border-border px-3 py-1 text-[11px] uppercase tracking-wider text-muted-foreground"
+									className="border-2 border-border px-3 py-1 text-[11px] uppercase tracking-wider text-muted-foreground"
 								>
 									{tag}
 								</span>
@@ -43,7 +43,7 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
 						</div>
 					</div>
 
-					<div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-xs text-muted-foreground">
+					<div className="mt-6 flex items-center justify-between border-t-2 border-border pt-4 text-xs text-muted-foreground">
 						<span className="flex items-center gap-1.5">
 							<Calendar className="h-3.5 w-3.5" />
 							{new Date(post.date).toLocaleDateString("en-US", {

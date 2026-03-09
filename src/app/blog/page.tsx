@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BlogClient } from "@/components/blog/blog-client";
 import {
 	getAllBlogPosts,
@@ -6,6 +7,12 @@ import {
 } from "@/lib/load-blog-posts";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+	title: "Blog - Tarun Sharma",
+	description:
+		"Articles on mobile development, API design, Next.js, PostgreSQL, and building scalable applications.",
+};
 
 export default async function BlogPage() {
 	const allPosts = await getAllBlogPosts();

@@ -42,7 +42,7 @@ export function Footer() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex h-10 w-10 items-center justify-center border-2 border-border bg-background text-muted-foreground transition-colors hover:text-foreground neo-shadow-sm"
+									className="flex h-10 w-10 items-center justify-center border-2 border-border bg-background text-muted-foreground transition-all hover:text-foreground hover:scale-105 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 									aria-label={link.label}
 								>
 									<link.icon className="h-4 w-4" />

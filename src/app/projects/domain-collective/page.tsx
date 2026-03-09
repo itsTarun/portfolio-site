@@ -107,7 +107,7 @@ export default function DomainCollectiveCaseStudy() {
 							</Link>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<p className="eyebrow mb-3">Web application</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
@@ -146,7 +146,7 @@ export default function DomainCollectiveCaseStudy() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-6">
+						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">
 								Why Domain Collective?
 							</h2>
@@ -159,7 +159,7 @@ export default function DomainCollectiveCaseStudy() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 											<Layout className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Unified Dashboard</CardTitle>
@@ -171,7 +171,7 @@ export default function DomainCollectiveCaseStudy() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 											<Lock className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Credential Security</CardTitle>
@@ -183,7 +183,7 @@ export default function DomainCollectiveCaseStudy() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 											<Database className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Provider Abstraction</CardTitle>
@@ -195,7 +195,7 @@ export default function DomainCollectiveCaseStudy() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 											<Globe className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Portfolio Visibility</CardTitle>
@@ -208,7 +208,7 @@ export default function DomainCollectiveCaseStudy() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
 							<p className="mb-4 text-muted-foreground">
 								Built on Next.js App Router with TypeScript and Prisma, backed
@@ -228,11 +228,11 @@ export default function DomainCollectiveCaseStudy() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-6">
+						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
 							<ul className="space-y-4">
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										1
 									</div>
 									<p className="text-muted-foreground">
@@ -241,7 +241,7 @@ export default function DomainCollectiveCaseStudy() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										2
 									</div>
 									<p className="text-muted-foreground">
@@ -250,7 +250,7 @@ export default function DomainCollectiveCaseStudy() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										3
 									</div>
 									<p className="text-muted-foreground">
@@ -259,7 +259,7 @@ export default function DomainCollectiveCaseStudy() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										4
 									</div>
 									<p className="text-muted-foreground">
@@ -268,7 +268,7 @@ export default function DomainCollectiveCaseStudy() {
 									</p>
 								</li>
 								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold">
+									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
 										5
 									</div>
 									<p className="text-muted-foreground">
@@ -279,7 +279,7 @@ export default function DomainCollectiveCaseStudy() {
 							</ul>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<div className="grid gap-6 md:grid-cols-3">
 								<div>
@@ -309,31 +309,31 @@ export default function DomainCollectiveCaseStudy() {
 							</div>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-6">
+						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">What I Learned</h2>
 							<div className="grid gap-4 md:grid-cols-2">
-								<div className="rounded-md border border-border/70 p-4">
+								<div className="border-2 border-border p-4">
 									<h3 className="mb-2 font-semibold">Abstraction First</h3>
 									<p className="text-sm text-muted-foreground">
 										Consistent domain operations come from normalizing provider
 										APIs into strict internal contracts.
 									</p>
 								</div>
-								<div className="rounded-md border border-border/70 p-4">
+								<div className="border-2 border-border p-4">
 									<h3 className="mb-2 font-semibold">Security by Default</h3>
 									<p className="text-sm text-muted-foreground">
 										Credentials and domain actions need encryption, audit logs,
 										and failure isolation from day one.
 									</p>
 								</div>
-								<div className="rounded-md border border-border/70 p-4">
+								<div className="border-2 border-border p-4">
 									<h3 className="mb-2 font-semibold">Background Jobs Matter</h3>
 									<p className="text-sm text-muted-foreground">
 										Queue-backed bulk operations keep user interactions fast
 										while handling variable registrar response times.
 									</p>
 								</div>
-								<div className="rounded-md border border-border/70 p-4">
+								<div className="border-2 border-border p-4">
 									<h3 className="mb-2 font-semibold">
 										Visibility Drives Trust
 									</h3>

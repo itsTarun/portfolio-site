@@ -84,7 +84,7 @@ export default function OpenTribePage() {
 							</Link>
 						</div>
 
-						<div className="mb-12 rounded-lg border border-border bg-card p-8">
+						<div className="mb-12 neo-panel p-8">
 							<p className="eyebrow mb-3">Web platform</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								OpenTribe
@@ -116,7 +116,7 @@ export default function OpenTribePage() {
 						<div className="mb-12 grid gap-4 md:grid-cols-2">
 							<Card>
 								<CardHeader>
-									<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 										<Users className="h-5 w-5 text-foreground" />
 									</div>
 									<CardTitle>Talent Matching</CardTitle>
@@ -128,7 +128,7 @@ export default function OpenTribePage() {
 							</Card>
 							<Card>
 								<CardHeader>
-									<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
 										<Blocks className="h-5 w-5 text-foreground" />
 									</div>
 									<CardTitle>Grant and Bounty Workflows</CardTitle>

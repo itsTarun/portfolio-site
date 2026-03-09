@@ -12,6 +12,7 @@ import {
 	Twitter,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 
@@ -135,8 +136,18 @@ export function HeroSection() {
 						initial={{ opacity: 0, y: 16 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.1 }}
-						className="space-y-4"
+						className="space-y-6"
 					>
+						<div className="neo-panel overflow-hidden p-2">
+							<Image
+								src="/images/headshot.webp"
+								alt="Tarun Sharma - Mobile App Developer"
+								width={800}
+								height={800}
+								className="w-full h-auto object-cover"
+								priority
+							/>
+						</div>
 						<div className="neo-panel p-6">
 							<div className="mb-6 flex items-center justify-between">
 								<p className="eyebrow">Impact board</p>
@@ -157,29 +168,6 @@ export function HeroSection() {
 									</span>
 								</div>
 							</div>
-						</div>
-						<div className="neo-panel neo-panel-muted p-6">
-							<p className="eyebrow mb-4">Build style</p>
-							<ul className="space-y-3 text-sm text-foreground">
-								<li className="flex items-center justify-between border-t-2 border-border pt-3">
-									<span>R&amp;D</span>
-									<span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-										Clarify approach
-									</span>
-								</li>
-								<li className="flex items-center justify-between border-t-2 border-border pt-3">
-									<span>Delivery</span>
-									<span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-										Ship confidently
-									</span>
-								</li>
-								<li className="flex items-center justify-between border-t-2 border-border pt-3">
-									<span>QA</span>
-									<span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-										Test thoroughly
-									</span>
-								</li>
-							</ul>
 						</div>
 					</motion.div>
 				</div>

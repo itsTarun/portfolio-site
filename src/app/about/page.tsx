@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
@@ -176,23 +178,34 @@ export default function AboutPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.2 }}
-							className="mb-12"
+							className="mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start"
 						>
-							<p className="eyebrow mb-3">About</p>
-							<h1 className="section-title">
-								Building mobile products with clarity.
-							</h1>
-							<p className="section-subtitle mt-4 max-w-2xl">
-								Mobile developer focused on iOS and Flutter apps that feel calm,
-								intuitive, and reliable.
-							</p>
+							<div>
+								<p className="eyebrow mb-3">About</p>
+								<h1 className="section-title">
+									Building mobile products with clarity.
+								</h1>
+								<p className="section-subtitle mt-4 max-w-2xl">
+									Mobile developer focused on iOS and Flutter apps that feel
+									calm, intuitive, and reliable.
+								</p>
+							</div>
+							<div className="neo-panel overflow-hidden p-2">
+								<Image
+									src="/images/headshot.webp"
+									alt="Tarun Sharma"
+									width={600}
+									height={600}
+									className="w-full h-auto object-cover"
+								/>
+							</div>
 						</motion.div>
 
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.3 }}
-							className="mb-12 rounded-lg border border-border bg-card p-8 text-card-foreground"
+							className="mb-12 neo-panel p-8"
 						>
 							<p className="mb-4 text-lg leading-relaxed">
 								I&apos;m a mobile developer focused on iOS and Flutter. Since
@@ -223,10 +236,10 @@ export default function AboutPage() {
 									<motion.div
 										key={skillGroup.category}
 										variants={fadeInUp}
-										className="rounded-lg border border-border bg-card p-6 text-card-foreground"
+										className="neo-panel p-6"
 									>
 										<div className="mb-4 flex items-center gap-3">
-											<div className="flex h-10 w-10 items-center justify-center rounded-full border border-border">
+											<div className="flex h-10 w-10 items-center justify-center border-2 border-border">
 												<skillGroup.icon className="h-5 w-5 text-foreground" />
 											</div>
 											<h3 className="text-lg font-semibold">
@@ -262,7 +275,7 @@ export default function AboutPage() {
 									<motion.div
 										key={exp.id}
 										variants={fadeInUp}
-										className="rounded-lg border border-border bg-card p-6 text-card-foreground"
+										className="neo-panel p-6"
 									>
 										<div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 											<div>
@@ -309,10 +322,7 @@ export default function AboutPage() {
 							>
 								Education
 							</motion.h2>
-							<motion.div
-								variants={fadeInUp}
-								className="rounded-lg border border-border bg-card p-6 text-card-foreground"
-							>
+							<motion.div variants={fadeInUp} className="neo-panel p-6">
 								<div className="mb-2 flex items-start gap-3">
 									<div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full border border-border">
 										<GraduationCap className="h-5 w-5 text-foreground" />
@@ -347,9 +357,9 @@ export default function AboutPage() {
 							<p className="mb-6 text-muted-foreground">
 								Interested in collaborating on a project or have a question?
 							</p>
-							<a href="mailto:itstarun1994@gmail.com">
-								<Badge>Get in touch</Badge>
-							</a>
+							<Button asChild>
+								<a href="mailto:itstarun1994@gmail.com">Get in touch</a>
+							</Button>
 						</motion.div>
 					</motion.div>
 				</div>
