@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 		siteName: "Tarun Portfolio",
 		images: [
 			{
-				url: "/projects/chargespot/opengraph-image",
+				url: "/images/projects/chargespot.webp",
 				width: 1200,
 				height: 630,
 				alt: "Chargespot - EV Charging Platform",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 			"Comprehensive EV charging station finder and management platform for India.",
 		images: [
 			{
-				url: "/projects/chargespot/opengraph-image",
+				url: "/images/projects/chargespot.webp",
 				width: 1200,
 				height: 630,
 				alt: "Chargespot - EV Charging Platform",
@@ -88,7 +88,7 @@ export default function ChargespotPage() {
 				name={projectData.title}
 				description={projectData.tagline}
 				url={`${baseUrl}/projects/chargespot`}
-				image={`${baseUrl}/projects/chargespot/opengraph-image`}
+				image={`${baseUrl}/images/projects/chargespot.webp`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -133,6 +133,14 @@ export default function ChargespotPage() {
 									</Button>
 								</div>
 							)}
+						</div>
+
+						<div className="mb-12 neo-panel p-2">
+							<img
+								src="/images/projects/chargespot.webp"
+								alt="Chargespot app screenshot"
+								className="w-full h-auto rounded-lg"
+							/>
 						</div>
 
 						<div className="mb-12 neo-panel p-6">
