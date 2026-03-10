@@ -76,8 +76,6 @@ const flagshipProjects = [
 		],
 		githubUrl: null,
 		liveUrl: "https://opentribe.io",
-		secondaryUrl: "/projects/opentribe",
-		secondaryLabel: "About",
 	},
 	{
 		id: "domain-collective",
@@ -108,7 +106,7 @@ const flagshipProjects = [
 			"Background Job Processing",
 		],
 		githubUrl: null,
-		liveUrl: null,
+		liveUrl: "https://domaincollective.io/",
 	},
 ];
 
@@ -172,9 +170,18 @@ export default function ProjectsPage() {
 													<Badge>Flagship Project</Badge>
 												</div>
 											</div>
-											{project.liveUrl && (
-												<div className="flex gap-2">
-													<Button asChild className="shrink-0">
+											<div className="flex gap-2">
+												<Button asChild className="shrink-0">
+													<Link href={`/projects/${project.id}`}>
+														View Case Study
+													</Link>
+												</Button>
+												{project.liveUrl && (
+													<Button
+														asChild
+														variant="outline"
+														className="shrink-0"
+													>
 														<a
 															href={project.liveUrl}
 															target="_blank"
@@ -188,19 +195,8 @@ export default function ProjectsPage() {
 															<span className="sm:hidden">Live</span>
 														</a>
 													</Button>
-													{project.secondaryUrl && (
-														<Button
-															asChild
-															variant="outline"
-															className="shrink-0"
-														>
-															<Link href={project.secondaryUrl}>
-																{project.secondaryLabel || "About"}
-															</Link>
-														</Button>
-													)}
-												</div>
-											)}
+												)}
+											</div>
 										</div>
 										<CardDescription className="text-base leading-relaxed">
 											{project.description}
