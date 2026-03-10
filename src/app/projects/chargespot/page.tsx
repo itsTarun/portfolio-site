@@ -135,24 +135,6 @@ export default function ChargespotPage() {
 							)}
 						</div>
 
-						<div className="mb-12 neo-panel p-2">
-							<video
-								autoPlay
-								loop
-								muted
-								playsInline
-								controls
-								className="w-full h-auto rounded-lg"
-								poster="/projects/chargespot/opengraph-image"
-							>
-								<source
-									src="/images/projects/chargespot.webm"
-									type="video/webm"
-								/>
-								Your browser does not support the video tag.
-							</video>
-						</div>
-
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">Why Chargespot?</h2>
 							<p className="text-muted-foreground mb-4">
