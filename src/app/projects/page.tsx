@@ -83,7 +83,7 @@ const flagshipProjects = [
 		description:
 			"Unified domain management platform for multi-registrar portfolios",
 		longDescription:
-			"<a href='https://domaincollective.io/' target='_blank' rel='noopener noreferrer' class='underline'>Domain Collective</a> standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations as a comprehensive <a href='https://domaincollective.io/' target='_blank' rel='noopener noreferrer' class='underline'>domain management platform</a>.",
+			"<a href='https://collective.domains/' target='_blank' rel='noopener noreferrer' class='underline'>Domain Collective</a> standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations as a comprehensive <a href='https://collective.domains/' target='_blank' rel='noopener noreferrer' class='underline'>domain management platform</a>.",
 		technologies: [
 			"Next.js 15",
 			"React 19",
@@ -106,7 +106,7 @@ const flagshipProjects = [
 			"Background Job Processing",
 		],
 		githubUrl: null,
-		liveUrl: "https://domaincollective.io/",
+		liveUrl: "https://collective.domains/",
 	},
 ];
 
