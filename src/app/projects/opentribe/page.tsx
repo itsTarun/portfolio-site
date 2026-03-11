@@ -7,6 +7,7 @@ import {
 	Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
@@ -21,16 +22,7 @@ import {
 
 const baseUrl = "https://itstarun.fyi";
 
-const projectData = {
-	id: "opentribe",
-	title: "OpenTribe",
-	tagline:
-		"Talent marketplace for Polkadot ecosystem connecting organizations with contributors",
-	category: "web",
-	featured: false,
-	liveUrl: "https://opentribe.io/",
-	githubUrl: null,
-};
+const projectData = PROJECTS.opentribe;
 
 const technologies = [
 	"Next.js 15",
@@ -88,10 +80,10 @@ export default function OpenTribePage() {
 	return (
 		<>
 			<CreativeWorkSchema
-				name={projectData.title}
+				name={projectData.name}
 				description={projectData.tagline}
 				url={`${baseUrl}/projects/opentribe`}
-				image={`${baseUrl}/opengraph-image`}
+				image={`${baseUrl}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -103,12 +95,12 @@ export default function OpenTribePage() {
 							<p className="eyebrow mb-3">Web platform</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
-									href={projectData.liveUrl}
+									href={projectData.url}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="hover:underline"
 								>
-									{projectData.title}
+									{projectData.name}
 								</a>
 							</h1>
 							<p className="mb-6 text-xl text-muted-foreground">
@@ -119,14 +111,16 @@ export default function OpenTribePage() {
 								<Badge variant="outline">Web3</Badge>
 								<Badge variant="outline">Community Platform</Badge>
 							</div>
-							<div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-								<Clock className="h-4 w-4" />
-								<span>Project duration: 1-2 years</span>
-							</div>
+							{projectData.projectDuration && (
+								<div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+									<Clock className="h-4 w-4" />
+									<span>Project duration: {projectData.projectDuration}</span>
+								</div>
+							)}
 							<div>
 								<Button asChild>
 									<a
-										href={projectData.liveUrl}
+										href={projectData.url}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="gap-2"
@@ -136,6 +130,14 @@ export default function OpenTribePage() {
 									</a>
 								</Button>
 							</div>
+						</div>
+
+						<div className="mb-12 neo-panel p-2">
+							<img
+								src={projectData.imageUrl}
+								alt={`${projectData.name} screenshot`}
+								className="w-full h-auto rounded-lg"
+							/>
 						</div>
 
 						<div className="mb-12 neo-panel p-6">

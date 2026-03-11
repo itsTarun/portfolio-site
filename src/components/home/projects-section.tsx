@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Database, Globe, type LucideIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { Button } from "@/components/ui/button";
+import { PROJECTS } from "@/config/projects";
 import { type ProjectSlug, toProjectRoute } from "@/types";
 
 interface ProjectCardProps {
 	title: string;
 	description: string;
-	icon: LucideIcon;
+	imageUrl: string;
 	index: number;
 	slug: ProjectSlug;
 }
@@ -18,7 +19,7 @@ interface ProjectCardProps {
 function ProjectCard({
 	title,
 	description,
-	icon: Icon,
+	imageUrl,
 	index,
 	slug,
 }: ProjectCardProps) {
@@ -32,18 +33,25 @@ function ProjectCard({
 			>
 				<Link
 					href={toProjectRoute(slug)}
-					className="neo-panel flex h-full flex-col justify-between p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+					className="neo-panel flex h-full flex-col justify-between p-0 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))] overflow-hidden"
 				>
 					<div>
-						<div className="mb-4 inline-flex h-12 w-12 items-center justify-center border-2 border-border bg-muted text-foreground">
-							<Icon className="h-5 w-5" />
+						<div className="relative h-40 w-full overflow-hidden border-b-2 border-border">
+							<Image
+								src={imageUrl}
+								alt={`${title} screenshot`}
+								fill
+								className="object-cover"
+							/>
 						</div>
-						<h3 className="mb-2 text-xl font-semibold">{title}</h3>
-						<p className="text-sm text-muted-foreground leading-relaxed">
-							{description}
-						</p>
+						<div className="p-6">
+							<h3 className="mb-2 text-xl font-semibold">{title}</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								{description}
+							</p>
+						</div>
 					</div>
-					<span className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-foreground">
+					<span className="mb-6 ml-6 text-xs font-semibold uppercase tracking-[0.2em] text-foreground">
 						View case study →
 					</span>
 				</Link>
@@ -53,29 +61,7 @@ function ProjectCard({
 }
 
 export function ProjectsSection() {
-	const projects: Omit<ProjectCardProps, "index">[] = [
-		{
-			icon: Database,
-			title: "Chargespot",
-			slug: "chargespot",
-			description:
-				"EV Charging Platform featuring real-time station tracking, payment integration, and comprehensive charging analytics.",
-		},
-		{
-			icon: Globe,
-			title: "OpenTribe",
-			slug: "opentribe",
-			description:
-				"Polkadot Talent Marketplace connecting developers with opportunities in the Web3 ecosystem with decentralized identity.",
-		},
-		{
-			icon: Code2,
-			title: "Domain Collective",
-			slug: "domain-collective",
-			description:
-				"Multi-Registrar Platform for seamless domain management across multiple registrars with advanced search and bulk operations.",
-		},
-	];
+	const projects = Object.values(PROJECTS);
 
 	return (
 		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
@@ -93,17 +79,26 @@ export function ProjectsSection() {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
 					{projects.map((project, idx) => (
-						<ProjectCard key={project.title} {...project} index={idx} />
+						<ProjectCard
+							key={project.id}
+							title={project.name}
+							description={project.description || ""}
+							imageUrl={project.imageUrl}
+							slug={project.id as ProjectSlug}
+							index={idx}
+						/>
 					))}
 				</div>
 
-				<ScrollReveal delay={300}>
-					<div className="mt-12">
-						<Button asChild variant="outline" size="lg">
-							<Link href="/projects">View all projects</Link>
-						</Button>
-					</div>
-				</ScrollReveal>
+				{projects.length > 3 && (
+					<ScrollReveal delay={300}>
+						<div className="mt-12">
+							<Button asChild variant="outline" size="lg">
+								<Link href="/projects">View all projects</Link>
+							</Button>
+						</div>
+					</ScrollReveal>
+				)}
 			</div>
 		</section>
 	);

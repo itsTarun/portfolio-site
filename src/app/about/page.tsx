@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-	Calendar,
-	Code2,
-	GraduationCap,
-	MapPin,
-	Rocket,
-	Sparkles,
-} from "lucide-react";
+import { Box, GraduationCap, MapPin, Smartphone, Wrench } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,7 +33,7 @@ const skills = [
 			"Coordinator Pattern",
 			"Protocol-Oriented Programming",
 		],
-		icon: Code2,
+		icon: Smartphone,
 	},
 	{
 		category: "Flutter",
@@ -51,7 +45,7 @@ const skills = [
 			"Crashlytics",
 			"Backend-Driven UI",
 		],
-		icon: Rocket,
+		icon: Box,
 	},
 	{
 		category: "Tools & Workflow",
@@ -63,7 +57,7 @@ const skills = [
 			"Postman",
 			"Unit & UI Tests",
 		],
-		icon: Sparkles,
+		icon: Wrench,
 	},
 ];
 
@@ -283,10 +277,7 @@ export default function AboutPage() {
 												<p className="text-muted-foreground">{exp.company}</p>
 											</div>
 											<div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-												<span className="flex items-center gap-1">
-													<Calendar className="h-4 w-4" />
-													{exp.period}
-												</span>
+												<span>{exp.period}</span>
 												<span className="flex items-center gap-1">
 													<MapPin className="h-4 w-4" />
 													{exp.location}
@@ -358,7 +349,7 @@ export default function AboutPage() {
 								Interested in collaborating on a project or have a question?
 							</p>
 							<Button asChild>
-								<a href="mailto:itstarun1994@gmail.com">Get in touch</a>
+								<Link href="/contact">Get in touch</Link>
 							</Button>
 						</motion.div>
 					</motion.div>

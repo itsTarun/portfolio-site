@@ -10,6 +10,7 @@ import {
 	Smartphone,
 	Sparkles,
 	Twitter,
+	Users,
 } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -51,7 +52,7 @@ const stats = [
 		label: "Teams",
 		value: 5,
 		suffix: "",
-		icon: <Sparkles className="h-6 w-6" />,
+		icon: <Users className="h-6 w-6" />,
 	},
 	{
 		id: 3,

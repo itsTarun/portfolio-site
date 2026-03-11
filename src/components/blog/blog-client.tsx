@@ -139,7 +139,7 @@ export function BlogClient({
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
-						className="mb-6 flex items-center gap-2"
+						className="mb-6 flex items-center gap-3"
 					>
 						<span className="text-sm text-muted-foreground">
 							Showing {filteredPosts.length} post
@@ -151,7 +151,8 @@ export function BlogClient({
 								setSelectedCategory(null);
 								setSelectedTags([]);
 							}}
-							className="rounded-none border-2 border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-all"
+							className="ml-2 rounded-none border-2 border-border p-1.5 text-muted-foreground hover:text-foreground transition-all"
+							aria-label="Clear filters"
 						>
 							<X className="h-3.5 w-3.5" />
 						</button>

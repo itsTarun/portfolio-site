@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Heart, Linkedin, Mail } from "lucide-react";
+import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 
 const socialLinks = [
@@ -9,6 +9,11 @@ const socialLinks = [
 		href: "https://www.linkedin.com/in/iamtarun/",
 		icon: Linkedin,
 		label: "LinkedIn",
+	},
+	{
+		href: "https://x.com/itstarun1381995",
+		icon: Twitter,
+		label: "Twitter/X",
 	},
 	{ href: "mailto:itstarun1994@gmail.com", icon: Mail, label: "Email" },
 ];
