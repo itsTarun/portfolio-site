@@ -7,6 +7,7 @@ import {
 	Lock,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
@@ -21,15 +22,7 @@ import {
 
 const baseUrl = "https://itstarun.fyi";
 
-const projectData = {
-	id: "domain-collective",
-	title: "Domain Collective",
-	tagline: "Manage all your domains from one unified interface",
-	category: "web",
-	featured: false,
-	liveUrl: "https://collective.domains/",
-	githubUrl: null,
-};
+const projectData = PROJECTS.domainCollective;
 
 const technologies = [
 	"Next.js 15",
@@ -86,10 +79,10 @@ export default function DomainCollectiveCaseStudy() {
 	return (
 		<>
 			<CreativeWorkSchema
-				name={projectData.title}
+				name={projectData.name}
 				description={projectData.tagline}
 				url={`${baseUrl}/projects/domain-collective`}
-				image={`${baseUrl}/opengraph-image`}
+				image={`${baseUrl}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -101,12 +94,12 @@ export default function DomainCollectiveCaseStudy() {
 							<p className="eyebrow mb-3">Web application</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
-									href={projectData.liveUrl}
+									href={projectData.url}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="hover:underline"
 								>
-									{projectData.title}
+									{projectData.name}
 								</a>
 							</h1>
 							<p className="mb-6 text-xl text-muted-foreground">
@@ -117,14 +110,16 @@ export default function DomainCollectiveCaseStudy() {
 								<Badge variant="outline">Registrar Integrations</Badge>
 								<Badge variant="outline">Web Platform</Badge>
 							</div>
-							<div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-								<Clock className="h-4 w-4" />
-								<span>Project duration: 3-4 years</span>
-							</div>
+							{projectData.projectDuration && (
+								<div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+									<Clock className="h-4 w-4" />
+									<span>Project duration: {projectData.projectDuration}</span>
+								</div>
+							)}
 							<div>
 								<Button asChild>
 									<a
-										href={projectData.liveUrl}
+										href={projectData.url}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="gap-2"
@@ -134,6 +129,14 @@ export default function DomainCollectiveCaseStudy() {
 									</a>
 								</Button>
 							</div>
+						</div>
+
+						<div className="mb-12 neo-panel p-2">
+							<img
+								src={projectData.imageUrl}
+								alt={`${projectData.name} screenshot`}
+								className="w-full h-auto rounded-lg"
+							/>
 						</div>
 
 						<div className="mb-12 neo-panel p-6">

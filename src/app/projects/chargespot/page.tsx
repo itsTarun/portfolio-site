@@ -1,5 +1,6 @@
 import { ExternalLink, Map as MapIcon, Zap } from "lucide-react";
 import type { Metadata } from "next";
+import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
@@ -25,15 +26,7 @@ const technologies = [
 	"Google Navigation SDK",
 ];
 
-const projectData = {
-	id: "chargespot",
-	title: "Chargespot",
-	tagline: "Your EV charging companion - Find, charge, track, repeat",
-	category: "mobile",
-	featured: true,
-	liveUrl: "https://chargespot.app/",
-	githubUrl: null,
-};
+const projectData = PROJECTS.chargespot;
 
 export const metadata: Metadata = {
 	title: "Chargespot - EV Charging Platform | Tarun Portfolio",
@@ -85,10 +78,10 @@ export default function ChargespotPage() {
 	return (
 		<>
 			<CreativeWorkSchema
-				name={projectData.title}
+				name={projectData.name}
 				description={projectData.tagline}
 				url={`${baseUrl}/projects/chargespot`}
-				image={`${baseUrl}/images/projects/chargespot.webp`}
+				image={`${baseUrl}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -100,29 +93,31 @@ export default function ChargespotPage() {
 							<p className="eyebrow mb-3">Mobile product</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
-									href="https://chargespot.app/"
+									href={projectData.url}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="hover:underline"
 								>
-									{projectData.title}
+									{projectData.name}
 								</a>
 							</h1>
 							<p className="mb-6 text-xl text-muted-foreground">
 								{projectData.tagline}
 							</p>
-							<p className="mb-6 text-sm text-muted-foreground">
-								Built by <strong>CHARGE23 LABS PVT. LTD.</strong>
-							</p>
+							{projectData.builtBy && (
+								<p className="mb-6 text-sm text-muted-foreground">
+									Built by <strong>{projectData.builtBy}</strong>
+								</p>
+							)}
 							<div className="flex flex-wrap gap-2">
 								<Badge>Flagship Project</Badge>
 								<Badge variant="outline">Mobile App</Badge>
 							</div>
-							{projectData.liveUrl && (
+							{projectData.url && (
 								<div className="mt-6">
 									<Button asChild>
 										<a
-											href={projectData.liveUrl}
+											href={projectData.url}
 											target="_blank"
 											rel="noopener noreferrer"
 											className="gap-2"
@@ -137,8 +132,8 @@ export default function ChargespotPage() {
 
 						<div className="mb-12 neo-panel p-2">
 							<img
-								src="/images/projects/chargespot.webp"
-								alt="Chargespot app screenshot"
+								src={projectData.imageUrl}
+								alt={`${projectData.name} app screenshot`}
 								className="w-full h-auto rounded-lg"
 							/>
 						</div>
