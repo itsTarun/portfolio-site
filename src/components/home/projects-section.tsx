@@ -35,19 +35,21 @@ function ProjectCard({
 					href={toProjectRoute(slug)}
 					className="neo-panel flex h-full flex-col justify-between p-0 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))] overflow-hidden"
 				>
-					<div className="relative h-40 w-full overflow-hidden border-b-2 border-border">
-						<Image
-							src={imageUrl}
-							alt={`${title} screenshot`}
-							fill
-							className="object-cover"
-						/>
-					</div>
-					<div className="p-6">
-						<h3 className="mb-2 text-xl font-semibold">{title}</h3>
-						<p className="text-sm text-muted-foreground leading-relaxed">
-							{description}
-						</p>
+					<div>
+						<div className="relative h-40 w-full overflow-hidden border-b-2 border-border">
+							<Image
+								src={imageUrl}
+								alt={`${title} screenshot`}
+								fill
+								className="object-cover"
+							/>
+						</div>
+						<div className="p-6">
+							<h3 className="mb-2 text-xl font-semibold">{title}</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								{description}
+							</p>
+						</div>
 					</div>
 					<span className="mb-6 ml-6 text-xs font-semibold uppercase tracking-[0.2em] text-foreground">
 						View case study →
@@ -57,15 +59,6 @@ function ProjectCard({
 		</ScrollReveal>
 	);
 }
-
-const projectDescriptions: Record<string, string> = {
-	chargespot:
-		"EV Charging Platform featuring real-time station tracking, payment integration, and comprehensive charging analytics.",
-	opentribe:
-		"Polkadot Talent Marketplace connecting developers with opportunities in the Web3 ecosystem with decentralized identity.",
-	"domain-collective":
-		"Multi-Registrar Platform for seamless domain management across multiple registrars with advanced search and bulk operations.",
-};
 
 export function ProjectsSection() {
 	const projects = Object.values(PROJECTS);
@@ -89,7 +82,7 @@ export function ProjectsSection() {
 						<ProjectCard
 							key={project.id}
 							title={project.name}
-							description={projectDescriptions[project.id] || ""}
+							description={project.description || ""}
 							imageUrl={project.imageUrl}
 							slug={project.id as ProjectSlug}
 							index={idx}

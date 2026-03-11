@@ -10,6 +10,7 @@ export interface ProjectConfig {
 	imageUrl: string;
 	projectDuration?: string;
 	builtBy?: string;
+	description?: string;
 }
 
 export const PROJECTS: Record<string, ProjectConfig> = {
@@ -24,6 +25,8 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		githubUrl: null,
 		imageUrl: "/images/projects/chargespot.webp",
 		builtBy: "CHARGE23 LABS PVT. LTD.",
+		description:
+			"EV Charging Platform featuring real-time station tracking, payment integration, and comprehensive charging analytics.",
 	},
 	opentribe: {
 		id: "opentribe",
@@ -37,6 +40,8 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		githubUrl: null,
 		imageUrl: "/images/projects/opentribe.webp",
 		projectDuration: "1-2 years",
+		description:
+			"Polkadot Talent Marketplace connecting developers with opportunities in the Web3 ecosystem with decentralized identity.",
 	},
 	domainCollective: {
 		id: "domain-collective",
@@ -49,20 +54,7 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		githubUrl: null,
 		imageUrl: "/images/projects/domain-collective.webp",
 		projectDuration: "3-4 years",
+		description:
+			"Multi-Registrar Platform for seamless domain management across multiple registrars with advanced search and bulk operations.",
 	},
 };
-
-export const PROJECT_URLS = [
-	{
-		name: "Chargespot",
-		url: "https://chargespot.app/",
-	},
-	{
-		name: "OpenTribe",
-		url: "https://opentribe.io/",
-	},
-	{
-		name: "Domain Collective",
-		url: "https://collective.domains/",
-	},
-];
