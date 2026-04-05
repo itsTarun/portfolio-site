@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRelatedPosts } from "@/lib/blog-utils";
 import { getAllBlogPosts } from "@/lib/load-blog-posts";
+import { formatBlogDate } from "@/lib/utils";
 
 export const revalidate = 3600;
 
@@ -70,11 +71,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 						<div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
 							<span className="flex items-center gap-2">
 								<Calendar className="h-4 w-4" />
-								{new Date(post.date).toLocaleDateString("en-US", {
-									month: "long",
-									day: "numeric",
-									year: "numeric",
-								})}
+								{formatBlogDate(post.date)}
 							</span>
 							{post.readingTime && (
 								<span className="flex items-center gap-2">

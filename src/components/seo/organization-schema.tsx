@@ -1,37 +1,32 @@
+import { JsonLdScript } from "./json-ld-script";
+import {
+	CONTACT_EMAIL,
+	SITE_DESCRIPTION,
+	SITE_URL,
+	SOCIAL_PROFILE_URLS,
+} from "@/lib/site-config";
+
 export function OrganizationSchema() {
-	const baseUrl = "https://itstarun.fyi";
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "Organization",
-		"@id": `${baseUrl}/#organization`,
+		"@id": `${SITE_URL}/#organization`,
 		name: "Tarun",
-		url: baseUrl,
+		url: SITE_URL,
 		logo: {
 			"@type": "ImageObject",
-			url: `${baseUrl}/favicon.svg`,
+			url: `${SITE_URL}/favicon.svg`,
 			width: 512,
 			height: 512,
 		},
-		description:
-			"Personal portfolio showcasing iOS and Flutter work, experience, and case studies.",
-		sameAs: [
-			"https://github.com/itsTarun",
-			"https://www.linkedin.com/in/iamtarun/",
-			"https://x.com/itstarun1381995",
-		],
+		description: SITE_DESCRIPTION,
+		sameAs: SOCIAL_PROFILE_URLS,
 		contactPoint: {
 			"@type": "ContactPoint",
-			email: "itstarun1994@gmail.com",
+			email: CONTACT_EMAIL,
 			contactType: "inquiries",
 		},
 	};
 
-	const schemaJson = JSON.stringify(schema);
-
-	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: schemaJson }}
-		/>
-	);
+	return <JsonLdScript schema={schema} />;
 }

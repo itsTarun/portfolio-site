@@ -5,6 +5,7 @@ import {
 	type BlogFrontmatter,
 	type BlogPost,
 	calculateReadingTime,
+	compareBlogPostsByNewest,
 } from "./blog-utils";
 import { renderMarkdownToHtml } from "./render-markdown";
 
@@ -41,9 +42,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 			}),
 		);
 
-		return posts.sort(
-			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-		);
+		return posts.sort(compareBlogPostsByNewest);
 	} catch (error) {
 		console.error("Error loading blog posts:", error);
 		return [];

@@ -5,26 +5,27 @@ import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { Button } from "@/components/ui/button";
+import { CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
 const socialLinks = [
 	{
 		icon: Github,
-		href: "https://github.com/itsTarun",
+		href: SOCIAL_LINKS.github,
 		label: "GitHub",
 	},
 	{
 		icon: Linkedin,
-		href: "https://www.linkedin.com/in/iamtarun/",
+		href: SOCIAL_LINKS.linkedin,
 		label: "LinkedIn",
 	},
 	{
 		icon: Twitter,
-		href: "https://x.com/itstarun1381995",
+		href: SOCIAL_LINKS.twitter,
 		label: "Twitter/X",
 	},
 	{
 		icon: Mail,
-		href: "mailto:itstarun1994@gmail.com",
+		href: CONTACT_EMAIL_MAILTO,
 		label: "Email",
 	},
 ];

@@ -9,18 +9,20 @@ import {
 import type { Metadata } from "next";
 import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
+import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-
-const baseUrl = "https://itstarun.fyi";
 
 const projectData = PROJECTS.domainCollective;
 
@@ -37,52 +39,39 @@ const technologies = [
 	"Redis",
 ];
 
-export const metadata: Metadata = {
+const keyFeatures = [
+	"Provider abstraction layer for GoDaddy, Namecheap, Gandi, and other registrars.",
+	"Automated renewal tracking and expiration alerts across accounts.",
+	"Bulk DNS operations with background processing for safe, fast execution.",
+	"Usage analytics and cache strategy to reduce external API load and improve responsiveness.",
+	"End-to-end credential encryption and audit logs for secure team collaboration.",
+];
+
+export const metadata: Metadata = createProjectMetadata({
 	title: "Domain Collective - Multi-Registrar Management | Tarun Portfolio",
 	description:
 		"Domain Collective standardizes registrar APIs into one platform for domain, DNS, and renewal workflows.",
-	alternates: {
-		canonical: `${baseUrl}/projects/domain-collective`,
-	},
-	openGraph: {
-		type: "website",
-		url: `${baseUrl}/projects/domain-collective`,
-		title: "Domain Collective - Multi-Registrar Management",
-		description:
-			"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
-		siteName: "Tarun Portfolio",
-		images: [
-			{
-				url: "/opengraph-image",
-				width: 1200,
-				height: 630,
-				alt: "Domain Collective project case study",
-			},
-		],
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Domain Collective - Multi-Registrar Management",
-		description:
-			"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
-		images: ["/opengraph-image"],
-	},
-};
+	path: "/projects/domain-collective",
+	ogTitle: "Domain Collective - Multi-Registrar Management",
+	ogDescription:
+		"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
+	imageUrl: "/opengraph-image",
+	imageAlt: "Domain Collective project case study",
+});
 
 export default function DomainCollectiveCaseStudy() {
-	const breadcrumbs = [
-		{ name: "Home", url: "/" },
-		{ name: "Projects", url: "/projects" },
-		{ name: "Domain Collective", url: "/projects/domain-collective" },
-	];
+	const breadcrumbs = buildProjectBreadcrumbs(
+		"Domain Collective",
+		"domain-collective",
+	);
 
 	return (
 		<>
 			<CreativeWorkSchema
 				name={projectData.name}
 				description={projectData.tagline}
-				url={`${baseUrl}/projects/domain-collective`}
-				image={`${baseUrl}${projectData.imageUrl}`}
+				url={`${SITE_URL}/projects/domain-collective`}
+				image={`${SITE_URL}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -223,53 +212,7 @@ export default function DomainCollectiveCaseStudy() {
 
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
-							<ul className="space-y-4">
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										1
-									</div>
-									<p className="text-muted-foreground">
-										Provider abstraction layer for GoDaddy, Namecheap, Gandi,
-										and other registrars.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										2
-									</div>
-									<p className="text-muted-foreground">
-										Automated renewal tracking and expiration alerts across
-										accounts.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										3
-									</div>
-									<p className="text-muted-foreground">
-										Bulk DNS operations with background processing for safe,
-										fast execution.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										4
-									</div>
-									<p className="text-muted-foreground">
-										Usage analytics and cache strategy to reduce external API
-										load and improve responsiveness.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										5
-									</div>
-									<p className="text-muted-foreground">
-										End-to-end credential encryption and audit logs for secure
-										team collaboration.
-									</p>
-								</li>
-							</ul>
+							<NumberedFeatureList features={keyFeatures} />
 						</div>
 
 						<div className="mb-12 neo-panel p-8">

@@ -1,11 +1,16 @@
 import { ExternalLink, Map as MapIcon, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import { PROJECTS } from "@/config/projects";
+import Image from "next/image";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
+import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
@@ -26,62 +31,37 @@ const technologies = [
 	"Google Navigation SDK",
 ];
 
+const keyFeatures = [
+	"iOS Live Activities with Dynamic Island support",
+	"AI-powered trip planning for optimized routes",
+	"Offline-first architecture with Isar DB",
+];
+
 const projectData = PROJECTS.chargespot;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createProjectMetadata({
 	title: "Chargespot - EV Charging Platform | Tarun Portfolio",
 	description:
 		"Comprehensive EV charging station finder and management platform for India. Features real-time station discovery, AI-powered trip planning, live charging sessions, and multi-wallet payments.",
-	openGraph: {
-		type: "website",
-		url: "https://itstarun.fyi/projects/chargespot",
-		title: "Chargespot - EV Charging Platform",
-		description:
-			"Comprehensive EV charging station finder and management platform for India.",
-		siteName: "Tarun Portfolio",
-		images: [
-			{
-				url: "/images/projects/chargespot.webp",
-				width: 1200,
-				height: 630,
-				alt: "Chargespot - EV Charging Platform",
-			},
-		],
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Chargespot - EV Charging Platform",
-		description:
-			"Comprehensive EV charging station finder and management platform for India.",
-		images: [
-			{
-				url: "/images/projects/chargespot.webp",
-				width: 1200,
-				height: 630,
-				alt: "Chargespot - EV Charging Platform",
-			},
-		],
-	},
-	alternates: {
-		canonical: "https://itstarun.fyi/projects/chargespot",
-	},
-};
+	path: "/projects/chargespot",
+	ogTitle: "Chargespot - EV Charging Platform",
+	ogDescription:
+		"Comprehensive EV charging station finder and management platform for India.",
+	imageUrl: "/images/projects/chargespot.webp",
+	imageAlt: "Chargespot - EV Charging Platform",
+	twitterImageType: "object",
+});
 
 export default function ChargespotPage() {
-	const baseUrl = "https://itstarun.fyi";
-	const breadcrumbs = [
-		{ name: "Home", url: "/" },
-		{ name: "Projects", url: "/projects" },
-		{ name: "Chargespot", url: "/projects/chargespot" },
-	];
+	const breadcrumbs = buildProjectBreadcrumbs("Chargespot", "chargespot");
 
 	return (
 		<>
 			<CreativeWorkSchema
 				name={projectData.name}
 				description={projectData.tagline}
-				url={`${baseUrl}/projects/chargespot`}
-				image={`${baseUrl}${projectData.imageUrl}`}
+				url={`${SITE_URL}/projects/chargespot`}
+				image={`${SITE_URL}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -131,10 +111,13 @@ export default function ChargespotPage() {
 						</div>
 
 						<div className="mb-12 neo-panel p-2">
-							<img
+							<Image
 								src={projectData.imageUrl}
 								alt={`${projectData.name} app screenshot`}
-								className="w-full h-auto rounded-lg"
+								className="h-auto w-full rounded-lg"
+								width={1920}
+								height={1080}
+								priority
 							/>
 						</div>
 
@@ -195,32 +178,7 @@ export default function ChargespotPage() {
 
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
-							<ul className="space-y-4">
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										1
-									</div>
-									<p className="text-muted-foreground">
-										iOS Live Activities with Dynamic Island support
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										2
-									</div>
-									<p className="text-muted-foreground">
-										AI-powered trip planning for optimized routes
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										3
-									</div>
-									<p className="text-muted-foreground">
-										Offline-first architecture with Isar DB
-									</p>
-								</li>
-							</ul>
+							<NumberedFeatureList features={keyFeatures} />
 						</div>
 
 						<div className="mb-12 neo-panel p-8">

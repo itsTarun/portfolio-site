@@ -285,8 +285,8 @@ export default function AboutPage() {
 											</div>
 										</div>
 										<ul className="mb-4 list-inside list-disc space-y-2 text-muted-foreground">
-											{exp.description.map((item, i) => (
-												<li key={i}>{item}</li>
+											{exp.description.map((item) => (
+												<li key={`${exp.id}-${item}`}>{item}</li>
 											))}
 										</ul>
 										<div className="flex flex-wrap gap-2">

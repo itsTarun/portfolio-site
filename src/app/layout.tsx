@@ -8,6 +8,7 @@ import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { PersonSchema } from "@/components/seo/person-schema";
 import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
+import { OG_IMAGE_SIZE, SITE_NAME, SITE_URL } from "@/lib/site-config";
 
 const displayFont = Bricolage_Grotesque({
 	subsets: ["latin"],
@@ -25,6 +26,12 @@ export function generateMetadata(): Metadata {
 	const isPreview =
 		process.env.VERCEL_URL?.includes("droidsize-web.vercel.app") ||
 		process.env.NEXT_PUBLIC_APP_URL?.includes("droidsize-web.vercel.app");
+
+	const defaultSocialImage = {
+		url: "/opengraph-image",
+		...OG_IMAGE_SIZE,
+		alt: SITE_NAME,
+	};
 
 	return {
 		title: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
@@ -46,19 +53,12 @@ export function generateMetadata(): Metadata {
 		openGraph: {
 			type: "website",
 			locale: "en_US",
-			url: "https://itstarun.fyi",
+			url: SITE_URL,
 			title: "Tarun",
 			description:
 				"Portfolio showcasing iOS and Flutter work, experience, and case studies.",
-			siteName: "Tarun Portfolio",
-			images: [
-				{
-					url: "/opengraph-image",
-					width: 1200,
-					height: 630,
-					alt: "Tarun Portfolio",
-				},
-			],
+			siteName: SITE_NAME,
+			images: [defaultSocialImage],
 		},
 		twitter: {
 			card: "summary_large_image",
@@ -67,24 +67,17 @@ export function generateMetadata(): Metadata {
 				"Portfolio showcasing iOS and Flutter work, experience, and case studies.",
 			creator: "@itsTarun",
 			site: "@itsTarun",
-			images: [
-				{
-					url: "/opengraph-image",
-					width: 1200,
-					height: 630,
-					alt: "Tarun Portfolio",
-				},
-			],
+			images: [defaultSocialImage],
 		},
 		icons: {
 			icon: "/favicon.svg",
 			shortcut: "/favicon.svg",
 			apple: "/favicon.svg",
 		},
-		metadataBase: new URL("https://itstarun.fyi"),
+		metadataBase: new URL(SITE_URL),
 		manifest: "/manifest.json",
 		alternates: {
-			canonical: "https://itstarun.fyi",
+			canonical: SITE_URL,
 		},
 		verification: {
 			google: process.env.NEXT_PUBLIC_GSC_VERIFICATION_CODE,

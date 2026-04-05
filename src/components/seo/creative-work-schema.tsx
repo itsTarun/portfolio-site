@@ -1,3 +1,6 @@
+import { JsonLdScript } from "./json-ld-script";
+import { SITE_URL } from "@/lib/site-config";
+
 interface CreativeWorkSchemaProps {
 	name: string;
 	description: string;
@@ -21,7 +24,6 @@ export function CreativeWorkSchema({
 	githubUrl,
 	category,
 }: CreativeWorkSchemaProps) {
-	const baseUrl = "https://itstarun.fyi";
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "CreativeWork",
@@ -39,10 +41,10 @@ export function CreativeWorkSchema({
 		author: {
 			"@type": "Person",
 			name: "Tarun",
-			url: baseUrl,
+			url: SITE_URL,
 		},
 		publisher: {
-			"@id": `${baseUrl}/#organization`,
+			"@id": `${SITE_URL}/#organization`,
 		},
 		keywords: technologies.join(", "),
 		about: category,
@@ -55,12 +57,5 @@ export function CreativeWorkSchema({
 		),
 	};
 
-	const schemaJson = JSON.stringify(schema);
-
-	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: schemaJson }}
-		/>
-	);
+	return <JsonLdScript schema={schema} />;
 }

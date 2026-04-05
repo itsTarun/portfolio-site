@@ -16,6 +16,24 @@ const navLinks = [
 	{ href: "/contact", label: "Contact" },
 ];
 
+function ThemeToggleButton({
+	theme,
+	onToggle,
+}: {
+	theme?: string;
+	onToggle: () => void;
+}) {
+	return (
+		<Button variant="ghost" size="icon" onClick={onToggle} aria-label="Toggle theme">
+			{theme === "dark" ? (
+				<Sun className="h-5 w-5" />
+			) : (
+				<Moon className="h-5 w-5" />
+			)}
+		</Button>
+	);
+}
+
 export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 	const [mounted, setMounted] = React.useState(false);
@@ -100,37 +118,11 @@ export function Header() {
 						<Button asChild size="sm" className="ml-2">
 							<Link href="/contact">Let&apos;s Talk</Link>
 						</Button>
-						{mounted && (
-							<Button
-								variant="ghost"
-								size="icon"
-								onClick={toggleTheme}
-								aria-label="Toggle theme"
-							>
-								{theme === "dark" ? (
-									<Sun className="h-5 w-5" />
-								) : (
-									<Moon className="h-5 w-5" />
-								)}
-							</Button>
-						)}
+						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
 					</div>
 
 					<div className="flex items-center gap-2 md:hidden">
-						{mounted && (
-							<Button
-								variant="ghost"
-								size="icon"
-								onClick={toggleTheme}
-								aria-label="Toggle theme"
-							>
-								{theme === "dark" ? (
-									<Sun className="h-5 w-5" />
-								) : (
-									<Moon className="h-5 w-5" />
-								)}
-							</Button>
-						)}
+						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
 						<Button
 							variant="ghost"
 							size="icon"

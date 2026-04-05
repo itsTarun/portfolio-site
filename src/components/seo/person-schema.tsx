@@ -1,22 +1,20 @@
+import { JsonLdScript } from "./json-ld-script";
+import { SITE_URL, SOCIAL_PROFILE_URLS } from "@/lib/site-config";
+
 export function PersonSchema() {
-	const baseUrl = "https://itstarun.fyi";
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "Person",
-		"@id": `${baseUrl}/#person`,
+		"@id": `${SITE_URL}/#person`,
 		name: "Tarun Sharma",
-		url: baseUrl,
-		image: `${baseUrl}/images/headshot.webp`,
+		url: SITE_URL,
+		image: `${SITE_URL}/images/headshot.webp`,
 		jobTitle: "Mobile App Developer",
 		description:
 			"Mobile app developer focused on iOS and Flutter apps, stability, and release quality.",
-		sameAs: [
-			"https://github.com/itsTarun",
-			"https://www.linkedin.com/in/iamtarun/",
-			"https://x.com/itstarun1381995",
-		],
+		sameAs: SOCIAL_PROFILE_URLS,
 		worksFor: {
-			"@id": `${baseUrl}/#organization`,
+			"@id": `${SITE_URL}/#organization`,
 		},
 		alumniOf: {
 			"@type": "CollegeOrUniversity",
@@ -37,12 +35,5 @@ export function PersonSchema() {
 		],
 	};
 
-	const schemaJson = JSON.stringify(schema);
-
-	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: schemaJson }}
-		/>
-	);
+	return <JsonLdScript schema={schema} />;
 }

@@ -1,24 +1,18 @@
+import { JsonLdScript } from "./json-ld-script";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
+
 export function WebSiteSchema() {
-	const baseUrl = "https://itstarun.fyi";
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		"@id": `${baseUrl}/#website`,
-		url: baseUrl,
-		name: "Tarun Portfolio",
-		description:
-			"Personal portfolio showcasing iOS and Flutter work, experience, and case studies.",
+		"@id": `${SITE_URL}/#website`,
+		url: SITE_URL,
+		name: SITE_NAME,
+		description: SITE_DESCRIPTION,
 		publisher: {
-			"@id": `${baseUrl}/#organization`,
+			"@id": `${SITE_URL}/#organization`,
 		},
 	};
 
-	const schemaJson = JSON.stringify(schema);
-
-	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: schemaJson }}
-		/>
-	);
+	return <JsonLdScript schema={schema} />;
 }

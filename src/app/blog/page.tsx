@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { BlogClient } from "@/components/blog/blog-client";
-import {
-	getAllBlogPosts,
-	getBlogCategories,
-	getBlogTags,
-} from "@/lib/load-blog-posts";
+import { getUniqueCategories, getUniqueTags } from "@/lib/blog-utils";
+import { getAllBlogPosts } from "@/lib/load-blog-posts";
 
 export const revalidate = 3600;
 
@@ -16,8 +13,8 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
 	const allPosts = await getAllBlogPosts();
-	const categories = await getBlogCategories();
-	const tags = await getBlogTags();
+	const categories = getUniqueCategories(allPosts);
+	const tags = getUniqueTags(allPosts);
 
 	return (
 		<section className="py-16 md:py-20 lg:py-24">

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Filter, SortDesc, X } from "lucide-react";
 import * as React from "react";
-import type { BlogPost } from "@/lib/blog-utils";
+import { compareBlogPostsByNewest, type BlogPost } from "@/lib/blog-utils";
 import { BlogPostCard } from "./blog-post-card";
 
 interface BlogClientProps {
@@ -43,9 +43,7 @@ export function BlogClient({
 		}
 
 		if (sortBy === "date") {
-			filtered = filtered.sort(
-				(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-			);
+			filtered = filtered.sort(compareBlogPostsByNewest);
 		} else {
 			filtered = filtered.sort(
 				(a, b) => (a.readingTime || 0) - (b.readingTime || 0),

@@ -57,6 +57,34 @@ const experiences = [
 	},
 ];
 
+interface CompanyNameProps {
+	name: string;
+	url?: string;
+}
+
+function CompanyName({ name, url }: CompanyNameProps) {
+	if (!url) {
+		return (
+			<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+				{name}
+			</p>
+		);
+	}
+
+	return (
+		<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+			<a
+				href={url}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="hover:underline"
+			>
+				{name}
+			</a>
+		</p>
+	);
+}
+
 export function TimelineSection() {
 	return (
 		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
@@ -74,7 +102,7 @@ export function TimelineSection() {
 
 				<div className="space-y-6">
 					{experiences.map((exp, idx) => (
-						<ScrollReveal key={`${exp.company}-${idx}`} delay={idx * 120}>
+						<ScrollReveal key={`${exp.company}-${exp.period}`} delay={idx * 120}>
 							<motion.div
 								initial={{ opacity: 0, y: 12 }}
 								whileInView={{ opacity: 1, y: 0 }}
@@ -87,22 +115,7 @@ export function TimelineSection() {
 											Role
 										</p>
 										<h3 className="text-2xl font-semibold">{exp.title}</h3>
-										{exp.companyUrl ? (
-											<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
-												<a
-													href={exp.companyUrl}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="hover:underline"
-												>
-													{exp.company}
-												</a>
-											</p>
-										) : (
-											<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
-												{exp.company}
-											</p>
-										)}
+										<CompanyName name={exp.company} url={exp.companyUrl} />
 									</div>
 									<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
 										<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">

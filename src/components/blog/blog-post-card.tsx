@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog-utils";
+import { formatBlogDate } from "@/lib/utils";
 
 interface BlogPostCardProps {
 	post: BlogPost;
@@ -46,11 +47,7 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
 					<div className="mt-6 flex items-center justify-between border-t-2 border-border pt-4 text-xs text-muted-foreground">
 						<span className="flex items-center gap-1.5">
 							<Calendar className="h-3.5 w-3.5" />
-							{new Date(post.date).toLocaleDateString("en-US", {
-								month: "short",
-								day: "numeric",
-								year: "numeric",
-							})}
+							{formatBlogDate(post.date, "short")}
 						</span>
 						{post.readingTime && (
 							<span className="flex items-center gap-1.5">

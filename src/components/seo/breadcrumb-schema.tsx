@@ -1,3 +1,6 @@
+import { JsonLdScript } from "./json-ld-script";
+import { SITE_URL } from "@/lib/site-config";
+
 interface BreadcrumbItem {
 	name: string;
 	url: string;
@@ -8,7 +11,6 @@ interface BreadcrumbSchemaProps {
 }
 
 export function BreadcrumbSchema({ breadcrumbs }: BreadcrumbSchemaProps) {
-	const baseUrl = "https://itstarun.fyi";
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "BreadcrumbList",
@@ -16,16 +18,9 @@ export function BreadcrumbSchema({ breadcrumbs }: BreadcrumbSchemaProps) {
 			"@type": "ListItem",
 			position: index + 1,
 			name: crumb.name,
-			item: crumb.url.startsWith("http") ? crumb.url : `${baseUrl}${crumb.url}`,
+			item: crumb.url.startsWith("http") ? crumb.url : `${SITE_URL}${crumb.url}`,
 		})),
 	};
 
-	const schemaJson = JSON.stringify(schema);
-
-	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: schemaJson }}
-		/>
-	);
+	return <JsonLdScript schema={schema} />;
 }

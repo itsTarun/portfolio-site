@@ -10,6 +10,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
@@ -20,25 +21,25 @@ const fadeInUp = {
 const socialLinks = [
 	{
 		name: "Email",
-		href: "mailto:itstarun1994@gmail.com",
+		href: CONTACT_EMAIL_MAILTO,
 		icon: Mail,
-		description: "itstarun1994@gmail.com",
+		description: CONTACT_EMAIL,
 	},
 	{
 		name: "GitHub",
-		href: "https://github.com/itsTarun",
+		href: SOCIAL_LINKS.github,
 		icon: Github,
 		description: "github.com/itsTarun",
 	},
 	{
 		name: "LinkedIn",
-		href: "https://www.linkedin.com/in/iamtarun/",
+		href: SOCIAL_LINKS.linkedin,
 		icon: Linkedin,
 		description: "linkedin.com/in/iamtarun",
 	},
 	{
 		name: "Twitter",
-		href: "https://x.com/itstarun1381995",
+		href: SOCIAL_LINKS.twitter,
 		icon: Twitter,
 		description: "x.com/itstarun1381995",
 	},
@@ -88,7 +89,7 @@ export default function ContactPage() {
 								</CardHeader>
 								<CardContent>
 									<Button asChild size="lg">
-										<a href="mailto:itstarun1994@gmail.com">
+										<a href={CONTACT_EMAIL_MAILTO}>
 											<Mail className="h-4 w-4" />
 											Send me an email
 										</a>

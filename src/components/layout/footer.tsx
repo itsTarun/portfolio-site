@@ -2,20 +2,21 @@
 
 import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
+import { CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
 const socialLinks = [
-	{ href: "https://github.com/itsTarun", icon: Github, label: "GitHub" },
+	{ href: SOCIAL_LINKS.github, icon: Github, label: "GitHub" },
 	{
-		href: "https://www.linkedin.com/in/iamtarun/",
+		href: SOCIAL_LINKS.linkedin,
 		icon: Linkedin,
 		label: "LinkedIn",
 	},
 	{
-		href: "https://x.com/itstarun1381995",
+		href: SOCIAL_LINKS.twitter,
 		icon: Twitter,
 		label: "Twitter/X",
 	},
-	{ href: "mailto:itstarun1994@gmail.com", icon: Mail, label: "Email" },
+	{ href: CONTACT_EMAIL_MAILTO, icon: Mail, label: "Email" },
 ];
 
 const footerLinks = [

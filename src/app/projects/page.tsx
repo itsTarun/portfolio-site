@@ -217,9 +217,9 @@ export default function ProjectsPage() {
 												Key Highlights
 											</h4>
 											<div className="flex flex-wrap gap-2">
-												{project.highlights.map((highlight, idx) => (
+												{project.highlights.map((highlight) => (
 													<Badge
-														key={idx}
+														key={`${project.id}-${highlight}`}
 														variant="outline"
 														className="bg-background"
 													>

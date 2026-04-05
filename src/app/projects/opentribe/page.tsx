@@ -9,18 +9,20 @@ import {
 import type { Metadata } from "next";
 import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
+import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-
-const baseUrl = "https://itstarun.fyi";
 
 const projectData = PROJECTS.opentribe;
 
@@ -38,52 +40,36 @@ const technologies = [
 	"React Email",
 ];
 
-export const metadata: Metadata = {
+const keyFeatures = [
+	"Polkadot Blockchain Integration for verifiable transactions.",
+	"Grant Marketplace Aggregation to centralize funding opportunities.",
+	"Multi-Winner Bounties to incentivize community contributions.",
+	"Real-time Collaboration tools for organizations and teams.",
+	"Monorepo with Turborepo for streamlined development and deployment.",
+];
+
+export const metadata: Metadata = createProjectMetadata({
 	title: "OpenTribe - Web3 Talent Marketplace | Tarun Portfolio",
 	description:
 		"OpenTribe is a Polkadot ecosystem talent marketplace connecting organizations with developers, designers, and contributors.",
-	alternates: {
-		canonical: `${baseUrl}/projects/opentribe`,
-	},
-	openGraph: {
-		type: "website",
-		url: `${baseUrl}/projects/opentribe`,
-		title: "OpenTribe - Web3 Talent Marketplace",
-		description:
-			"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
-		siteName: "Tarun Portfolio",
-		images: [
-			{
-				url: "/opengraph-image",
-				width: 1200,
-				height: 630,
-				alt: "OpenTribe project case study",
-			},
-		],
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "OpenTribe - Web3 Talent Marketplace",
-		description:
-			"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
-		images: ["/opengraph-image"],
-	},
-};
+	path: "/projects/opentribe",
+	ogTitle: "OpenTribe - Web3 Talent Marketplace",
+	ogDescription:
+		"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
+	imageUrl: "/opengraph-image",
+	imageAlt: "OpenTribe project case study",
+});
 
 export default function OpenTribePage() {
-	const breadcrumbs = [
-		{ name: "Home", url: "/" },
-		{ name: "Projects", url: "/projects" },
-		{ name: "OpenTribe", url: "/projects/opentribe" },
-	];
+	const breadcrumbs = buildProjectBreadcrumbs("OpenTribe", "opentribe");
 
 	return (
 		<>
 			<CreativeWorkSchema
 				name={projectData.name}
 				description={projectData.tagline}
-				url={`${baseUrl}/projects/opentribe`}
-				image={`${baseUrl}${projectData.imageUrl}`}
+				url={`${SITE_URL}/projects/opentribe`}
+				image={`${SITE_URL}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
 			/>
@@ -223,51 +209,7 @@ export default function OpenTribePage() {
 
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-6 text-2xl font-semibold">Key Features</h2>
-							<ul className="space-y-4">
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										1
-									</div>
-									<p className="text-muted-foreground">
-										Polkadot Blockchain Integration for verifiable transactions.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										2
-									</div>
-									<p className="text-muted-foreground">
-										Grant Marketplace Aggregation to centralize funding
-										opportunities.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										3
-									</div>
-									<p className="text-muted-foreground">
-										Multi-Winner Bounties to incentivize community
-										contributions.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										4
-									</div>
-									<p className="text-muted-foreground">
-										Real-time Collaboration tools for organizations and teams.
-									</p>
-								</li>
-								<li className="flex gap-3">
-									<div className="flex h-6 w-6 flex-shrink-0 items-center justify-center border-2 border-border text-xs font-semibold">
-										5
-									</div>
-									<p className="text-muted-foreground">
-										Monorepo with Turborepo for streamlined development and
-										deployment.
-									</p>
-								</li>
-							</ul>
+							<NumberedFeatureList features={keyFeatures} />
 						</div>
 
 						<div className="mb-12 neo-panel p-8">

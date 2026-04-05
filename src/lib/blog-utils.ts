@@ -27,6 +27,10 @@ export function calculateReadingTime(content: string): number {
 	return Math.ceil(stats.minutes);
 }
 
+export function compareBlogPostsByNewest(a: BlogPost, b: BlogPost): number {
+	return new Date(b.date).getTime() - new Date(a.date).getTime();
+}
+
 export function formatDate(dateString: string): string {
 	const date = new Date(dateString);
 	const now = new Date();
