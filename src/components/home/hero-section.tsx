@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
+import { PhoneMockup } from "@/components/ui/phone-mockup";
 import { CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
 const socialLinks = [
@@ -112,7 +113,14 @@ export function HeroSection() {
 							<span className="border-2 border-border bg-background px-3 py-1">
 								Based in India (IST)
 							</span>
-							<span className="border-2 border-border bg-background px-3 py-1">
+							<span className="flex items-center gap-2 border-2 border-border bg-background px-3 py-1">
+								<span
+									className="relative flex h-2 w-2 shrink-0"
+									aria-hidden="true"
+								>
+									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+									<span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+								</span>
 								Available for select work
 							</span>
 						</div>
@@ -135,28 +143,15 @@ export function HeroSection() {
 						initial={{ opacity: 0, y: 16 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.1 }}
-						className="space-y-6"
+						className="flex flex-col items-center gap-6"
 					>
-						<div className="neo-panel p-6">
-							<div className="mb-6 flex items-center justify-between">
+						<PhoneMockup />
+						<div className="neo-panel p-5 w-full">
+							<div className="mb-4 flex items-center justify-between">
 								<p className="eyebrow">Impact board</p>
 								<span className="neo-chip">2026</span>
 							</div>
 							<AnimatedCounter items={stats} />
-							<div className="mt-6 space-y-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-								<div className="flex items-center justify-between border-t-2 border-border pt-4">
-									<span>Focus</span>
-									<span className="text-foreground">
-										Mobile UX, Reliability, Release Quality
-									</span>
-								</div>
-								<div className="flex items-center justify-between">
-									<span>Stack</span>
-									<span className="text-foreground">
-										iOS, Flutter, Firebase
-									</span>
-								</div>
-							</div>
 						</div>
 					</motion.div>
 				</div>
