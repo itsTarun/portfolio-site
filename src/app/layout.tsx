@@ -8,6 +8,7 @@ import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { PersonSchema } from "@/components/seo/person-schema";
 import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
+import { EasterEgg } from "@/components/ui/easter-egg";
 import { OG_IMAGE_SIZE, SITE_NAME, SITE_URL } from "@/lib/site-config";
 
 const displayFont = Bricolage_Grotesque({
@@ -119,6 +120,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
+					<EasterEgg />
 					<ScrollProgress />
 					<div className="flex min-h-screen flex-col">
 						<Header />
