@@ -1,6 +1,7 @@
 import { BookOpen, ExternalLink, GitBranch, Globe } from "lucide-react";
 import type { Metadata } from "next";
 import { PROJECTS } from "@/config/projects";
+import Image from "next/image";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
@@ -16,7 +17,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 
 const projectData = PROJECTS.repoPress;
 
@@ -39,7 +39,7 @@ const keyFeatures = [
 export const metadata: Metadata = createProjectMetadata({
 	title: "Repo Press - Git-native MDX Editor | Tarun Portfolio",
 	description:
-		"RepoPress connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
+		"Repo Press connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
 	path: "/projects/repo-press",
 	ogTitle: "Repo Press - Git-native MDX Editor",
 	ogDescription:

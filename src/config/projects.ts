@@ -67,8 +67,8 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		category: "web",
 		featured: true,
 		githubUrl: "https://github.com/itsyogesh/repo-press",
-		imageUrl: "/images/projects/repo-press-og.png",
+		imageUrl: "/images/projects/repo-press.webp",
 		description:
-			"RepoPress connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
+			"Repo Press connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
 	},
 };

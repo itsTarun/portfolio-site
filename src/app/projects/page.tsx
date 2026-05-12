@@ -114,7 +114,7 @@ const flagshipProjects = [
 		description:
 			"Git-native MDX editing — a Notion-like experience for your GitHub-hosted content",
 		longDescription:
-			"<a href='https://repo-press.vercel.app/' target='_blank' rel='noopener noreferrer' class='underline'>RepoPress</a> connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content. Unlike traditional headless CMSs that lock your data in proprietary databases, RepoPress keeps everything in Git — your content, your history, your rules.",
+			"<a href='https://repo-press.vercel.app/' target='_blank' rel='noopener noreferrer' class='underline'>Repo Press</a> connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content. Unlike traditional headless CMSs that lock your data in proprietary databases, Repo Press keeps everything in Git — your content, your history, your rules.",
 		technologies: [
 			"Next.js",
 			"TypeScript",
@@ -199,7 +199,7 @@ export default function ProjectsPage() {
 											<div className="flex gap-2">
 												<Button asChild className="shrink-0">
 													<Link href={`/projects/${project.id}`}>
-													View Project
+														View Project
 													</Link>
 												</Button>
 												{project.githubUrl && (
