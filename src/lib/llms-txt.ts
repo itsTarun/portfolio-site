@@ -33,7 +33,6 @@ export function buildLlmsTxt(): string {
 		"## Links",
 		`- About: ${BASE_URL}/about`,
 		`- Projects: ${BASE_URL}/projects`,
-		`- Blog: ${BASE_URL}/blog`,
 		`- Contact: ${BASE_URL}/contact`,
 		`- GitHub: ${SOCIAL_LINKS.github}`,
 		`- LinkedIn: ${SOCIAL_LINKS.linkedin}`,
