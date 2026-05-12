@@ -36,8 +36,8 @@ const experiences = [
 		company: "DailyObjects",
 		period: "Jan 2020 - Aug 2021",
 		description:
-			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates. Improved organic search visibility and paid ad conversion rates through SEO-optimized app store listings and targeted ASO strategies.",
-		technologies: ["iOS", "FCM", "REST APIs", "UIKit", "ASO", "SEO"],
+			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates. Worked closely with product and marketing teams to improve App Store listings, release quality, and user acquisition flows.",
+		technologies: ["iOS", "FCM", "REST APIs", "UIKit", "App Store"],
 	},
 	{
 		title: "iOS Developer",
@@ -94,8 +94,8 @@ export function TimelineSection() {
 						<p className="eyebrow mb-4">Credibility</p>
 						<h2 className="section-title">Experience that ships.</h2>
 						<p className="section-subtitle mt-4 max-w-2xl">
-							A focused timeline of web and mobile products delivered with
-							reliable engineering and clear outcomes.
+							A timeline of products I&apos;ve helped design, build, and ship
+							across mobile platforms.
 						</p>
 					</div>
 				</ScrollReveal>
