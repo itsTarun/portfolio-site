@@ -21,5 +21,6 @@ describe("llms.txt route", () => {
 		expect(content).toContain("# Tarun Sharma — Mobile App Developer");
 		expect(content).toContain("## Projects");
 		expect(content).toContain("## Links");
+		expect(content).not.toContain("/blog");
 	});
 });
