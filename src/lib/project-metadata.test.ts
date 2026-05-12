@@ -10,7 +10,7 @@ describe("createProjectMetadata", () => {
 			ogTitle: "OpenTribe - Web3 Talent Marketplace",
 			ogDescription: "OpenGraph description",
 			imageUrl: "/opengraph-image",
-			imageAlt: "OpenTribe project case study",
+			imageAlt: "OpenTribe project overview",
 		});
 
 		expect(metadata.alternates?.canonical).toBe(

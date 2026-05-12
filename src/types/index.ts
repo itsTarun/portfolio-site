@@ -2,6 +2,7 @@ export const PROJECT_SLUGS = [
 	"chargespot",
 	"domain-collective",
 	"opentribe",
+	"repo-press",
 ] as const;
 
 export type ProjectSlug = (typeof PROJECT_SLUGS)[number];

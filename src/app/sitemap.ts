@@ -20,6 +20,7 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
 		priority: 0.8,
 	},
 	{ path: "/projects/opentribe", changeFrequency: "monthly", priority: 0.8 },
+	{ path: "/projects/repo-press", changeFrequency: "monthly", priority: 0.8 },
 	{ path: "/blog", changeFrequency: "weekly", priority: 0.8 },
 	{ path: "/contact", changeFrequency: "monthly", priority: 0.7 },
 	{ path: "/privacy", changeFrequency: "yearly", priority: 0.6 },

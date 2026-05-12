@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Layout, Smartphone } from "lucide-react";
+import { BookOpen, ExternalLink, Globe, Layout, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -108,6 +108,32 @@ const flagshipProjects = [
 		githubUrl: null,
 		liveUrl: "https://collective.domains/",
 	},
+	{
+		id: "repo-press",
+		title: "Repo Press",
+		description:
+			"Git-native MDX editing — a Notion-like experience for your GitHub-hosted content",
+		longDescription:
+			"<a href='https://repo-press.vercel.app/' target='_blank' rel='noopener noreferrer' class='underline'>RepoPress</a> connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content. Unlike traditional headless CMSs that lock your data in proprietary databases, RepoPress keeps everything in Git — your content, your history, your rules.",
+		technologies: [
+			"Next.js",
+			"TypeScript",
+			"GitHub API",
+			"MDX",
+			"Tailwind CSS",
+		],
+		category: "web",
+		icon: BookOpen,
+		highlights: [
+			"GitHub Repository Integration",
+			"Notion-like MDX Editor",
+			"Git-native Content Storage",
+			"No Proprietary Lock-in",
+			"Full Edit History via Git",
+		],
+		githubUrl: "https://github.com/itsyogesh/repo-press",
+		liveUrl: "https://repo-press.vercel.app/",
+	},
 ];
 
 const fadeInUp = {
@@ -141,9 +167,9 @@ export default function ProjectsPage() {
 						className="mb-12"
 					>
 						<p className="eyebrow mb-3">Projects</p>
-						<h1 className="section-title">Flagship case studies</h1>
+						<h1 className="section-title">Flagship projects</h1>
 						<p className="section-subtitle mt-4 max-w-2xl">
-							Deep dives into the products I&apos;ve shaped across web and
+							Deep dives into the products I&apos;ve shipped across web and
 							mobile.
 						</p>
 					</motion.div>
@@ -173,9 +199,29 @@ export default function ProjectsPage() {
 											<div className="flex gap-2">
 												<Button asChild className="shrink-0">
 													<Link href={`/projects/${project.id}`}>
-														View Case Study
+													View Project
 													</Link>
 												</Button>
+												{project.githubUrl && (
+													<Button
+														asChild
+														variant="outline"
+														className="shrink-0"
+													>
+														<a
+															href={project.githubUrl}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="gap-2"
+														>
+															<ExternalLink className="h-4 w-4" />
+															<span className="hidden sm:inline">
+																GitHub
+															</span>
+															<span className="sm:hidden">GitHub</span>
+														</a>
+													</Button>
+												)}
 												{project.liveUrl && (
 													<Button
 														asChild
