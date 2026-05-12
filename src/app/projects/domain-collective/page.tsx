@@ -30,21 +30,21 @@ const technologies = [
 	"Next.js 15",
 	"React 19",
 	"TypeScript",
-	"PostgreSQL",
-	"Prisma",
 	"Tailwind CSS",
 	"shadcn/ui",
 	"Better Auth",
+	"PostgreSQL",
+	"Prisma",
 	"BullMQ",
 	"Redis",
 ];
 
 const keyFeatures = [
-	"Provider abstraction layer for GoDaddy, Namecheap, Gandi, and other registrars.",
-	"Automated renewal tracking and expiration alerts across accounts.",
-	"Bulk DNS operations with background processing for safe, fast execution.",
-	"Usage analytics and cache strategy to reduce external API load and improve responsiveness.",
-	"End-to-end credential encryption and audit logs for secure team collaboration.",
+	"Contributed to frontend dashboard architecture for managing domain portfolios across providers.",
+	"Built UI workflows for domain search, DNS management, and renewal tracking.",
+	"Implemented responsive admin interfaces with Next.js App Router and TypeScript.",
+	"Worked on multi-registrar integration flows including GoDaddy, Namecheap, and Gandi.",
+	"Contributed to UI patterns for handling background job status and async provider updates.",
 ];
 
 export const metadata: Metadata = createProjectMetadata({
@@ -130,13 +130,13 @@ export default function DomainCollectivePage() {
 
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">
-								Why Domain Collective?
+								About Domain Collective
 							</h2>
 							<p className="mb-4 text-muted-foreground">
-								Managing domains across different registrars means fragmented
-								workflows, inconsistent APIs, and security risk from scattered
-								credentials. Domain Collective unifies this into one control
-								plane.
+								Domain Collective is a multi-registrar domain management
+								platform. I contributed to frontend architecture, dashboard
+								workflows, and scalable UI systems for managing domains across
+								providers including GoDaddy, Namecheap, and Gandi.
 							</p>
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
@@ -192,21 +192,39 @@ export default function DomainCollectivePage() {
 
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
-							<p className="mb-4 text-muted-foreground">
-								Built on Next.js App Router with TypeScript and Prisma, backed
-								by asynchronous workers for registrar sync and high-volume
-								domain operations.
-							</p>
-							<div className="flex flex-wrap gap-2">
-								{technologies.map((tech) => (
-									<Badge
-										key={tech}
-										variant="secondary"
-										className="text-sm font-medium"
-									>
-										{tech}
-									</Badge>
-								))}
+							<div className="space-y-4">
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Frontend
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "Better Auth"].map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Backend & Infrastructure
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{["PostgreSQL", "Prisma", "BullMQ", "Redis"].map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -249,33 +267,33 @@ export default function DomainCollectivePage() {
 							<h2 className="mb-4 text-2xl font-semibold">What I Learned</h2>
 							<div className="grid gap-4 md:grid-cols-2">
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Abstraction First</h3>
+									<h3 className="mb-2 font-semibold">Managing Complexity</h3>
 									<p className="text-sm text-muted-foreground">
-										Consistent domain operations come from normalizing provider
-										APIs into strict internal contracts.
+										Working across multiple registrar integrations showed how
+										important consistent data normalization is for reliable
+										user-facing workflows.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Security by Default</h3>
+									<h3 className="mb-2 font-semibold">Security Awareness</h3>
 									<p className="text-sm text-muted-foreground">
-										Credentials and domain actions need encryption, audit logs,
-										and failure isolation from day one.
+										Learned the importance of encrypted credentials and secure
+										operations when contributing to systems handling sensitive
+										provider keys.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Background Jobs Matter</h3>
+									<h3 className="mb-2 font-semibold">Async Operations</h3>
 									<p className="text-sm text-muted-foreground">
-										Queue-backed bulk operations keep user interactions fast
-										while handling variable registrar response times.
+										Understood how queue-backed operations improve UX when
+										dealing with slow or variable external API response times.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">
-										Visibility Drives Trust
-									</h3>
+									<h3 className="mb-2 font-semibold">Data Clarity Matters</h3>
 									<p className="text-sm text-muted-foreground">
-										Clear portfolio and renewal status is as important as API
-										integration correctness.
+										Clear domain portfolio and renewal status is as important
+										as integration correctness for building user confidence.
 									</p>
 								</div>
 							</div>
