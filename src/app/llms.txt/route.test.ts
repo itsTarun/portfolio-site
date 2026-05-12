@@ -20,7 +20,28 @@ describe("llms.txt route", () => {
 		expect(response.headers.get("Content-Type")).toContain("text/plain");
 		expect(content).toContain("# Tarun Sharma — Mobile App Developer");
 		expect(content).toContain("## Projects");
-		expect(content).toContain("## Links");
+		expect(content).toContain("## Pages");
+		expect(content).toContain("## Optional");
 		expect(content).not.toContain("/blog");
+	});
+
+	it("uses proper markdown link format for all links", () => {
+		const content = buildLlmsTxt();
+
+		expect(content).toContain("- [About](");
+		expect(content).toContain("- [Projects](");
+		expect(content).toContain("- [Contact](");
+		expect(content).toContain("- [GitHub](");
+		expect(content).toContain("- [LinkedIn](");
+		expect(content).toContain("- [X](");
+		expect(content).toContain("- [Email](mailto:");
+	});
+
+	it("puts intro prose before any H2 section (not under a heading)", () => {
+		const content = buildLlmsTxt();
+		const firstH2Index = content.indexOf("\n## ");
+
+		expect(firstH2Index).toBeGreaterThan(-1);
+		expect(content.slice(0, firstH2Index)).toContain("Mobile developer based in Delhi");
 	});
 });

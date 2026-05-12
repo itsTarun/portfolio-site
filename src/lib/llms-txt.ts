@@ -12,7 +12,7 @@ function getProjectLines(): string[] {
 
 			return a.name.localeCompare(b.name);
 		})
-		.map((project) => `- [${project.name}](${project.url}) — ${project.tagline}`);
+		.map((project) => `- [${project.name}](${project.url}): ${project.tagline}`);
 }
 
 export function buildLlmsTxt(): string {
@@ -21,23 +21,21 @@ export function buildLlmsTxt(): string {
 		"",
 		"> iOS and Flutter developer focused on stable releases and product quality.",
 		"",
-		"## About",
-		"Mobile developer based in Delhi, India, building and shipping iOS and Flutter products since 2018.",
+		"Mobile developer based in Delhi, India, building and shipping iOS and Flutter products since 2018. Specialises in iOS and Flutter with experience in UIKit, VIPER Architecture, Firebase, FCM, Crashlytics, and App Store deployments.",
 		"",
 		"## Projects",
 		...getProjectLines(),
 		"",
-		"## Skills",
-		"iOS, Flutter, Dart, UIKit, VIPER Architecture, Firebase, FCM, Crashlytics, App Store, Git",
+		"## Pages",
+		`- [About](${BASE_URL}/about): Background, experience, and skills`,
+		`- [Projects](${BASE_URL}/projects): All projects`,
+		`- [Contact](${BASE_URL}/contact): Get in touch`,
 		"",
-		"## Links",
-		`- About: ${BASE_URL}/about`,
-		`- Projects: ${BASE_URL}/projects`,
-		`- Contact: ${BASE_URL}/contact`,
-		`- GitHub: ${SOCIAL_LINKS.github}`,
-		`- LinkedIn: ${SOCIAL_LINKS.linkedin}`,
-		`- X: ${SOCIAL_LINKS.twitter}`,
-		`- Email: mailto:${CONTACT_EMAIL}`,
+		"## Optional",
+		`- [GitHub](${SOCIAL_LINKS.github})`,
+		`- [LinkedIn](${SOCIAL_LINKS.linkedin})`,
+		`- [X](${SOCIAL_LINKS.twitter})`,
+		`- [Email](mailto:${CONTACT_EMAIL})`,
 		"",
 	].join("\n");
 }
