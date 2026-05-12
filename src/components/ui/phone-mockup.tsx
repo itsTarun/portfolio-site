@@ -294,7 +294,7 @@ export function PhoneMockup() {
 	};
 
 	return (
-		<div className="flex flex-col items-center gap-3">
+		<div className="flex flex-col items-center gap-3" aria-hidden="true">
 			{/* Phone frame */}
 			<motion.div
 				animate={{ y: [0, -6, 0] }}
@@ -404,9 +404,9 @@ export function PhoneMockup() {
 					{screens[current].label}
 				</p>
 				<div className="flex gap-1.5">
-					{screens.map((_, i) => (
+					{screens.map((screen, i) => (
 						<button
-							key={screens[i].id}
+							key={screen.id}
 							type="button"
 							onClick={() => {
 								setDirection(i > current ? 1 : -1);
@@ -417,7 +417,7 @@ export function PhoneMockup() {
 									? "w-5 bg-foreground"
 									: "w-1.5 bg-muted-foreground/40"
 							}`}
-							aria-label={`View ${screens[i].label}`}
+							aria-label={`View ${screen.label}`}
 						/>
 					))}
 				</div>

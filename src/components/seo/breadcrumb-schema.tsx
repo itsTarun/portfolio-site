@@ -1,5 +1,5 @@
-import { JsonLdScript } from "./json-ld-script";
 import { SITE_URL } from "@/lib/site-config";
+import { JsonLdScript } from "./json-ld-script";
 
 interface BreadcrumbItem {
 	name: string;
@@ -18,7 +18,9 @@ export function BreadcrumbSchema({ breadcrumbs }: BreadcrumbSchemaProps) {
 			"@type": "ListItem",
 			position: index + 1,
 			name: crumb.name,
-			item: crumb.url.startsWith("http") ? crumb.url : `${SITE_URL}${crumb.url}`,
+			item: crumb.url.startsWith("http")
+				? crumb.url
+				: `${SITE_URL}${crumb.url}`,
 		})),
 	};
 

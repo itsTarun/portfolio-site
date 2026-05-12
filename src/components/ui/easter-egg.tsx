@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Terminal, Trophy, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const KONAMI_CODE = [
 	"ArrowUp",
@@ -27,7 +27,9 @@ const CONSOLE_STYLES = {
 
 export function EasterEgg() {
 	const [showModal, setShowModal] = useState(false);
-	const [_sequence, setSequence] = useState<string[]>([]);
+	// useRef avoids triggering a re-render on every keydown (component is global in layout.tsx)
+	const sequenceRef = useRef<string[]>([]);
+	const closeButtonRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		// Styled console message for developers who open DevTools
@@ -52,29 +54,40 @@ export function EasterEgg() {
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			setSequence((prev) => {
-				const next = [...prev, e.key].slice(-KONAMI_CODE.length);
-				if (next.join(",") === KONAMI_CODE.join(",")) {
-					setShowModal(true);
-				}
-				return next;
-			});
+			// Ignore events with modifier keys and auto-repeated keys
+			if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
+
+			// Normalize single-character keys to lowercase so B/b and A/a both match
+			const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+
+			const next = [...sequenceRef.current, key].slice(-KONAMI_CODE.length);
+			sequenceRef.current = next;
+
+			if (next.join(",") === KONAMI_CODE.join(",")) {
+				setShowModal(true);
+			}
 		};
 
 		window.addEventListener("keydown", handleKeyDown);
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
 
-	// Prevent body scroll when modal is open
+	// Focus the close button when the modal opens (accessible dialog pattern)
 	useEffect(() => {
 		if (showModal) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "";
+			closeButtonRef.current?.focus();
 		}
-		return () => {
-			document.body.style.overflow = "";
-		};
+	}, [showModal]);
+
+	// Prevent body scroll when modal is open; restore the original overflow value on close
+	useEffect(() => {
+		if (showModal) {
+			const previousOverflow = document.body.style.overflow;
+			document.body.style.overflow = "hidden";
+			return () => {
+				document.body.style.overflow = previousOverflow;
+			};
+		}
 	}, [showModal]);
 
 	return (
@@ -95,9 +108,18 @@ export function EasterEgg() {
 						exit={{ scale: 0.85, y: 20 }}
 						transition={{ type: "spring", damping: 20, stiffness: 300 }}
 						onClick={(e) => e.stopPropagation()}
+						onKeyDown={(e) => {
+							if (e.key === "Escape") {
+								setShowModal(false);
+							}
+						}}
+						role="dialog"
+						aria-modal="true"
+						aria-labelledby="easter-egg-dialog-title"
 						className="neo-panel relative mx-4 max-w-sm w-full p-8 text-center"
 					>
 						<button
+							ref={closeButtonRef}
 							type="button"
 							onClick={() => setShowModal(false)}
 							className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
@@ -123,7 +145,12 @@ export function EasterEgg() {
 							transition={{ delay: 0.15 }}
 						>
 							<p className="eyebrow mb-3">Achievement Unlocked</p>
-							<h2 className="mb-2 text-2xl font-bold">Konami Master 🎮</h2>
+							<h2
+								id="easter-egg-dialog-title"
+								className="mb-2 text-2xl font-bold"
+							>
+								Konami Master 🎮
+							</h2>
 							<p className="mb-6 text-sm text-muted-foreground">
 								You entered ↑ ↑ ↓ ↓ ← → ← → B A — only a true dev would know
 								this.

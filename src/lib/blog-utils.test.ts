@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareBlogPostsByNewest, type BlogPost } from "./blog-utils";
+import { type BlogPost, compareBlogPostsByNewest } from "./blog-utils";
 
 const makePost = (id: string, date: string): BlogPost => ({
 	id,

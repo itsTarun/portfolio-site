@@ -24,7 +24,12 @@ function ThemeToggleButton({
 	onToggle: () => void;
 }) {
 	return (
-		<Button variant="ghost" size="icon" onClick={onToggle} aria-label="Toggle theme">
+		<Button
+			variant="ghost"
+			size="icon"
+			onClick={onToggle}
+			aria-label="Toggle theme"
+		>
 			{theme === "dark" ? (
 				<Sun className="h-5 w-5" />
 			) : (
@@ -118,11 +123,15 @@ export function Header() {
 						<Button asChild size="sm" className="ml-2">
 							<Link href="/contact">Let&apos;s Talk</Link>
 						</Button>
-						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
+						{mounted && (
+							<ThemeToggleButton theme={theme} onToggle={toggleTheme} />
+						)}
 					</div>
 
 					<div className="flex items-center gap-2 md:hidden">
-						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
+						{mounted && (
+							<ThemeToggleButton theme={theme} onToggle={toggleTheme} />
+						)}
 						<Button
 							variant="ghost"
 							size="icon"

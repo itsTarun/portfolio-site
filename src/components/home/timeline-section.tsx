@@ -102,7 +102,10 @@ export function TimelineSection() {
 
 				<div className="space-y-6">
 					{experiences.map((exp, idx) => (
-						<ScrollReveal key={`${exp.company}-${exp.period}`} delay={idx * 120}>
+						<ScrollReveal
+							key={`${exp.company}-${exp.period}`}
+							delay={idx * 120}
+						>
 							<motion.div
 								initial={{ opacity: 0, y: 12 }}
 								whileInView={{ opacity: 1, y: 0 }}

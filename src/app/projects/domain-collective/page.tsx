@@ -7,22 +7,22 @@ import {
 	Lock,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
-import { createProjectMetadata } from "@/lib/project-metadata";
-import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { PROJECTS } from "@/config/projects";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 
 const projectData = PROJECTS.domainCollective;
 
