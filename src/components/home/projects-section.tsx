@@ -52,7 +52,7 @@ function ProjectCard({
 						</div>
 					</div>
 					<span className="mb-6 ml-6 text-xs font-semibold uppercase tracking-[0.2em] text-foreground">
-						View case study →
+						View project →
 					</span>
 				</Link>
 			</motion.div>
@@ -69,10 +69,10 @@ export function ProjectsSection() {
 				<ScrollReveal>
 					<div className="mb-12">
 						<p className="eyebrow mb-4">Selected Work</p>
-						<h2 className="section-title">Case studies with range.</h2>
+						<h2 className="section-title">Builds with range.</h2>
 						<p className="section-subtitle mt-4 max-w-2xl">
-							From mobile-first products to platform builds, each project
-							balances speed, usability, and long-term stability.
+							Shipped products and tools across mobile and web — built, iterated,
+							and used in the real world.
 						</p>
 					</div>
 				</ScrollReveal>

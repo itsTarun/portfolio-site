@@ -57,7 +57,7 @@ export const metadata: Metadata = createProjectMetadata({
 	ogDescription:
 		"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
 	imageUrl: "/opengraph-image",
-	imageAlt: "OpenTribe project case study",
+	imageAlt: "OpenTribe project overview",
 });
 
 export default function OpenTribePage() {
