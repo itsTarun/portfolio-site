@@ -12,6 +12,7 @@ type StaticRouteConfig = {
 const STATIC_ROUTES: StaticRouteConfig[] = [
 	{ path: "", changeFrequency: "monthly", priority: 1 },
 	{ path: "/about", changeFrequency: "monthly", priority: 0.8 },
+	{ path: "/llms.txt", changeFrequency: "monthly", priority: 0.4 },
 	{ path: "/projects", changeFrequency: "weekly", priority: 0.9 },
 	{ path: "/projects/chargespot", changeFrequency: "monthly", priority: 0.8 },
 	{
