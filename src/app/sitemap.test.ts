@@ -6,6 +6,7 @@ describe("sitemap", () => {
 		const entries = await sitemap();
 		const urls = entries.map((entry) => entry.url);
 
+		expect(urls).toContain("https://itstarun.fyi/llms.txt");
 		expect(urls).toContain("https://itstarun.fyi/privacy");
 		expect(urls).toContain("https://itstarun.fyi/projects/chargespot");
 		expect(urls).toContain("https://itstarun.fyi/projects/domain-collective");
