@@ -1,5 +1,5 @@
-import { SITE_URL } from "@/lib/site-config";
 import { JsonLdScript } from "./json-ld-script";
+import { SITE_URL } from "@/lib/site-config";
 
 interface CreativeWorkSchemaProps {
 	name: string;

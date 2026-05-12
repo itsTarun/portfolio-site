@@ -11,11 +11,7 @@ describe("sortByDateDesc", () => {
 
 		const sorted = sortByDateDesc(items);
 
-		expect(sorted.map((item) => item.id)).toEqual([
-			"newest",
-			"middle",
-			"oldest",
-		]);
+		expect(sorted.map((item) => item.id)).toEqual(["newest", "middle", "oldest"]);
 	});
 
 	it("does not mutate the original array", () => {

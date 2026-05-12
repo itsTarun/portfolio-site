@@ -10,11 +10,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import {
-	CONTACT_EMAIL,
-	CONTACT_EMAIL_MAILTO,
-	SOCIAL_LINKS,
-} from "@/lib/site-config";
+import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
