@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { PROJECTS } from "@/config/projects";
-import { buildLlmsTxt, GET } from "./route";
+import { buildLlmsTxt } from "@/lib/llms-txt";
+import { GET } from "./route";
 
 describe("llms.txt route", () => {
 	it("builds project entries from shared project config", () => {
