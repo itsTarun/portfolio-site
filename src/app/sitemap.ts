@@ -11,6 +11,7 @@ type StaticRouteConfig = {
 const STATIC_ROUTES: StaticRouteConfig[] = [
 	{ path: "", changeFrequency: "monthly", priority: 1 },
 	{ path: "/about", changeFrequency: "monthly", priority: 0.8 },
+	{ path: "/llms.txt", changeFrequency: "monthly", priority: 0.4 },
 	{ path: "/projects", changeFrequency: "weekly", priority: 0.9 },
 	{ path: "/projects/chargespot", changeFrequency: "monthly", priority: 0.8 },
 	{
@@ -19,6 +20,7 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
 		priority: 0.8,
 	},
 	{ path: "/projects/opentribe", changeFrequency: "monthly", priority: 0.8 },
+	{ path: "/projects/repo-press", changeFrequency: "monthly", priority: 0.8 },
 	{ path: "/contact", changeFrequency: "monthly", priority: 0.7 },
 	{ path: "/privacy", changeFrequency: "yearly", priority: 0.6 },
 ];

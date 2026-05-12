@@ -57,4 +57,18 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		description:
 			"Multi-Registrar Platform for seamless domain management across multiple registrars with advanced search and bulk operations.",
 	},
+	repoPress: {
+		id: "repo-press",
+		name: "Repo Press",
+		slug: "repo-press",
+		url: "https://repo-press.vercel.app/",
+		tagline:
+			"Git-native MDX editing — your content, your history, your rules",
+		category: "web",
+		featured: true,
+		githubUrl: "https://github.com/itsyogesh/repo-press",
+		imageUrl: "/images/projects/repo-press.webp",
+		description:
+			"Repo Press connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
+	},
 };

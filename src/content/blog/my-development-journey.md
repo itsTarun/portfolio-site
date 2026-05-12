@@ -296,4 +296,4 @@ The journey continues. Every line of code, every bug fixed, every feature shippe
 
 ---
 
-*Have questions about my journey? Feel free to reach out or follow along on [Twitter/X](https://x.com/itstarun1381995)!*
+*Have questions about my journey? Feel free to reach out or follow along on [Twitter/X](https://x.com/itstarun1994)!*

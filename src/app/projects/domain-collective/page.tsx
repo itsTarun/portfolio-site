@@ -56,10 +56,10 @@ export const metadata: Metadata = createProjectMetadata({
 	ogDescription:
 		"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
 	imageUrl: "/opengraph-image",
-	imageAlt: "Domain Collective project case study",
+	imageAlt: "Domain Collective project overview",
 });
 
-export default function DomainCollectiveCaseStudy() {
+export default function DomainCollectivePage() {
 	const breadcrumbs = buildProjectBreadcrumbs(
 		"Domain Collective",
 		"domain-collective",
@@ -283,6 +283,7 @@ export default function DomainCollectiveCaseStudy() {
 
 						<NextProjectNav
 							previousProject={{ title: "OpenTribe", slug: "opentribe" }}
+							nextProject={{ title: "Repo Press", slug: "repo-press" }}
 						/>
 					</div>
 				</div>

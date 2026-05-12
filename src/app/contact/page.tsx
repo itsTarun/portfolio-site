@@ -41,7 +41,7 @@ const socialLinks = [
 		name: "Twitter",
 		href: SOCIAL_LINKS.twitter,
 		icon: Twitter,
-		description: "x.com/itstarun1381995",
+		description: "x.com/itstarun1994",
 	},
 ];
 
