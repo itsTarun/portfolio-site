@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getAllBlogPosts } from "@/lib/load-blog-posts";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://itstarun.fyi";
 
@@ -20,7 +19,6 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
 		priority: 0.8,
 	},
 	{ path: "/projects/opentribe", changeFrequency: "monthly", priority: 0.8 },
-	{ path: "/blog", changeFrequency: "weekly", priority: 0.8 },
 	{ path: "/contact", changeFrequency: "monthly", priority: 0.7 },
 	{ path: "/privacy", changeFrequency: "yearly", priority: 0.6 },
 ];
@@ -43,13 +41,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		buildStaticSitemapEntry(route, now),
 	);
 
-	const posts = await getAllBlogPosts();
-	const postUrls = posts.map((post) => ({
-		url: `${baseUrl}/blog/${post.id}`,
-		lastModified: new Date(post.date),
-		changeFrequency: "monthly" as const,
-		priority: 0.6,
-	}));
-
-	return [...staticPages, ...postUrls];
+	return staticPages;
 }
