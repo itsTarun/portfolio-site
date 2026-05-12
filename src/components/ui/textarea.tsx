@@ -8,7 +8,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 	({ className, ...props }, ref) => {
 		return (
 			<textarea
-				className={cn(textareaFieldClasses, className)}
+				className={cn(
+					textareaFieldClasses,
+					className,
+				)}
 				ref={ref}
 				{...props}
 			/>

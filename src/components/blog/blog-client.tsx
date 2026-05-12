@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Filter, SortDesc, X } from "lucide-react";
 import * as React from "react";
-import { type BlogPost, compareBlogPostsByNewest } from "@/lib/blog-utils";
+import { compareBlogPostsByNewest, type BlogPost } from "@/lib/blog-utils";
 import { BlogPostCard } from "./blog-post-card";
 
 interface BlogClientProps {

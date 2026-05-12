@@ -1,10 +1,10 @@
+import { JsonLdScript } from "./json-ld-script";
 import {
 	CONTACT_EMAIL,
 	SITE_DESCRIPTION,
 	SITE_URL,
 	SOCIAL_PROFILE_URLS,
 } from "@/lib/site-config";
-import { JsonLdScript } from "./json-ld-script";
 
 export function OrganizationSchema() {
 	const schema = {
