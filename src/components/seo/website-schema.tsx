@@ -1,5 +1,5 @@
-import { JsonLdScript } from "./json-ld-script";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { JsonLdScript } from "./json-ld-script";
 
 export function WebSiteSchema() {
 	const schema = {
