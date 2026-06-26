@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ const flagshipProjects = [
 	{
 		id: "chargespot",
 		title: "Chargespot",
+		imageUrl: "/images/projects/chargespot.webp",
 		description:
 			"EV charging station finder and management platform for India. Real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island, and multi-wallet payments.",
 		technologies: [
@@ -37,6 +39,7 @@ const flagshipProjects = [
 	{
 		id: "opentribe",
 		title: "OpenTribe",
+		imageUrl: "/images/projects/opentribe.webp",
 		description:
 			"Talent marketplace for the Polkadot ecosystem. Connects Web3 organizations with skilled developers and contributors via grant aggregation, bounty management, and real-time collaboration tools.",
 		technologies: [
@@ -63,6 +66,7 @@ const flagshipProjects = [
 	{
 		id: "domain-collective",
 		title: "Domain Collective",
+		imageUrl: "/images/projects/domain-collective.webp",
 		description:
 			"Unified domain management across GoDaddy, Namecheap, Gandi, Porkbun, Name.com, and Cloudflare. Manage domains, DNS records, and nameservers from a single interface with encrypted credential storage.",
 		technologies: [
@@ -89,6 +93,7 @@ const flagshipProjects = [
 	{
 		id: "repo-press",
 		title: "Repo Press",
+		imageUrl: "/images/projects/repo-press.webp",
 		description:
 			"Git-native MDX editing with a Notion-like experience for GitHub-hosted content. Connects to your repositories and keeps everything in Git — your content, your history, your rules.",
 		technologies: [
@@ -156,48 +161,59 @@ export default function ProjectsPage() {
 							<motion.div
 								key={project.id}
 								variants={fadeInUp}
-								className="neo-panel flex flex-col p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+								className="neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 							>
-								<div className="mb-4 flex items-start justify-between gap-4">
-									<h2 className="text-2xl font-semibold">{project.title}</h2>
-									<div className="flex gap-2">
-										<Button asChild size="sm">
-											<Link href={`/projects/${project.id}`}>View</Link>
-										</Button>
-										{project.liveUrl && (
-											<Button asChild size="sm" variant="outline">
-												<a
-													href={project.liveUrl}
-													target="_blank"
-													rel="noopener noreferrer"
-													aria-label={`${project.title} live site`}
-												>
-													<ExternalLink className="h-3.5 w-3.5" />
-												</a>
-											</Button>
-										)}
-									</div>
+								<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
+									<Image
+										src={project.imageUrl}
+										alt={`${project.title} screenshot`}
+										fill
+										className="object-cover"
+									/>
 								</div>
 
-								<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
-									{project.description}
-								</p>
+								<div className="flex flex-col flex-1 p-6">
+									<div className="mb-4 flex items-start justify-between gap-4">
+										<h2 className="text-2xl font-semibold">{project.title}</h2>
+										<div className="flex gap-2">
+											<Button asChild size="sm">
+												<Link href={`/projects/${project.id}`}>View</Link>
+											</Button>
+											{project.liveUrl && (
+												<Button asChild size="sm" variant="outline">
+													<a
+														href={project.liveUrl}
+														target="_blank"
+														rel="noopener noreferrer"
+														aria-label={`${project.title} live site`}
+													>
+														<ExternalLink className="h-3.5 w-3.5" />
+													</a>
+												</Button>
+											)}
+										</div>
+									</div>
 
-								<div className="border-t-2 border-border pt-4">
-									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-										Stack
+									<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
+										{project.description}
 									</p>
-									<div className="flex flex-wrap gap-1.5">
-										{project.technologies.slice(0, 6).map((tech) => (
-											<Badge key={tech} variant="secondary">
-												{tech}
-											</Badge>
-										))}
-										{project.technologies.length > 6 && (
-											<Badge variant="outline">
-												+{project.technologies.length - 6}
-											</Badge>
-										)}
+
+									<div className="border-t-2 border-border pt-4">
+										<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+											Stack
+										</p>
+										<div className="flex flex-wrap gap-1.5">
+											{project.technologies.slice(0, 6).map((tech) => (
+												<Badge key={tech} variant="secondary">
+													{tech}
+												</Badge>
+											))}
+											{project.technologies.length > 6 && (
+												<Badge variant="outline">
+													+{project.technologies.length - 6}
+												</Badge>
+											)}
+										</div>
 									</div>
 								</div>
 							</motion.div>
