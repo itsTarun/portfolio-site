@@ -23,7 +23,12 @@ function ThemeToggleButton({
 	onToggle: () => void;
 }) {
 	return (
-		<Button variant="ghost" size="icon" onClick={onToggle} aria-label="Toggle theme">
+		<Button
+			variant="ghost"
+			size="icon"
+			onClick={onToggle}
+			aria-label="Toggle theme"
+		>
 			{theme === "dark" ? (
 				<Sun className="h-5 w-5" />
 			) : (
@@ -58,17 +63,43 @@ export function Header() {
 		firstMenuLinkRef.current?.focus();
 
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key !== "Escape") {
+			if (event.key === "Escape") {
+				setIsMenuOpen(false);
+				menuButtonRef.current?.focus();
 				return;
 			}
 
-			setIsMenuOpen(false);
-			menuButtonRef.current?.focus();
+			if (event.key !== "Tab") return;
+
+			const menuEl = document.getElementById(mobileMenuId);
+			if (!menuEl) return;
+
+			const focusable = Array.from(
+				menuEl.querySelectorAll<HTMLElement>(
+					'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+				),
+			);
+			if (focusable.length === 0) return;
+
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+
+			if (event.shiftKey) {
+				if (document.activeElement === first) {
+					event.preventDefault();
+					last.focus();
+				}
+			} else {
+				if (document.activeElement === last) {
+					event.preventDefault();
+					first.focus();
+				}
+			}
 		};
 
 		window.addEventListener("keydown", handleKeyDown);
 		return () => window.removeEventListener("keydown", handleKeyDown);
-	}, [isMenuOpen]);
+	}, [isMenuOpen, mobileMenuId]);
 
 	const toggleTheme = () => {
 		const newTheme = theme === "dark" ? "light" : "dark";
@@ -117,11 +148,15 @@ export function Header() {
 						<Button asChild size="sm" className="ml-2">
 							<Link href="/contact">Let&apos;s Talk</Link>
 						</Button>
-						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
+						{mounted && (
+							<ThemeToggleButton theme={theme} onToggle={toggleTheme} />
+						)}
 					</div>
 
 					<div className="flex items-center gap-2 md:hidden">
-						{mounted && <ThemeToggleButton theme={theme} onToggle={toggleTheme} />}
+						{mounted && (
+							<ThemeToggleButton theme={theme} onToggle={toggleTheme} />
+						)}
 						<Button
 							variant="ghost"
 							size="icon"

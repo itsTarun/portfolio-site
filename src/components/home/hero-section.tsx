@@ -82,14 +82,14 @@ export function HeroSection() {
 								Available for select work
 							</span>
 						</div>
-						<div className="flex gap-4">
+						<div className="flex flex-wrap gap-2">
 							{socialLinks.map((social) => (
 								<a
 									key={social.label}
 									href={social.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+									className="inline-flex min-h-[44px] items-center border-2 border-border bg-background px-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 								>
 									{social.label}
 								</a>
