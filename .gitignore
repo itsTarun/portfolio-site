@@ -47,3 +47,5 @@ next-env.d.ts
 # .md
 *.md
 !docs/*.md
+!README.md
+!CLAUDE.md
