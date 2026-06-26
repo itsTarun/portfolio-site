@@ -4,19 +4,10 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
-
-const fadeInUp = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-};
+	CONTACT_EMAIL,
+	CONTACT_EMAIL_MAILTO,
+	SOCIAL_LINKS,
+} from "@/lib/site-config";
 
 const socialLinks = [
 	{
@@ -61,7 +52,6 @@ export default function ContactPage() {
 						transition={{ delay: 0.2 }}
 						className="mb-12"
 					>
-						<p className="eyebrow mb-3">Contact</p>
 						<h1 className="section-title">Let&apos;s start a conversation.</h1>
 						<p className="section-subtitle mt-4">
 							I&apos;m always open to new projects, collaborations, or product
@@ -69,65 +59,46 @@ export default function ContactPage() {
 						</p>
 					</motion.div>
 
-					<div className="grid gap-6 md:grid-cols-2">
-						<motion.div
-							variants={fadeInUp}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.3 }}
-							className="md:col-span-2"
-						>
-							<Card>
-								<CardHeader>
-									<CardTitle className="text-2xl font-semibold">
-										Let&apos;s Connect
-									</CardTitle>
-									<CardDescription>
-										I&apos;m always open to discussing new projects,
-										opportunities, or just having a chat about technology.
-									</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<Button asChild size="lg">
-										<a href={CONTACT_EMAIL_MAILTO}>
-											<Mail className="h-4 w-4" />
-											Send me an email
-										</a>
-									</Button>
-								</CardContent>
-							</Card>
-						</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.3 }}
+						className="mb-8 neo-panel p-8"
+					>
+						<p className="mb-6 text-base text-muted-foreground leading-relaxed">
+							Email is the fastest way to reach me. I typically respond within
+							one business day.
+						</p>
+						<Button asChild size="lg">
+							<a href={CONTACT_EMAIL_MAILTO}>
+								<Mail className="h-4 w-4" />
+								Send me an email
+							</a>
+						</Button>
+					</motion.div>
 
+					<div className="grid gap-4 md:grid-cols-2">
 						{socialLinks.map((social, index) => (
-							<motion.div
+							<motion.a
 								key={social.name}
+								href={social.href}
+								target="_blank"
+								rel="noopener noreferrer"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: 0.4 + index * 0.1 }}
+								transition={{ delay: 0.4 + index * 0.08 }}
+								className="neo-panel p-5 flex items-center gap-4 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 							>
-								<Card className="h-full transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
-									<CardHeader>
-										<div className="mb-2 flex h-10 w-10 items-center justify-center border-2 border-border">
-											<social.icon className="h-5 w-5" />
-										</div>
-										<CardTitle className="text-lg font-semibold">
-											{social.name}
-										</CardTitle>
-										<CardDescription>{social.description}</CardDescription>
-									</CardHeader>
-									<CardContent>
-										<Button asChild variant="outline" className="w-full">
-											<a
-												href={social.href}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												Connect
-											</a>
-										</Button>
-									</CardContent>
-								</Card>
-							</motion.div>
+								<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border-2 border-border">
+									<social.icon className="h-5 w-5" />
+								</div>
+								<div>
+									<p className="text-sm font-semibold">{social.name}</p>
+									<p className="text-xs text-muted-foreground">
+										{social.description}
+									</p>
+								</div>
+							</motion.a>
 						))}
 					</div>
 				</motion.div>

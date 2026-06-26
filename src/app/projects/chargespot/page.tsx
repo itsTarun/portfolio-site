@@ -1,6 +1,5 @@
-import { ExternalLink, Map as MapIcon, Zap } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/config/projects";
 import Image from "next/image";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
@@ -8,15 +7,10 @@ import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { PROJECTS } from "@/config/projects";
 import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
 import { createProjectMetadata } from "@/lib/project-metadata";
 import { SITE_URL } from "@/lib/site-config";
-import {
-	Card,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
 
 const technologies = [
 	"Flutter",
@@ -70,7 +64,6 @@ export default function ChargespotPage() {
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
 						<div className="mb-12 neo-panel p-8">
-							<p className="eyebrow mb-3">Mobile product</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
 									href={projectData.url}
@@ -114,7 +107,7 @@ export default function ChargespotPage() {
 							<Image
 								src={projectData.imageUrl}
 								alt={`${projectData.name} app screenshot`}
-								className="h-auto w-full rounded-lg"
+								className="h-auto w-full"
 								width={1920}
 								height={1080}
 								priority
@@ -123,34 +116,30 @@ export default function ChargespotPage() {
 
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">Why Chargespot?</h2>
-							<p className="text-muted-foreground mb-4">
+							<p className="text-muted-foreground mb-6 leading-relaxed">
 								Chargespot serves as a unified solution for EV owners and
 								drivers, addressing the fragmented charging infrastructure
 								across India.
 							</p>
-							<div className="grid gap-4 md:grid-cols-2">
-								<Card>
-									<CardHeader>
-										<div className="flex h-10 w-10 items-center justify-center border-2 border-border mb-4">
-											<MapIcon className="h-5 w-5 text-foreground" />
-										</div>
-										<CardTitle>Real-time Station Discovery</CardTitle>
-										<CardDescription>
-											Find charging stations near you with real-time updates
-										</CardDescription>
-									</CardHeader>
-								</Card>
-								<Card>
-									<CardHeader>
-										<div className="flex h-10 w-10 items-center justify-center border-2 border-border mb-4">
-											<Zap className="h-5 w-5 text-foreground" />
-										</div>
-										<CardTitle>AI-Powered Trip Planning</CardTitle>
-										<CardDescription>
-											Optimize your routes with intelligent route suggestions
-										</CardDescription>
-									</CardHeader>
-								</Card>
+							<div className="grid gap-6 border-t-2 border-border pt-6 md:grid-cols-2">
+								<div>
+									<h3 className="mb-1 text-sm font-semibold">
+										Real-time Station Discovery
+									</h3>
+									<p className="text-sm text-muted-foreground leading-relaxed">
+										Find charging stations near you with live availability
+										updates and turn-by-turn navigation.
+									</p>
+								</div>
+								<div>
+									<h3 className="mb-1 text-sm font-semibold">
+										AI-Powered Trip Planning
+									</h3>
+									<p className="text-sm text-muted-foreground leading-relaxed">
+										Optimize multi-stop routes with intelligent charging
+										waypoints based on vehicle range and station availability.
+									</p>
+								</div>
 							</div>
 						</div>
 
@@ -183,32 +172,12 @@ export default function ChargespotPage() {
 
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
-							<div className="grid gap-6 md:grid-cols-3">
-								<div>
-									<div className="text-4xl font-semibold text-foreground mb-2">
-										100%
-									</div>
-									<div className="text-sm text-muted-foreground">
-										User Satisfaction
-									</div>
-								</div>
-								<div>
-									<div className="text-4xl font-semibold text-foreground mb-2">
-										50+
-									</div>
-									<div className="text-sm text-muted-foreground">
-										Active Stations
-									</div>
-								</div>
-								<div>
-									<div className="text-4xl font-semibold text-foreground mb-2">
-										4.8
-									</div>
-									<div className="text-sm text-muted-foreground">
-										App Store Rating
-									</div>
-								</div>
-							</div>
+							<p className="text-muted-foreground leading-relaxed">
+								Shipped to the App Store with a 4.8 average rating, serving 50+
+								active charging stations across India. Stable production
+								releases with hands-on QA validation across every update cycle —
+								maintaining crash-free stability from day one.
+							</p>
 						</div>
 
 						<NextProjectNav

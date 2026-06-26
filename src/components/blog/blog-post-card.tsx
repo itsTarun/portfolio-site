@@ -23,7 +23,9 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
 			<Link href={`/blog/${post.id}`} className="h-full">
 				<div className="flex h-full flex-col justify-between neo-panel p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
 					<div>
-						<span className="eyebrow">{post.category}</span>
+						<span className="border-2 border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+							{post.category}
+						</span>
 						<h3 className="mt-3 text-xl font-semibold leading-tight">
 							{post.title}
 						</h3>

@@ -7,22 +7,22 @@ import {
 	Lock,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/config/projects";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
-import { createProjectMetadata } from "@/lib/project-metadata";
-import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { PROJECTS } from "@/config/projects";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 
 const projectData = PROJECTS.domainCollective;
 
@@ -80,7 +80,6 @@ export default function DomainCollectivePage() {
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
 						<div className="mb-12 neo-panel p-8">
-							<p className="eyebrow mb-3">Web application</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
 									href={projectData.url}
@@ -124,7 +123,7 @@ export default function DomainCollectivePage() {
 							<img
 								src={projectData.imageUrl}
 								alt={`${projectData.name} screenshot`}
-								className="w-full h-auto rounded-lg"
+								className="w-full h-auto"
 							/>
 						</div>
 

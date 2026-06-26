@@ -1,26 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Box, GraduationCap, MapPin, Smartphone, Wrench } from "lucide-react";
+import { GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const fadeInUp = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-};
-
-const containerVariants = {
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
-		},
-	},
-};
 
 const skills = [
 	{
@@ -33,7 +19,6 @@ const skills = [
 			"Coordinator Pattern",
 			"Protocol-Oriented Programming",
 		],
-		icon: Smartphone,
 	},
 	{
 		category: "Flutter",
@@ -45,7 +30,6 @@ const skills = [
 			"Crashlytics",
 			"Backend-Driven UI",
 		],
-		icon: Box,
 	},
 	{
 		category: "Tools & Workflow",
@@ -57,7 +41,6 @@ const skills = [
 			"Postman",
 			"Unit & UI Tests",
 		],
-		icon: Wrench,
 	},
 ];
 
@@ -175,7 +158,6 @@ export default function AboutPage() {
 							className="mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start"
 						>
 							<div>
-								<p className="eyebrow mb-3">About</p>
 								<h1 className="section-title">
 									Building mobile products with clarity.
 								</h1>
@@ -214,32 +196,21 @@ export default function AboutPage() {
 						</motion.div>
 
 						<motion.div
-							variants={containerVariants}
-							initial="initial"
-							animate="animate"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5 }}
 							className="mb-12"
 						>
-							<motion.h2
-								variants={fadeInUp}
-								className="mb-6 text-2xl font-semibold"
-							>
+							<h2 className="mb-6 text-2xl font-semibold">
 								Skills & Expertise
-							</motion.h2>
-							<div className="grid gap-6 md:grid-cols-3">
+							</h2>
+							<div className="grid gap-8 md:grid-cols-3">
 								{skills.map((skillGroup) => (
-									<motion.div
-										key={skillGroup.category}
-										variants={fadeInUp}
-										className="neo-panel p-6"
-									>
-										<div className="mb-4 flex items-center gap-3">
-											<div className="flex h-10 w-10 items-center justify-center border-2 border-border">
-												<skillGroup.icon className="h-5 w-5 text-foreground" />
-											</div>
-											<h3 className="text-lg font-semibold">
-												{skillGroup.category}
-											</h3>
-										</div>
+									<div key={skillGroup.category}>
+										<h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+											{skillGroup.category}
+										</h3>
 										<div className="flex flex-wrap gap-2">
 											{skillGroup.items.map((skill) => (
 												<Badge key={skill} variant="secondary">
@@ -247,28 +218,27 @@ export default function AboutPage() {
 												</Badge>
 											))}
 										</div>
-									</motion.div>
+									</div>
 								))}
 							</div>
 						</motion.div>
 
 						<motion.div
-							variants={containerVariants}
-							initial="initial"
-							animate="animate"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5 }}
 							className="mb-12"
 						>
-							<motion.h2
-								variants={fadeInUp}
-								className="mb-6 text-2xl font-semibold"
-							>
-								Experience
-							</motion.h2>
+							<h2 className="mb-6 text-2xl font-semibold">Experience</h2>
 							<div className="space-y-6">
-								{experience.map((exp) => (
+								{experience.map((exp, idx) => (
 									<motion.div
 										key={exp.id}
-										variants={fadeInUp}
+										initial={{ opacity: 0, y: 12 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true }}
+										transition={{ duration: 0.4, delay: idx * 0.06 }}
 										className="neo-panel p-6"
 									>
 										<div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -302,20 +272,16 @@ export default function AboutPage() {
 						</motion.div>
 
 						<motion.div
-							variants={containerVariants}
-							initial="initial"
-							animate="animate"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5 }}
 							className="mb-12"
 						>
-							<motion.h2
-								variants={fadeInUp}
-								className="mb-6 text-2xl font-semibold"
-							>
-								Education
-							</motion.h2>
-							<motion.div variants={fadeInUp} className="neo-panel p-6">
+							<h2 className="mb-6 text-2xl font-semibold">Education</h2>
+							<div className="neo-panel p-6">
 								<div className="mb-2 flex items-start gap-3">
-									<div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full border border-border">
+									<div className="mt-1 flex h-10 w-10 items-center justify-center border-2 border-border">
 										<GraduationCap className="h-5 w-5 text-foreground" />
 									</div>
 									<div className="flex-1">
@@ -333,14 +299,15 @@ export default function AboutPage() {
 										</p>
 									</div>
 								</div>
-							</motion.div>
+							</div>
 						</motion.div>
 
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.5 }}
-							className="rounded-lg border border-border bg-card p-8 text-center"
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5 }}
+							className="neo-panel p-8 text-center"
 						>
 							<h2 className="mb-4 text-2xl font-semibold">
 								Let&apos;s work together

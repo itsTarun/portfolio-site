@@ -1,6 +1,5 @@
 import { BookOpen, ExternalLink, GitBranch, Globe } from "lucide-react";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/config/projects";
 import Image from "next/image";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
@@ -8,15 +7,16 @@ import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
-import { createProjectMetadata } from "@/lib/project-metadata";
-import { SITE_URL } from "@/lib/site-config";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { PROJECTS } from "@/config/projects";
+import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import { createProjectMetadata } from "@/lib/project-metadata";
+import { SITE_URL } from "@/lib/site-config";
 
 const projectData = PROJECTS.repoPress;
 
@@ -67,7 +67,6 @@ export default function RepoPressPage() {
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
 						<div className="mb-12 neo-panel p-8">
-							<p className="eyebrow mb-3">Web tool</p>
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
 									href={projectData.url}
@@ -118,7 +117,7 @@ export default function RepoPressPage() {
 							<Image
 								src={projectData.imageUrl}
 								alt={`${projectData.name} screenshot`}
-								className="h-auto w-full rounded-lg"
+								className="h-auto w-full"
 								width={1200}
 								height={630}
 								priority
@@ -214,7 +213,9 @@ export default function RepoPressPage() {
 							<h2 className="mb-4 text-2xl font-semibold">What I Built</h2>
 							<div className="grid gap-4 md:grid-cols-2">
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">GitHub OAuth Integration</h3>
+									<h3 className="mb-2 font-semibold">
+										GitHub OAuth Integration
+									</h3>
 									<p className="text-sm text-muted-foreground">
 										Secure authentication with GitHub to read, edit, and commit
 										content without leaving the editor.
@@ -246,7 +247,10 @@ export default function RepoPressPage() {
 						</div>
 
 						<NextProjectNav
-							previousProject={{ title: "Domain Collective", slug: "domain-collective" }}
+							previousProject={{
+								title: "Domain Collective",
+								slug: "domain-collective",
+							}}
 						/>
 					</div>
 				</div>

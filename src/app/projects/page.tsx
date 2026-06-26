@@ -1,26 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, ExternalLink, Globe, Layout, Smartphone } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
 
 const flagshipProjects = [
 	{
 		id: "chargespot",
 		title: "Chargespot",
 		description:
-			"EV charging station finder and management platform for India by CHARGE23 LABS PVT. LTD.",
-		longDescription:
-			"<a href='https://chargespot.app/' target='_blank' rel='noopener noreferrer' class='underline'>Chargespot</a> serves as a unified solution for discovering charging stations, managing charging sessions, planning trips, and handling payments - all from a single mobile application. Built by <strong>CHARGE23 LABS PVT. LTD.</strong>, it features real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island integration, multi-wallet payments, and comprehensive vehicle management.",
+			"EV charging station finder and management platform for India. Real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island, and multi-wallet payments.",
 		technologies: [
 			"Flutter",
 			"Dart",
@@ -33,8 +24,6 @@ const flagshipProjects = [
 			"OneSignal",
 			"Google Navigation SDK",
 		],
-		category: "mobile",
-		icon: Smartphone,
 		highlights: [
 			"iOS Live Activities & Widgets",
 			"AI-Powered Trip Planning",
@@ -49,9 +38,7 @@ const flagshipProjects = [
 		id: "opentribe",
 		title: "OpenTribe",
 		description:
-			"Talent marketplace for Polkadot ecosystem connecting organizations with contributors",
-		longDescription:
-			"<a href='https://opentribe.io/' target='_blank' rel='noopener noreferrer' class='underline'>OpenTribe</a> is talent layer for <a href='https://polkadot.com/' target='_blank' rel='noopener noreferrer' class='underline'>Polkadot</a> ecosystem - a centralized marketplace that connects <a href='https://web3.foundation/' target='_blank' rel='noopener noreferrer' class='underline'>Web3</a> organizations with skilled developers, designers, and contributors. Features include <a href='https://opentribe.io/grants' target='_blank' rel='noopener noreferrer' class='underline'>grant</a> marketplace aggregation, multi-winner bounty management, professional talent profiles, and organization dashboards with real-time collaboration tools.",
+			"Talent marketplace for the Polkadot ecosystem. Connects Web3 organizations with skilled developers and contributors via grant aggregation, bounty management, and real-time collaboration tools.",
 		technologies: [
 			"Next.js 15",
 			"React 19",
@@ -60,13 +47,9 @@ const flagshipProjects = [
 			"Prisma",
 			"Polkadot (Dot)",
 			"Tailwind CSS",
-			"shadcn/ui",
 			"Better Auth",
 			"TanStack Query",
-			"React Email",
 		],
-		category: "web",
-		icon: Globe,
 		highlights: [
 			"Polkadot Blockchain Integration",
 			"Grant Marketplace Aggregation",
@@ -81,9 +64,7 @@ const flagshipProjects = [
 		id: "domain-collective",
 		title: "Domain Collective",
 		description:
-			"Unified domain management platform for multi-registrar portfolios",
-		longDescription:
-			"<a href='https://collective.domains/' target='_blank' rel='noopener noreferrer' class='underline'>Domain Collective</a> standardizes multiple registrar APIs (GoDaddy, Namecheap, Gandi, Porkbun, Name.com, Cloudflare) into a single, intuitive interface. Manage domains, DNS records, and nameservers in real-time with automatic updates. Features intelligent API standardization, encrypted credential storage, and bulk operations as a comprehensive <a href='https://collective.domains/' target='_blank' rel='noopener noreferrer' class='underline'>domain management platform</a>.",
+			"Unified domain management across GoDaddy, Namecheap, Gandi, Porkbun, Name.com, and Cloudflare. Manage domains, DNS records, and nameservers from a single interface with encrypted credential storage.",
 		technologies: [
 			"Next.js 15",
 			"React 19",
@@ -91,13 +72,10 @@ const flagshipProjects = [
 			"PostgreSQL",
 			"Prisma",
 			"Tailwind CSS",
-			"shadcn/ui",
 			"Better Auth",
 			"Resend",
 			"Biome",
 		],
-		category: "web",
-		icon: Layout,
 		highlights: [
 			"6+ Registrar Integrations",
 			"Real-time Synchronization",
@@ -112,9 +90,7 @@ const flagshipProjects = [
 		id: "repo-press",
 		title: "Repo Press",
 		description:
-			"Git-native MDX editing — a Notion-like experience for your GitHub-hosted content",
-		longDescription:
-			"<a href='https://repo-press.vercel.app/' target='_blank' rel='noopener noreferrer' class='underline'>Repo Press</a> connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content. Unlike traditional headless CMSs that lock your data in proprietary databases, Repo Press keeps everything in Git — your content, your history, your rules.",
+			"Git-native MDX editing with a Notion-like experience for GitHub-hosted content. Connects to your repositories and keeps everything in Git — your content, your history, your rules.",
 		technologies: [
 			"Next.js",
 			"TypeScript",
@@ -122,8 +98,6 @@ const flagshipProjects = [
 			"MDX",
 			"Tailwind CSS",
 		],
-		category: "web",
-		icon: BookOpen,
 		highlights: [
 			"GitHub Repository Integration",
 			"Notion-like MDX Editor",
@@ -136,18 +110,18 @@ const flagshipProjects = [
 	},
 ];
 
+const containerVariants = {
+	animate: {
+		transition: {
+			staggerChildren: 0.08,
+		},
+	},
+};
+
 const fadeInUp = {
 	initial: { opacity: 0, y: 20 },
 	animate: { opacity: 1, y: 0 },
 	transition: { duration: 0.5 },
-};
-
-const containerVariants = {
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
-		},
-	},
 };
 
 export default function ProjectsPage() {
@@ -158,7 +132,6 @@ export default function ProjectsPage() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
-					className="mx-auto max-w-7xl"
 				>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -166,7 +139,6 @@ export default function ProjectsPage() {
 						transition={{ delay: 0.2 }}
 						className="mb-12"
 					>
-						<p className="eyebrow mb-3">Projects</p>
 						<h1 className="section-title">Flagship projects</h1>
 						<p className="section-subtitle mt-4 max-w-2xl">
 							Deep dives into the products I&apos;ve shipped across web and
@@ -178,118 +150,56 @@ export default function ProjectsPage() {
 						variants={containerVariants}
 						initial="initial"
 						animate="animate"
-						className="grid gap-8 lg:gap-12"
+						className="grid gap-6 md:grid-cols-2"
 					>
 						{flagshipProjects.map((project) => (
-							<motion.div key={project.id} variants={fadeInUp}>
-								<Card className="overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
-									<CardHeader className="space-y-4 border-b-2 border-border pb-6">
-										<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-											<div className="flex items-start gap-4">
-												<div className="hidden h-12 w-12 flex-shrink-0 items-center justify-center border-2 border-border sm:flex">
-													<project.icon className="h-7 w-7" />
-												</div>
-												<div className="flex-1">
-													<CardTitle className="mb-2 text-2xl sm:text-3xl font-semibold">
-														{project.title}
-													</CardTitle>
-													<Badge>Flagship Project</Badge>
-												</div>
-											</div>
-											<div className="flex gap-2">
-												<Button asChild className="shrink-0">
-													<Link href={`/projects/${project.id}`}>
-														View Project
-													</Link>
-												</Button>
-												{project.githubUrl && (
-													<Button
-														asChild
-														variant="outline"
-														className="shrink-0"
-													>
-														<a
-															href={project.githubUrl}
-															target="_blank"
-															rel="noopener noreferrer"
-															className="gap-2"
-														>
-															<ExternalLink className="h-4 w-4" />
-															GitHub
-														</a>
-													</Button>
-												)}
-												{project.liveUrl && (
-													<Button
-														asChild
-														variant="outline"
-														className="shrink-0"
-													>
-														<a
-															href={project.liveUrl}
-															target="_blank"
-															rel="noopener noreferrer"
-															className="gap-2"
-														>
-															<ExternalLink className="h-4 w-4" />
-															<span className="hidden sm:inline">
-																View Live
-															</span>
-															<span className="sm:hidden">Live</span>
-														</a>
-													</Button>
-												)}
-											</div>
-										</div>
-										<CardDescription className="text-base leading-relaxed">
-											{project.description}
-										</CardDescription>
-									</CardHeader>
-									<CardContent className="space-y-6 p-6">
-										<div>
-											<p
-												className="text-base leading-relaxed text-muted-foreground"
-												dangerouslySetInnerHTML={{
-													__html: project.longDescription,
-												}}
-											/>
-										</div>
+							<motion.div
+								key={project.id}
+								variants={fadeInUp}
+								className="neo-panel flex flex-col p-6 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+							>
+								<div className="mb-4 flex items-start justify-between gap-4">
+									<h2 className="text-2xl font-semibold">{project.title}</h2>
+									<div className="flex gap-2">
+										<Button asChild size="sm">
+											<Link href={`/projects/${project.id}`}>View</Link>
+										</Button>
+										{project.liveUrl && (
+											<Button asChild size="sm" variant="outline">
+												<a
+													href={project.liveUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													aria-label={`${project.title} live site`}
+												>
+													<ExternalLink className="h-3.5 w-3.5" />
+												</a>
+											</Button>
+										)}
+									</div>
+								</div>
 
-										<div className="border-2 border-border p-4">
-											<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-												Key Highlights
-											</h4>
-											<div className="flex flex-wrap gap-2">
-												{project.highlights.map((highlight) => (
-													<Badge
-														key={`${project.id}-${highlight}`}
-														variant="outline"
-														className="bg-background"
-													>
-														{highlight}
-													</Badge>
-												))}
-											</div>
-										</div>
+								<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
+									{project.description}
+								</p>
 
-										<div>
-											<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-												Technologies
-											</h4>
-											<div className="flex flex-wrap gap-2">
-												{project.technologies.map((tech) => (
-													<Badge
-														key={tech}
-														variant="secondary"
-														className="font-medium"
-													>
-														{tech}
-													</Badge>
-												))}
-											</div>
-										</div>
-									</CardContent>
-								</Card>
+								<div className="border-t-2 border-border pt-4">
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+										Stack
+									</p>
+									<div className="flex flex-wrap gap-1.5">
+										{project.technologies.slice(0, 6).map((tech) => (
+											<Badge key={tech} variant="secondary">
+												{tech}
+											</Badge>
+										))}
+										{project.technologies.length > 6 && (
+											<Badge variant="outline">
+												+{project.technologies.length - 6}
+											</Badge>
+										)}
+									</div>
+								</div>
 							</motion.div>
 						))}
 					</motion.div>
