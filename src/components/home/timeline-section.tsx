@@ -91,7 +91,6 @@ export function TimelineSection() {
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
 					<div className="mb-12">
-						<p className="eyebrow mb-4">Credibility</p>
 						<h2 className="section-title">Experience that ships.</h2>
 						<p className="section-subtitle mt-4 max-w-2xl">
 							A focused timeline of web and mobile products delivered with
@@ -101,8 +100,11 @@ export function TimelineSection() {
 				</ScrollReveal>
 
 				<div className="space-y-6">
-					{experiences.map((exp, idx) => (
-						<ScrollReveal key={`${exp.company}-${exp.period}`} delay={idx * 120}>
+					{experiences.slice(0, 3).map((exp, idx) => (
+						<ScrollReveal
+							key={`${exp.company}-${exp.period}`}
+							delay={idx * 120}
+						>
 							<motion.div
 								initial={{ opacity: 0, y: 12 }}
 								whileInView={{ opacity: 1, y: 0 }}
@@ -143,6 +145,16 @@ export function TimelineSection() {
 						</ScrollReveal>
 					))}
 				</div>
+				<ScrollReveal delay={400}>
+					<div className="mt-8">
+						<a
+							href="/about"
+							className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+						>
+							Full timeline →
+						</a>
+					</div>
+				</ScrollReveal>
 			</div>
 		</section>
 	);

@@ -42,11 +42,10 @@ export function CtaSection() {
 							transition={{ duration: 0.5 }}
 							className="mb-8"
 						>
-							<p className="eyebrow mb-3">Let&apos;s build</p>
 							<h2 className="mb-4 text-3xl font-semibold sm:text-4xl text-balance text-primary-foreground">
 								Open to ambitious mobile product work with clear impact.
 							</h2>
-							<p className="text-base text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
+							<p className="text-base text-primary-foreground max-w-2xl mx-auto leading-relaxed">
 								I help teams ship thoughtful iOS and Flutter apps with confident
 								UX, clean engineering, and stable release quality.
 							</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface StatItem {
@@ -25,9 +25,15 @@ function Counter({
 	const [count, setCount] = useState(0);
 	const ref = useRef<HTMLSpanElement>(null);
 	const isInView = useInView(ref, { once: true });
+	const prefersReducedMotion = useReducedMotion();
 
 	useEffect(() => {
 		if (!isInView) return;
+
+		if (prefersReducedMotion) {
+			setCount(value);
+			return;
+		}
 
 		let startTime: number;
 		let animationFrame: number;
@@ -53,7 +59,7 @@ function Counter({
 				cancelAnimationFrame(animationFrame);
 			}
 		};
-	}, [value, duration, isInView]);
+	}, [value, duration, isInView, prefersReducedMotion]);
 
 	return <span ref={ref}>{count}</span>;
 }

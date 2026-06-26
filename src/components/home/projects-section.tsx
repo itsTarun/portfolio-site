@@ -68,11 +68,10 @@ export function ProjectsSection() {
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
 					<div className="mb-12">
-						<p className="eyebrow mb-4">Selected Work</p>
 						<h2 className="section-title">Builds with range.</h2>
 						<p className="section-subtitle mt-4 max-w-2xl">
-							Shipped products and tools across mobile and web — built, iterated,
-							and used in the real world.
+							Shipped products and tools across mobile and web — built,
+							iterated, and used in the real world.
 						</p>
 					</div>
 				</ScrollReveal>
