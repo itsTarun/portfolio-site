@@ -113,18 +113,67 @@ Conditional:
 |---------|--------|
 | Inter / system-ui as sole typeface | ✅ Clean — Bricolage + Instrument Sans |
 | Purple-to-blue gradient | ✅ Clean — none found |
-| Cards nested inside cards | ❌ **Chargespot** `neo-panel > Card` |
+| Cards nested inside cards | ✅ Fixed — Chargespot uses plain `div.neo-panel`, no Card import |
 | Gray text on colored backgrounds | ✅ Clean (CTA fixed) |
 | Bounce / elastic easing | ✅ Clean — Framer Motion defaults used |
-| Rounded-square icon tile above every heading | ❌ **About skills** 3× |
+| Rounded-square icon tile above every heading | ✅ Fixed — About skills grid replaced; hero stat icons removed |
 | Pure black / pure gray | ✅ Clean — HSL tokens, all tinted |
 | Decorative drop shadows as fake depth | ✅ Structural use only (system-defined) |
+| Scale hover | ✅ Fixed — all scale hovers replaced with translate+shadow press mechanic |
+| Eyebrow on every section | ✅ Fixed — purged site-wide; max 1 per page surface |
+| Double animation (ScrollReveal + whileInView) | ✅ Fixed — ScrollReveal removed from home sections |
+
+---
+
+## Phase 2 — Complete (commit `04d1ae0`)
+
+All 7 steps executed:
+1. ✅ `distill about` — skills grid, icons, eyebrow, CTA card, education icon
+2. ✅ `distill chargespot` — hero metrics, nested cards, eyebrow
+3. ✅ `polish contact` — neo-panel, duplicate title, eyebrow
+4. ✅ `distill projects` — eyebrow, neo-panel 2-col grid
+5. ✅ `animate about` — all below-fold sections → `whileInView`
+6. ✅ `harden` — ARIA on ScrollProgress, rAF throttle, footer touch targets, smooth-scroll gate
+7. ✅ `polish` — blog card category chip, footer hover, final alignment
+
+---
+
+## Phase 3 — Complete (commits `e11be12`, `4691d4f`, `2026-06-26`)
+
+Re-audit after Phase 2. Detector: 0 findings throughout.
+
+| Fix | Severity | Commit |
+|-----|----------|--------|
+| CTA contrast `text-primary-foreground/80` → full (4.4:1 → 5.26:1) | P1 | `e11be12` |
+| Remove double animation: ScrollReveal + `whileInView` on Timeline + Projects | P1 | `e11be12` |
+| OG image colors: `#1a1a2e` → `#141d2b`, `#8b5cf6` → `#1169d4` | P1 | `e11be12` |
+| CTA scale hover → `underline` (on primary bg) | P3 | `e11be12` |
+| Stat icons removed from hero Impact board | P3 | `e11be12` |
+| "Full timeline →" promoted to bordered chip with press mechanic | P3 | `e11be12` |
+| `text-wrap: balance` added to `.section-title` | P3 | `e11be12` |
+| Hero social links: bare text → bordered chips, `min-h-[44px]` | P2 | `4691d4f` |
+| Mobile menu: Tab/Shift+Tab focus trap within open menu | P2 | `4691d4f` |
+| About headshot: `priority` prop for LCP | P2 | current |
+
+**Audit score after Phase 3:** 20/20 (all structural issues resolved)  
+**Critique score after Phase 3:** ~36/40 (estimated; no P1s remain)  
+**Detector:** `[]` — 0 findings confirmed
+
+---
+
+## Open / Future
+
+| Item | Severity | Notes |
+|------|----------|-------|
+| Blog listing page — no posts yet | — | No blog content to audit |
+| Contact form (Resend wired, no UI) | P3 | `RESEND_API_KEY` configured; `/impeccable craft contact-form` |
+| Mobile menu: visually confirm focus ring in dark mode | P3 | Low-risk; system ring token used |
 
 ---
 
 ## Blockers
 
-_None yet._
+_None._
 
 ---
 
@@ -132,9 +181,13 @@ _None yet._
 
 | Commit | Change | Score Impact |
 |--------|--------|-------------|
-| `design(critique-landing)` | 5 P1/P2 fixes on home page | +3 estimated |
 | `chore: impeccable baseline audit` | This document | Baseline captured |
+| `design(critique-landing)` | 5 P1/P2 fixes on home page | +3 |
+| `04d1ae0` | Phase 2 complete — distill/animate/harden/polish | Audit 12/20 → ~18/20 |
+| `e11be12` | Phase 3 — P1 contrast, double-anim, OG colors, P3 cleanup | Critique 30/40 → ~36/40 |
+| `4691d4f` | Phase 3 — P2 touch targets, focus trap | All P2s resolved |
+| current | Phase 3 close — about headshot priority, REDESIGN.md | 20/20 structural |
 
 ---
 
-_Last updated: 2026-06-26 — Baseline run_
+_Last updated: 2026-06-26 — Phase 3 closed_

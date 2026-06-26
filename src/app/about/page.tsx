@@ -172,6 +172,7 @@ export default function AboutPage() {
 									alt="Tarun Sharma"
 									width={600}
 									height={600}
+									priority
 									className="w-full h-auto object-cover"
 								/>
 							</div>
