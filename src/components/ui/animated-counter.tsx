@@ -8,7 +8,7 @@ interface StatItem {
 	label: string;
 	value: number;
 	suffix: string;
-	icon: React.ReactNode;
+	icon?: React.ReactNode;
 }
 
 interface AnimatedCounterProps {
@@ -85,9 +85,11 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 							<Counter value={item.value} />
 							{item.suffix}
 						</div>
-						<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
-							{item.icon}
-						</span>
+						{item.icon && (
+							<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+								{item.icon}
+							</span>
+						)}
 					</div>
 					<div className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
 						{item.label}

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
-import { ScrollReveal } from "@/components/animation/scroll-reveal";
+import Link from "next/link";
 
 const experiences = [
 	{
@@ -30,30 +30,6 @@ const experiences = [
 		description:
 			"Built the EyeMyEye app from the ground up, set up VIPER architecture, and shipped App Store updates with a 99% crash-free user base.",
 		technologies: ["iOS", "VIPER", "UIKit", "App Store"],
-	},
-	{
-		title: "Lead iOS Engineer",
-		company: "DailyObjects",
-		period: "Jan 2020 - Aug 2021",
-		description:
-			"Led a complete app revamp, created API-driven UI, launched rich push notifications, and delivered light/dark mode updates. Improved organic search visibility and paid ad conversion rates through SEO-optimized app store listings and targeted ASO strategies.",
-		technologies: ["iOS", "FCM", "REST APIs", "UIKit", "ASO", "SEO"],
-	},
-	{
-		title: "iOS Developer",
-		company: "DailyObjects",
-		period: "Jul 2019 - Jan 2020",
-		description:
-			"Improved stability with Crashlytics, tested APIs with Postman, and shipped features using Coordinator pattern and protocol-oriented programming.",
-		technologies: ["Crashlytics", "Postman", "UIKit", "Unit Tests"],
-	},
-	{
-		title: "iOS Developer",
-		company: "Startxlabs Technologies",
-		period: "May 2018 - Jun 2019",
-		description:
-			"Refined product tickets, shipped rating/share features, and crafted reusable components while mentoring junior developers.",
-		technologies: ["iOS", "Reusable Components", "Mentorship", "App Features"],
 	},
 ];
 
@@ -89,72 +65,78 @@ export function TimelineSection() {
 	return (
 		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<ScrollReveal>
-					<div className="mb-12">
-						<h2 className="section-title">Experience that ships.</h2>
-						<p className="section-subtitle mt-4 max-w-2xl">
-							A focused timeline of web and mobile products delivered with
-							reliable engineering and clear outcomes.
-						</p>
-					</div>
-				</ScrollReveal>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5 }}
+					className="mb-12"
+				>
+					<h2 className="section-title text-balance">Experience that ships.</h2>
+					<p className="section-subtitle mt-4 max-w-2xl">
+						A focused timeline of web and mobile products delivered with
+						reliable engineering and clear outcomes.
+					</p>
+				</motion.div>
 
 				<div className="space-y-6">
-					{experiences.slice(0, 3).map((exp, idx) => (
-						<ScrollReveal
+					{experiences.map((exp, idx) => (
+						<motion.div
 							key={`${exp.company}-${exp.period}`}
-							delay={idx * 120}
+							initial={{ opacity: 0, y: 16 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.4, delay: idx * 0.08 }}
+							className="neo-panel p-6"
 						>
-							<motion.div
-								initial={{ opacity: 0, y: 12 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								className="neo-panel p-6"
-							>
-								<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-									<div>
-										<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-											Role
-										</p>
-										<h3 className="text-2xl font-semibold">{exp.title}</h3>
-										<CompanyName name={exp.company} url={exp.companyUrl} />
-									</div>
-									<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-										<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
-											<Calendar className="h-4 w-4" />
-										</span>
-										<span className="border-2 border-border bg-background px-3 py-1 text-foreground">
-											{exp.period}
-										</span>
-									</div>
+							<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+								<div>
+									<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+										Role
+									</p>
+									<h3 className="text-2xl font-semibold">{exp.title}</h3>
+									<CompanyName name={exp.company} url={exp.companyUrl} />
 								</div>
-								<p className="mt-4 text-sm text-muted-foreground">
-									{exp.description}
-								</p>
-								<div className="mt-4 flex flex-wrap gap-2">
-									{exp.technologies.map((tech) => (
-										<span
-											key={tech}
-											className="border-2 border-border bg-background px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
-										>
-											{tech}
-										</span>
-									))}
+								<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+									<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+										<Calendar className="h-4 w-4" />
+									</span>
+									<span className="border-2 border-border bg-background px-3 py-1 text-foreground">
+										{exp.period}
+									</span>
 								</div>
-							</motion.div>
-						</ScrollReveal>
+							</div>
+							<p className="mt-4 text-sm text-muted-foreground">
+								{exp.description}
+							</p>
+							<div className="mt-4 flex flex-wrap gap-2">
+								{exp.technologies.map((tech) => (
+									<span
+										key={tech}
+										className="border-2 border-border bg-background px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+									>
+										{tech}
+									</span>
+								))}
+							</div>
+						</motion.div>
 					))}
 				</div>
-				<ScrollReveal delay={400}>
-					<div className="mt-8">
-						<a
-							href="/about"
-							className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
-						>
-							Full timeline →
-						</a>
-					</div>
-				</ScrollReveal>
+
+				<motion.div
+					initial={{ opacity: 0, y: 12 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.4, delay: 0.3 }}
+					className="mt-8"
+				>
+					<Link
+						href="/about"
+						className="inline-flex items-center border-2 border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+					>
+						Full timeline →
+					</Link>
+				</motion.div>
 			</div>
 		</section>
 	);

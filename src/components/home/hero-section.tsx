@@ -1,17 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-	ArrowRight,
-	Code2,
-	Github,
-	Linkedin,
-	Mail,
-	Smartphone,
-	Sparkles,
-	Twitter,
-	Users,
-} from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
@@ -41,34 +31,10 @@ const socialLinks = [
 ];
 
 const stats = [
-	{
-		id: 1,
-		label: "Years Building",
-		value: 7,
-		suffix: "+",
-		icon: <Code2 className="h-6 w-6" />,
-	},
-	{
-		id: 2,
-		label: "Teams",
-		value: 5,
-		suffix: "",
-		icon: <Users className="h-6 w-6" />,
-	},
-	{
-		id: 3,
-		label: "Platforms",
-		value: 2,
-		suffix: "",
-		icon: <Smartphone className="h-6 w-6" />,
-	},
-	{
-		id: 4,
-		label: "Crash-Free Rate",
-		value: 99,
-		suffix: "%",
-		icon: <Sparkles className="h-6 w-6" />,
-	},
+	{ id: 1, label: "Years Building", value: 7, suffix: "+" },
+	{ id: 2, label: "Teams", value: 5, suffix: "" },
+	{ id: 3, label: "Platforms", value: 2, suffix: "" },
+	{ id: 4, label: "Crash-Free Rate", value: 99, suffix: "%" },
 ];
 
 export function HeroSection() {

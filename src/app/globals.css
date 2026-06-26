@@ -212,6 +212,7 @@
 .section-title {
 	font-size: clamp(2.2rem, 4.2vw, 4rem);
 	line-height: 1;
+	text-wrap: balance;
 }
 
 .section-subtitle {

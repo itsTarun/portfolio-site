@@ -9,7 +9,7 @@ export default function Image() {
 		title: "OpenTribe",
 		description: "Talent marketplace for Polkadot ecosystem",
 		backgroundColor: "#000000",
-		backgroundImage: "linear-gradient(135deg, #000000 0%, #1a1a2e 100%)",
+		backgroundImage: "linear-gradient(135deg, #000000 0%, #141d2b 100%)",
 		descriptionColor: "#a78bfa",
 		titleFontSize: 72,
 		descriptionFontSize: 28,
