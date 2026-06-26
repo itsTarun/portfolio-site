@@ -19,23 +19,6 @@ export function formatDate(date: string): string {
 	});
 }
 
-export function formatBlogDate(
-	date: string,
-	style: "short" | "long" = "long",
-): string {
-	return formatDateForLocale(date, {
-		month: style === "short" ? "short" : "long",
-		day: "numeric",
-		year: "numeric",
-	});
-}
-
-export function sortByDateDesc<T extends { date: string }>(items: T[]): T[] {
-	return [...items].sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-	);
-}
-
 export function calculateDuration(startDate: string, endDate?: string): string {
 	const start = new Date(startDate);
 	const end = endDate ? new Date(endDate) : new Date();
