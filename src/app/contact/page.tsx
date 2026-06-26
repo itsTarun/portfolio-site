@@ -1,19 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site-config";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
-
-const socialLinks = [
-	{ label: "GitHub", href: SOCIAL_LINKS.github },
-	{ label: "LinkedIn", href: SOCIAL_LINKS.linkedin },
-	{ label: "Twitter / X", href: SOCIAL_LINKS.twitter },
-	{ label: "Email", href: `mailto:${CONTACT_EMAIL}` },
-];
 
 const helpList = [
 	"iOS app development",
@@ -27,8 +19,19 @@ const inputClass =
 	"mt-2 w-full border-2 border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50";
 
 export default function ContactPage() {
+	const reduceMotion = useReducedMotion();
 	const [formState, setFormState] = useState<FormState>("idle");
 	const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+	// Entrance that respects prefers-reduced-motion. Framer animations are
+	// JS-driven and bypass the CSS reduced-motion floor in globals.css, so
+	// gate them here. `animate` always targets the visible state, so content
+	// can never get stuck invisible once hydrated.
+	const entrance = (delay = 0) => ({
+		initial: reduceMotion ? false : ({ opacity: 0, y: 20 } as const),
+		animate: { opacity: 1, y: 0 },
+		transition: reduceMotion ? { duration: 0 } : { duration: 0.5, delay },
+	});
 	const [values, setValues] = useState({
 		name: "",
 		email: "",
@@ -83,12 +86,7 @@ export default function ContactPage() {
 			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
 				<div className="grid gap-16 lg:grid-cols-5 lg:gap-24">
 					{/* Left: context */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5 }}
-						className="lg:col-span-2"
-					>
+					<motion.div {...entrance()} className="lg:col-span-2">
 						<h1 className="section-title">Let&apos;s work together.</h1>
 						<p className="section-subtitle mt-4">
 							Open to iOS and Flutter contract work. No agencies or generic
@@ -123,36 +121,17 @@ export default function ContactPage() {
 						<p className="mt-10 text-xs text-muted-foreground">
 							Typically responds within one business day.
 						</p>
-
-						<div className="mt-8 flex flex-col gap-2.5">
-							{socialLinks.map((link) => (
-								<a
-									key={link.label}
-									href={link.href}
-									target={link.href.startsWith("mailto") ? undefined : "_blank"}
-									rel={
-										link.href.startsWith("mailto")
-											? undefined
-											: "noopener noreferrer"
-									}
-									className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
-								>
-									<ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-									{link.label}
-								</a>
-							))}
-						</div>
 					</motion.div>
 
 					{/* Right: form */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 0.15 }}
-						className="lg:col-span-3"
-					>
+					<motion.div {...entrance(0.15)} className="lg:col-span-3">
 						{formState === "success" ? (
-							<div className="neo-panel p-8 md:p-10">
+							// biome-ignore lint/a11y/useSemanticElements: <output> permits only phrasing content; this panel holds a heading and button, so role="status" on the container is the correct live-region choice
+							<div
+								role="status"
+								aria-live="polite"
+								className="neo-panel p-8 md:p-10"
+							>
 								<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
 									Sent
 								</p>
