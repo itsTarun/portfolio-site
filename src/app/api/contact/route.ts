@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { buildContactEmail } from "@/lib/contact-email";
 import { CONTACT_EMAIL } from "@/lib/site-config";
 
 export async function POST(request: NextRequest) {
@@ -31,14 +32,19 @@ export async function POST(request: NextRequest) {
 			? `[itstarun.fyi] ${subject.trim()}`
 			: `[itstarun.fyi] New message from ${name.trim()}`;
 
-		const text = [
-			`From: ${name.trim()} <${email.trim()}>`,
-			subject?.trim() ? `Subject: ${subject.trim()}` : "",
-			"",
-			message.trim(),
-		]
-			.filter(Boolean)
-			.join("\n");
+		const sentAt = new Date().toLocaleString("en-US", {
+			timeZone: "Asia/Kolkata",
+			dateStyle: "long",
+			timeStyle: "short",
+		});
+
+		const { html, text } = buildContactEmail({
+			name,
+			email,
+			subject,
+			message,
+			sentAt: `${sentAt} IST`,
+		});
 
 		const res = await fetch("https://api.resend.com/emails", {
 			method: "POST",
@@ -47,10 +53,14 @@ export async function POST(request: NextRequest) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				from: "itstarun.fyi <hello@itstarun.fyi>",
+				// Defaults to Resend's shared sender (works with no domain setup,
+				// delivers to the account owner). Set CONTACT_FROM_EMAIL to
+				// hello@itstarun.fyi once the domain is verified in Resend.
+				from: `itstarun.fyi <${process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev"}>`,
 				to: [CONTACT_EMAIL],
 				reply_to: email.trim(),
 				subject: subjectLine,
+				html,
 				text,
 			}),
 		});
