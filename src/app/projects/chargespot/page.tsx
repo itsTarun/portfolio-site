@@ -15,14 +15,16 @@ import { SITE_URL } from "@/lib/site-config";
 const technologies = [
 	"Flutter",
 	"Dart",
-	"Google Maps",
-	"Razorpay",
-	"Firebase",
-	"PostgreSQL",
-	"Isar DB",
-	"Provider",
-	"OneSignal",
+	"iOS ActivityKit",
+	"Google Maps Flutter",
 	"Google Navigation SDK",
+	"Geolocator",
+	"OCPP / WebSockets",
+	"Razorpay",
+	"Firebase Auth + FCM",
+	"Isar DB",
+	"PostgreSQL",
+	"Provider",
 ];
 
 const keyFeatures = [
@@ -173,10 +175,10 @@ export default function ChargespotPage() {
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<p className="text-muted-foreground leading-relaxed">
-								Shipped to the App Store with a 4.8 average rating, serving 50+
-								active charging stations across India. Stable production
-								releases with hands-on QA validation across every update cycle —
-								maintaining crash-free stability from day one.
+								Currently in beta on TestFlight and Google Play, covering 50+
+								active charging stations across India. Every update goes through
+								hands-on QA validation before beta release, keeping the build
+								crash-free from day one.
 							</p>
 						</div>
 

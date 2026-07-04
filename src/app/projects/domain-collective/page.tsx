@@ -30,13 +30,15 @@ const technologies = [
 	"Next.js 15",
 	"React 19",
 	"TypeScript",
-	"PostgreSQL",
-	"Prisma",
-	"Tailwind CSS",
-	"shadcn/ui",
-	"Better Auth",
 	"BullMQ",
 	"Redis",
+	"PostgreSQL",
+	"Prisma",
+	"Better Auth",
+	"Resend",
+	"Zod",
+	"Tailwind CSS",
+	"shadcn/ui",
 ];
 
 const keyFeatures = [

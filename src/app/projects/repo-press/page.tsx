@@ -21,10 +21,14 @@ import { SITE_URL } from "@/lib/site-config";
 const projectData = PROJECTS.repoPress;
 
 const technologies = [
+	"Convex",
 	"Next.js",
 	"TypeScript",
 	"GitHub API",
+	"GitHub OAuth",
 	"MDX",
+	"Remark",
+	"React",
 	"Tailwind CSS",
 ];
 
@@ -44,7 +48,7 @@ export const metadata: Metadata = createProjectMetadata({
 	ogTitle: "Repo Press - Git-native MDX Editor",
 	ogDescription:
 		"A Notion-like MDX editing experience that keeps your content in Git — no proprietary lock-in.",
-	imageUrl: "/images/projects/repo-press-og.png",
+	imageUrl: "/images/projects/repo-press.webp",
 	imageAlt: "Repo Press - Git-native MDX editing tool",
 	twitterImageType: "object",
 });
@@ -187,8 +191,9 @@ export default function RepoPressPage() {
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
 							<p className="mb-4 text-muted-foreground">
-								Built with Next.js and TypeScript, integrating the GitHub REST
-								API for repository access and MDX parsing for rich content
+								Built with Next.js, TypeScript, and Convex for real-time backend
+								sync, integrating the GitHub REST API for repository access,
+								GitHub OAuth for authentication, and MDX/Remark for rich content
 								editing.
 							</p>
 							<div className="flex flex-wrap gap-2">

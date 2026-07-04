@@ -30,14 +30,15 @@ const technologies = [
 	"Next.js 15",
 	"React 19",
 	"TypeScript",
+	"@polkadot/api",
+	"@polkadot/extension-dapp",
+	"TanStack Query",
 	"PostgreSQL",
 	"Prisma",
-	"Polkadot (Dot)",
+	"Better Auth",
+	"Turborepo",
 	"Tailwind CSS",
 	"shadcn/ui",
-	"Better Auth",
-	"TanStack Query",
-	"React Email",
 ];
 
 const keyFeatures = [
