@@ -51,6 +51,7 @@ export function Header() {
 		setMounted(true);
 	}, []);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: pathname is an intentional trigger to close the mobile menu on route change; the effect body only calls a stable setter
 	React.useEffect(() => {
 		setIsMenuOpen(false);
 	}, [pathname]);

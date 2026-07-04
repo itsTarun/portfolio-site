@@ -5,11 +5,13 @@ const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 const CORE_ROUTES = [
 	"/",
+	"/about",
 	"/projects",
 	"/projects/chargespot",
 	"/projects/domain-collective",
 	"/projects/opentribe",
-	"/blog",
+	"/projects/repo-press",
+	"/contact",
 	"/privacy",
 ];
 
