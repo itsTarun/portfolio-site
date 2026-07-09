@@ -22,7 +22,7 @@ function Counter({
 	value: number;
 	duration?: number;
 }) {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState<number | null>(null);
 	const ref = useRef<HTMLSpanElement>(null);
 	const isInView = useInView(ref, { once: true });
 
@@ -55,7 +55,7 @@ function Counter({
 		};
 	}, [value, duration, isInView]);
 
-	return <span ref={ref}>{count}</span>;
+	return <span ref={ref}>{count ?? value}</span>;
 }
 
 export function AnimatedCounter({ items }: AnimatedCounterProps) {

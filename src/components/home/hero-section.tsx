@@ -92,9 +92,10 @@ export function HeroSection() {
 							Mobile apps that feel calm, fast, and dependable.
 						</h1>
 						<p className="section-subtitle max-w-xl">
-							I&apos;m Tarun Sharma, a mobile developer building iPhone, iPad,
-							and Flutter apps since 2018. I lean into R&amp;D, solid
-							architecture, and hands-on QA to ship stable releases teams trust.
+							I&apos;m Tarun Sharma, a mobile engineer building iOS and Flutter
+							apps since 2018. I focus on product reliability, clean
+							architecture, and hands-on QA to help teams ship stable releases
+							with confidence.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							<Button asChild size="lg">

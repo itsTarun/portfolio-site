@@ -30,22 +30,22 @@ const technologies = [
 	"Next.js 15",
 	"React 19",
 	"TypeScript",
-	"PostgreSQL",
-	"Prisma",
-	"Polkadot (Dot)",
 	"Tailwind CSS",
 	"shadcn/ui",
-	"Better Auth",
 	"TanStack Query",
+	"Better Auth",
 	"React Email",
+	"Polkadot (Dot)",
+	"PostgreSQL",
+	"Prisma",
 ];
 
 const keyFeatures = [
-	"Polkadot Blockchain Integration for verifiable transactions.",
-	"Grant Marketplace Aggregation to centralize funding opportunities.",
-	"Multi-Winner Bounties to incentivize community contributions.",
-	"Real-time Collaboration tools for organizations and teams.",
-	"Monorepo with Turborepo for streamlined development and deployment.",
+	"Contributed to dashboard flows for organization management and bounty workflows.",
+	"Built reusable UI components and product screens with shadcn/ui and Tailwind CSS.",
+	"Implemented authentication and session management using Better Auth.",
+	"Integrated TanStack Query for data fetching and UI state management across the app.",
+	"Worked in a Turborepo monorepo environment with shared packages across frontend apps.",
 ];
 
 export const metadata: Metadata = createProjectMetadata({
@@ -127,13 +127,14 @@ export default function OpenTribePage() {
 						</div>
 
 						<div className="mb-12 neo-panel p-6">
-							<h2 className="mb-4 text-2xl font-semibold">Why OpenTribe?</h2>
+							<h2 className="mb-4 text-2xl font-semibold">About OpenTribe</h2>
 							<p className="mb-4 text-muted-foreground">
-								The Polkadot ecosystem lacks a centralized platform to connect
-								Web3 organizations with skilled developers, designers, and
-								contributors. OpenTribe bridges this gap by providing a
-								dedicated talent layer with integrated workflows for grants,
-								bounties, and team collaboration.
+								OpenTribe is a talent and bounty platform built for the
+								Polkadot ecosystem. I contributed to frontend product
+								development, platform UX, and modern web architecture using
+								Next.js and TypeScript. My work included dashboard flows,
+								reusable UI systems, authentication flows, and responsive
+								product experiences.
 							</p>
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
@@ -189,21 +190,39 @@ export default function OpenTribePage() {
 
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
-							<p className="mb-4 text-muted-foreground">
-								Built with modern web technologies and a focus on scalability
-								and performance, utilizing a monorepo structure with Turborepo
-								for efficient development.
-							</p>
-							<div className="flex flex-wrap gap-2">
-								{technologies.map((tech) => (
-									<Badge
-										key={tech}
-										variant="secondary"
-										className="text-sm font-medium"
-									>
-										{tech}
-									</Badge>
-								))}
+							<div className="space-y-4">
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Frontend
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "TanStack Query", "Better Auth", "React Email"].map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Platform & Backend
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{["Polkadot (Dot)", "PostgreSQL", "Prisma"].map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -246,33 +265,34 @@ export default function OpenTribePage() {
 							<h2 className="mb-4 text-2xl font-semibold">What I Learned</h2>
 							<div className="grid gap-4 md:grid-cols-2">
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Web3 Integration</h3>
+									<h3 className="mb-2 font-semibold">Web3 Frontend Patterns</h3>
 									<p className="text-sm text-muted-foreground">
-										Connecting traditional Web2 interfaces seamlessly with
-										blockchain networks requires careful state management.
+										Learned how to connect React UIs with Polkadot wallet state
+										and handle blockchain transaction feedback in a standard web
+										app.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Marketplace Dynamics</h3>
+									<h3 className="mb-2 font-semibold">Product Thinking</h3>
 									<p className="text-sm text-muted-foreground">
-										Balancing the needs of organizations and contributors is
-										crucial for a thriving talent ecosystem.
+										Working on a two-sided platform helped me understand how
+										product decisions affect both contributors and the
+										organizations hiring them.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">Monorepo Architecture</h3>
+									<h3 className="mb-2 font-semibold">Monorepo Development</h3>
 									<p className="text-sm text-muted-foreground">
-										Turborepo significantly accelerates development cycles when
-										managing multiple interconnected packages.
+										Learned how to work efficiently in a Turborepo monorepo,
+										sharing types, components, and configurations across
+										frontend packages.
 									</p>
 								</div>
 								<div className="border-2 border-border p-4">
-									<h3 className="mb-2 font-semibold">
-										Real-time Collaboration
-									</h3>
+									<h3 className="mb-2 font-semibold">Data Fetching Patterns</h3>
 									<p className="text-sm text-muted-foreground">
-										Building responsive and reliable collaboration tools
-										involves optimizing data synchronization.
+										Used TanStack Query to manage server state, caching, and
+										optimistic updates across collaborative UI flows.
 									</p>
 								</div>
 							</div>

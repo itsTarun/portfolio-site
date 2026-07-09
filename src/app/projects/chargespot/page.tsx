@@ -18,23 +18,24 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
-const technologies = [
+const mobileStack = [
 	"Flutter",
 	"Dart",
-	"Google Maps",
-	"Razorpay",
 	"Firebase",
-	"PostgreSQL",
+	"Google Maps SDK",
 	"Isar DB",
 	"Provider",
 	"OneSignal",
-	"Google Navigation SDK",
 ];
 
+const integrations = ["Razorpay", "Google Navigation SDK"];
+
+const technologies = [...mobileStack, ...integrations];
+
 const keyFeatures = [
-	"iOS Live Activities with Dynamic Island support",
-	"AI-powered trip planning for optimized routes",
-	"Offline-first architecture with Isar DB",
+	"iOS Live Activities and Dynamic Island for real-time charging session tracking",
+	"Route-aware EV trip planning with multi-stop charging waypoints",
+	"Offline-first architecture with Isar DB for reliable low-connectivity use",
 ];
 
 const projectData = PROJECTS.chargespot;
@@ -124,9 +125,12 @@ export default function ChargespotPage() {
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">Why Chargespot?</h2>
 							<p className="text-muted-foreground mb-4">
-								Chargespot serves as a unified solution for EV owners and
-								drivers, addressing the fragmented charging infrastructure
-								across India.
+								Chargespot is a production EV charging app used daily across
+								India. The engineering work involved real-time charger
+								availability, map rendering with live pin updates, charging
+								session lifecycle management, offline-first data sync with Isar
+								DB, and background state handling across iOS Dynamic Island and
+								Live Activities.
 							</p>
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
@@ -136,7 +140,8 @@ export default function ChargespotPage() {
 										</div>
 										<CardTitle>Real-time Station Discovery</CardTitle>
 										<CardDescription>
-											Find charging stations near you with real-time updates
+											Live charger availability with map pin updates, station
+											health checks, and connector status.
 										</CardDescription>
 									</CardHeader>
 								</Card>
@@ -145,9 +150,10 @@ export default function ChargespotPage() {
 										<div className="flex h-10 w-10 items-center justify-center border-2 border-border mb-4">
 											<Zap className="h-5 w-5 text-foreground" />
 										</div>
-										<CardTitle>AI-Powered Trip Planning</CardTitle>
+										<CardTitle>Route-Aware Trip Planning</CardTitle>
 										<CardDescription>
-											Optimize your routes with intelligent route suggestions
+											Plan multi-stop EV journeys with automatic charging
+											waypoints based on vehicle range.
 										</CardDescription>
 									</CardHeader>
 								</Card>
@@ -156,23 +162,39 @@ export default function ChargespotPage() {
 
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-6 text-2xl font-semibold">Technologies Used</h2>
-							<div className="mb-4">
-								<p className="text-muted-foreground">
-									Built with Flutter for cross-platform mobile development,
-									integrated Google Maps for real-time navigation, Firebase for
-									backend, and Razorpay for payments.
-								</p>
-							</div>
-							<div className="flex flex-wrap gap-2">
-								{technologies.map((tech) => (
-									<Badge
-										key={tech}
-										variant="secondary"
-										className="text-sm font-medium"
-									>
-										{tech}
-									</Badge>
-								))}
+							<div className="space-y-4">
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Mobile Stack
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{mobileStack.map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
+								<div>
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+										Integrations
+									</p>
+									<div className="flex flex-wrap gap-2">
+										{integrations.map((tech) => (
+											<Badge
+												key={tech}
+												variant="secondary"
+												className="text-sm font-medium"
+											>
+												{tech}
+											</Badge>
+										))}
+									</div>
+								</div>
 							</div>
 						</div>
 

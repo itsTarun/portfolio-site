@@ -24,10 +24,11 @@ const containerVariants = {
 
 const skills = [
 	{
-		category: "Mobile Platforms",
+		category: "iOS & Swift",
 		items: [
 			"iOS",
-			"Android",
+			"iPadOS",
+			"Swift",
 			"UIKit",
 			"VIPER Architecture",
 			"Coordinator Pattern",
@@ -36,7 +37,7 @@ const skills = [
 		icon: Smartphone,
 	},
 	{
-		category: "Flutter",
+		category: "Flutter & Dart",
 		items: [
 			"Flutter",
 			"Dart",
@@ -48,17 +49,24 @@ const skills = [
 		icon: Box,
 	},
 	{
-		category: "Tools & Workflow",
+		category: "Release Engineering",
 		items: [
-			"Git",
-			"GitLab",
-			"Jira",
-			"Confluence",
-			"Postman",
+			"Maps & Navigation",
+			"App Store Releases",
+			"Crash Monitoring",
 			"Unit & UI Tests",
+			"Hands-on QA",
 		],
 		icon: Wrench,
 	},
+];
+
+const secondarySkills = [
+	"Next.js",
+	"React",
+	"TypeScript",
+	"PostgreSQL",
+	"Backend Integrations",
 ];
 
 const experience = [
@@ -202,15 +210,42 @@ export default function AboutPage() {
 							className="mb-12 neo-panel p-8"
 						>
 							<p className="mb-4 text-lg leading-relaxed">
-								I&apos;m a mobile developer focused on iOS and Flutter. Since
-								2018, I&apos;ve built iPhone and iPad apps and shipped multiple
-								App Store releases with stability as the north star.
+								Since 2018, I&apos;ve worked on iOS and Flutter apps ranging
+								from EV charging platforms to modern product experiences. I
+								care deeply about release quality, predictable app behavior,
+								and building interfaces that feel reliable in everyday use.
 							</p>
 							<p className="text-lg leading-relaxed text-muted-foreground">
-								I love the R&amp;D phase, clear architecture, and hands-on QA. I
-								partner closely with PM, QA, and UX to improve user experience,
-								keep releases stable, and maintain parity across platforms.
+								My interests are strongest around mobile architecture,
+								navigation systems, maps, state management, and improving
+								product stability before releases ship. I enjoy the R&amp;D
+								phase of products &mdash; understanding constraints, exploring
+								implementation tradeoffs, and refining app behavior through
+								hands-on testing.
 							</p>
+						</motion.div>
+
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.35 }}
+							className="mb-12 neo-panel p-8"
+						>
+							<h2 className="mb-6 text-2xl font-semibold">How I Work</h2>
+							<div className="space-y-4 text-muted-foreground">
+								<p className="leading-relaxed">
+									I prefer stable systems over clever abstractions.
+								</p>
+								<p className="leading-relaxed">
+									I like understanding product edge cases early, keeping
+									architecture maintainable, and staying involved during QA
+									before releases go live.
+								</p>
+								<p className="leading-relaxed">
+									Most of my work revolves around improving reliability,
+									simplifying flows, and helping teams ship confidently.
+								</p>
+							</div>
 						</motion.div>
 
 						<motion.div
@@ -250,6 +285,18 @@ export default function AboutPage() {
 									</motion.div>
 								))}
 							</div>
+							<motion.div variants={fadeInUp} className="mt-6">
+								<p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+									Secondary
+								</p>
+								<div className="flex flex-wrap gap-2">
+									{secondarySkills.map((skill) => (
+										<Badge key={skill} variant="outline">
+											{skill}
+										</Badge>
+									))}
+								</div>
+							</motion.div>
 						</motion.div>
 
 						<motion.div

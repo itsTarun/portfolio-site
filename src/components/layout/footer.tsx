@@ -34,7 +34,7 @@ export function Footer() {
 				<div className="grid grid-cols-1 gap-10 md:grid-cols-3">
 					<div>
 						<h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.18em]">
-							itstarun
+							itsTarun
 						</h3>
 						<p className="mb-6 text-sm text-muted-foreground leading-relaxed max-w-md">
 							Mobile developer building thoughtful iOS and Flutter products with
