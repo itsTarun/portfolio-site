@@ -7,7 +7,10 @@ import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { RESUME_DOWNLOAD_FILENAME, RESUME_URL } from "@/lib/site-config";
+import {
+	RESUME_DOWNLOAD_LINK_PROPS,
+	RESUME_VIEW_LINK_PROPS,
+} from "@/lib/site-config";
 
 const skills = [
 	{
@@ -168,17 +171,13 @@ export default function AboutPage() {
 								</p>
 								<div className="mt-8 flex flex-wrap items-center gap-3">
 									<Button asChild>
-										<a href={RESUME_URL} download={RESUME_DOWNLOAD_FILENAME}>
+										<a {...RESUME_DOWNLOAD_LINK_PROPS}>
 											<Download className="h-4 w-4" />
 											Download Resume
 										</a>
 									</Button>
 									<Button asChild variant="outline">
-										<a
-											href={RESUME_URL}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
+										<a {...RESUME_VIEW_LINK_PROPS}>
 											<ExternalLink className="h-4 w-4" />
 											View PDF
 										</a>

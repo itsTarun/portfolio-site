@@ -6,8 +6,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	CONTACT_EMAIL,
-	RESUME_DOWNLOAD_FILENAME,
-	RESUME_URL,
+	RESUME_DOWNLOAD_LINK_PROPS,
+	RESUME_VIEW_LINK_PROPS,
 } from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -22,6 +22,9 @@ const helpList = [
 
 const inputClass =
 	"mt-2 w-full border-2 border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50";
+
+const resumeLinkClass =
+	"inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground";
 
 export default function ContactPage() {
 	const reduceMotion = useReducedMotion();
@@ -128,20 +131,11 @@ export default function ContactPage() {
 								Resume
 							</p>
 							<div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
-								<a
-									href={RESUME_URL}
-									download={RESUME_DOWNLOAD_FILENAME}
-									className="inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground"
-								>
+								<a {...RESUME_DOWNLOAD_LINK_PROPS} className={resumeLinkClass}>
 									<Download className="h-4 w-4" />
 									Download PDF
 								</a>
-								<a
-									href={RESUME_URL}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground"
-								>
+								<a {...RESUME_VIEW_LINK_PROPS} className={resumeLinkClass}>
 									<ExternalLink className="h-4 w-4" />
 									View in browser
 								</a>

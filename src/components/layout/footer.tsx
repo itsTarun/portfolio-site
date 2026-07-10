@@ -4,8 +4,7 @@ import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import {
 	CONTACT_EMAIL_MAILTO,
-	RESUME_DOWNLOAD_FILENAME,
-	RESUME_URL,
+	RESUME_DOWNLOAD_LINK_PROPS,
 	SOCIAL_LINKS,
 } from "@/lib/site-config";
 
@@ -95,8 +94,7 @@ export function Footer() {
 							</li>
 							<li>
 								<a
-									href={RESUME_URL}
-									download={RESUME_DOWNLOAD_FILENAME}
+									{...RESUME_DOWNLOAD_LINK_PROPS}
 									className="link-underline transition-colors hover:text-foreground"
 								>
 									Download resume (PDF)
