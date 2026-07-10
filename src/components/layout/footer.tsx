@@ -2,7 +2,11 @@
 
 import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
-import { CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
+import {
+	CONTACT_EMAIL_MAILTO,
+	RESUME_DOWNLOAD_LINK_PROPS,
+	SOCIAL_LINKS,
+} from "@/lib/site-config";
 
 const socialLinks = [
 	{ href: SOCIAL_LINKS.github, icon: Github, label: "GitHub" },
@@ -87,6 +91,14 @@ export function Footer() {
 								>
 									Send a message
 								</Link>
+							</li>
+							<li>
+								<a
+									{...RESUME_DOWNLOAD_LINK_PROPS}
+									className="link-underline transition-colors hover:text-foreground"
+								>
+									Download resume (PDF)
+								</a>
 							</li>
 						</ul>
 					</div>

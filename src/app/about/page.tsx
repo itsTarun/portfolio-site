@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin } from "lucide-react";
+import { Download, ExternalLink, GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
 
 const skills = [
 	{
@@ -165,6 +166,24 @@ export default function AboutPage() {
 									Mobile developer focused on iOS and Flutter apps that feel
 									calm, intuitive, and reliable.
 								</p>
+								<div className="mt-8 flex flex-wrap items-center gap-3">
+									<Button asChild>
+										<a {...RESUME_DOWNLOAD_LINK_PROPS}>
+											<Download className="h-4 w-4" />
+											Download Resume
+										</a>
+									</Button>
+									<Button asChild variant="outline">
+										<a
+											href={RESUME_URL}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<ExternalLink className="h-4 w-4" />
+											View PDF
+										</a>
+									</Button>
+								</div>
 							</div>
 							<div className="neo-panel overflow-hidden p-2">
 								<Image

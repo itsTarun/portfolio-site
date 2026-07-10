@@ -1,5 +1,10 @@
 import { PROJECTS } from "@/config/projects";
-import { CONTACT_EMAIL, SITE_URL, SOCIAL_LINKS } from "@/lib/site-config";
+import {
+	CONTACT_EMAIL,
+	RESUME_URL,
+	SITE_URL,
+	SOCIAL_LINKS,
+} from "@/lib/site-config";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || SITE_URL;
 
@@ -36,6 +41,7 @@ export function buildLlmsTxt(): string {
 		`- About: ${BASE_URL}/about`,
 		`- Projects: ${BASE_URL}/projects`,
 		`- Contact: ${BASE_URL}/contact`,
+		`- Resume (PDF): ${BASE_URL}${RESUME_URL}`,
 		`- GitHub: ${SOCIAL_LINKS.github}`,
 		`- LinkedIn: ${SOCIAL_LINKS.linkedin}`,
 		`- X: ${SOCIAL_LINKS.twitter}`,

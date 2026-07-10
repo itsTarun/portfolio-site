@@ -20,6 +20,11 @@ const EXTRA_ROUTES = (process.env.INTERNAL_LINK_EXTRA_ROUTES || "")
 	.map((route) => route.trim())
 	.filter(Boolean);
 
+// Static assets that must resolve. They are status-checked like routes but
+// never crawled for links (normalizeRoute skips asset extensions on purpose,
+// so these bypass it).
+const ASSET_ROUTES = ["/resume.pdf"];
+
 const SKIP_EXTENSIONS = [
 	".css",
 	".js",
@@ -123,9 +128,10 @@ async function run() {
 	try {
 		await waitForServerReady();
 
-		const queue = [...CORE_ROUTES, ...EXTRA_ROUTES]
-			.map(normalizeRoute)
-			.filter(Boolean);
+		const queue = [
+			...[...CORE_ROUTES, ...EXTRA_ROUTES].map(normalizeRoute).filter(Boolean),
+			...ASSET_ROUTES,
+		];
 		const visited = new Set();
 		const failures = [];
 

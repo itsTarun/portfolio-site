@@ -5,6 +5,17 @@ export const SITE_DESCRIPTION =
 export const CONTACT_EMAIL = "itstarun1994@gmail.com";
 export const CONTACT_EMAIL_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
+export const RESUME_URL = "/resume.pdf";
+
+const RESUME_DOWNLOAD_FILENAME = "Tarun_Sharma_Flutter_Resume.pdf";
+
+// href and download travel together: without the filename the browser saves
+// the file as "resume.pdf". `download` only honors a filename same-origin.
+export const RESUME_DOWNLOAD_LINK_PROPS = {
+	href: RESUME_URL,
+	download: RESUME_DOWNLOAD_FILENAME,
+} as const;
+
 export const SOCIAL_LINKS = {
 	github: "https://github.com/itsTarun",
 	linkedin: "https://www.linkedin.com/in/iamtarun/",
