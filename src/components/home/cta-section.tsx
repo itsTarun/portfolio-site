@@ -42,11 +42,10 @@ export function CtaSection() {
 							transition={{ duration: 0.5 }}
 							className="mb-8"
 						>
-							<p className="eyebrow mb-3">Let&apos;s build</p>
 							<h2 className="mb-4 text-3xl font-semibold sm:text-4xl text-balance text-primary-foreground">
 								Open to ambitious mobile product work with clear impact.
 							</h2>
-							<p className="text-base text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
+							<p className="text-base text-primary-foreground max-w-2xl mx-auto leading-relaxed">
 								I help teams ship thoughtful iOS and Flutter apps with confident
 								UX, clean engineering, and stable release quality.
 							</p>
@@ -87,24 +86,19 @@ export function CtaSection() {
 							className="flex flex-wrap justify-center gap-4"
 						>
 							{socialLinks.map((social, index) => (
-								<motion.div
+								<motion.a
 									key={social.label}
+									href={social.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={social.label}
 									initial={{ opacity: 0, y: 20 }}
 									whileInView={{ opacity: 1, y: 0 }}
 									transition={{ delay: 0.5 + index * 0.1 }}
-									whileHover={{ scale: 1.05, y: -4 }}
-									whileTap={{ scale: 0.95 }}
+									className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground underline-offset-4 hover:underline"
 								>
-									<a
-										href={social.href}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-										aria-label={social.label}
-									>
-										{social.label}
-									</a>
-								</motion.div>
+									{social.label}
+								</motion.a>
 							))}
 						</motion.div>
 					</motion.div>

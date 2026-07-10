@@ -15,63 +15,65 @@ export function ScrollReveal({
 	threshold = 0.1,
 	className = "",
 }: ScrollRevealProps) {
-	const [isVisible, setIsVisible] = useState(false);
-	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+	// Default: no style (content visible). Applied only after JS confirms
+	// motion is OK and the element is genuinely off-screen.
+	const [style, setStyle] = useState<React.CSSProperties>({});
 	const ref = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-		setPrefersReducedMotion(mediaQuery.matches);
 
-		const handler = (e: MediaQueryListEvent) => {
-			setPrefersReducedMotion(e.matches);
-		};
+		// Reduced-motion users: leave style empty (content stays visible).
+		if (mediaQuery.matches) return;
 
-		mediaQuery.addEventListener("change", handler);
-		return () => mediaQuery.removeEventListener("change", handler);
-	}, []);
+		const element = ref.current;
+		if (!element) return;
 
-	useEffect(() => {
+		// Elements already in the viewport on mount skip the entrance.
+		// This covers above-fold content, back-navigation, and hash links.
+		const rect = element.getBoundingClientRect();
+		if (rect.top < window.innerHeight) return;
+
+		// Element is off-screen — safe to start hidden (user can't see it yet).
+		setStyle({
+			opacity: 0,
+			transform: "translateY(30px)",
+			transition: `opacity 0.8s ease-out ${delay}ms, transform 0.8s ease-out ${delay}ms`,
+		});
+
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					setIsVisible(true);
+					setStyle({
+						opacity: 1,
+						transform: "translateY(0)",
+						transition: `opacity 0.8s ease-out ${delay}ms, transform 0.8s ease-out ${delay}ms`,
+					});
 					observer.unobserve(entry.target);
 				}
 			},
 			{ threshold },
 		);
 
-		const element = ref.current;
-		if (element) {
-			observer.observe(element);
-		}
+		observer.observe(element);
 
-		return () => {
-			if (element) {
-				observer.unobserve(element);
+		const handler = (e: MediaQueryListEvent) => {
+			if (e.matches) {
+				// User enables reduced motion mid-session: reveal immediately.
+				setStyle({});
+				observer.disconnect();
 			}
 		};
-	}, [threshold]);
+		mediaQuery.addEventListener("change", handler);
 
-	if (prefersReducedMotion) {
-		return (
-			<div ref={ref} className={className}>
-				{children}
-			</div>
-		);
-	}
+		return () => {
+			observer.disconnect();
+			mediaQuery.removeEventListener("change", handler);
+		};
+	}, [delay, threshold]);
 
 	return (
-		<div
-			ref={ref}
-			className={className}
-			style={{
-				opacity: isVisible ? 1 : 0,
-				transform: isVisible ? "translateY(0)" : "translateY(30px)",
-				transition: `opacity 0.8s ease-out ${delay}ms, transform 0.8s ease-out ${delay}ms`,
-			}}
-		>
+		<div ref={ref} className={className} style={style}>
 			{children}
 		</div>
 	);

@@ -1,5 +1,5 @@
-import { JsonLdScript } from "./json-ld-script";
 import { SITE_URL, SOCIAL_PROFILE_URLS } from "@/lib/site-config";
+import { JsonLdScript } from "./json-ld-script";
 
 export function PersonSchema() {
 	const schema = {

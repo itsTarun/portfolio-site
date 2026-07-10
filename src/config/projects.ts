@@ -62,8 +62,7 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		name: "Repo Press",
 		slug: "repo-press",
 		url: "https://repo-press.vercel.app/",
-		tagline:
-			"Git-native MDX editing — your content, your history, your rules",
+		tagline: "Git-native MDX editing — your content, your history, your rules",
 		category: "web",
 		featured: true,
 		githubUrl: "https://github.com/itsyogesh/repo-press",

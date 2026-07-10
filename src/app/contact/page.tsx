@@ -1,136 +1,281 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
-const fadeInUp = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-};
+type FormState = "idle" | "submitting" | "success" | "error";
 
-const socialLinks = [
-	{
-		name: "Email",
-		href: CONTACT_EMAIL_MAILTO,
-		icon: Mail,
-		description: CONTACT_EMAIL,
-	},
-	{
-		name: "GitHub",
-		href: SOCIAL_LINKS.github,
-		icon: Github,
-		description: "github.com/itsTarun",
-	},
-	{
-		name: "LinkedIn",
-		href: SOCIAL_LINKS.linkedin,
-		icon: Linkedin,
-		description: "linkedin.com/in/iamtarun",
-	},
-	{
-		name: "Twitter",
-		href: SOCIAL_LINKS.twitter,
-		icon: Twitter,
-		description: "x.com/itstarun1994",
-	},
+const helpList = [
+	"iOS app development",
+	"Flutter apps",
+	"App architecture consulting",
+	"Release quality & CI/CD",
+	"Mobile tech advisory",
 ];
 
+const inputClass =
+	"mt-2 w-full border-2 border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50";
+
 export default function ContactPage() {
+	const reduceMotion = useReducedMotion();
+	const [formState, setFormState] = useState<FormState>("idle");
+	const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+	// Entrance that respects prefers-reduced-motion. Framer animations are
+	// JS-driven and bypass the CSS reduced-motion floor in globals.css, so
+	// gate them here. `animate` always targets the visible state, so content
+	// can never get stuck invisible once hydrated.
+	const entrance = (delay = 0) => ({
+		initial: reduceMotion ? false : ({ opacity: 0, y: 20 } as const),
+		animate: { opacity: 1, y: 0 },
+		transition: reduceMotion ? { duration: 0 } : { duration: 0.5, delay },
+	});
+	const [values, setValues] = useState({
+		name: "",
+		email: "",
+		subject: "",
+		message: "",
+	});
+
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+		if (errorMsg) setErrorMsg(null);
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setFormState("submitting");
+		setErrorMsg(null);
+
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(values),
+			});
+
+			const data = await res.json();
+
+			if (!res.ok) {
+				setErrorMsg(data.error ?? "Something went wrong. Please try again.");
+				setFormState("error");
+				return;
+			}
+
+			setFormState("success");
+		} catch {
+			setErrorMsg("Network error. Please try again or email me directly.");
+			setFormState("error");
+		}
+	};
+
+	const handleReset = () => {
+		setFormState("idle");
+		setErrorMsg(null);
+		setValues({ name: "", email: "", subject: "", message: "" });
+	};
+
+	const isSubmitting = formState === "submitting";
+
 	return (
 		<div className="min-h-screen">
 			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					className="mx-auto max-w-4xl"
-				>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mb-12"
-					>
-						<p className="eyebrow mb-3">Contact</p>
-						<h1 className="section-title">Let&apos;s start a conversation.</h1>
+				<div className="grid gap-16 lg:grid-cols-5 lg:gap-24">
+					{/* Left: context */}
+					<motion.div {...entrance()} className="lg:col-span-2">
+						<h1 className="section-title">Let&apos;s work together.</h1>
 						<p className="section-subtitle mt-4">
-							I&apos;m always open to new projects, collaborations, or product
-							consulting.
+							Open to iOS and Flutter contract work. No agencies or generic
+							dev-shop briefs.
+						</p>
+
+						<div className="mt-10">
+							<span className="neo-chip">Available</span>
+							<p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+								Taking freelance and contract work from July 2026. Remote or
+								hybrid within IST&nbsp;±&nbsp;3h.
+							</p>
+						</div>
+
+						<div className="mt-10">
+							<p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+								What I help with
+							</p>
+							<ul className="mt-4 space-y-2.5">
+								{helpList.map((item) => (
+									<li
+										key={item}
+										className="flex items-center gap-2.5 text-sm text-foreground"
+									>
+										<span className="h-px w-4 flex-shrink-0 bg-border" />
+										{item}
+									</li>
+								))}
+							</ul>
+						</div>
+
+						<p className="mt-10 text-xs text-muted-foreground">
+							Typically responds within one business day.
 						</p>
 					</motion.div>
 
-					<div className="grid gap-6 md:grid-cols-2">
-						<motion.div
-							variants={fadeInUp}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.3 }}
-							className="md:col-span-2"
-						>
-							<Card>
-								<CardHeader>
-									<CardTitle className="text-2xl font-semibold">
-										Let&apos;s Connect
-									</CardTitle>
-									<CardDescription>
-										I&apos;m always open to discussing new projects,
-										opportunities, or just having a chat about technology.
-									</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<Button asChild size="lg">
-										<a href={CONTACT_EMAIL_MAILTO}>
-											<Mail className="h-4 w-4" />
-											Send me an email
-										</a>
-									</Button>
-								</CardContent>
-							</Card>
-						</motion.div>
-
-						{socialLinks.map((social, index) => (
-							<motion.div
-								key={social.name}
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: 0.4 + index * 0.1 }}
+					{/* Right: form */}
+					<motion.div {...entrance(0.15)} className="lg:col-span-3">
+						{formState === "success" ? (
+							// biome-ignore lint/a11y/useSemanticElements: <output> permits only phrasing content; this panel holds a heading and button, so role="status" on the container is the correct live-region choice
+							<div
+								role="status"
+								aria-live="polite"
+								className="neo-panel p-8 md:p-10"
 							>
-								<Card className="h-full transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]">
-									<CardHeader>
-										<div className="mb-2 flex h-10 w-10 items-center justify-center border-2 border-border">
-											<social.icon className="h-5 w-5" />
-										</div>
-										<CardTitle className="text-lg font-semibold">
-											{social.name}
-										</CardTitle>
-										<CardDescription>{social.description}</CardDescription>
-									</CardHeader>
-									<CardContent>
-										<Button asChild variant="outline" className="w-full">
-											<a
-												href={social.href}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												Connect
-											</a>
-										</Button>
-									</CardContent>
-								</Card>
-							</motion.div>
-						))}
-					</div>
-				</motion.div>
+								<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+									Sent
+								</p>
+								<h2 className="mt-3 text-2xl font-semibold">
+									Message received.
+								</h2>
+								<p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+									I&apos;ll get back to you within one business day. If
+									it&apos;s urgent, email me directly at{" "}
+									<a
+										href={`mailto:${CONTACT_EMAIL}`}
+										className="text-foreground underline underline-offset-4"
+									>
+										{CONTACT_EMAIL}
+									</a>
+									.
+								</p>
+								<Button
+									variant="outline"
+									size="sm"
+									onClick={handleReset}
+									className="mt-6"
+								>
+									Send another message
+								</Button>
+							</div>
+						) : (
+							<form onSubmit={handleSubmit} noValidate className="space-y-6">
+								<div className="grid gap-6 sm:grid-cols-2">
+									<div>
+										<label
+											htmlFor="name"
+											className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
+										>
+											Name{" "}
+											<span aria-hidden="true" className="text-destructive">
+												*
+											</span>
+										</label>
+										<input
+											id="name"
+											name="name"
+											type="text"
+											required
+											autoComplete="name"
+											value={values.name}
+											onChange={handleChange}
+											placeholder="Your name"
+											className={inputClass}
+											disabled={isSubmitting}
+										/>
+									</div>
+									<div>
+										<label
+											htmlFor="email"
+											className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
+										>
+											Email{" "}
+											<span aria-hidden="true" className="text-destructive">
+												*
+											</span>
+										</label>
+										<input
+											id="email"
+											name="email"
+											type="email"
+											required
+											autoComplete="email"
+											value={values.email}
+											onChange={handleChange}
+											placeholder="you@company.com"
+											className={inputClass}
+											disabled={isSubmitting}
+										/>
+									</div>
+								</div>
+
+								<div>
+									<label
+										htmlFor="subject"
+										className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
+									>
+										Subject{" "}
+										<span className="font-normal normal-case tracking-normal text-muted-foreground">
+											(optional)
+										</span>
+									</label>
+									<input
+										id="subject"
+										name="subject"
+										type="text"
+										autoComplete="off"
+										value={values.subject}
+										onChange={handleChange}
+										placeholder="iOS freelance — 3-month contract"
+										className={inputClass}
+										disabled={isSubmitting}
+									/>
+								</div>
+
+								<div>
+									<label
+										htmlFor="message"
+										className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
+									>
+										Message{" "}
+										<span aria-hidden="true" className="text-destructive">
+											*
+										</span>
+									</label>
+									<textarea
+										id="message"
+										name="message"
+										required
+										rows={6}
+										value={values.message}
+										onChange={handleChange}
+										placeholder="What are you building? Timeline, stack, what you need from me."
+										className={`${inputClass} resize-y rounded-sm`}
+										disabled={isSubmitting}
+									/>
+								</div>
+
+								{errorMsg && (
+									<div
+										role="alert"
+										className="border-2 border-destructive bg-destructive/5 px-4 py-3 text-sm text-destructive"
+									>
+										{errorMsg}
+									</div>
+								)}
+
+								<Button
+									type="submit"
+									size="lg"
+									disabled={isSubmitting}
+									className="w-full sm:w-auto"
+								>
+									{isSubmitting ? "Sending…" : "Send Message"}
+								</Button>
+							</form>
+						)}
+					</motion.div>
+				</div>
 			</div>
 		</div>
 	);

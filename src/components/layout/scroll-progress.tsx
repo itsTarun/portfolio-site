@@ -1,22 +1,31 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ScrollProgress() {
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
+	const tickingRef = useRef(false);
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const totalHeight =
-				document.documentElement.scrollHeight - window.innerHeight;
-			const progress = (window.scrollY / totalHeight) * 100;
-			setScrollProgress(Math.min(100, Math.max(0, progress)));
-			setIsVisible(progress > 5 && progress < 95);
+			if (tickingRef.current) return;
+			tickingRef.current = true;
+
+			requestAnimationFrame(() => {
+				const totalHeight =
+					document.documentElement.scrollHeight - window.innerHeight;
+				const progress =
+					totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+				const clamped = Math.min(100, Math.max(0, progress));
+				setScrollProgress(clamped);
+				setIsVisible(clamped > 5 && clamped < 95);
+				tickingRef.current = false;
+			});
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
@@ -29,7 +38,14 @@ export function ScrollProgress() {
 					exit={{ opacity: 0, scaleX: 0.9, scaleY: 0.9 }}
 					className="fixed top-0 left-0 right-0 z-50 px-4 py-2"
 				>
-					<div className="mx-auto max-w-4xl border-2 border-border bg-background neo-shadow-sm">
+					<div
+						role="progressbar"
+						aria-label="Page scroll progress"
+						aria-valuenow={Math.round(scrollProgress)}
+						aria-valuemin={0}
+						aria-valuemax={100}
+						className="mx-auto max-w-4xl border-2 border-border bg-background neo-shadow-sm"
+					>
 						<div className="h-2 bg-muted">
 							<motion.div
 								className="h-full bg-primary transition-colors"

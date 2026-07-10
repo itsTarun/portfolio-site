@@ -78,7 +78,7 @@ export function createPageOgImage({
 						style={{
 							fontSize: 18,
 							fontWeight: 600,
-							color: "#8b5cf6",
+							color: "#1169d4",
 							marginTop: "16px",
 						}}
 					>

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-26T00:00:00.000Z",
+  "title": "Design System: itstarun.fyi",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Engineering Blue",
+        "canonical": "oklch(0.54 0.21 253)",
+        "tonalRamp": [
+          "oklch(0.12 0.15 253)",
+          "oklch(0.22 0.17 253)",
+          "oklch(0.32 0.19 253)",
+          "oklch(0.42 0.21 253)",
+          "oklch(0.54 0.21 253)",
+          "oklch(0.63 0.20 253)",
+          "oklch(0.78 0.12 253)",
+          "oklch(0.93 0.04 253)"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Engineering Blue Light",
+        "canonical": "oklch(0.62 0.22 253)",
+        "tonalRamp": [
+          "oklch(0.12 0.15 253)",
+          "oklch(0.22 0.17 253)",
+          "oklch(0.32 0.19 253)",
+          "oklch(0.45 0.21 253)",
+          "oklch(0.55 0.21 253)",
+          "oklch(0.65 0.21 253)",
+          "oklch(0.80 0.12 253)",
+          "oklch(0.94 0.04 253)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Cool Structure",
+        "canonical": "oklch(0.96 0.008 240)",
+        "tonalRamp": [
+          "oklch(0.14 0.015 240)",
+          "oklch(0.25 0.013 240)",
+          "oklch(0.38 0.011 240)",
+          "oklch(0.52 0.010 240)",
+          "oklch(0.65 0.010 240)",
+          "oklch(0.78 0.009 240)",
+          "oklch(0.88 0.008 240)",
+          "oklch(0.96 0.008 240)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Blueprint Ink",
+        "canonical": "oklch(0.22 0.03 247)",
+        "tonalRamp": [
+          "oklch(0.08 0.02 247)",
+          "oklch(0.14 0.025 247)",
+          "oklch(0.20 0.03 247)",
+          "oklch(0.27 0.03 247)",
+          "oklch(0.38 0.03 247)",
+          "oklch(0.53 0.03 247)",
+          "oklch(0.70 0.02 247)",
+          "oklch(0.88 0.01 247)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Graphite Authority",
+        "canonical": "oklch(0.23 0.03 247)",
+        "tonalRamp": [
+          "oklch(0.06 0.02 247)",
+          "oklch(0.12 0.025 247)",
+          "oklch(0.19 0.03 247)",
+          "oklch(0.28 0.03 247)",
+          "oklch(0.40 0.025 247)",
+          "oklch(0.56 0.02 247)",
+          "oklch(0.72 0.015 247)",
+          "oklch(0.90 0.008 247)"
+        ]
+      },
+      "accent": {
+        "role": "tertiary",
+        "displayName": "Interface Glint",
+        "canonical": "oklch(0.91 0.05 206)",
+        "tonalRamp": [
+          "oklch(0.15 0.08 206)",
+          "oklch(0.28 0.09 206)",
+          "oklch(0.40 0.09 206)",
+          "oklch(0.55 0.08 206)",
+          "oklch(0.68 0.07 206)",
+          "oklch(0.78 0.07 206)",
+          "oklch(0.87 0.055 206)",
+          "oklch(0.94 0.035 206)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cloud Surface",
+        "canonical": "oklch(0.92 0.010 237)",
+        "tonalRamp": [
+          "oklch(0.15 0.010 237)",
+          "oklch(0.28 0.010 237)",
+          "oklch(0.42 0.010 237)",
+          "oklch(0.57 0.010 237)",
+          "oklch(0.70 0.010 237)",
+          "oklch(0.80 0.010 237)",
+          "oklch(0.88 0.010 237)",
+          "oklch(0.94 0.008 237)"
+        ]
+      },
+      "foreground-muted": {
+        "role": "neutral",
+        "displayName": "Fog Muted",
+        "canonical": "oklch(0.47 0.025 247)",
+        "tonalRamp": [
+          "oklch(0.10 0.02 247)",
+          "oklch(0.20 0.022 247)",
+          "oklch(0.30 0.025 247)",
+          "oklch(0.40 0.025 247)",
+          "oklch(0.50 0.025 247)",
+          "oklch(0.62 0.022 247)",
+          "oklch(0.75 0.015 247)",
+          "oklch(0.90 0.008 247)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "White Card",
+        "canonical": "oklch(1.00 0 0)",
+        "tonalRamp": [
+          "oklch(0.10 0 0)",
+          "oklch(0.22 0 0)",
+          "oklch(0.37 0 0)",
+          "oklch(0.52 0 0)",
+          "oklch(0.66 0 0)",
+          "oklch(0.78 0 0)",
+          "oklch(0.88 0 0)",
+          "oklch(1.00 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level hero headings only. One per page. Bricolage Grotesque at maximum weight."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and secondary page headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card headings, nav section labels, modal titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose and description text. 65–75ch max line length."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Micro-typography system: chips, eyebrows, nav links, badges. ALL CAPS only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-raised",
+        "value": "6px 6px 0 #242C38",
+        "purpose": "Neo-panel cards at rest. Hard, no blur, structural."
+      },
+      {
+        "name": "button-raised",
+        "value": "4px 4px 0 #242C38",
+        "purpose": "Primary and outline buttons at rest."
+      },
+      {
+        "name": "pressed",
+        "value": "2px 2px 0 #242C38",
+        "purpose": "Hover/active state for raised surfaces, paired with translate(2px, 2px)."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 2px #F2F5F8, 0 0 0 4px #1169D4",
+        "purpose": "Keyboard focus indicator. White inner ring ensures visibility on all backgrounds."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "purpose": "Default easing for color and opacity transitions (0.2s)."
+      },
+      {
+        "name": "ease-press",
+        "value": "linear",
+        "purpose": "Shadow collapse and translate on button press (0.1s). Linear feels mechanical and intentional."
+      },
+      {
+        "name": "ease-entrance",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Ease-out-expo for scroll-reveal and page entrance animations (0.6–0.8s)."
+      },
+      {
+        "name": "duration-fast",
+        "value": "100ms",
+        "purpose": "Press mechanic, focus ring appearance."
+      },
+      {
+        "name": "duration-standard",
+        "value": "200ms",
+        "purpose": "Color transitions, hover fills."
+      },
+      {
+        "name": "duration-entrance",
+        "value": "600ms",
+        "purpose": "Hero and scroll-reveal entrances."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button Primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA. Engineering Blue fill, press-in hover mechanic.",
+      "html": "<button class=\"ds-btn-primary\">View Selected Work <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1169D4; color: #fff; border: 2px solid #242C38; border-radius: 0; height: 48px; padding: 0 32px; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; box-shadow: 4px 4px 0 #242C38; cursor: pointer; transition: transform 0.1s linear, box-shadow 0.1s linear; } .ds-btn-primary:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #242C38; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #F2F5F8, 0 0 0 4px #1169D4; }"
+    },
+    {
+      "name": "Button Outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action. Background fill, same border and shadow system.",
+      "html": "<button class=\"ds-btn-outline\">Start a Project</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; background: #F2F5F8; color: #161D27; border: 2px solid #242C38; border-radius: 0; height: 48px; padding: 0 32px; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; box-shadow: 4px 4px 0 #242C38; cursor: pointer; transition: transform 0.1s linear, box-shadow 0.1s linear, background 0.2s; } .ds-btn-outline:hover { background: #E6EBF0; transform: translate(2px, 2px); box-shadow: 2px 2px 0 #242C38; } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 2px #F2F5F8, 0 0 0 4px #1169D4; }"
+    },
+    {
+      "name": "Button Ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Icon-only ghost button. No border at rest; hover fills to Cloud Surface.",
+      "html": "<button class=\"ds-btn-ghost\" aria-label=\"Toggle theme\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42\"/></svg></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #161D27; border: none; border-radius: 0; height: 40px; width: 40px; cursor: pointer; transition: background 0.2s; } .ds-btn-ghost:hover { background: #E6EBF0; } .ds-btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 2px #F2F5F8, 0 0 0 4px #1169D4; }"
+    },
+    {
+      "name": "Neo-Panel Card",
+      "kind": "card",
+      "refersTo": "neo-panel",
+      "description": "Primary content container. Hard border + 6px offset shadow. Never nested.",
+      "html": "<div class=\"ds-neo-panel\"><h3>Chargespot</h3><p>EV Charging Platform featuring real-time station tracking, payment integration, and comprehensive charging analytics.</p><span class=\"ds-neo-panel-cta\">View project →</span></div>",
+      "css": ".ds-neo-panel { background: #FFFFFF; border: 2px solid #242C38; box-shadow: 6px 6px 0 #242C38; padding: 24px; border-radius: 0; font-family: 'Instrument Sans', system-ui, sans-serif; color: #161D27; transition: transform 0.1s linear, box-shadow 0.1s linear; cursor: pointer; } .ds-neo-panel:hover { transform: translate(2px, 2px); box-shadow: 4px 4px 0 #242C38; } .ds-neo-panel h3 { font-family: 'Bricolage Grotesque', 'Times New Roman', serif; font-weight: 700; font-size: 20px; letter-spacing: -0.015em; line-height: 1.15; margin: 0 0 8px; } .ds-neo-panel p { font-size: 14px; color: #4F5A69; line-height: 1.7; margin: 0 0 16px; } .ds-neo-panel-cta { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #161D27; }"
+    },
+    {
+      "name": "Neo-Chip Tag",
+      "kind": "chip",
+      "refersTo": "neo-chip",
+      "description": "Technology and category tags. Interface Glint background, hard border.",
+      "html": "<div style=\"display:flex;gap:8px;\"><span class=\"ds-neo-chip\">iOS</span><span class=\"ds-neo-chip\">Flutter</span><span class=\"ds-neo-chip\">Firebase</span></div>",
+      "css": ".ds-neo-chip { display: inline-flex; align-items: center; background: #C0ECF7; color: #161D27; border: 2px solid #242C38; border-radius: 0; padding: 4px 10px; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 9.6px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "chip",
+      "refersTo": "eyebrow",
+      "description": "Section category marker. Cloud Surface background. Maximum one per section.",
+      "html": "<span class=\"ds-eyebrow\">Mobile App Developer</span>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 6px; background: #E6EBF0; color: #161D27; border: 2px solid #242C38; border-radius: 0; padding: 5px 10px; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 10.4px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square-cornered input. Focus ring in Engineering Blue.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" />",
+      "css": ".ds-input { display: flex; width: 100%; height: 40px; padding: 8px 12px; background: #F2F5F8; color: #161D27; border: 2px solid #242C38; border-radius: 0; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 14px; box-sizing: border-box; transition: border-color 0.2s, box-shadow 0.2s; } .ds-input::placeholder { color: #4F5864; } .ds-input:focus { outline: none; border-color: #1169D4; box-shadow: 0 0 0 1px #1169D4; } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky header with uppercase tracked nav links and animated active indicator.",
+      "html": "<header class=\"ds-nav-header\"><a href=\"#\" class=\"ds-nav-logo\"><span class=\"ds-nav-logo-name\">Tarun</span><span class=\"ds-nav-logo-domain\">itstarun.fyi</span></a><nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\">About</a><a href=\"#\" class=\"ds-nav-link ds-nav-link--active\">Projects</a><a href=\"#\" class=\"ds-nav-link\">Contact</a><button class=\"ds-btn-primary\" style=\"height:36px;padding:0 16px;font-size:12px;\">Let's Talk</button></nav></header>",
+      "css": ".ds-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px; background: #F2F5F8; border-bottom: 2px solid #242C38; position: sticky; top: 0; } .ds-nav-logo { display: flex; flex-direction: column; gap: 2px; text-decoration: none; } .ds-nav-logo-name { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #161D27; line-height: 1; } .ds-nav-logo-domain { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #4F5864; line-height: 1; } .ds-nav { display: flex; align-items: center; gap: 24px; } .ds-nav-link { position: relative; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4F5864; text-decoration: none; padding-bottom: 4px; transition: color 0.2s; } .ds-nav-link:hover { color: #161D27; } .ds-nav-link--active { color: #161D27; } .ds-nav-link--active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background: #161D27; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Instrument",
+    "overview": "This design system is built the way mobile software is built: every surface calibrated, nothing decorative, nothing that doesn't carry weight. The visual language borrows from technical drafting — hard borders, offset block shadows, a grid-overlay on the body, square corners everywhere — but it never tips into cosplay. The neo-brutalist vocabulary here is functional, not ironic.\n\nThe system is dual-mode, light and dark equally first-class, both driven from the same HSL token structure. The light mode rests on a cool blue-gray near-white — not a warm cream, not a beige parchment, not a \"paper\" background. The ink is near-black with a strong blue undertone, mirroring the primary palette rather than fighting it.\n\nFramer Motion is the animation layer. Motion is applied surgically: hero entrance, project cards on scroll, mobile nav drawer, and a layoutId-anchored nav underline. No element is revealed by JavaScript if reduced motion is active.",
+    "keyCharacteristics": [
+      "Square corners throughout (border-radius ≤ 0.125rem on interactive elements; 0 on cards and panels)",
+      "2px solid borders in Graphite Authority (#242C38)",
+      "Offset block shadow: 4px × 4px on buttons, 6px × 6px on panels — same border-color, no blur",
+      "Press-in hover: shadow collapses to 2px × 2px while element translates 2px down-right",
+      "Uppercase tracked labels at 0.18–0.22em as the micro-typography system",
+      "Body background has a 48×48px grid overlay at 5% foreground opacity — structural texture, not decoration"
+    ],
+    "rules": [
+      {
+        "name": "The Rarity Rule",
+        "body": "Engineering Blue (#1169D4) is used on ≤5% of any screen surface. One primary CTA per viewport maximum. Its rarity is the point.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Consistency Rule",
+        "body": "Borders and offset shadows always use the same color: Graphite Authority (#242C38). Never mix border-color with a tinted or lighter tone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Display Ceiling Rule",
+        "body": "No heading may exceed 4rem at any viewport. The clamp() max is the law.",
+        "section": "typography"
+      },
+      {
+        "name": "The Label System Rule",
+        "body": "Uppercase tracked labels appear on chips, eyebrows, nav links, and status tags only. Never on prose or multi-line content. One eyebrow per section maximum.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hard Shadow Rule",
+        "body": "Shadows have zero blur, zero spread, and use Graphite Authority (#242C38) — the same value as the border. Any blur degrades the structural read.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Press Mechanic Rule",
+        "body": "Raised elements respond to hover by translating into their own shadow: translate(2px, 2px) + shadow reduction. The visual reads as a physical button being pressed.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Engineering Blue (#1169D4) exclusively for primary CTAs, focus rings, and active nav state.",
+      "Do use Graphite Authority (#242C38) as both the border color and the shadow color on every raised surface.",
+      "Do apply the press mechanic (translate(2px, 2px) + shadow 6→4px) to every interactive raised surface.",
+      "Do keep all border-radius at 0 for interactive and container elements.",
+      "Do pair Display headings with text-wrap: balance and cap them at clamp() max 4rem.",
+      "Do keep body prose at max 65–75ch line length.",
+      "Do test both light and dark themes for every new component — both are first-class.",
+      "Do provide a @media (prefers-reduced-motion) fallback for every animated element.",
+      "Do keep uppercase-tracked labels limited to categorical, non-prose contexts."
+    ],
+    "donts": [
+      "Don't build what a generic developer resume site looks like: hero avatar, 3 skill cards, a contact form.",
+      "Don't use SaaS startup visual language: gradient blobs, warm cream backgrounds, social proof copy.",
+      "Don't use any warm-tinted background. Cool Structure (#F2F5F8) has a blue family tint — not cream, not beige.",
+      "Don't add blur-based glassmorphism effects. No backdrop-filter: blur() for decorative cards.",
+      "Don't use gradient text (background-clip: text with a gradient).",
+      "Don't use side-stripe borders (border-left > 1px) as accent elements on cards or list items.",
+      "Don't apply the hero-metric template as a standalone decorative section.",
+      "Don't apply eyebrows to every section — maximum one per section, used sparingly.",
+      "Don't use numbered section markers (01 / 02 / 03) as scaffolding for non-sequential content.",
+      "Don't soften the shadows with blur or a lighter tone. 6px 6px 0 #242C38 is the specification."
+    ]
+  }
+}

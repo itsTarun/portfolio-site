@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface StatItem {
@@ -8,7 +8,7 @@ interface StatItem {
 	label: string;
 	value: number;
 	suffix: string;
-	icon: React.ReactNode;
+	icon?: React.ReactNode;
 }
 
 interface AnimatedCounterProps {
@@ -25,9 +25,15 @@ function Counter({
 	const [count, setCount] = useState(0);
 	const ref = useRef<HTMLSpanElement>(null);
 	const isInView = useInView(ref, { once: true });
+	const prefersReducedMotion = useReducedMotion();
 
 	useEffect(() => {
 		if (!isInView) return;
+
+		if (prefersReducedMotion) {
+			setCount(value);
+			return;
+		}
 
 		let startTime: number;
 		let animationFrame: number;
@@ -53,7 +59,7 @@ function Counter({
 				cancelAnimationFrame(animationFrame);
 			}
 		};
-	}, [value, duration, isInView]);
+	}, [value, duration, isInView, prefersReducedMotion]);
 
 	return <span ref={ref}>{count}</span>;
 }
@@ -79,9 +85,11 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 							<Counter value={item.value} />
 							{item.suffix}
 						</div>
-						<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
-							{item.icon}
-						</span>
+						{item.icon && (
+							<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+								{item.icon}
+							</span>
+						)}
 					</div>
 					<div className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
 						{item.label}

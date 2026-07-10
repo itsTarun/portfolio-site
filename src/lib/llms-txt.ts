@@ -12,7 +12,9 @@ function getProjectLines(): string[] {
 
 			return a.name.localeCompare(b.name);
 		})
-		.map((project) => `- [${project.name}](${project.url}) — ${project.tagline}`);
+		.map(
+			(project) => `- [${project.name}](${project.url}) — ${project.tagline}`,
+		);
 }
 
 export function buildLlmsTxt(): string {
