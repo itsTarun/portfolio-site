@@ -5,6 +5,9 @@ export const SITE_DESCRIPTION =
 export const CONTACT_EMAIL = "itstarun1994@gmail.com";
 export const CONTACT_EMAIL_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
+export const RESUME_URL = "/resume.pdf";
+export const RESUME_DOWNLOAD_FILENAME = "Tarun_Sharma_Flutter_Resume.pdf";
+
 export const SOCIAL_LINKS = {
 	github: "https://github.com/itsTarun",
 	linkedin: "https://www.linkedin.com/in/iamtarun/",

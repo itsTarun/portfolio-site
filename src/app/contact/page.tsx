@@ -1,9 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { Download, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import {
+	CONTACT_EMAIL,
+	RESUME_DOWNLOAD_FILENAME,
+	RESUME_URL,
+} from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -116,6 +121,31 @@ export default function ContactPage() {
 									</li>
 								))}
 							</ul>
+						</div>
+
+						<div className="mt-10">
+							<p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+								Resume
+							</p>
+							<div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+								<a
+									href={RESUME_URL}
+									download={RESUME_DOWNLOAD_FILENAME}
+									className="inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground"
+								>
+									<Download className="h-4 w-4" />
+									Download PDF
+								</a>
+								<a
+									href={RESUME_URL}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground"
+								>
+									<ExternalLink className="h-4 w-4" />
+									View in browser
+								</a>
+							</div>
 						</div>
 
 						<p className="mt-10 text-xs text-muted-foreground">
