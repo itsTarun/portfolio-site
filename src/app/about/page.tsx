@@ -7,10 +7,7 @@ import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-	RESUME_DOWNLOAD_LINK_PROPS,
-	RESUME_VIEW_LINK_PROPS,
-} from "@/lib/site-config";
+import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
 
 const skills = [
 	{
@@ -177,7 +174,11 @@ export default function AboutPage() {
 										</a>
 									</Button>
 									<Button asChild variant="outline">
-										<a {...RESUME_VIEW_LINK_PROPS}>
+										<a
+											href={RESUME_URL}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
 											<ExternalLink className="h-4 w-4" />
 											View PDF
 										</a>

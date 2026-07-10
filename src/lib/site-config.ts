@@ -9,16 +9,11 @@ export const RESUME_URL = "/resume.pdf";
 
 const RESUME_DOWNLOAD_FILENAME = "Tarun_Sharma_Flutter_Resume.pdf";
 
-// `download` only honors a filename for same-origin URLs, which /resume.pdf is.
+// href and download travel together: without the filename the browser saves
+// the file as "resume.pdf". `download` only honors a filename same-origin.
 export const RESUME_DOWNLOAD_LINK_PROPS = {
 	href: RESUME_URL,
 	download: RESUME_DOWNLOAD_FILENAME,
-} as const;
-
-export const RESUME_VIEW_LINK_PROPS = {
-	href: RESUME_URL,
-	target: "_blank",
-	rel: "noopener noreferrer",
 } as const;
 
 export const SOCIAL_LINKS = {

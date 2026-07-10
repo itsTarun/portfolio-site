@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
 	CONTACT_EMAIL,
 	RESUME_DOWNLOAD_LINK_PROPS,
-	RESUME_VIEW_LINK_PROPS,
+	RESUME_URL,
 } from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -135,7 +135,12 @@ export default function ContactPage() {
 									<Download className="h-4 w-4" />
 									Download PDF
 								</a>
-								<a {...RESUME_VIEW_LINK_PROPS} className={resumeLinkClass}>
+								<a
+									href={RESUME_URL}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={resumeLinkClass}
+								>
 									<ExternalLink className="h-4 w-4" />
 									View in browser
 								</a>
