@@ -34,7 +34,10 @@ export function generateMetadata(): Metadata {
 	};
 
 	return {
-		title: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
+		title: {
+			template: "%s | Tarun Sharma",
+			default: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
+		},
 		description:
 			"Personal portfolio showcasing iOS and Flutter work, experience, and projects. Mobile app developer focused on stable releases and product quality.",
 		keywords: [
@@ -65,8 +68,8 @@ export function generateMetadata(): Metadata {
 			title: "Tarun",
 			description:
 				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
-			creator: "@itsTarun",
-			site: "@itsTarun",
+			creator: "@itstarun1994",
+			site: "@itstarun1994",
 			images: [defaultSocialImage],
 		},
 		icons: {

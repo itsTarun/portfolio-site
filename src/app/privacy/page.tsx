@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - Tarun Portfolio",
+	title: "Privacy Policy",
 	description: "Privacy policy for itstarun.fyi portfolio website",
+	alternates: {
+		canonical: `${SITE_URL}/privacy`,
+	},
 };
 
 export default function PrivacyPage() {

@@ -1,14 +1,20 @@
 {
-	"$schema": "https://openapi.vercel.sh/vercel.json",
-	"headers": [
-		{
-			"source": "/(.*)",
-			"headers": [
-				{
-					"key": "X-Robots-Tag",
-					"value": "noindex, nofollow"
-				}
-			]
-		}
-	]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "droidsize-web.vercel.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
 }
