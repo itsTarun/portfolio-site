@@ -15,17 +15,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Must precede setup-node: the pnpm cache lookup needs pnpm on PATH.
+      # Version comes from the packageManager field in package.json.
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build app
-        run: npm run build
+        run: pnpm build
 
       - name: Run internal link smoke checks
-        run: npm run test:links
+        run: pnpm test:links
