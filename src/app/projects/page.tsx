@@ -180,6 +180,7 @@ export default function ProjectsPage() {
 										src={project.imageUrl}
 										alt={`${project.title} screenshot`}
 										fill
+										sizes="(min-width: 768px) 50vw, 100vw"
 										className="object-cover"
 									/>
 								</div>

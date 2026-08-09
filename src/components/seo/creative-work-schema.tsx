@@ -6,10 +6,9 @@ interface CreativeWorkSchemaProps {
 	description: string;
 	url: string;
 	image: string;
+	/** ISO date. Omitted from the schema when absent — do not default it. */
 	dateCreated?: string;
 	technologies?: string[];
-	liveUrl?: string;
-	githubUrl?: string;
 	category?: string;
 }
 
@@ -20,8 +19,6 @@ export function CreativeWorkSchema({
 	image,
 	dateCreated,
 	technologies = [],
-	liveUrl,
-	githubUrl,
 	category,
 }: CreativeWorkSchemaProps) {
 	const schema = {
@@ -30,14 +27,11 @@ export function CreativeWorkSchema({
 		"@id": url,
 		name,
 		description,
-		image: {
-			"@type": "ImageObject",
-			url: image,
-			width: 1200,
-			height: 630,
-		},
+		// Plain URL, not an ImageObject: the per-project assets have different
+		// intrinsic sizes, so declaring fixed dimensions here would be wrong.
+		image,
 		url,
-		dateCreated: dateCreated || new Date().toISOString(),
+		...(dateCreated && { dateCreated }),
 		author: {
 			"@type": "Person",
 			name: "Tarun",
@@ -48,10 +42,6 @@ export function CreativeWorkSchema({
 		},
 		keywords: technologies.join(", "),
 		about: category,
-		applicationCategory:
-			category === "web" ? "WebApplication" : "SoftwareApplication",
-		...(liveUrl && { url: liveUrl }),
-		...(githubUrl && { codeRepository: githubUrl }),
 		programmingLanguage: technologies.filter((tech) =>
 			["TypeScript", "JavaScript", "Dart", "Python", "Go"].includes(tech),
 		),

@@ -1,7 +1,7 @@
 {
 	"name": "Tarun Portfolio",
 	"short_name": "Tarun",
-	"description": "Modern personal portfolio website showcasing projects, skills, and experience. Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies.",
+	"description": "Personal portfolio showcasing iOS and Flutter work, experience, and projects.",
 	"start_url": "/",
 	"display": "standalone",
 	"background_color": "#0a0a0a",
@@ -10,15 +10,9 @@
 	"icons": [
 		{
 			"src": "/favicon.svg",
-			"sizes": "192x192",
+			"sizes": "any",
 			"type": "image/svg+xml",
-			"purpose": "any maskable"
-		},
-		{
-			"src": "/favicon.svg",
-			"sizes": "512x512",
-			"type": "image/svg+xml",
-			"purpose": "any maskable"
+			"purpose": "any"
 		}
 	],
 	"categories": ["portfolio", "developer", "web development"],

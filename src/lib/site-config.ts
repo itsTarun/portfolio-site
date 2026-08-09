@@ -1,4 +1,10 @@
 export const SITE_URL = "https://itstarun.fyi";
+
+// Vercel sets VERCEL_ENV on every deployment. Matching a single preview
+// hostname left every other preview URL (branch and commit deploys) indexable,
+// so gate on the env instead. Absent outside Vercel, i.e. local builds index.
+export const IS_PREVIEW_DEPLOYMENT =
+	!!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production";
 export const SITE_NAME = "Tarun Portfolio";
 export const SITE_DESCRIPTION =
 	"Personal portfolio showcasing iOS and Flutter work, experience, and projects.";

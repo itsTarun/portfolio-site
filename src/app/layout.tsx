@@ -8,7 +8,12 @@ import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { PersonSchema } from "@/components/seo/person-schema";
 import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
-import { OG_IMAGE_SIZE, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import {
+	IS_PREVIEW_DEPLOYMENT,
+	OG_IMAGE_SIZE,
+	SITE_NAME,
+	SITE_URL,
+} from "@/lib/site-config";
 
 const displayFont = Bricolage_Grotesque({
 	subsets: ["latin"],
@@ -23,10 +28,6 @@ const bodyFont = Instrument_Sans({
 });
 
 export function generateMetadata(): Metadata {
-	const isPreview =
-		process.env.VERCEL_URL?.includes("droidsize-web.vercel.app") ||
-		process.env.NEXT_PUBLIC_APP_URL?.includes("droidsize-web.vercel.app");
-
 	const defaultSocialImage = {
 		url: "/opengraph-image",
 		...OG_IMAGE_SIZE,
@@ -52,7 +53,7 @@ export function generateMetadata(): Metadata {
 		authors: [{ name: "Tarun" }],
 		creator: "Tarun",
 		publisher: "Tarun",
-		robots: isPreview ? "noindex, nofollow" : "index, follow",
+		robots: IS_PREVIEW_DEPLOYMENT ? "noindex, nofollow" : "index, follow",
 		openGraph: {
 			type: "website",
 			locale: "en_US",

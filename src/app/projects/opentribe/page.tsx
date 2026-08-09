@@ -7,11 +7,13 @@ import {
 	Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { NextProjectNav } from "@/components/projects/next-project-nav";
 import { NumberedFeatureList } from "@/components/projects/numbered-feature-list";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -20,7 +22,10 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { PROJECTS } from "@/config/projects";
-import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import {
+	buildProjectBreadcrumbs,
+	toBreadcrumbItems,
+} from "@/lib/project-breadcrumbs";
 import { createProjectMetadata } from "@/lib/project-metadata";
 import { SITE_URL } from "@/lib/site-config";
 
@@ -57,7 +62,7 @@ export const metadata: Metadata = createProjectMetadata({
 	ogTitle: "OpenTribe - Web3 Talent Marketplace",
 	ogDescription:
 		"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
-	imageUrl: "/opengraph-image",
+	imageUrl: "/images/projects/opentribe.webp",
 	imageAlt: "OpenTribe project overview",
 });
 
@@ -78,6 +83,7 @@ export default function OpenTribePage() {
 			<div className="min-h-screen">
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
+						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
 						<div className="mb-12 neo-panel p-8">
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
@@ -119,10 +125,13 @@ export default function OpenTribePage() {
 						</div>
 
 						<div className="mb-12 neo-panel p-2">
-							<img
+							<Image
 								src={projectData.imageUrl}
-								alt={`${projectData.name} screenshot`}
-								className="w-full h-auto"
+								alt={`${projectData.name} project overview`}
+								className="h-auto w-full"
+								width={1200}
+								height={630}
+								priority
 							/>
 						</div>
 

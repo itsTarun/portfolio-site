@@ -6,7 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { toBreadcrumbItems } from "@/lib/project-breadcrumbs";
 import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
 
 const skills = [
@@ -152,6 +154,7 @@ export default function AboutPage() {
 						transition={{ duration: 0.6 }}
 						className="mx-auto max-w-4xl"
 					>
+						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}

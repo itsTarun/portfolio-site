@@ -6,9 +6,13 @@ import { NumberedFeatureList } from "@/components/projects/numbered-feature-list
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { CreativeWorkSchema } from "@/components/seo/creative-work-schema";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { PROJECTS } from "@/config/projects";
-import { buildProjectBreadcrumbs } from "@/lib/project-breadcrumbs";
+import {
+	buildProjectBreadcrumbs,
+	toBreadcrumbItems,
+} from "@/lib/project-breadcrumbs";
 import { createProjectMetadata } from "@/lib/project-metadata";
 import { SITE_URL } from "@/lib/site-config";
 
@@ -65,6 +69,7 @@ export default function ChargespotPage() {
 			<div className="min-h-screen">
 				<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-5xl">
+						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
 						<div className="mb-12 neo-panel p-8">
 							<h1 className="mb-4 text-4xl font-semibold tracking-tight sm:text-5xl">
 								<a
@@ -110,8 +115,8 @@ export default function ChargespotPage() {
 								src={projectData.imageUrl}
 								alt={`${projectData.name} app screenshot`}
 								className="h-auto w-full"
-								width={1920}
-								height={1080}
+								width={2924}
+								height={1428}
 								priority
 							/>
 						</div>
