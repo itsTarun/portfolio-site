@@ -109,10 +109,10 @@ export default function ContactPage() {
 							</p>
 						</div>
 
-						<div className="mt-10">
-							<p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+						<section className="mt-10">
+							<h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
 								What I help with
-							</p>
+							</h2>
 							<ul className="mt-4 space-y-2.5">
 								{helpList.map((item) => (
 									<li
@@ -124,12 +124,12 @@ export default function ContactPage() {
 									</li>
 								))}
 							</ul>
-						</div>
+						</section>
 
-						<div className="mt-10">
-							<p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+						<section className="mt-10">
+							<h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
 								Resume
-							</p>
+							</h2>
 							<div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
 								<a {...RESUME_DOWNLOAD_LINK_PROPS} className={resumeLinkClass}>
 									<Download className="h-4 w-4" />
@@ -145,7 +145,7 @@ export default function ContactPage() {
 									View in browser
 								</a>
 							</div>
-						</div>
+						</section>
 
 						<p className="mt-10 text-xs text-muted-foreground">
 							Typically responds within one business day.

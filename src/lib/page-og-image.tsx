@@ -28,7 +28,9 @@ export function createPageOgImage({
 	subtitleColor = "#888888",
 	subtitleFontSize = 28,
 	titleFontSize = 96,
-	titleMarginBottom,
+	// Must not be undefined: Satori calls .trim() on style values, so an absent
+	// margin crashed rendering and returned a 0-byte PNG (About, Contact).
+	titleMarginBottom = "0px",
 }: CreatePageOgImageOptions) {
 	return new ImageResponse(
 		<div

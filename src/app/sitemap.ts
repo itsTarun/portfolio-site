@@ -24,23 +24,13 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
 	{ path: "/privacy", changeFrequency: "yearly", priority: 0.6 },
 ];
 
-function buildStaticSitemapEntry(
-	route: StaticRouteConfig,
-	lastModified: Date,
-): MetadataRoute.Sitemap[number] {
-	return {
+// No lastModified: the only value available at build time is the build
+// timestamp, which would claim every page changed on every deploy. An absent
+// lastmod is better than a false one.
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+	return STATIC_ROUTES.map((route) => ({
 		url: `${baseUrl}${route.path}`,
-		lastModified,
 		changeFrequency: route.changeFrequency,
 		priority: route.priority,
-	};
-}
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const now = new Date();
-	const staticPages: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) =>
-		buildStaticSitemapEntry(route, now),
-	);
-
-	return staticPages;
+	}));
 }
