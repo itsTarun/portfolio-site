@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -127,53 +124,25 @@ const flagshipProjects = [
 	},
 ];
 
-const containerVariants = {
-	animate: {
-		transition: {
-			staggerChildren: 0.08,
-		},
-	},
-};
-
-const fadeInUp = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-};
-
 export default function ProjectsPage() {
 	return (
 		<div className="min-h-screen">
 			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-				>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="mb-12"
-					>
+				<div>
+					<div className="animate-rise mb-12">
 						<h1 className="section-title">Flagship projects</h1>
 						<p className="section-subtitle mt-4 max-w-2xl">
 							Deep dives into the products I&apos;ve shipped across web and
 							mobile.
 						</p>
-					</motion.div>
+					</div>
 
-					<motion.div
-						variants={containerVariants}
-						initial="initial"
-						animate="animate"
-						className="grid gap-6 md:grid-cols-2"
-					>
-						{flagshipProjects.map((project) => (
-							<motion.div
+					<div className="grid gap-6 md:grid-cols-2">
+						{flagshipProjects.map((project, idx) => (
+							<div
 								key={project.id}
-								variants={fadeInUp}
-								className="neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+								className="animate-rise neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+								style={{ animationDelay: `${idx * 80}ms` }}
 							>
 								<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
 									<Image
@@ -229,10 +198,10 @@ export default function ProjectsPage() {
 										</div>
 									</div>
 								</div>
-							</motion.div>
+							</div>
 						))}
-					</motion.div>
-				</motion.div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
