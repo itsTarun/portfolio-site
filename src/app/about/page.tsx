@@ -1,9 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Download, ExternalLink, GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { Badge } from "@/components/ui/badge";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -148,19 +146,9 @@ export default function AboutPage() {
 			<BreadcrumbSchema breadcrumbs={breadcrumbs} />
 			<div className="min-h-screen">
 				<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6 }}
-						className="mx-auto max-w-4xl"
-					>
+					<div className="mx-auto max-w-4xl">
 						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.2 }}
-							className="mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start"
-						>
+						<div className="animate-rise mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start">
 							<div>
 								<h1 className="section-title">
 									Building mobile products with clarity.
@@ -198,13 +186,11 @@ export default function AboutPage() {
 									className="w-full h-auto object-cover"
 								/>
 							</div>
-						</motion.div>
+						</div>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.3 }}
-							className="mb-12 neo-panel p-8"
+						<div
+							className="animate-rise mb-12 neo-panel p-8"
+							style={{ animationDelay: "120ms" }}
 						>
 							<p className="mb-4 text-lg leading-relaxed">
 								I&apos;m a mobile developer focused on iOS and Flutter. Since
@@ -216,15 +202,9 @@ export default function AboutPage() {
 								partner closely with PM, QA, and UX to improve user experience,
 								keep releases stable, and maintain parity across platforms.
 							</p>
-						</motion.div>
+						</div>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
-							className="mb-12"
-						>
+						<ScrollReveal className="mb-12">
 							<h2 className="mb-6 text-2xl font-semibold">
 								Skills & Expertise
 							</h2>
@@ -244,24 +224,15 @@ export default function AboutPage() {
 									</div>
 								))}
 							</div>
-						</motion.div>
+						</ScrollReveal>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
-							className="mb-12"
-						>
+						<ScrollReveal className="mb-12">
 							<h2 className="mb-6 text-2xl font-semibold">Experience</h2>
 							<div className="space-y-6">
 								{experience.map((exp, idx) => (
-									<motion.div
+									<ScrollReveal
 										key={exp.id}
-										initial={{ opacity: 0, y: 12 }}
-										whileInView={{ opacity: 1, y: 0 }}
-										viewport={{ once: true }}
-										transition={{ duration: 0.4, delay: idx * 0.06 }}
+										delay={idx * 60}
 										className="neo-panel p-6"
 									>
 										<div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -289,18 +260,12 @@ export default function AboutPage() {
 												</Badge>
 											))}
 										</div>
-									</motion.div>
+									</ScrollReveal>
 								))}
 							</div>
-						</motion.div>
+						</ScrollReveal>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
-							className="mb-12"
-						>
+						<ScrollReveal className="mb-12">
 							<h2 className="mb-6 text-2xl font-semibold">Education</h2>
 							<div className="neo-panel p-6">
 								<div className="mb-2 flex items-start gap-3">
@@ -323,15 +288,9 @@ export default function AboutPage() {
 									</div>
 								</div>
 							</div>
-						</motion.div>
+						</ScrollReveal>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
-							className="neo-panel p-8 text-center"
-						>
+						<ScrollReveal className="neo-panel p-8 text-center">
 							<h2 className="mb-4 text-2xl font-semibold">
 								Let&apos;s work together
 							</h2>
@@ -341,8 +300,8 @@ export default function AboutPage() {
 							<Button asChild>
 								<Link href="/contact">Get in touch</Link>
 							</Button>
-						</motion.div>
-					</motion.div>
+						</ScrollReveal>
+					</div>
 				</div>
 			</div>
 		</>
