@@ -307,3 +307,17 @@
 		transform: translateY(0);
 	}
 }
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+}
+
+/* Entrance for server-rendered content: runs without JS, and the global
+   reduced-motion block above collapses it to ~0ms for those users.
+   `backwards` keeps pre-delay frames at the `from` state during staggers. */
+.animate-rise {
+	animation: rise 0.5s ease-out backwards;
+}
