@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
@@ -35,13 +32,8 @@ export function CtaSection() {
 		<section className="py-16 md:py-20 lg:py-24">
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
-					<motion.div className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12">
-						<motion.div
-							initial={{ opacity: 0, scale: 0.9 }}
-							whileInView={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.5 }}
-							className="mb-8"
-						>
+					<div className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12">
+						<div className="mb-8">
 							<h2 className="mb-4 text-3xl font-semibold sm:text-4xl text-balance text-primary-foreground">
 								Open to ambitious mobile product work with clear impact.
 							</h2>
@@ -49,14 +41,9 @@ export function CtaSection() {
 								I help teams ship thoughtful iOS and Flutter apps with confident
 								UX, clean engineering, and stable release quality.
 							</p>
-						</motion.div>
+						</div>
 
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ delay: 0.2, duration: 0.5 }}
-							className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:justify-center"
-						>
+						<div className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:justify-center">
 							<Button
 								asChild
 								size="lg"
@@ -77,31 +64,23 @@ export function CtaSection() {
 							>
 								<Link href="/projects">View Selected Work</Link>
 							</Button>
-						</motion.div>
+						</div>
 
-						<motion.div
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							transition={{ delay: 0.4, duration: 0.5 }}
-							className="flex flex-wrap justify-center gap-4"
-						>
-							{socialLinks.map((social, index) => (
-								<motion.a
+						<div className="flex flex-wrap justify-center gap-4">
+							{socialLinks.map((social) => (
+								<a
 									key={social.label}
 									href={social.href}
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={social.label}
-									initial={{ opacity: 0, y: 20 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.5 + index * 0.1 }}
 									className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground underline-offset-4 hover:underline"
 								>
 									{social.label}
-								</motion.a>
+								</a>
 							))}
-						</motion.div>
-					</motion.div>
+						</div>
+					</div>
 				</ScrollReveal>
 			</div>
 		</section>
