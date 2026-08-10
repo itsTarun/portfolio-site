@@ -128,79 +128,77 @@ export default function ProjectsPage() {
 	return (
 		<div className="min-h-screen">
 			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
-				<div>
-					<div className="animate-rise mb-12">
-						<h1 className="section-title">Flagship projects</h1>
-						<p className="section-subtitle mt-4 max-w-2xl">
-							Deep dives into the products I&apos;ve shipped across web and
-							mobile.
-						</p>
-					</div>
+				<div className="animate-rise mb-12">
+					<h1 className="section-title">Flagship projects</h1>
+					<p className="section-subtitle mt-4 max-w-2xl">
+						Deep dives into the products I&apos;ve shipped across web and
+						mobile.
+					</p>
+				</div>
 
-					<div className="grid gap-6 md:grid-cols-2">
-						{flagshipProjects.map((project, idx) => (
-							<div
-								key={project.id}
-								className="animate-rise neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
-								style={{ animationDelay: `${idx * 80}ms` }}
-							>
-								<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
-									<Image
-										src={project.imageUrl}
-										alt={`${project.title} screenshot`}
-										fill
-										sizes="(min-width: 768px) 50vw, 100vw"
-										className="object-cover"
-									/>
+				<div className="grid gap-6 md:grid-cols-2">
+					{flagshipProjects.map((project, idx) => (
+						<div
+							key={project.id}
+							className="animate-rise neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+							style={{ animationDelay: `${idx * 80}ms` }}
+						>
+							<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
+								<Image
+									src={project.imageUrl}
+									alt={`${project.title} screenshot`}
+									fill
+									sizes="(min-width: 768px) 50vw, 100vw"
+									className="object-cover"
+								/>
+							</div>
+
+							<div className="flex flex-col flex-1 p-6">
+								<div className="mb-4 flex items-start justify-between gap-4">
+									<h2 className="text-2xl font-semibold">{project.title}</h2>
+									<div className="flex gap-2">
+										<Button asChild size="sm">
+											<Link href={`/projects/${project.id}`}>View</Link>
+										</Button>
+										{project.liveUrl && (
+											<Button asChild size="sm" variant="outline">
+												<a
+													href={project.liveUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													aria-label={`${project.title} live site`}
+												>
+													<ExternalLink className="h-3.5 w-3.5" />
+												</a>
+											</Button>
+										)}
+									</div>
 								</div>
 
-								<div className="flex flex-col flex-1 p-6">
-									<div className="mb-4 flex items-start justify-between gap-4">
-										<h2 className="text-2xl font-semibold">{project.title}</h2>
-										<div className="flex gap-2">
-											<Button asChild size="sm">
-												<Link href={`/projects/${project.id}`}>View</Link>
-											</Button>
-											{project.liveUrl && (
-												<Button asChild size="sm" variant="outline">
-													<a
-														href={project.liveUrl}
-														target="_blank"
-														rel="noopener noreferrer"
-														aria-label={`${project.title} live site`}
-													>
-														<ExternalLink className="h-3.5 w-3.5" />
-													</a>
-												</Button>
-											)}
-										</div>
-									</div>
+								<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
+									{project.description}
+								</p>
 
-									<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
-										{project.description}
+								<div className="border-t-2 border-border pt-4">
+									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+										Stack
 									</p>
-
-									<div className="border-t-2 border-border pt-4">
-										<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-											Stack
-										</p>
-										<div className="flex flex-wrap gap-1.5">
-											{project.technologies.slice(0, 6).map((tech) => (
-												<Badge key={tech} variant="secondary">
-													{tech}
-												</Badge>
-											))}
-											{project.technologies.length > 6 && (
-												<Badge variant="outline">
-													+{project.technologies.length - 6}
-												</Badge>
-											)}
-										</div>
+									<div className="flex flex-wrap gap-1.5">
+										{project.technologies.slice(0, 6).map((tech) => (
+											<Badge key={tech} variant="secondary">
+												{tech}
+											</Badge>
+										))}
+										{project.technologies.length > 6 && (
+											<Badge variant="outline">
+												+{project.technologies.length - 6}
+											</Badge>
+										)}
 									</div>
 								</div>
 							</div>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

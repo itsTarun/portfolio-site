@@ -23,8 +23,11 @@ Server components everywhere; entrance animation moves to CSS.
 - Stagger via inline `style={{ animationDelay: "…ms" }}`.
 - `backwards` fill means content is visible whenever the animation is not
   running — no blank state, no JS dependency.
-- The existing global `prefers-reduced-motion: reduce` block already zeroes
-  all animation durations; no extra guard needed.
+- The existing global `prefers-reduced-motion: reduce` block zeroes animation
+  durations but **not delays** — with `backwards` fill, a pending delay holds
+  content invisible. This change therefore adds `animation-delay: 0ms
+  !important` to that block so reduced-motion users see staggered content
+  immediately instead of it blinking in up to 240ms late.
 
 ### Per page
 
@@ -45,8 +48,21 @@ Server components everywhere; entrance animation moves to CSS.
 ### Out of scope
 
 - Site chrome keeps Framer Motion: header, footer, scroll-progress,
-  animated-counter, not-found. The `framer-motion` dependency stays.
+  not-found. The `framer-motion` dependency stays.
 - Project detail pages (`/projects/[slug]`) — already server-rendered.
+
+### Addenda (landed with this branch)
+
+- `animated-counter.tsx` was originally out of scope, but its own
+  `initial={{ opacity: 0 }}` Framer entrance SSR'd the hero stat tiles
+  invisible — the audit finding in miniature. Its motion wrappers were
+  removed; it stays a client island (framer's `useInView` drives the
+  count-up).
+- `scripts/internal-link-smoke.mjs` rider: the script spawned `npm run
+  start` and killed only the npm wrapper, orphaning `next-server`, whose
+  open stdio pipes kept the process alive until CI's 15-minute timeout —
+  every historical run of the workflow was cancelled this way. It now
+  spawns the `next` bin directly and escalates to SIGKILL after 5s.
 
 ## Acceptance
 
