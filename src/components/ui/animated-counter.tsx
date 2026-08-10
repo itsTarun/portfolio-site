@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface StatItem {
@@ -66,18 +66,10 @@ function Counter({
 
 export function AnimatedCounter({ items }: AnimatedCounterProps) {
 	return (
-		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.6, delay: 0.4 }}
-			className="grid grid-cols-2 gap-4"
-		>
-			{items.map((item, index) => (
-				<motion.div
+		<div className="grid grid-cols-2 gap-4">
+			{items.map((item) => (
+				<div
 					key={item.id}
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
 					className="border-2 border-border bg-background px-3 py-3"
 				>
 					<div className="flex items-center justify-between gap-2">
@@ -94,8 +86,8 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 					<div className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
 						{item.label}
 					</div>
-				</motion.div>
+				</div>
 			))}
-		</motion.div>
+		</div>
 	);
 }

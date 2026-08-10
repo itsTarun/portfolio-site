@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { PROJECTS } from "@/config/projects";
 import { type ProjectSlug, toProjectRoute } from "@/types";
@@ -23,13 +21,7 @@ function ProjectCard({
 	slug,
 }: ProjectCardProps) {
 	return (
-		<motion.div
-			initial={{ opacity: 0, y: 16 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true }}
-			transition={{ duration: 0.4, delay: index * 0.08 }}
-			className="h-full"
-		>
+		<ScrollReveal delay={index * 80} className="h-full">
 			<Link
 				href={toProjectRoute(slug)}
 				className="neo-panel flex h-full flex-col justify-between p-0 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))] overflow-hidden"
@@ -55,7 +47,7 @@ function ProjectCard({
 					View project →
 				</span>
 			</Link>
-		</motion.div>
+		</ScrollReveal>
 	);
 }
 
@@ -65,19 +57,13 @@ export function ProjectsSection() {
 	return (
 		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.5 }}
-					className="mb-12"
-				>
+				<ScrollReveal className="mb-12">
 					<h2 className="section-title text-balance">Builds with range.</h2>
 					<p className="section-subtitle mt-4 max-w-2xl">
 						Shipped products and tools across mobile and web — built, iterated,
 						and used in the real world.
 					</p>
-				</motion.div>
+				</ScrollReveal>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
 					{projects.map((project, idx) => (
@@ -93,17 +79,11 @@ export function ProjectsSection() {
 				</div>
 
 				{projects.length > 3 && (
-					<motion.div
-						initial={{ opacity: 0, y: 12 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.4, delay: 0.3 }}
-						className="mt-12"
-					>
+					<ScrollReveal delay={300} className="mt-12">
 						<Button asChild variant="outline" size="lg">
 							<Link href="/projects">View all projects</Link>
 						</Button>
-					</motion.div>
+					</ScrollReveal>
 				)}
 			</div>
 		</section>

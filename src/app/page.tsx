@@ -1,5 +1,3 @@
-"use client";
-
 import { CtaSection } from "@/components/home/cta-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { ProjectsSection } from "@/components/home/projects-section";

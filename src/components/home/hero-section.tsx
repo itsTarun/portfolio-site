@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -42,12 +39,7 @@ export function HeroSection() {
 		<section className="relative border-b-2 border-border bg-background">
 			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 				<div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-					<motion.div
-						initial={{ opacity: 0, y: 16 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6 }}
-						className="space-y-8"
-					>
+					<div className="animate-rise space-y-8">
 						<div className="flex flex-wrap items-center gap-3">
 							<span className="eyebrow">Mobile App Developer</span>
 							<span className="neo-chip">iOS</span>
@@ -95,13 +87,11 @@ export function HeroSection() {
 								</a>
 							))}
 						</div>
-					</motion.div>
+					</div>
 
-					<motion.div
-						initial={{ opacity: 0, y: 16 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.1 }}
-						className="space-y-6"
+					<div
+						className="animate-rise space-y-6"
+						style={{ animationDelay: "100ms" }}
 					>
 						<div className="neo-panel p-6">
 							<div className="mb-6 flex items-center justify-between">
@@ -124,7 +114,7 @@ export function HeroSection() {
 								</div>
 							</div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
 			</div>
 		</section>

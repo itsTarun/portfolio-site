@@ -1,16 +1,6 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-	CONTACT_EMAIL,
-	RESUME_DOWNLOAD_LINK_PROPS,
-	RESUME_URL,
-} from "@/lib/site-config";
-
-type FormState = "idle" | "submitting" | "success" | "error";
+import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
+import { ContactForm } from "./contact-form";
 
 const helpList = [
 	"iOS app development",
@@ -20,81 +10,16 @@ const helpList = [
 	"Mobile tech advisory",
 ];
 
-const inputClass =
-	"mt-2 w-full border-2 border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50";
-
 const resumeLinkClass =
 	"inline-flex items-center gap-2 text-sm text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground";
 
 export default function ContactPage() {
-	const reduceMotion = useReducedMotion();
-	const [formState, setFormState] = useState<FormState>("idle");
-	const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
-	// Entrance that respects prefers-reduced-motion. Framer animations are
-	// JS-driven and bypass the CSS reduced-motion floor in globals.css, so
-	// gate them here. `animate` always targets the visible state, so content
-	// can never get stuck invisible once hydrated.
-	const entrance = (delay = 0) => ({
-		initial: reduceMotion ? false : ({ opacity: 0, y: 20 } as const),
-		animate: { opacity: 1, y: 0 },
-		transition: reduceMotion ? { duration: 0 } : { duration: 0.5, delay },
-	});
-	const [values, setValues] = useState({
-		name: "",
-		email: "",
-		subject: "",
-		message: "",
-	});
-
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-		if (errorMsg) setErrorMsg(null);
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		setFormState("submitting");
-		setErrorMsg(null);
-
-		try {
-			const res = await fetch("/api/contact", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(values),
-			});
-
-			const data = await res.json();
-
-			if (!res.ok) {
-				setErrorMsg(data.error ?? "Something went wrong. Please try again.");
-				setFormState("error");
-				return;
-			}
-
-			setFormState("success");
-		} catch {
-			setErrorMsg("Network error. Please try again or email me directly.");
-			setFormState("error");
-		}
-	};
-
-	const handleReset = () => {
-		setFormState("idle");
-		setErrorMsg(null);
-		setValues({ name: "", email: "", subject: "", message: "" });
-	};
-
-	const isSubmitting = formState === "submitting";
-
 	return (
 		<div className="min-h-screen">
 			<div className="container max-w-6xl mx-auto px-4 py-16 md:py-20 lg:py-24 sm:px-6 lg:px-8">
 				<div className="grid gap-16 lg:grid-cols-5 lg:gap-24">
 					{/* Left: context */}
-					<motion.div {...entrance()} className="lg:col-span-2">
+					<div className="animate-rise lg:col-span-2">
 						<h1 className="section-title">Let&apos;s work together.</h1>
 						<p className="section-subtitle mt-4">
 							Open to iOS and Flutter contract work. No agencies or generic
@@ -150,160 +75,15 @@ export default function ContactPage() {
 						<p className="mt-10 text-xs text-muted-foreground">
 							Typically responds within one business day.
 						</p>
-					</motion.div>
+					</div>
 
 					{/* Right: form */}
-					<motion.div {...entrance(0.15)} className="lg:col-span-3">
-						{formState === "success" ? (
-							// biome-ignore lint/a11y/useSemanticElements: <output> permits only phrasing content; this panel holds a heading and button, so role="status" on the container is the correct live-region choice
-							<div
-								role="status"
-								aria-live="polite"
-								className="neo-panel p-8 md:p-10"
-							>
-								<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-									Sent
-								</p>
-								<h2 className="mt-3 text-2xl font-semibold">
-									Message received.
-								</h2>
-								<p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-									I&apos;ll get back to you within one business day. If
-									it&apos;s urgent, email me directly at{" "}
-									<a
-										href={`mailto:${CONTACT_EMAIL}`}
-										className="text-foreground underline underline-offset-4"
-									>
-										{CONTACT_EMAIL}
-									</a>
-									.
-								</p>
-								<Button
-									variant="outline"
-									size="sm"
-									onClick={handleReset}
-									className="mt-6"
-								>
-									Send another message
-								</Button>
-							</div>
-						) : (
-							<form onSubmit={handleSubmit} noValidate className="space-y-6">
-								<div className="grid gap-6 sm:grid-cols-2">
-									<div>
-										<label
-											htmlFor="name"
-											className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
-										>
-											Name{" "}
-											<span aria-hidden="true" className="text-destructive">
-												*
-											</span>
-										</label>
-										<input
-											id="name"
-											name="name"
-											type="text"
-											required
-											autoComplete="name"
-											value={values.name}
-											onChange={handleChange}
-											placeholder="Your name"
-											className={inputClass}
-											disabled={isSubmitting}
-										/>
-									</div>
-									<div>
-										<label
-											htmlFor="email"
-											className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
-										>
-											Email{" "}
-											<span aria-hidden="true" className="text-destructive">
-												*
-											</span>
-										</label>
-										<input
-											id="email"
-											name="email"
-											type="email"
-											required
-											autoComplete="email"
-											value={values.email}
-											onChange={handleChange}
-											placeholder="you@company.com"
-											className={inputClass}
-											disabled={isSubmitting}
-										/>
-									</div>
-								</div>
-
-								<div>
-									<label
-										htmlFor="subject"
-										className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
-									>
-										Subject{" "}
-										<span className="font-normal normal-case tracking-normal text-muted-foreground">
-											(optional)
-										</span>
-									</label>
-									<input
-										id="subject"
-										name="subject"
-										type="text"
-										autoComplete="off"
-										value={values.subject}
-										onChange={handleChange}
-										placeholder="iOS freelance — 3-month contract"
-										className={inputClass}
-										disabled={isSubmitting}
-									/>
-								</div>
-
-								<div>
-									<label
-										htmlFor="message"
-										className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground"
-									>
-										Message{" "}
-										<span aria-hidden="true" className="text-destructive">
-											*
-										</span>
-									</label>
-									<textarea
-										id="message"
-										name="message"
-										required
-										rows={6}
-										value={values.message}
-										onChange={handleChange}
-										placeholder="What are you building? Timeline, stack, what you need from me."
-										className={`${inputClass} resize-y rounded-sm`}
-										disabled={isSubmitting}
-									/>
-								</div>
-
-								{errorMsg && (
-									<div
-										role="alert"
-										className="border-2 border-destructive bg-destructive/5 px-4 py-3 text-sm text-destructive"
-									>
-										{errorMsg}
-									</div>
-								)}
-
-								<Button
-									type="submit"
-									size="lg"
-									disabled={isSubmitting}
-									className="w-full sm:w-auto"
-								>
-									{isSubmitting ? "Sending…" : "Send Message"}
-								</Button>
-							</form>
-						)}
-					</motion.div>
+					<div
+						className="animate-rise lg:col-span-3"
+						style={{ animationDelay: "150ms" }}
+					>
+						<ContactForm />
+					</div>
 				</div>
 			</div>
 		</div>

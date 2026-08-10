@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
 const experiences = [
 	{
@@ -65,28 +63,19 @@ export function TimelineSection() {
 	return (
 		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.5 }}
-					className="mb-12"
-				>
+				<ScrollReveal className="mb-12">
 					<h2 className="section-title text-balance">Experience that ships.</h2>
 					<p className="section-subtitle mt-4 max-w-2xl">
 						A focused timeline of web and mobile products delivered with
 						reliable engineering and clear outcomes.
 					</p>
-				</motion.div>
+				</ScrollReveal>
 
 				<div className="space-y-6">
 					{experiences.map((exp, idx) => (
-						<motion.div
+						<ScrollReveal
 							key={`${exp.company}-${exp.period}`}
-							initial={{ opacity: 0, y: 16 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.4, delay: idx * 0.08 }}
+							delay={idx * 80}
 							className="neo-panel p-6"
 						>
 							<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -119,24 +108,18 @@ export function TimelineSection() {
 									</span>
 								))}
 							</div>
-						</motion.div>
+						</ScrollReveal>
 					))}
 				</div>
 
-				<motion.div
-					initial={{ opacity: 0, y: 12 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.4, delay: 0.3 }}
-					className="mt-8"
-				>
+				<ScrollReveal delay={300} className="mt-8">
 					<Link
 						href="/about"
 						className="inline-flex items-center border-2 border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 					>
 						Full timeline →
 					</Link>
-				</motion.div>
+				</ScrollReveal>
 			</div>
 		</section>
 	);
