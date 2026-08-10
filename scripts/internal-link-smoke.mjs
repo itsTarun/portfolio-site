@@ -114,13 +114,21 @@ async function run() {
 	console.log(
 		`Starting Next.js server on port ${PORT} for internal link smoke checks...`,
 	);
-	const server = spawn("npm", ["run", "start", "--", "--port", String(PORT)], {
-		stdio: ["ignore", "pipe", "pipe"],
-		env: {
-			...process.env,
-			PORT: String(PORT),
+	// Spawn the next binary directly (no npm/sh wrapper tree): the child IS
+	// the server, so kill() below reaches it. Killing a wrapper instead left
+	// an orphaned next-server holding our stdio pipes open, which kept this
+	// process alive until CI's job timeout cancelled the run.
+	const server = spawn(
+		process.execPath,
+		["node_modules/next/dist/bin/next", "start", "--port", String(PORT)],
+		{
+			stdio: ["ignore", "pipe", "pipe"],
+			env: {
+				...process.env,
+				PORT: String(PORT),
+			},
 		},
-	});
+	);
 
 	server.stdout.on("data", (chunk) => process.stdout.write(chunk));
 	server.stderr.on("data", (chunk) => process.stderr.write(chunk));
@@ -175,6 +183,8 @@ async function run() {
 		);
 	} finally {
 		server.kill("SIGTERM");
+		// If the server ignores SIGTERM, don't let its pipes hold us open.
+		setTimeout(() => server.kill("SIGKILL"), 5000).unref();
 	}
 }
 
