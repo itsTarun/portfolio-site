@@ -181,9 +181,16 @@ export default function ChargespotPage() {
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<p className="text-muted-foreground leading-relaxed">
 								Currently in beta on TestFlight and Google Play, covering 50+
-								active charging stations across India. Every update goes through
-								hands-on QA validation before beta release, keeping the build
-								crash-free from day one.
+								active charging stations across India. Every release candidate
+								goes through hands-on QA on physical devices before it reaches
+								beta testers.
+								{/* TODO(tarun): this section describes process, not outcome.
+								    It needs one verifiable number you can stand behind — a
+								    crash-free rate and the window it covers, a session count,
+								    a store rating, or time-to-first-charge. The previous copy
+								    claimed "crash-free from day one" with no rate and no
+								    window, which is the kind of claim a technical client will
+								    ask you to back up. */}
 							</p>
 						</div>
 

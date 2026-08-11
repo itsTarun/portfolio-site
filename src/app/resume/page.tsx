@@ -14,7 +14,15 @@ import {
 	SITE_URL,
 	TWITTER_HANDLE,
 } from "@/lib/site-config";
-import { AVAILABILITY, education, experience, skills } from "./resume-data";
+import {
+	AVAILABILITY,
+	education,
+	experience,
+	publishedApps,
+	RESUME_HEADLINE,
+	RESUME_SUMMARY,
+	skills,
+} from "./resume-data";
 
 const canonical = `${SITE_URL}/resume`;
 const description =
@@ -73,6 +81,9 @@ export default function ResumePage() {
 						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
 						<div className="animate-rise mb-12">
 							<h1 className="section-title">Tarun Sharma — Resume</h1>
+							<p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+								{RESUME_HEADLINE}
+							</p>
 							<p className="section-subtitle mt-4 max-w-2xl">
 								Mobile developer focused on iOS and Flutter apps that feel calm,
 								intuitive, and reliable. The full history is below; the PDF is
@@ -110,6 +121,13 @@ export default function ResumePage() {
 									{AVAILABILITY.from}
 								</p>
 							</div>
+						</section>
+
+						<section className="mb-12">
+							<h2 className={sectionHeading}>Summary</h2>
+							<p className="max-w-3xl leading-relaxed text-muted-foreground">
+								{RESUME_SUMMARY}
+							</p>
 						</section>
 
 						<section className="mb-12">
@@ -165,6 +183,48 @@ export default function ResumePage() {
 									</article>
 								))}
 							</div>
+						</section>
+
+						<section className="mb-12">
+							<h2 className={sectionHeading}>Selected published apps</h2>
+							<ul className="grid gap-4 md:grid-cols-3">
+								{publishedApps.map((app) => (
+									<li key={app.name} className="neo-panel p-6">
+										<h3 className="font-semibold">{app.name}</h3>
+										<p className="mt-1 text-sm text-muted-foreground">
+											{app.role}
+										</p>
+										{app.note ? (
+											<p className="mt-3 text-sm text-muted-foreground">
+												{app.note}
+											</p>
+										) : (
+											<div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+												{app.appStore ? (
+													<a
+														href={app.appStore}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="link-underline text-foreground"
+													>
+														App Store
+													</a>
+												) : null}
+												{app.playStore ? (
+													<a
+														href={app.playStore}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="link-underline text-foreground"
+													>
+														Play Store
+													</a>
+												) : null}
+											</div>
+										)}
+									</li>
+								))}
+							</ul>
 						</section>
 
 						<section className="mb-12">

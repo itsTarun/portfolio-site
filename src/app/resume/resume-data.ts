@@ -2,46 +2,79 @@
 // artifact and /about renders the same arrays, so the two pages cannot drift.
 // AVAILABILITY lives here too because /about and /contact both state it.
 
-// TODO(tarun): public/resume.pdf carries content this page does not mirror —
-// the opening summary ("senior mobile engineer, 8+ years"), the fuller tool
-// list (WidgetKit, CarPlay, MethodChannel, PostHog, Sentry, Dio, go_router,
-// CI/CD), the App Store / Play Store links for DailyObjects and EyeMyEye, the
-// iOS Developer -> Lead iOS Engineer promotion in Jan 2020, and the 4.7-star /
-// 40%-coverage numbers. Confirm which of those you want on the site and they
-// can be added here. Nothing was copied across unverified.
+// Transcribed from public/resume.pdf so the HTML and the PDF say the same
+// thing. TODO(tarun): the PDF also carries your phone number. It is deliberately
+// NOT here — a number in crawlable HTML gets scraped in a way a PDF does not.
+// Say the word if you want it on the page.
+
+export const RESUME_HEADLINE = "Senior Mobile Engineer | Flutter & iOS";
+
+export const RESUME_SUMMARY =
+	"Senior mobile engineer with 8+ years shipping production apps, including 3+ years in Flutter and Dart. I own delivery end to end, from architecture and API integration to server-driven UI and App Store and Play Store releases, and focus on turning fast prototypes into clean, well-tested, maintainable code that respects the team's existing architecture. A deep native iOS background adds strong platform insight to my Flutter work.";
 
 export const skills = [
 	{
-		category: "Mobile Platforms",
-		items: [
-			"iOS",
-			"Android",
-			"UIKit",
-			"VIPER Architecture",
-			"Coordinator Pattern",
-			"Protocol-Oriented Programming",
-		],
-	},
-	{
-		category: "Flutter",
+		category: "Flutter & Dart",
 		items: [
 			"Flutter",
 			"Dart",
-			"Firebase",
-			"FCM",
-			"Crashlytics",
-			"Backend-Driven UI",
+			"Provider",
+			"MethodChannel / platform channels",
+			"Custom widgets",
+			"Animations",
 		],
 	},
 	{
-		category: "Tools & Workflow",
+		category: "Architecture",
+		items: ["MVVM", "Clean Architecture", "VIPER", "Modular design"],
+	},
+	{
+		category: "Backend & data",
 		items: [
+			"REST APIs",
+			"Real-time updates",
+			"Push notifications (OneSignal)",
+			"JSON serialization",
+		],
+	},
+	{
+		category: "Native iOS",
+		items: [
+			"Swift",
+			"Objective-C",
+			"UIKit",
+			"SwiftUI",
+			"WidgetKit",
+			"Live Activities",
+			"CarPlay",
+			"RxSwift",
+		],
+	},
+	{
+		category: "Libraries & SDKs",
+		items: [
+			"Provider",
+			"Dio",
+			"get_it",
+			"go_router",
+			"json_serializable",
+			"OneSignal",
+			"PostHog",
+			"Sentry",
+		],
+	},
+	{
+		category: "Delivery & tools",
+		items: [
+			"CI/CD",
+			"Unit & widget testing",
+			"App Store & Play Store release",
 			"Git",
 			"GitLab",
+			"Bitbucket",
 			"Jira",
-			"Confluence",
+			"Linear",
 			"Postman",
-			"Unit & UI Tests",
 		],
 	},
 ];
@@ -54,10 +87,20 @@ export const experience = [
 		location: "Delhi, India",
 		period: "July 2023 - Present",
 		description: [
-			"Building the Chargespot mobile app and shipping new releases.",
-			"Hands-on QA and release validation to keep builds stable.",
+			"Building the Chargespot EV charging app in Flutter, one codebase shipping to both iOS and Android.",
+			"Added native iOS Live Activities and a home-screen widget with WidgetKit, bridged into Flutter over platform channels (MethodChannel); now adding CarPlay and Android Auto for in-car charging control.",
+			"Wired up OneSignal for push, PostHog for product analytics and Sentry for crash reporting.",
+			"Connected REST APIs for live charging status, station maps, session history and payments, with server-driven UI so screens change without a release.",
+			"Handle the App Store and Play Store releases myself and keep the crash-free rate high.",
 		],
-		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
+		technologies: [
+			"Flutter",
+			"WidgetKit",
+			"Live Activities",
+			"MethodChannel",
+			"OneSignal",
+			"Sentry",
+		],
 	},
 	{
 		id: 2,
@@ -92,9 +135,9 @@ export const experience = [
 		location: "New Delhi, India",
 		period: "January 2020 - August 2021",
 		description: [
-			"Led a complete app revamp and introduced API-driven UI.",
-			"Implemented rich push notifications with custom design via FCM.",
-			"Delivered light and dark mode across the app.",
+			"Promoted from iOS Developer to Lead iOS Engineer in January 2020.",
+			"Led the DailyObjects iOS shopping app revamp, now rated 4.7 on the App Store: API-driven personalised content, rich push notifications and dark mode.",
+			"Wrote unit and UI tests to 40%+ coverage and mentored the mobile team.",
 		],
 		technologies: ["iOS", "FCM", "REST APIs", "UIKit"],
 	},
@@ -126,6 +169,27 @@ export const experience = [
 	},
 ];
 
+export const publishedApps = [
+	{
+		name: "DailyObjects",
+		role: "Lead iOS",
+		appStore: "https://apps.apple.com/app/id1141900369",
+		playStore: "https://play.google.com/store/apps/details?id=com.dailyobjects",
+	},
+	{
+		name: "EyeMyEye",
+		role: "iOS, VIPER",
+		appStore: "https://apps.apple.com/app/id1614376688",
+		playStore:
+			"https://play.google.com/store/apps/details?id=com.eyemyeye.emeapp",
+	},
+	{
+		name: "Chargespot",
+		role: "Current, Flutter",
+		note: "EV-charging app, iOS & Android",
+	},
+];
+
 export const education = [
 	{
 		id: 1,
@@ -138,9 +202,12 @@ export const education = [
 
 export const AVAILABILITY = {
 	// experience[0] is the current role, said in one line.
-	now: "Building the Chargespot mobile app and shipping new releases.",
+	now: "Building the Chargespot EV charging app in Flutter, one codebase shipping to both iOS and Android.",
 	openTo:
 		"Open to iOS and Flutter contract work. No agencies or generic dev-shop briefs.",
+	// Phrased without a start date on purpose: the previous "from July 2026" was
+	// a future date when it was written and reads as an unrevisited page now that
+	// it is past. This sentence stays true without needing maintenance.
 	// The \u00a0 pair keeps "IST \u00b1 3h" on one line, as the JSX &nbsp; did.
-	from: "Taking freelance and contract work from July 2026. Remote or hybrid within IST\u00a0\u00b1\u00a03h.",
+	from: "Available now for freelance and contract work. Remote or hybrid within IST\u00a0\u00b1\u00a03h.",
 } as const;
