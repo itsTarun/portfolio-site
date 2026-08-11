@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site-config";
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://itstarun.fyi";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || SITE_URL;
 
 type StaticRouteConfig = {
 	path: string;
@@ -20,6 +21,7 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
 	},
 	{ path: "/projects/opentribe", changeFrequency: "monthly", priority: 0.8 },
 	{ path: "/projects/repo-press", changeFrequency: "monthly", priority: 0.8 },
+	{ path: "/resume", changeFrequency: "monthly", priority: 0.7 },
 	{ path: "/contact", changeFrequency: "monthly", priority: 0.7 },
 	{ path: "/privacy", changeFrequency: "yearly", priority: 0.6 },
 ];
