@@ -84,7 +84,9 @@ export function generateMetadata(): Metadata {
 		icons: {
 			icon: "/favicon.svg",
 			shortcut: "/favicon.svg",
-			apple: "/favicon.svg",
+			// iOS does not rasterise SVG for apple-touch-icon — it ignores the tag
+			// and screenshots the page for the home-screen tile instead. Must be PNG.
+			apple: "/apple-touch-icon.png",
 		},
 		metadataBase: new URL(SITE_URL),
 		manifest: "/manifest.json",
@@ -101,6 +103,12 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	maximumScale: 5,
+	// Browser chrome matches --background from globals.css in each scheme, so the
+	// address bar stops sitting in the default grey against the page.
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "#f2f5f8" },
+		{ media: "(prefers-color-scheme: dark)", color: "#14191f" },
+	],
 };
 
 export default function RootLayout({

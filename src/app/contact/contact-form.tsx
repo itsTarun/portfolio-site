@@ -17,6 +17,9 @@ export function ContactForm() {
 		email: "",
 		subject: "",
 		message: "",
+		// Honeypot. Stays empty for anyone who can see the form; the API discards
+		// any submission that fills it. See src/app/api/contact/route.ts.
+		company: "",
 	});
 
 	const handleChange = (
@@ -56,7 +59,13 @@ export function ContactForm() {
 	const handleReset = () => {
 		setFormState("idle");
 		setErrorMsg(null);
-		setValues({ name: "", email: "", subject: "", message: "" });
+		setValues({
+			name: "",
+			email: "",
+			subject: "",
+			message: "",
+			company: "",
+		});
 	};
 
 	const isSubmitting = formState === "submitting";
@@ -94,6 +103,21 @@ export function ContactForm() {
 
 	return (
 		<form onSubmit={handleSubmit} noValidate className="space-y-6">
+			{/* Honeypot. Hidden from sighted users by position rather than
+			    `display: none`, which some bots detect and skip, and taken out of
+			    the a11y tree and the tab order so it never reaches a real visitor. */}
+			<div className="absolute left-[-9999px]" aria-hidden="true">
+				<label htmlFor="company">Company (leave this field empty)</label>
+				<input
+					id="company"
+					name="company"
+					type="text"
+					tabIndex={-1}
+					autoComplete="off"
+					value={values.company}
+					onChange={handleChange}
+				/>
+			</div>
 			<div className="grid gap-6 sm:grid-cols-2">
 				<div>
 					<label
