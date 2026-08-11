@@ -6,7 +6,7 @@ import {
 	SOCIAL_LINKS,
 } from "@/lib/site-config";
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || SITE_URL;
+const BASE_URL = SITE_URL;
 
 function getProjectLines(): string[] {
 	return Object.values(PROJECTS)

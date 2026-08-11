@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site-config";
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || SITE_URL;
+const baseUrl = SITE_URL;
 
 type StaticRouteConfig = {
 	path: string;

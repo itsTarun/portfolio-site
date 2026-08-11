@@ -48,12 +48,11 @@ Vitest with no test framework (no jsdom). Tests sit alongside source files as `*
 ## Environment variables
 
 ```env
-NEXT_PUBLIC_APP_URL=https://www.itstarun.fyi
 RESEND_API_KEY=...
 CONTACT_EMAIL=itstarun1994@gmail.com
 NEXT_PUBLIC_GSC_VERIFICATION_CODE=...
 ```
 
-**Canonical host is `www`.** The apex 307s to `www`, so `SITE_URL` in `src/lib/site-config.ts` is `https://www.itstarun.fyi`. `robots.ts` and `sitemap.ts` read `NEXT_PUBLIC_APP_URL` *in preference to* `SITE_URL` — if that env var still holds the apex in Vercel, production ships a sitemap advertising a host every crawler is redirected away from, while the page canonicals say `www`. Keep the two in sync.
+**Canonical host is `www`, and it is not an env var.** The apex 307s to `www`, so `SITE_URL` in `src/lib/site-config.ts` is `https://www.itstarun.fyi` — and that constant is the *only* definition. `robots.ts`, `sitemap.ts` and `llms-txt.ts` used to prefer a `NEXT_PUBLIC_APP_URL` env var, which let a stale dashboard value ship a sitemap pointing at one host while every canonical pointed at another. Do not reintroduce that override; change the domain by editing the constant.
 
 Preview deployments get `noindex, nofollow` from `IS_PREVIEW_DEPLOYMENT` in `src/lib/site-config.ts`, which keys off `VERCEL_ENV` and therefore covers every preview URL shape (branch, commit hash, alias). It is **not** host-gated — the old `droidsize-web.vercel.app` rule in `vercel.json` was dead config for a different Vercel project and has been removed.

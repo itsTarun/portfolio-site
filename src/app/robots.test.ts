@@ -3,16 +3,13 @@ import { SITE_URL } from "@/lib/site-config";
 
 // IS_PREVIEW_DEPLOYMENT is read at module load, so each case needs a fresh
 // import after the env is stubbed.
-async function loadRobots(vercelEnv?: string, appUrl = "") {
+async function loadRobots(vercelEnv?: string) {
 	vi.resetModules();
 	if (vercelEnv === undefined) {
 		vi.stubEnv("VERCEL_ENV", "");
 	} else {
 		vi.stubEnv("VERCEL_ENV", vercelEnv);
 	}
-	// Pinned so the host under test comes from the code, not from whatever the
-	// runner happens to have exported.
-	vi.stubEnv("NEXT_PUBLIC_APP_URL", appUrl);
 	const { default: robots } = await import("./robots");
 	return robots();
 }
@@ -45,9 +42,12 @@ describe("robots", () => {
 		expect(result.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
 	});
 
-	it("still lets NEXT_PUBLIC_APP_URL override the host", async () => {
-		const result = await loadRobots("production", "https://example.test");
+	it("takes the host from SITE_URL alone, with no env override", async () => {
+		// A NEXT_PUBLIC_APP_URL override used to win here, which let a stale
+		// dashboard value ship a sitemap host that disagreed with every canonical.
+		vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://example.test");
+		const result = await loadRobots("production");
 
-		expect(result.sitemap).toBe("https://example.test/sitemap.xml");
+		expect(result.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
 	});
 });

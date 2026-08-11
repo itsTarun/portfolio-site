@@ -54,11 +54,14 @@ src/
 Create a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_APP_URL=https://www.itstarun.fyi
 NEXT_PUBLIC_GSC_VERIFICATION_CODE=your_google_site_verification_code
 RESEND_API_KEY=your_resend_api_key_here
 CONTACT_FROM_EMAIL=onboarding@resend.dev
 ```
+
+The site's canonical host is not an env var — it is `SITE_URL` in
+`src/lib/site-config.ts`, which is the single source for canonicals, the
+sitemap, `robots.txt` and `llms.txt`.
 
 ## 🚀 Deployment
 
