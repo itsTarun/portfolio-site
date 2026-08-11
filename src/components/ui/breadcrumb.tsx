@@ -17,7 +17,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 			<ol className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
 				{items.map((item, index) => (
 					<li key={item.href} className="flex items-center gap-2">
-						{index === 0 && <Home className="h-4 w-4" />}
+						{index === 0 && <Home aria-hidden="true" className="h-4 w-4" />}
 						<Link
 							href={item.href}
 							className={`transition-colors hover:text-foreground ${
@@ -30,7 +30,10 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 							{item.label}
 						</Link>
 						{index < items.length - 1 && (
-							<ChevronRight className="h-4 w-4 text-muted-foreground/50" />
+							<ChevronRight
+								aria-hidden="true"
+								className="h-4 w-4 text-muted-foreground/50"
+							/>
 						)}
 					</li>
 				))}

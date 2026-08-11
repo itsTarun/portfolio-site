@@ -5,6 +5,19 @@ import { Button } from "@/components/ui/button";
 import { PROJECTS } from "@/config/projects";
 import { type ProjectSlug, toProjectRoute } from "@/types";
 
+// The card images are marketing-site captures, not app screenshots — describe what each one shows.
+// Keep in sync with the alt text on the individual project pages.
+const PROJECT_IMAGE_ALT: Record<string, string> = {
+	chargespot:
+		"Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board",
+	opentribe:
+		"OpenTribe promo banner reading 'Enabling builders anywhere to get paid on-chain', with an illustrated developer at a desk",
+	"domain-collective":
+		"Domain Collective promo banner reading 'One dashboard for all your domains', with a line-art illustration of the dashboard",
+	"repo-press":
+		"Repo Press promo card reading 'Git-native MDX editing', above a mock list of .mdx files including README and getting-started",
+};
+
 interface ProjectCardProps {
 	title: string;
 	description: string;
@@ -30,7 +43,7 @@ function ProjectCard({
 					<div className="relative h-40 w-full overflow-hidden border-b-2 border-border">
 						<Image
 							src={imageUrl}
-							alt={`${title} screenshot`}
+							alt={PROJECT_IMAGE_ALT[slug] ?? `${title} promotional image`}
 							fill
 							sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 							className="object-cover"

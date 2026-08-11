@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @layer base {
 	:root {
@@ -26,7 +25,9 @@
 		--accent: 192 78% 86%;
 		--accent-foreground: 215 28% 12%;
 
-		--destructive: 0 72% 52%;
+		/* 52% -> 46%: text-destructive at 14px scored 4.42:1 on the tinted
+		   error panel, below the 4.5:1 AA floor. 46% -> 4.73:1. */
+		--destructive: 0 72% 46%;
 		--destructive-foreground: 0 0% 98%;
 
 		--border: 215 22% 18%;
@@ -64,7 +65,11 @@
 		--accent: 195 70% 30%;
 		--accent-foreground: 210 24% 95%;
 
-		--destructive: 0 62% 35%;
+		/* 35% -> 62%: the only token that failed AA in dark mode, and it failed
+		   twice — text-destructive on the tinted error panel at 2.03:1 (needs
+		   4.5:1) and border-destructive against the page at 2.07:1 (needs 3:1).
+		   62% clears both at 4.74:1 and 4.99:1. Saturation left alone. */
+		--destructive: 0 62% 62%;
 		--destructive-foreground: 0 0% 98%;
 
 		--border: 210 18% 55%;

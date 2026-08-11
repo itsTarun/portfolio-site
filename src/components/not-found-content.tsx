@@ -1,0 +1,77 @@
+"use client";
+
+import { MotionConfig, motion } from "framer-motion";
+import { Home, Search } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+// The animated body of the 404 page. Split out of src/app/not-found.tsx so that
+// page can stay a server component and export its own `metadata` — Next hard
+// errors on `metadata` exported from a client component.
+export function NotFoundContent() {
+	return (
+		// The entrance animations are JS-driven inline styles, so the global
+		// prefers-reduced-motion rule in globals.css cannot reach them.
+		<MotionConfig reducedMotion="user">
+			<div className="flex min-h-screen items-center justify-center bg-background">
+				<div className="neo-panel p-8 md:p-12 text-center">
+					<motion.div
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.5 }}
+						className="mb-8"
+					>
+						<span className="eyebrow mb-4 block">Error 404</span>
+						<h1 className="section-title mb-4">404</h1>
+						<p className="section-subtitle">Page Not Found</p>
+					</motion.div>
+
+					<motion.p
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.2 }}
+						className="mx-auto max-w-md text-lg text-muted-foreground"
+					>
+						Sorry, the page you&apos;re looking for doesn&apos;t exist. It might
+						have been moved, deleted, or perhaps you mistyped the URL.
+					</motion.p>
+
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.3 }}
+						className="flex flex-col items-center gap-4"
+					>
+						<Link href="/">
+							<Button size="lg" className="gap-2">
+								<Home className="h-4 w-4" />
+								Go Home
+							</Button>
+						</Link>
+
+						<Button variant="outline" size="lg" asChild>
+							<Link href="/projects">
+								<Search className="h-4 w-4" />
+								Browse Projects
+							</Link>
+						</Button>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.4 }}
+						className="mt-8"
+					>
+						<Link
+							href="/"
+							className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+						>
+							Return to itstarun.fyi
+						</Link>
+					</motion.div>
+				</div>
+			</div>
+		</MotionConfig>
+	);
+}

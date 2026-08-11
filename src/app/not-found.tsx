@@ -1,70 +1,26 @@
-"use client";
+import type { Metadata } from "next";
+import { NotFoundContent } from "@/components/not-found-content";
 
-import { motion } from "framer-motion";
-import { Home, Search } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+export const metadata: Metadata = {
+	// Without these the 404 inherited the homepage's title, description and
+	// social card — a noindex page advertising itself as the homepage.
+	title: "Page not found",
+	description: "This page doesn't exist on itstarun.fyi.",
+	// Next already injects its own <meta name="robots" content="noindex"> for
+	// the 404 (NonIndex in next/dist/server/app-render/app-render.js), so the
+	// built HTML carries both. Same direction, so they combine rather than
+	// conflict; declaring it here keeps the intent visible in source.
+	robots: { index: false, follow: false },
+	// The root layout sets alternates.canonical to the site root. mergeMetadata
+	// (next/dist/lib/metadata/resolve-metadata.js) walks the keys of the route's
+	// own metadata, and resolveAlternates(null) returns null — so this genuinely
+	// removes the inherited canonical rather than pointing it somewhere else.
+	// A noindex page must not canonicalise to a different page.
+	alternates: null,
+	openGraph: null,
+	twitter: null,
+};
 
 export default function NotFound() {
-	return (
-		<div className="flex min-h-screen items-center justify-center bg-background">
-			<div className="neo-panel p-8 md:p-12 text-center">
-				<motion.div
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 0.5 }}
-					className="mb-8"
-				>
-					<span className="eyebrow mb-4 block">Error 404</span>
-					<h1 className="section-title mb-4">404</h1>
-					<p className="section-subtitle">Page Not Found</p>
-				</motion.div>
-
-				<motion.p
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.2 }}
-					className="mx-auto max-w-md text-lg text-muted-foreground"
-				>
-					Sorry, the page you&apos;re looking for doesn&apos;t exist. It might
-					have been moved, deleted, or perhaps you mistyped the URL.
-				</motion.p>
-
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.3 }}
-					className="flex flex-col items-center gap-4"
-				>
-					<Link href="/">
-						<Button size="lg" className="gap-2">
-							<Home className="h-4 w-4" />
-							Go Home
-						</Button>
-					</Link>
-
-					<Button variant="outline" size="lg" asChild>
-						<Link href="/projects">
-							<Search className="h-4 w-4" />
-							Browse Projects
-						</Link>
-					</Button>
-				</motion.div>
-
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.4 }}
-					className="mt-8"
-				>
-					<Link
-						href="/"
-						className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-					>
-						Return to itstarun.fyi
-					</Link>
-				</motion.div>
-			</div>
-		</div>
-	);
+	return <NotFoundContent />;
 }

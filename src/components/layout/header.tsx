@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Mail, Menu, Moon, Sun, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -109,7 +109,7 @@ export function Header() {
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-b-2 border-border bg-background">
-			<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+			<nav aria-label="Main" className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex h-16 items-center justify-between">
 					<Link
 						href="/"
@@ -146,7 +146,8 @@ export function Header() {
 								)}
 							</Link>
 						))}
-						<Button asChild size="sm" className="ml-2">
+						{/* Outline, not filled: the hero owns the single primary action */}
+						<Button asChild size="sm" variant="outline" className="ml-2">
 							<Link href="/contact">Let&apos;s Talk</Link>
 						</Button>
 						{mounted && (
@@ -154,7 +155,17 @@ export function Header() {
 						)}
 					</div>
 
-					<div className="flex items-center gap-2 md:hidden">
+					<div className="flex items-center gap-1 md:hidden">
+						{/* Contact stays reachable without opening the menu on phones */}
+						<Button asChild variant="ghost" size="icon">
+							<Link
+								href="/contact"
+								aria-label="Contact"
+								aria-current={pathname === "/contact" ? "page" : undefined}
+							>
+								<Mail className="h-5 w-5" />
+							</Link>
+						</Button>
 						{mounted && (
 							<ThemeToggleButton theme={theme} onToggle={toggleTheme} />
 						)}
