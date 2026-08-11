@@ -8,11 +8,11 @@ import {
 
 const canonical = `${SITE_URL}/privacy`;
 const description =
-	"What itstarun.fyi collects and what it does not. No analytics, no tracking cookies, no third-party scripts — only contact form messages sent by email.";
+	"What itstarun.fyi collects and what it does not. No cookies, no ad tech, no cross-site tracking — cookieless aggregate page counts and the messages you send me.";
 const socialTitle = "Privacy Policy - itstarun.fyi";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - No Tracking, No Analytics",
+	title: "Privacy Policy - No Cookies, No Cross-Site Tracking",
 	description,
 	alternates: {
 		canonical,
@@ -95,16 +95,28 @@ export default function PrivacyPage() {
 				</p>
 				<p className="text-muted-foreground">
 					The site is hosted on Vercel, which processes technical request data
-					as part of serving the site.
+					as part of serving the site, and also provides the cookieless
+					analytics and performance measurement described in section 4.
 				</p>
 			</section>
 
 			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">4. Cookies and Tracking</h2>
 				<p className="mb-3 text-muted-foreground">
-					This website runs no analytics, sets no tracking or advertising
-					cookies, and loads no third-party scripts. There is nothing to consent
-					to, which is why there is no cookie banner.
+					This site sets no cookies at all &mdash; none for tracking, none for
+					advertising, none for sessions. There is no ad tech, no advertising
+					network, no data broker, and nothing that follows you to other
+					websites. That is why you see no cookie banner: there is nothing to
+					consent to.
+				</p>
+				<p className="mb-3 text-muted-foreground">
+					It does measure two things, both cookieless and both aggregate. Vercel
+					Analytics counts page views, and Vercel Speed Insights records how
+					quickly pages load. Between them they see the page you viewed, the
+					site that referred you, your approximate country, and your device,
+					browser and operating system type. They do not see your IP address,
+					build a profile, or store an identifier on your device, and their
+					scripts are served from this domain rather than a third-party one.
 				</p>
 				<p className="mb-3 text-muted-foreground">
 					The one thing stored in your browser is your light or dark theme
@@ -113,8 +125,9 @@ export default function PrivacyPage() {
 					nothing. It stays on your device and is never sent anywhere.
 				</p>
 				<p className="text-muted-foreground">
-					If analytics or consent controls are introduced in the future, this
-					policy will be updated first.
+					If this ever changes &mdash; if a cookie, a consent control or any
+					identifying measurement is introduced &mdash; this policy will be
+					updated before it ships.
 				</p>
 			</section>
 

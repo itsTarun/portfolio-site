@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
@@ -148,6 +150,12 @@ export default function RootLayout({
 						<Footer />
 					</div>
 				</ThemeProvider>
+				{/* Both load from same-origin /_vercel/* paths in production, so the
+				    CSP's `script-src 'self'` covers them without widening. Cookieless
+				    and aggregate-only, which is what keeps /privacy honest and the
+				    site free of a consent banner. */}
+				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);
