@@ -26,6 +26,9 @@
 .DS_Store
 *.pem
 .opencode/
+# A stray Python virtualenv. Only invisible before because the old blanket
+# `*.md` rule happened to swallow the one tracked-looking file inside it.
+.venv/
 
 # debug
 npm-debug.log*
@@ -45,10 +48,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# .md
-*.md
-!docs/*.md
-!README.md
-!CLAUDE.md
-!REDESIGN.md
-!PRODUCT.md
+# .md — scratch notes at the repo root only. Nested markdown (docs/**, src/**)
+# is tracked; a bare `*.md` here silently swallowed every new file under them.
+/*.md
+!/README.md
+!/CLAUDE.md
+!/REDESIGN.md
+!/PRODUCT.md
