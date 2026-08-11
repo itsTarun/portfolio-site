@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { OG_IMAGE_SIZE, SITE_NAME, SITE_URL } from "./site-config";
-
-type TwitterImageType = "string" | "object";
+import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from "./site-config";
 
 type CreateProjectMetadataParams = {
 	title: string;
@@ -9,31 +7,27 @@ type CreateProjectMetadataParams = {
 	path: string;
 	ogTitle: string;
 	ogDescription: string;
-	imageUrl: string;
-	imageAlt: string;
 	twitterTitle?: string;
 	twitterDescription?: string;
-	twitterImageType?: TwitterImageType;
 };
 
+/**
+ * Note the deliberate absence of `images`. Every project route ships its own
+ * opengraph-image.tsx, and Next only falls back to that file convention when
+ * the metadata object does not declare `images` itself — declaring it here
+ * meant the generated 1200x630 cards were built and then thrown away in favour
+ * of raw screenshots whose real dimensions did not match the declared size.
+ */
 export function createProjectMetadata({
 	title,
 	description,
 	path,
 	ogTitle,
 	ogDescription,
-	imageUrl,
-	imageAlt,
 	twitterTitle = ogTitle,
 	twitterDescription = ogDescription,
-	twitterImageType = "string",
 }: CreateProjectMetadataParams): Metadata {
 	const absoluteUrl = `${SITE_URL}${path}`;
-	const ogImage = {
-		url: imageUrl,
-		...OG_IMAGE_SIZE,
-		alt: imageAlt,
-	};
 
 	return {
 		title,
@@ -43,17 +37,18 @@ export function createProjectMetadata({
 		},
 		openGraph: {
 			type: "website",
+			locale: "en_US",
 			url: absoluteUrl,
 			title: ogTitle,
 			description: ogDescription,
 			siteName: SITE_NAME,
-			images: [ogImage],
 		},
 		twitter: {
 			card: "summary_large_image",
 			title: twitterTitle,
 			description: twitterDescription,
-			images: twitterImageType === "object" ? [ogImage] : [imageUrl],
+			creator: TWITTER_HANDLE,
+			site: TWITTER_HANDLE,
 		},
 	};
 }

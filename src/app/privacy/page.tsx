@@ -1,11 +1,46 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site-config";
+import {
+	OG_IMAGE_SIZE,
+	SITE_NAME,
+	SITE_URL,
+	TWITTER_HANDLE,
+} from "@/lib/site-config";
+
+const canonical = `${SITE_URL}/privacy`;
+const description =
+	"What itstarun.fyi collects and what it does not. No analytics, no tracking cookies, no third-party scripts — only contact form messages sent by email.";
+const socialTitle = "Privacy Policy - itstarun.fyi";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy",
-	description: "Privacy policy for itstarun.fyi portfolio website",
+	title: "Privacy Policy - No Tracking, No Analytics",
+	description,
 	alternates: {
-		canonical: `${SITE_URL}/privacy`,
+		canonical,
+	},
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: canonical,
+		title: socialTitle,
+		description,
+		siteName: SITE_NAME,
+		// Unlike /about, /contact and /projects this route has no
+		// opengraph-image.tsx of its own, and declaring openGraph here replaces
+		// the root object outright — so name the site-wide card explicitly.
+		images: [
+			{
+				url: "/opengraph-image",
+				...OG_IMAGE_SIZE,
+				alt: SITE_NAME,
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: socialTitle,
+		description,
+		creator: TWITTER_HANDLE,
+		site: TWITTER_HANDLE,
 	},
 };
 
@@ -66,11 +101,20 @@ export default function PrivacyPage() {
 
 			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">4. Cookies and Tracking</h2>
+				<p className="mb-3 text-muted-foreground">
+					This website runs no analytics, sets no tracking or advertising
+					cookies, and loads no third-party scripts. There is nothing to consent
+					to, which is why there is no cookie banner.
+				</p>
+				<p className="mb-3 text-muted-foreground">
+					The one thing stored in your browser is your light or dark theme
+					preference, kept in localStorage. It is written only if you use the
+					theme toggle &mdash; visiting the site without touching it stores
+					nothing. It stays on your device and is never sent anywhere.
+				</p>
 				<p className="text-muted-foreground">
-					This website does not currently provide a cookie consent banner and
-					does not currently advertise analytics tracking controls. If analytics
-					or consent controls are introduced in the future, this policy will be
-					updated.
+					If analytics or consent controls are introduced in the future, this
+					policy will be updated first.
 				</p>
 			</section>
 

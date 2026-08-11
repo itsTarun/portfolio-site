@@ -54,16 +54,16 @@ const keyFeatures = [
 	"Monorepo with Turborepo for streamlined development and deployment.",
 ];
 
+// The root layout appends " | Tarun Sharma" to every title, so the page title
+// stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
-	title: "OpenTribe - Web3 Talent Marketplace | Tarun Portfolio",
+	title: "OpenTribe - Talent Marketplace for Polkadot",
 	description:
-		"OpenTribe is a Polkadot ecosystem talent marketplace connecting organizations with developers, designers, and contributors.",
+		"A Polkadot ecosystem talent marketplace connecting organizations with developers, designers, and contributors through grants, bounties, and on-chain payouts.",
 	path: "/projects/opentribe",
 	ogTitle: "OpenTribe - Web3 Talent Marketplace",
 	ogDescription:
 		"Talent infrastructure for Polkadot: grants, bounties, profiles, and team collaboration.",
-	imageUrl: "/images/projects/opentribe.webp",
-	imageAlt: "OpenTribe project overview",
 });
 
 export default function OpenTribePage() {
@@ -127,10 +127,11 @@ export default function OpenTribePage() {
 						<div className="mb-12 neo-panel p-2">
 							<Image
 								src={projectData.imageUrl}
-								alt={`${projectData.name} project overview`}
+								alt="OpenTribe promo banner reading 'Enabling builders anywhere to get paid on-chain', with an illustrated developer at a desk"
 								className="h-auto w-full"
 								width={1200}
 								height={630}
+								sizes="(min-width: 1280px) 1008px, (min-width: 1024px) 944px, (min-width: 768px) 704px, (min-width: 640px) 576px, calc(100vw - 48px)"
 								priority
 							/>
 						</div>

@@ -1,46 +1,50 @@
 import { describe, expect, it } from "vitest";
 import { createProjectMetadata } from "./project-metadata";
 
-describe("createProjectMetadata", () => {
-	it("builds canonical, openGraph, and twitter metadata with string twitter images", () => {
-		const metadata = createProjectMetadata({
-			title: "OpenTribe - Web3 Talent Marketplace | Tarun Portfolio",
-			description: "OpenTribe description",
-			path: "/projects/opentribe",
-			ogTitle: "OpenTribe - Web3 Talent Marketplace",
-			ogDescription: "OpenGraph description",
-			imageUrl: "/opengraph-image",
-			imageAlt: "OpenTribe project overview",
-		});
+const opentribeMetadata = createProjectMetadata({
+	title: "OpenTribe - Talent Marketplace for Polkadot",
+	description: "OpenTribe description",
+	path: "/projects/opentribe",
+	ogTitle: "OpenTribe - Talent Marketplace for Polkadot",
+	ogDescription: "OpenGraph description",
+});
 
-		expect(metadata.alternates?.canonical).toBe(
-			"https://itstarun.fyi/projects/opentribe",
+describe("createProjectMetadata", () => {
+	it("builds canonical and openGraph urls on the canonical host", () => {
+		expect(opentribeMetadata.alternates?.canonical).toBe(
+			"https://www.itstarun.fyi/projects/opentribe",
 		);
-		expect(metadata.openGraph?.url).toBe(
-			"https://itstarun.fyi/projects/opentribe",
+		expect(opentribeMetadata.openGraph?.url).toBe(
+			"https://www.itstarun.fyi/projects/opentribe",
 		);
-		expect(metadata.twitter?.images).toEqual(["/opengraph-image"]);
 	});
 
-	it("supports object-based twitter images", () => {
+	it("leaves images unset so the route's opengraph-image.tsx is used", () => {
+		expect(opentribeMetadata.openGraph).not.toHaveProperty("images");
+		expect(opentribeMetadata.twitter).not.toHaveProperty("images");
+	});
+
+	it("falls back to the openGraph copy for the twitter card", () => {
+		expect(opentribeMetadata.twitter?.title).toBe(
+			"OpenTribe - Talent Marketplace for Polkadot",
+		);
+		expect(opentribeMetadata.twitter?.description).toBe(
+			"OpenGraph description",
+		);
+	});
+
+	it("allows twitter copy to diverge from openGraph copy", () => {
 		const metadata = createProjectMetadata({
-			title: "Chargespot - EV Charging Platform | Tarun Portfolio",
+			title: "Chargespot - Flutter EV Charging Platform",
 			description: "Chargespot description",
 			path: "/projects/chargespot",
 			ogTitle: "Chargespot - EV Charging Platform",
 			ogDescription: "OpenGraph description",
-			imageUrl: "/images/projects/chargespot.webp",
-			imageAlt: "Chargespot - EV Charging Platform",
-			twitterImageType: "object",
+			twitterTitle: "Chargespot",
+			twitterDescription: "Twitter description",
 		});
 
-		expect(metadata.twitter?.images).toEqual([
-			{
-				url: "/images/projects/chargespot.webp",
-				width: 1200,
-				height: 630,
-				alt: "Chargespot - EV Charging Platform",
-			},
-		]);
+		expect(metadata.twitter?.title).toBe("Chargespot");
+		expect(metadata.twitter?.description).toBe("Twitter description");
 	});
 });

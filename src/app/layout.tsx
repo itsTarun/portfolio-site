@@ -13,6 +13,7 @@ import {
 	OG_IMAGE_SIZE,
 	SITE_NAME,
 	SITE_URL,
+	TWITTER_HANDLE,
 } from "@/lib/site-config";
 
 const displayFont = Bricolage_Grotesque({
@@ -53,12 +54,19 @@ export function generateMetadata(): Metadata {
 		authors: [{ name: "Tarun" }],
 		creator: "Tarun",
 		publisher: "Tarun",
-		robots: IS_PREVIEW_DEPLOYMENT ? "noindex, nofollow" : "index, follow",
+		// Only previews declare a robots meta. "index, follow" is the crawler
+		// default, and emitting it here also stamped it onto /_not-found next to
+		// the noindex Next injects there — two conflicting robots tags on the
+		// 404. Absent tag = indexable, with no conflict to resolve.
+		robots: IS_PREVIEW_DEPLOYMENT ? "noindex, nofollow" : undefined,
+		// This is also the homepage's own card, so the title has to be the real
+		// page title. Every route that declares its own `openGraph` replaces this
+		// object wholesale — Next does not merge it key by key.
 		openGraph: {
 			type: "website",
 			locale: "en_US",
 			url: SITE_URL,
-			title: "Tarun",
+			title: "Tarun Sharma - Mobile App Developer",
 			description:
 				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
 			siteName: SITE_NAME,
@@ -66,11 +74,11 @@ export function generateMetadata(): Metadata {
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: "Tarun",
+			title: "Tarun Sharma - Mobile App Developer",
 			description:
 				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
-			creator: "@itstarun1994",
-			site: "@itstarun1994",
+			creator: TWITTER_HANDLE,
+			site: TWITTER_HANDLE,
 			images: [defaultSocialImage],
 		},
 		icons: {

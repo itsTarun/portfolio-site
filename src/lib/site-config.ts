@@ -1,4 +1,13 @@
-export const SITE_URL = "https://itstarun.fyi";
+// The apex redirects (307) to www, so www is what actually serves every page.
+// Canonicals, sitemap entries and og:url all have to point at the served host.
+export const SITE_URL = "https://www.itstarun.fyi";
+
+// TODO(tarun): set NEXT_PUBLIC_APP_URL to https://www.itstarun.fyi in the Vercel
+// project settings (all environments). robots.ts and sitemap.ts read that env
+// var in preference to SITE_URL, so while it still holds the apex, production
+// ships a sitemap and a Sitemap: line advertising a host every crawler gets
+// redirected away from — even though every canonical on the page says www.
+// Verified locally: with the apex value the built sitemap.xml emits apex URLs.
 
 // Vercel sets VERCEL_ENV on every deployment. Matching a single preview
 // hostname left every other preview URL (branch and commit deploys) indexable,
@@ -27,6 +36,9 @@ export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/iamtarun/",
 	twitter: "https://x.com/itstarun1994",
 } as const;
+
+// twitter:creator / twitter:site want the @handle, not the profile URL.
+export const TWITTER_HANDLE = "@itstarun1994";
 
 export const OG_IMAGE_SIZE = {
 	width: 1200,
