@@ -1,5 +1,7 @@
-import { Download, ExternalLink } from "lucide-react";
-import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
+import { Download, FileText } from "lucide-react";
+import Link from "next/link";
+import { RESUME_DOWNLOAD_LINK_PROPS } from "@/lib/site-config";
+import { AVAILABILITY } from "../resume/resume-data";
 import { ContactForm } from "./contact-form";
 
 const helpList = [
@@ -21,16 +23,12 @@ export default function ContactPage() {
 					{/* Left: context */}
 					<div className="animate-rise lg:col-span-2">
 						<h1 className="section-title">Let&apos;s work together.</h1>
-						<p className="section-subtitle mt-4">
-							Open to iOS and Flutter contract work. No agencies or generic
-							dev-shop briefs.
-						</p>
+						<p className="section-subtitle mt-4">{AVAILABILITY.openTo}</p>
 
 						<div className="mt-10">
 							<span className="neo-chip">Available</span>
 							<p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-								Taking freelance and contract work from July 2026. Remote or
-								hybrid within IST&nbsp;±&nbsp;3h.
+								{AVAILABILITY.from}
 							</p>
 						</div>
 
@@ -56,18 +54,13 @@ export default function ContactPage() {
 								Resume
 							</h2>
 							<div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+								<Link href="/resume" className={resumeLinkClass}>
+									<FileText className="h-4 w-4" />
+									Read the full resume
+								</Link>
 								<a {...RESUME_DOWNLOAD_LINK_PROPS} className={resumeLinkClass}>
 									<Download className="h-4 w-4" />
 									Download PDF
-								</a>
-								<a
-									href={RESUME_URL}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={resumeLinkClass}
-								>
-									<ExternalLink className="h-4 w-4" />
-									View in browser
 								</a>
 							</div>
 						</section>
