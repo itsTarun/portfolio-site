@@ -44,17 +44,16 @@ const keyFeatures = [
 	"Instant preview of rendered MDX content alongside the editor.",
 ];
 
+// The root layout appends " | Tarun Sharma" to every title, so the page title
+// stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
-	title: "Repo Press - Git-native MDX Editor | Tarun Portfolio",
+	title: "Repo Press - Git-native MDX Editor for GitHub",
 	description:
 		"Repo Press connects to your GitHub repositories and gives you a Notion-like editing experience for MDX/Markdown content, keeping everything in Git.",
 	path: "/projects/repo-press",
 	ogTitle: "Repo Press - Git-native MDX Editor",
 	ogDescription:
 		"A Notion-like MDX editing experience that keeps your content in Git — no proprietary lock-in.",
-	imageUrl: "/images/projects/repo-press.webp",
-	imageAlt: "Repo Press - Git-native MDX editing tool",
-	twitterImageType: "object",
 });
 
 export default function RepoPressPage() {
@@ -125,10 +124,11 @@ export default function RepoPressPage() {
 						<div className="mb-12 neo-panel p-2">
 							<Image
 								src={projectData.imageUrl}
-								alt={`${projectData.name} screenshot`}
+								alt="Repo Press promo card reading 'Git-native MDX editing', above a mock list of .mdx files including README and getting-started"
 								className="h-auto w-full"
 								width={800}
 								height={420}
+								sizes="(min-width: 1280px) 1008px, (min-width: 1024px) 944px, (min-width: 768px) 704px, (min-width: 640px) 576px, calc(100vw - 48px)"
 								priority
 							/>
 						</div>

@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { SITE_URL } from "@/lib/site-config";
 
 // IS_PREVIEW_DEPLOYMENT is read at module load, so each case needs a fresh
 // import after the env is stubbed.
@@ -33,6 +34,20 @@ describe("robots", () => {
 
 		expect(rule?.allow).toBe("/");
 		expect(rule?.disallow).toEqual(["/api/"]);
-		expect(result.sitemap).toBe("https://itstarun.fyi/sitemap.xml");
+	});
+
+	it("falls back to the canonical host from site-config, not a hardcoded one", async () => {
+		const result = await loadRobots("production");
+
+		expect(result.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
+	});
+
+	it("takes the host from SITE_URL alone, with no env override", async () => {
+		// A NEXT_PUBLIC_APP_URL override used to win here, which let a stale
+		// dashboard value ship a sitemap host that disagreed with every canonical.
+		vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://example.test");
+		const result = await loadRobots("production");
+
+		expect(result.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
 	});
 });

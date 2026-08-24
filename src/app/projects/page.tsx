@@ -9,6 +9,9 @@ const flagshipProjects = [
 		id: "chargespot",
 		title: "Chargespot",
 		imageUrl: "/images/projects/chargespot.webp",
+		// Marketing-site capture, not an app screenshot
+		imageAlt:
+			"Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board",
 		description:
 			"EV charging station finder and management platform for India. Real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island, and multi-wallet payments.",
 		technologies: [
@@ -39,6 +42,9 @@ const flagshipProjects = [
 		id: "opentribe",
 		title: "OpenTribe",
 		imageUrl: "/images/projects/opentribe.webp",
+		// Marketing-site capture, not an app screenshot
+		imageAlt:
+			"OpenTribe promo banner reading 'Enabling builders anywhere to get paid on-chain', with an illustrated developer at a desk",
 		description:
 			"Talent marketplace for the Polkadot ecosystem. Connects Web3 organizations with skilled developers and contributors via grant aggregation, bounty management, and real-time collaboration tools.",
 		technologies: [
@@ -69,6 +75,9 @@ const flagshipProjects = [
 		id: "domain-collective",
 		title: "Domain Collective",
 		imageUrl: "/images/projects/domain-collective.webp",
+		// Marketing-site capture, not an app screenshot
+		imageAlt:
+			"Domain Collective promo banner reading 'One dashboard for all your domains', with a line-art illustration of the dashboard",
 		description:
 			"Unified domain management across GoDaddy, Namecheap, Gandi, Porkbun, Name.com, and Cloudflare. Manage domains, DNS records, and nameservers from a single interface with encrypted credential storage.",
 		technologies: [
@@ -99,6 +108,9 @@ const flagshipProjects = [
 		id: "repo-press",
 		title: "Repo Press",
 		imageUrl: "/images/projects/repo-press.webp",
+		// Marketing-site capture, not an app screenshot
+		imageAlt:
+			"Repo Press promo card reading 'Git-native MDX editing', above a mock list of .mdx files including README and getting-started",
 		description:
 			"Git-native MDX editing with a Notion-like experience for GitHub-hosted content. Connects to your repositories and keeps everything in Git — your content, your history, your rules.",
 		technologies: [
@@ -146,7 +158,7 @@ export default function ProjectsPage() {
 							<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
 								<Image
 									src={project.imageUrl}
-									alt={`${project.title} screenshot`}
+									alt={project.imageAlt}
 									fill
 									sizes="(min-width: 768px) 50vw, 100vw"
 									className="object-cover"

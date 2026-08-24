@@ -1,4 +1,4 @@
-import { Download, ExternalLink, GraduationCap, MapPin } from "lucide-react";
+import { Download, FileText, GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
@@ -7,133 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { toBreadcrumbItems } from "@/lib/project-breadcrumbs";
-import { RESUME_DOWNLOAD_LINK_PROPS, RESUME_URL } from "@/lib/site-config";
-
-const skills = [
-	{
-		category: "Mobile Platforms",
-		items: [
-			"iOS",
-			"Android",
-			"UIKit",
-			"VIPER Architecture",
-			"Coordinator Pattern",
-			"Protocol-Oriented Programming",
-		],
-	},
-	{
-		category: "Flutter",
-		items: [
-			"Flutter",
-			"Dart",
-			"Firebase",
-			"FCM",
-			"Crashlytics",
-			"Backend-Driven UI",
-		],
-	},
-	{
-		category: "Tools & Workflow",
-		items: [
-			"Git",
-			"GitLab",
-			"Jira",
-			"Confluence",
-			"Postman",
-			"Unit & UI Tests",
-		],
-	},
-];
-
-const experience = [
-	{
-		id: 1,
-		title: "Mobile Developer",
-		company: "Chargespot",
-		location: "Delhi, India",
-		period: "July 2023 - Present",
-		description: [
-			"Building the Chargespot mobile app and shipping new releases.",
-			"Hands-on QA and release validation to keep builds stable.",
-		],
-		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
-	},
-	{
-		id: 2,
-		title: "Software Engineer (Flutter)",
-		company: "Droidsize Technologies",
-		location: "Delhi, India",
-		period: "October 2022 - July 2023",
-		description: [
-			"Developed and maintained UI components for backend-driven layouts.",
-			"Created and styled product UI across new screens and features.",
-			"Worked with Firebase, Git, GitLab, Jira, and Confluence.",
-		],
-		technologies: ["Flutter", "Firebase", "GitLab", "Jira", "Confluence"],
-	},
-	{
-		id: 3,
-		title: "iOS Developer",
-		company: "Eyemyeye.com",
-		location: "Gurugram, Haryana, India",
-		period: "August 2021 - October 2022",
-		description: [
-			"Built the EyeMyEye app from the ground up and set up VIPER architecture.",
-			"Shipped App Store updates with a 99% crash-free user base.",
-			"Coordinated feature parity and release monitoring with cross-platform teams.",
-		],
-		technologies: ["iOS", "VIPER", "UIKit", "App Store"],
-	},
-	{
-		id: 4,
-		title: "Lead iOS Engineer",
-		company: "DailyObjects",
-		location: "New Delhi, India",
-		period: "January 2020 - August 2021",
-		description: [
-			"Led a complete app revamp and introduced API-driven UI.",
-			"Implemented rich push notifications with custom design via FCM.",
-			"Delivered light and dark mode across the app.",
-		],
-		technologies: ["iOS", "FCM", "REST APIs", "UIKit"],
-	},
-	{
-		id: 5,
-		title: "iOS Developer",
-		company: "DailyObjects",
-		location: "New Delhi, India",
-		period: "July 2019 - January 2020",
-		description: [
-			"Used Firebase Crashlytics to track bugs and improve stability.",
-			"Tested API endpoints with Postman and maintained REST/JSON workflows.",
-			"Built features using Coordinator pattern, protocol-oriented programming, and unit/UI tests.",
-		],
-		technologies: ["Crashlytics", "Postman", "REST", "UIKit", "Unit Tests"],
-	},
-	{
-		id: 6,
-		title: "iOS Developer",
-		company: "Startxlabs Technologies",
-		location: "India",
-		period: "May 2018 - June 2019",
-		description: [
-			"Refined product tickets and shipped rating/share features.",
-			"Crafted reusable code that teams could implement quickly.",
-			"Mentored junior developers during project transitions.",
-		],
-		technologies: ["iOS", "Reusable Components", "Mentorship", "App Features"],
-	},
-];
-
-const education = [
-	{
-		id: 1,
-		degree: "Bachelor’s Degree, English Honours",
-		school: "Delhi University",
-		period: "2013 - June 2016",
-		description: "Computer Software and Media Applications",
-	},
-];
+import { RESUME_DOWNLOAD_LINK_PROPS } from "@/lib/site-config";
+import {
+	AVAILABILITY,
+	education,
+	experience,
+	skills,
+} from "../resume/resume-data";
 
 export default function AboutPage() {
 	const breadcrumbs = [
@@ -159,23 +39,20 @@ export default function AboutPage() {
 								</p>
 								<div className="mt-8 flex flex-wrap items-center gap-3">
 									<Button asChild>
-										<a {...RESUME_DOWNLOAD_LINK_PROPS}>
-											<Download className="h-4 w-4" />
-											Download Resume
-										</a>
+										<Link href="/resume">
+											<FileText className="h-4 w-4" />
+											View Resume
+										</Link>
 									</Button>
 									<Button asChild variant="outline">
-										<a
-											href={RESUME_URL}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<ExternalLink className="h-4 w-4" />
-											View PDF
+										<a {...RESUME_DOWNLOAD_LINK_PROPS}>
+											<Download className="h-4 w-4" />
+											Download PDF
 										</a>
 									</Button>
 								</div>
 							</div>
+							{/* Fixed 300px column from md up, full width below. */}
 							<div className="neo-panel overflow-hidden p-2">
 								<Image
 									src="/images/headshot.webp"
@@ -183,6 +60,7 @@ export default function AboutPage() {
 									width={600}
 									height={600}
 									priority
+									sizes="(min-width: 768px) 300px, 100vw"
 									className="w-full h-auto object-cover"
 								/>
 							</div>
@@ -203,6 +81,24 @@ export default function AboutPage() {
 								keep releases stable, and maintain parity across platforms.
 							</p>
 						</div>
+
+						<ScrollReveal className="mb-12 grid gap-6 md:grid-cols-2">
+							<div className="neo-panel p-6">
+								<h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+									Now
+								</h2>
+								<p className="mt-3 leading-relaxed">{AVAILABILITY.now}</p>
+							</div>
+							<div className="neo-panel p-6">
+								<h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+									Open to
+								</h2>
+								<p className="mt-3 leading-relaxed">{AVAILABILITY.openTo}</p>
+								<p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+									{AVAILABILITY.from}
+								</p>
+							</div>
+						</ScrollReveal>
 
 						<ScrollReveal className="mb-12">
 							<h2 className="mb-6 text-2xl font-semibold">

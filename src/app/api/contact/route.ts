@@ -1,17 +1,46 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { buildContactEmail } from "@/lib/contact-email";
+import { isRateLimited } from "@/lib/rate-limit";
 import { CONTACT_EMAIL } from "@/lib/site-config";
 
 export async function POST(request: NextRequest) {
 	try {
+		// Fail loudly here rather than sending `Bearer undefined` and reporting a
+		// friendly failure to a visitor whose message reached nobody.
+		if (!process.env.RESEND_API_KEY) {
+			console.error("[contact] RESEND_API_KEY is not set — cannot send mail");
+			return NextResponse.json(
+				{ error: "Failed to send. Please try again or email me directly." },
+				{ status: 500 },
+			);
+		}
+
+		const ip =
+			request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+			"unknown";
+		if (isRateLimited(ip)) {
+			return NextResponse.json(
+				{ error: "Too many messages. Please try again later." },
+				{ status: 429 },
+			);
+		}
+
 		const body = await request.json();
-		const { name, email, subject, message } = body as {
+		const { name, email, subject, message, company } = body as {
 			name: string;
 			email: string;
 			subject?: string;
 			message: string;
+			company?: string;
 		};
+
+		// Honeypot: a field hidden from humans, irresistible to form-filling bots.
+		// Report success so the bot has no signal to retry against.
+		if (company?.trim()) {
+			console.warn("[contact] honeypot tripped, discarding submission");
+			return NextResponse.json({ success: true });
+		}
 
 		if (!name?.trim() || !email?.trim() || !message?.trim()) {
 			return NextResponse.json(

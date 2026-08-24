@@ -39,17 +39,16 @@ const keyFeatures = [
 
 const projectData = PROJECTS.chargespot;
 
+// The root layout appends " | Tarun Sharma" to every title, so the page title
+// stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
-	title: "Chargespot - EV Charging Platform | Tarun Portfolio",
+	title: "Chargespot - Flutter EV Charging Platform",
 	description:
-		"Comprehensive EV charging station finder and management platform for India. Features real-time station discovery, AI-powered trip planning, live charging sessions, and multi-wallet payments.",
+		"EV charging station finder for India, built in Flutter. Real-time discovery, AI trip planning, iOS Live Activities, and multi-wallet in-app payments.",
 	path: "/projects/chargespot",
 	ogTitle: "Chargespot - EV Charging Platform",
 	ogDescription:
 		"Comprehensive EV charging station finder and management platform for India.",
-	imageUrl: "/images/projects/chargespot.webp",
-	imageAlt: "Chargespot - EV Charging Platform",
-	twitterImageType: "object",
 });
 
 export default function ChargespotPage() {
@@ -113,10 +112,11 @@ export default function ChargespotPage() {
 						<div className="mb-12 neo-panel p-2">
 							<Image
 								src={projectData.imageUrl}
-								alt={`${projectData.name} app screenshot`}
+								alt="Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board"
 								className="h-auto w-full"
 								width={2924}
 								height={1428}
+								sizes="(min-width: 1280px) 1008px, (min-width: 1024px) 944px, (min-width: 768px) 704px, (min-width: 640px) 576px, calc(100vw - 48px)"
 								priority
 							/>
 						</div>
@@ -181,9 +181,16 @@ export default function ChargespotPage() {
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<p className="text-muted-foreground leading-relaxed">
 								Currently in beta on TestFlight and Google Play, covering 50+
-								active charging stations across India. Every update goes through
-								hands-on QA validation before beta release, keeping the build
-								crash-free from day one.
+								active charging stations across India. Every release candidate
+								goes through hands-on QA on physical devices before it reaches
+								beta testers.
+								{/* TODO(tarun): this section describes process, not outcome.
+								    It needs one verifiable number you can stand behind — a
+								    crash-free rate and the window it covers, a session count,
+								    a store rating, or time-to-first-charge. The previous copy
+								    claimed "crash-free from day one" with no rate and no
+								    window, which is the kind of claim a technical client will
+								    ask you to back up. */}
 							</p>
 						</div>
 

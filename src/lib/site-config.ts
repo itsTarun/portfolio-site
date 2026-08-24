@@ -1,4 +1,12 @@
-export const SITE_URL = "https://itstarun.fyi";
+// The apex redirects (307) to www, so www is what actually serves every page.
+// Canonicals, sitemap entries and og:url all have to point at the served host.
+export const SITE_URL = "https://www.itstarun.fyi";
+
+// This is the ONLY place the host is defined. robots.ts, sitemap.ts and
+// llms-txt.ts used to prefer a NEXT_PUBLIC_APP_URL env var, which meant a stale
+// dashboard value could ship a sitemap pointing at one host while every
+// canonical on the page pointed at another. One constant, no split brain — move
+// domains by editing this line.
 
 // Vercel sets VERCEL_ENV on every deployment. Matching a single preview
 // hostname left every other preview URL (branch and commit deploys) indexable,
@@ -27,6 +35,9 @@ export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/iamtarun/",
 	twitter: "https://x.com/itstarun1994",
 } as const;
+
+// twitter:creator / twitter:site want the @handle, not the profile URL.
+export const TWITTER_HANDLE = "@itstarun1994";
 
 export const OG_IMAGE_SIZE = {
 	width: 1200,

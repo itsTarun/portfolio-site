@@ -29,6 +29,10 @@ export function ScrollProgress() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
+	// No local useReducedMotion() guard: the <MotionConfig reducedMotion="user">
+	// in ThemeProvider already forces scaleX/scaleY and width to settle
+	// instantly, which is every moving part here. Only the opacity fade
+	// survives, and that is the behaviour we want.
 	return (
 		<AnimatePresence>
 			{isVisible && (

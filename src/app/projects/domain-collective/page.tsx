@@ -54,16 +54,16 @@ const keyFeatures = [
 	"End-to-end credential encryption and audit logs for secure team collaboration.",
 ];
 
+// The root layout appends " | Tarun Sharma" to every title, so the page title
+// stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
-	title: "Domain Collective - Multi-Registrar Management | Tarun Portfolio",
+	title: "Domain Collective - Multi-Registrar Platform",
 	description:
-		"Domain Collective standardizes registrar APIs into one platform for domain, DNS, and renewal workflows.",
+		"One dashboard for domains spread across GoDaddy, Namecheap, Gandi, and more. Standardized registrar APIs, bulk DNS operations, and renewal tracking.",
 	path: "/projects/domain-collective",
 	ogTitle: "Domain Collective - Multi-Registrar Management",
 	ogDescription:
 		"Unified domain portfolio management across GoDaddy, Namecheap, Gandi, and more.",
-	imageUrl: "/images/projects/domain-collective.webp",
-	imageAlt: "Domain Collective project overview",
 });
 
 export default function DomainCollectivePage() {
@@ -130,10 +130,11 @@ export default function DomainCollectivePage() {
 						<div className="mb-12 neo-panel p-2">
 							<Image
 								src={projectData.imageUrl}
-								alt={`${projectData.name} project overview`}
+								alt="Domain Collective promo banner reading 'One dashboard for all your domains', with a line-art illustration of the dashboard"
 								className="h-auto w-full"
 								width={1200}
 								height={630}
+								sizes="(min-width: 1280px) 1008px, (min-width: 1024px) 944px, (min-width: 768px) 704px, (min-width: 640px) 576px, calc(100vw - 48px)"
 								priority
 							/>
 						</div>

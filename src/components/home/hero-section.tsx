@@ -1,30 +1,15 @@
-import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 import { CONTACT_EMAIL_MAILTO, SOCIAL_LINKS } from "@/lib/site-config";
 
+// Rendered as text, not icons — the label is the link's accessible name
 const socialLinks = [
-	{
-		icon: Github,
-		href: SOCIAL_LINKS.github,
-		label: "GitHub",
-	},
-	{
-		icon: Linkedin,
-		href: SOCIAL_LINKS.linkedin,
-		label: "LinkedIn",
-	},
-	{
-		icon: Twitter,
-		href: SOCIAL_LINKS.twitter,
-		label: "Twitter/X",
-	},
-	{
-		icon: Mail,
-		href: CONTACT_EMAIL_MAILTO,
-		label: "Email",
-	},
+	{ href: SOCIAL_LINKS.github, label: "GitHub" },
+	{ href: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
+	{ href: SOCIAL_LINKS.twitter, label: "Twitter/X" },
+	{ href: CONTACT_EMAIL_MAILTO, label: "Email" },
 ];
 
 const stats = [

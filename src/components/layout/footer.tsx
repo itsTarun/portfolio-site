@@ -26,6 +26,7 @@ const socialLinks = [
 const footerLinks = [
 	{ href: "/", label: "Home" },
 	{ href: "/about", label: "About" },
+	{ href: "/resume", label: "Resume" },
 	{ href: "/projects", label: "Projects" },
 	{ href: "/contact", label: "Contact" },
 	{ href: "/privacy", label: "Privacy" },
@@ -90,6 +91,16 @@ export function Footer() {
 									className="link-underline transition-colors hover:text-foreground"
 								>
 									Send a message
+								</Link>
+							</li>
+							{/* The page is the primary door; the raw PDF stays as a
+							    second, explicit download. */}
+							<li>
+								<Link
+									href="/resume"
+									className="link-underline transition-colors hover:text-foreground"
+								>
+									Read the resume
 								</Link>
 							</li>
 							<li>
