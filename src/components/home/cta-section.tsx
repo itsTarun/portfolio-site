@@ -29,44 +29,43 @@ const socialLinks = [
 
 export function CtaSection() {
 	return (
-		<section className="py-16 md:py-20 lg:py-24">
-			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<section className="py-24 md:py-32 lg:py-40">
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal>
-					<div className="mx-auto max-w-4xl text-center neo-panel neo-panel-primary p-8 md:p-12">
-						<div className="mb-8">
-							<h2 className="mb-4 text-3xl font-semibold sm:text-4xl text-balance text-primary-foreground">
-								Open to ambitious mobile product work with clear impact.
-							</h2>
-							<p className="text-base text-primary-foreground max-w-2xl mx-auto leading-relaxed">
-								I help teams ship thoughtful iOS and Flutter apps with confident
-								UX, clean engineering, and stable release quality.
-							</p>
-						</div>
+					<div className="mx-auto max-w-3xl text-center">
+						<h2 className="mb-6 text-5xl md:text-7xl font-bold tracking-tighter text-foreground text-balance">
+							Ready to build?
+						</h2>
+						<p className="mb-10 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+							I help teams ship thoughtful iOS and Flutter apps with confident
+							UX, clean engineering, and stable release quality.
+						</p>
 
-						<div className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:justify-center">
+						<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
 							<Button
 								asChild
 								size="lg"
-								variant="outline"
-								className="gap-2 bg-background text-foreground"
+								className="h-14 px-8 rounded-full bg-foreground text-background hover:bg-foreground/90 text-base font-medium transition-transform active:scale-95"
 							>
 								<Link href="/contact">
-									<Mail className="h-4 w-4" />
+									<Mail className="mr-2 h-5 w-5" />
 									Start a Conversation
-									<ArrowRight className="h-4 w-4" />
 								</Link>
 							</Button>
 							<Button
 								asChild
-								variant="outline"
+								variant="ghost"
 								size="lg"
-								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-primary"
+								className="h-14 px-8 rounded-full text-foreground hover:bg-muted text-base font-medium transition-colors"
 							>
-								<Link href="/projects">View Selected Work</Link>
+								<Link href="/projects">
+									View Selected Work
+									<ArrowRight className="ml-2 h-5 w-5" />
+								</Link>
 							</Button>
 						</div>
 
-						<div className="flex flex-wrap justify-center gap-4">
+						<div className="flex flex-wrap justify-center gap-8">
 							{socialLinks.map((social) => (
 								<a
 									key={social.label}
@@ -74,7 +73,7 @@ export function CtaSection() {
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={social.label}
-									className="text-sm font-medium text-primary-foreground underline-offset-4 hover:underline"
+									className="text-sm font-mono text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{social.label}
 								</a>

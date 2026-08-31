@@ -1,0 +1,125 @@
+{
+  "title": "Re-roll: Choose the visual world",
+  "question": "The second roll assigned the Transit Network Diagram. Keep it, take a winning challenger, or re-roll again.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Transit Network Diagram",
+      "kicker": "THE ROLL",
+      "lineage": "subway map control systems",
+      "thesis": "Mobile architecture mapped as a complex but perfectly routed transit network.",
+      "palette": [
+        "#f8fafc",
+        "#0f172a",
+        "#eab308",
+        "#ef4444"
+      ],
+      "materials": [
+        "colored transit lines",
+        "station nodes"
+      ],
+      "viewport": "A sprawling transit map where the user 'travels' between apps, stack elements, and experience.",
+      "risk": "Can become visually tangled if the routes aren't kept strictly orthogonal.",
+      "raised": [
+        {
+          "from": "challenger-wpa",
+          "raise": "Massive flat vector confidence spanning the entire viewport."
+        },
+        {
+          "from": "challenger-herbarium",
+          "raise": "Methodical cataloging and strict structural framing for every text node."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned2.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "Aerospace Mission Control",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "flight telemetry screens",
+      "thesis": "A crash-free mobile portfolio visualized as a mission-critical telemetry dashboard.",
+      "palette": [
+        "#0f111a",
+        "#4ade80",
+        "#38bdf8"
+      ],
+      "materials": [
+        "data grids",
+        "monospace readouts"
+      ],
+      "viewport": "A dense terminal dashboard tracking live app stability and project metrics.",
+      "risk": "Requires flawless typography so dense data doesn't feel cluttered.",
+      "comp": ".impeccable/mocks/decision/model-pick2.webp"
+    },
+    {
+      "id": "challenger-split-flap",
+      "label": "Split-Flap Board",
+      "verdict": "wins",
+      "lineage": "rail concourse departure boards",
+      "thesis": "Project stats and experience cascading into view on physical mechanical flaps.",
+      "palette": [
+        "#171717",
+        "#fafafa",
+        "#fbbf24"
+      ],
+      "materials": [
+        "matte black flap faces",
+        "white paint letters"
+      ],
+      "viewport": "A massive terminal board where project metrics flip into place character by character.",
+      "case": "Fuses perfectly: mobile performance metrics map exactly to the ticking updates of a transit board.",
+      "risk": "Requires a highly optimized animation loop to avoid layout thrashing.",
+      "comp": ".impeccable/mocks/decision/challenger-split-flap.webp",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp"
+    },
+    {
+      "id": "challenger-exposure",
+      "label": "Darkroom Exposure Record",
+      "verdict": "competitive",
+      "lineage": "zone system printer notes",
+      "thesis": "High-precision engineering shown as meticulously documented analog exposure logs.",
+      "palette": [
+        "#e5e5e5",
+        "#1a1a1a",
+        "#d946ef"
+      ],
+      "materials": [
+        "translucent tracing paper",
+        "backlit neutral ramps"
+      ],
+      "viewport": "Overlapping translucent sheets where tech stack layers are documented like exposure zones.",
+      "case": "Very strong analog metaphor for deep, technical execution.",
+      "risk": "Might feel too abstract for recruiters glancing quickly.",
+      "comp": ".impeccable/mocks/decision/challenger-exposure.webp",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A standard dark mode developer portfolio.",
+    "palette": [
+      "#0f172a",
+      "#f8fafc",
+      "#3b82f6"
+    ],
+    "materials": [
+      "bento grids",
+      "neon glow"
+    ],
+    "viewport": "A standard hero section with a bento box layout below.",
+    "risk": "Indistinguishable from thousands of other developer portfolios.",
+    "comp": ".impeccable/mocks/decision/canon.webp"
+  },
+  "steer": true
+}

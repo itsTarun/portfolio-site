@@ -108,8 +108,8 @@ export const viewport: Viewport = {
 	// Browser chrome matches --background from globals.css in each scheme, so the
 	// address bar stops sitting in the default grey against the page.
 	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "#f2f5f8" },
-		{ media: "(prefers-color-scheme: dark)", color: "#14191f" },
+		{ media: "(prefers-color-scheme: light)", color: "#ffffff" },
+		{ media: "(prefers-color-scheme: dark)", color: "#000000" },
 	],
 };
 
