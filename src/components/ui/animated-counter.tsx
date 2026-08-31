@@ -17,7 +17,7 @@ interface AnimatedCounterProps {
 
 function Counter({
 	value,
-	duration = 2,
+	duration = 0.8,
 }: {
 	value: number;
 	duration?: number;
@@ -61,7 +61,11 @@ function Counter({
 		};
 	}, [value, duration, isInView, prefersReducedMotion]);
 
-	return <span ref={ref}>{count}</span>;
+	return (
+		<span aria-hidden="true" ref={ref}>
+			{count}
+		</span>
+	);
 }
 
 export function AnimatedCounter({ items }: AnimatedCounterProps) {
@@ -70,20 +74,24 @@ export function AnimatedCounter({ items }: AnimatedCounterProps) {
 			{items.map((item) => (
 				<div
 					key={item.id}
-					className="border-2 border-border bg-background px-3 py-3"
+					className="border border-border bg-background px-3 py-3"
 				>
 					<div className="flex items-center justify-between gap-2">
 						<div className="text-2xl font-semibold text-foreground">
+							<span className="sr-only">
+								{item.value}
+								{item.suffix} {item.label}
+							</span>
 							<Counter value={item.value} />
-							{item.suffix}
+							<span aria-hidden="true">{item.suffix}</span>
 						</div>
 						{item.icon && (
-							<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+							<span className="flex h-8 w-8 items-center justify-center border border-border bg-muted text-foreground">
 								{item.icon}
 							</span>
 						)}
 					</div>
-					<div className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+					<div className="mt-2 text-xs font-medium text-muted-foreground">
 						{item.label}
 					</div>
 				</div>

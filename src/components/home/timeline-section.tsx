@@ -1,4 +1,4 @@
-import { Calendar } from "lucide-react";
+import { Calendar, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
@@ -39,21 +39,20 @@ interface CompanyNameProps {
 function CompanyName({ name, url }: CompanyNameProps) {
 	if (!url) {
 		return (
-			<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
-				{name}
-			</p>
+			<p className="text-sm font-medium text-muted-foreground mt-1">{name}</p>
 		);
 	}
 
 	return (
-		<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+		<p className="text-sm font-medium text-muted-foreground mt-1">
 			<a
 				href={url}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="hover:underline"
+				className="inline-flex items-center gap-1 hover:text-foreground underline decoration-border/50 underline-offset-4 hover:decoration-border"
 			>
 				{name}
+				<ExternalLink className="h-3 w-3" />
 			</a>
 		</p>
 	);
@@ -61,7 +60,7 @@ function CompanyName({ name, url }: CompanyNameProps) {
 
 export function TimelineSection() {
 	return (
-		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
+		<section className="border-b border-border py-16 md:py-20 lg:py-24">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal className="mb-12">
 					<h2 className="section-title text-balance">Experience that ships.</h2>
@@ -80,17 +79,17 @@ export function TimelineSection() {
 						>
 							<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 								<div>
-									<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+									<p className="text-sm font-medium text-muted-foreground mb-1">
 										Role
 									</p>
 									<h3 className="text-2xl font-semibold">{exp.title}</h3>
 									<CompanyName name={exp.company} url={exp.companyUrl} />
 								</div>
-								<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-									<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
+								<div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+									<span className="flex h-8 w-8 items-center justify-center border border-border bg-muted text-foreground">
 										<Calendar className="h-4 w-4" />
 									</span>
-									<span className="border-2 border-border bg-background px-3 py-1 text-foreground">
+									<span className="border border-border bg-background px-3 py-1 text-foreground">
 										{exp.period}
 									</span>
 								</div>
@@ -102,7 +101,7 @@ export function TimelineSection() {
 								{exp.technologies.map((tech) => (
 									<span
 										key={tech}
-										className="border-2 border-border bg-background px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+										className="border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground"
 									>
 										{tech}
 									</span>
@@ -115,7 +114,7 @@ export function TimelineSection() {
 				<ScrollReveal delay={300} className="mt-8">
 					<Link
 						href="/about"
-						className="inline-flex items-center border-2 border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+						className="inline-flex items-center border border-border bg-background px-3 py-1 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 					>
 						Full timeline →
 					</Link>

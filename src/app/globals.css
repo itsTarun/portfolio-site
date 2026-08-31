@@ -136,18 +136,6 @@
 		background: hsl(var(--background));
 		color: hsl(var(--foreground));
 		line-height: 1.7;
-		background-image:
-			linear-gradient(
-				to right,
-				hsl(var(--foreground) / 0.05) 1px,
-				transparent 1px
-			),
-			linear-gradient(
-				to bottom,
-				hsl(var(--foreground) / 0.05) 1px,
-				transparent 1px
-			);
-		background-size: 48px 48px;
 		transition:
 			background-color 0.3s ease,
 			color 0.3s ease;
@@ -204,7 +192,7 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
-	border: 2px solid hsl(var(--border));
+	border: 1px solid hsl(var(--border));
 	background: hsl(var(--muted));
 	padding: 0.35rem 0.6rem;
 	font-size: 0.65rem;
@@ -221,12 +209,12 @@
 }
 
 .section-subtitle {
-	font-size: 1.05rem;
+	font-size: 1.125rem;
 	color: hsl(var(--foreground-muted));
 }
 
 .section-rule {
-	height: 2px;
+	height: 1px;
 	background: hsl(var(--border));
 	width: 100%;
 }
@@ -243,9 +231,9 @@
 
 @layer components {
 	.neo-panel {
-		border: 2px solid hsl(var(--border));
+		border: 1px solid hsl(var(--border));
 		background: hsl(var(--card));
-		box-shadow: 6px 6px 0 hsl(var(--border));
+		box-shadow: 4px 4px 0 hsl(var(--border) / 0.75);
 	}
 
 	.neo-panel-muted {
@@ -258,28 +246,28 @@
 	}
 
 	.neo-chip {
-		border: 2px solid hsl(var(--border));
+		border: 1px solid hsl(var(--border));
 		background: hsl(var(--accent));
 		padding: 0.25rem 0.55rem;
-		font-size: 0.6rem;
-		font-weight: 700;
-		letter-spacing: 0.2em;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
+		letter-spacing: 0.05em;
 		color: hsl(var(--foreground));
 	}
 
 	.neo-rule {
-		height: 2px;
+		height: 1px;
 		background: hsl(var(--border));
 		width: 100%;
 	}
 
 	.neo-shadow {
-		box-shadow: 6px 6px 0 hsl(var(--border));
+		box-shadow: 4px 4px 0 hsl(var(--border) / 0.75);
 	}
 
 	.neo-shadow-sm {
-		box-shadow: 4px 4px 0 hsl(var(--border));
+		box-shadow: 2px 2px 0 hsl(var(--border) / 0.75);
 	}
 }
 
@@ -304,8 +292,8 @@
 		opacity: 0;
 		transform: translateY(30px);
 		transition:
-			opacity 0.8s ease,
-			transform 0.8s ease;
+			opacity 0.4s ease-out,
+			transform 0.4s ease-out;
 	}
 
 	.animate-on-scroll.visible {
