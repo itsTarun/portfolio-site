@@ -60,7 +60,7 @@ export function CtaSection() {
 								asChild
 								variant="outline"
 								size="lg"
-								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary/80"
+								className="border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-primary"
 							>
 								<Link href="/projects">View Selected Work</Link>
 							</Button>
@@ -74,7 +74,7 @@ export function CtaSection() {
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={social.label}
-									className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground underline-offset-4 hover:underline"
+									className="text-sm font-medium text-primary-foreground underline-offset-4 hover:underline"
 								>
 									{social.label}
 								</a>

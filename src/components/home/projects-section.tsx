@@ -40,7 +40,7 @@ function ProjectCard({
 				className="neo-panel flex h-full flex-col justify-between p-0 transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))] overflow-hidden"
 			>
 				<div>
-					<div className="relative h-40 w-full overflow-hidden border-b-2 border-border">
+					<div className="relative h-40 w-full overflow-hidden border-b border-border">
 						<Image
 							src={imageUrl}
 							alt={PROJECT_IMAGE_ALT[slug] ?? `${title} promotional image`}
@@ -68,7 +68,7 @@ export function ProjectsSection() {
 	const projects = Object.values(PROJECTS);
 
 	return (
-		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
+		<section className="border-b border-border py-16 md:py-20 lg:py-24">
 			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<ScrollReveal className="mb-12">
 					<h2 className="section-title text-balance">Builds with range.</h2>

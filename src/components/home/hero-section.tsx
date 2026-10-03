@@ -21,7 +21,7 @@ const stats = [
 
 export function HeroSection() {
 	return (
-		<section className="relative border-b-2 border-border bg-background">
+		<section className="relative border-b border-border bg-background">
 			<div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
 				<div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
 					<div className="animate-rise space-y-8">
@@ -47,15 +47,15 @@ export function HeroSection() {
 								</Link>
 							</Button>
 							<Button asChild size="lg" variant="outline">
-								<Link href="/contact">Start a Project</Link>
+								<Link href="/resume">View Resume</Link>
 							</Button>
 						</div>
 						<div className="neo-rule" />
-						<div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-							<span className="border-2 border-border bg-background px-3 py-1">
+						<div className="flex flex-wrap gap-3 text-sm font-medium text-muted-foreground">
+							<span className="border border-border bg-background px-3 py-1">
 								Based in India (IST)
 							</span>
-							<span className="border-2 border-border bg-background px-3 py-1">
+							<span className="border border-border bg-background px-3 py-1">
 								Available for select work
 							</span>
 						</div>
@@ -66,7 +66,7 @@ export function HeroSection() {
 									href={social.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-flex min-h-[44px] items-center border-2 border-border bg-background px-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+									className="inline-flex min-h-[44px] items-center border border-border bg-background px-3 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
 								>
 									{social.label}
 								</a>
@@ -84,8 +84,8 @@ export function HeroSection() {
 								<span className="neo-chip">2026</span>
 							</div>
 							<AnimatedCounter items={stats} />
-							<div className="mt-6 space-y-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-								<div className="flex items-center justify-between border-t-2 border-border pt-4">
+							<div className="mt-6 space-y-3 text-sm font-medium text-muted-foreground">
+								<div className="flex items-center justify-between border-t border-border pt-4">
 									<span>Focus</span>
 									<span className="text-foreground">
 										Mobile UX, Reliability, Release Quality
