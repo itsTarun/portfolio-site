@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
@@ -148,12 +149,18 @@ export default function RootLayout({
 							{children}
 						</main>
 						<Footer />
+						<AnalyticsConsent
+							enabled={
+								!IS_PREVIEW_DEPLOYMENT &&
+								Boolean(
+									process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+										process.env.NEXT_PUBLIC_POSTHOG_KEY,
+								)
+							}
+						/>
 					</div>
 				</ThemeProvider>
-				{/* Both load from same-origin /_vercel/* paths in production, so the
-				    CSP's `script-src 'self'` covers them without widening. Cookieless
-				    and aggregate-only, which is what keeps /privacy honest and the
-				    site free of a consent banner. */}
+				{/* Vercel's cookieless measurements are separate from optional analytics. */}
 				<Analytics />
 				<SpeedInsights />
 			</body>
