@@ -14,8 +14,8 @@ import vercelConfig from "./vercel.json";
 // from src/components/seo/*. script-src falls back to default-src when it is
 // absent, so 'default-src self' alone would block all of those and leave the
 // site rendered but never hydrated. Hence the directive is set explicitly and
-// widened rather than omitted. It still pins scripts to this origin (no
-// third-party script hosts) and still withholds 'unsafe-eval'.
+// widened rather than omitted. Only the optional analytics providers can load
+// third-party scripts. 'unsafe-eval' stays disabled.
 // Do not "fix" this by adding a nonce without also accepting dynamic rendering.
 //
 // WHY object-src IS 'self' AND NOT 'none':
@@ -57,7 +57,7 @@ describe("vercel.json headers configuration", () => {
 		);
 	});
 
-	it("locks the CSP down to this origin", () => {
+	it("allows the required analytics hosts without advertising hosts", () => {
 		const csp = headerValue("Content-Security-Policy");
 		const directives = csp?.split(";").map((directive) => directive.trim());
 
@@ -67,11 +67,11 @@ describe("vercel.json headers configuration", () => {
 			"form-action 'self'",
 			"frame-ancestors 'none'",
 			"object-src 'self'",
-			"script-src 'self' 'unsafe-inline'",
+			"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://us-assets.i.posthog.com",
 			"style-src 'self' 'unsafe-inline'",
-			"img-src 'self' data: blob:",
+			"img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com",
 			"font-src 'self' data:",
-			"connect-src 'self'",
+			"connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://us.i.posthog.com https://us-assets.i.posthog.com",
 			"upgrade-insecure-requests",
 		]);
 	});
