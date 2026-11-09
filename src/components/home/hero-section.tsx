@@ -13,9 +13,9 @@ const socialLinks = [
 ];
 
 const stats = [
-	{ id: 1, label: "Years Building", value: 7, suffix: "+" },
+	{ id: 1, label: "Years Building", value: 8, suffix: "+" },
 	{ id: 2, label: "Teams", value: 5, suffix: "" },
-	{ id: 3, label: "Platforms", value: 2, suffix: "" },
+	{ id: 3, label: "Platforms", value: 3, suffix: "" },
 	{ id: 4, label: "Crash-Free Rate", value: 99, suffix: "%" },
 ];
 
@@ -33,17 +33,20 @@ export function HeroSection() {
 									Available for select work
 								</span>
 								<span className="hidden sm:inline-block text-border">•</span>
-								<span className="hidden sm:inline-block">Based in India (IST)</span>
+								<span className="hidden sm:inline-block">
+									Based in India (IST)
+								</span>
 							</div>
-							
+
 							<h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-foreground text-balance">
 								Mobile apps that feel calm, fast, and dependable.
 							</h1>
-							
+
 							<p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-								I&apos;m Tarun Sharma, a mobile developer building iPhone, iPad,
-								and Flutter apps since 2018. I lean into R&amp;D, solid
-								architecture, and hands-on QA to ship stable releases teams trust.
+								I&apos;m Tarun, a mobile &amp; full-stack engineer building iOS,
+								Flutter, and web applications since 2018. I lean into R&amp;D,
+								solid architecture, and hands-on QA to ship stable releases
+								teams trust.
 							</p>
 						</div>
 
@@ -54,7 +57,12 @@ export function HeroSection() {
 									<ArrowRight className="ml-2 h-4 w-4" />
 								</Link>
 							</Button>
-							<Button asChild size="lg" variant="outline" className="rounded-full">
+							<Button
+								asChild
+								size="lg"
+								variant="outline"
+								className="rounded-full"
+							>
 								<Link href="/resume">View Resume</Link>
 							</Button>
 						</div>
@@ -90,22 +98,35 @@ export function HeroSection() {
 								2026
 							</span>
 						</div>
-						
+
 						<AnimatedCounter items={stats} />
-						
+
 						<div className="mt-8 space-y-4">
 							<div className="flex flex-col gap-1 border-t border-border/50 pt-4">
-								<span className="text-xs font-mono text-muted-foreground">Focus</span>
+								<span className="text-xs font-mono text-muted-foreground">
+									Focus
+								</span>
 								<span className="text-sm font-medium text-foreground">
-									Mobile UX, Reliability, Release Quality
+									Mobile &amp; Web UX, Architecture, Release Quality
 								</span>
 							</div>
 							<div className="flex flex-col gap-1">
-								<span className="text-xs font-mono text-muted-foreground">Stack</span>
+								<span className="text-xs font-mono text-muted-foreground">
+									Stack
+								</span>
 								<div className="flex flex-wrap gap-2 mt-2">
-									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">iOS</span>
-									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">Android</span>
-									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">Flutter</span>
+									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">
+										Flutter
+									</span>
+									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">
+										iOS
+									</span>
+									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">
+										Next.js
+									</span>
+									<span className="text-xs font-medium bg-background text-foreground px-2.5 py-1 rounded-md border border-border/50">
+										TypeScript
+									</span>
 								</div>
 							</div>
 						</div>

@@ -37,8 +37,8 @@ export function CtaSection() {
 							Ready to build?
 						</h2>
 						<p className="mb-10 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-							I help teams ship thoughtful iOS and Flutter apps with confident
-							UX, clean engineering, and stable release quality.
+							I help teams ship thoughtful mobile and web applications with
+							confident UX, clean engineering, and stable release quality.
 						</p>
 
 						<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">

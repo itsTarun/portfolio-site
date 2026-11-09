@@ -27,11 +27,9 @@ function ProjectRow({ title, category, description, slug }: ProjectRowProps) {
 					{description}
 				</p>
 			</div>
-			
+
 			<div className="hidden sm:flex items-center mt-3 sm:mt-0 opacity-0 group-hover:opacity-100 transition-opacity">
-				<span className="font-mono text-xs text-muted-foreground">
-					View →
-				</span>
+				<span className="font-mono text-xs text-muted-foreground">View →</span>
 			</div>
 		</Link>
 	);
@@ -78,7 +76,7 @@ export function ProjectsSection() {
 
 				{projects.length > 3 && (
 					<ScrollReveal delay={200} className="mt-8 flex justify-end">
-						<Link 
+						<Link
 							href="/projects"
 							className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
 						>

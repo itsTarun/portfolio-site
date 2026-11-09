@@ -4,7 +4,7 @@ import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from "@/lib/site-config";
 const canonical = `${SITE_URL}/projects`;
 const description =
 	"Flagship projects in iOS, Flutter, and full-stack development. Shipped products including Chargespot, OpenTribe, Domain Collective, and Repo Press.";
-const socialTitle = "Projects - iOS, Flutter and Web Work by Tarun Sharma";
+const socialTitle = "Projects - iOS, Flutter and Web Work by Tarun";
 
 export const metadata: Metadata = {
 	title: "Projects - Shipped iOS, Flutter and Web Work",

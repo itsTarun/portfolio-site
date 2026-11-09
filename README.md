@@ -55,6 +55,9 @@ Create a `.env.local` file:
 
 ```env
 NEXT_PUBLIC_GSC_VERIFICATION_CODE=your_google_site_verification_code
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-2HQMCXD3WW
+NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_token
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 RESEND_API_KEY=your_resend_api_key_here
 CONTACT_FROM_EMAIL=onboarding@resend.dev
 ```
@@ -62,6 +65,20 @@ CONTACT_FROM_EMAIL=onboarding@resend.dev
 The site's canonical host is not an env var — it is `SITE_URL` in
 `src/lib/site-config.ts`, which is the single source for canonicals, the
 sitemap, `robots.txt` and `llms.txt`.
+
+GA4 and PostHog load only after the visitor allows optional analytics. Set the
+same values in Vercel's production environment before building; `NEXT_PUBLIC_`
+values are included at build time. Preview deployments do not send events.
+The GA4 web stream owns automatic page views and must keep enhanced measurement's
+browser-history option enabled. Do not add a second manual page-view sender or
+initialize Firebase Analytics with a different measurement ID.
+
+To verify a release, open `/?analytics_debug=1`, allow optional analytics, and
+use the site's links to visit About and Resume, then use browser Back. Confirm
+one page view per navigation in GA4 DebugView and PostHog Activity, plus a session
+in GA4 Realtime. Reject optional analytics and repeat navigation to confirm it
+stops. Check the browser network and console for blocked requests. Loading scripts
+alone does not verify event delivery.
 
 ## 🚀 Deployment
 

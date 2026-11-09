@@ -34,7 +34,7 @@ const footerLinks = [
 
 export function Footer() {
 	return (
-		<footer className="border-t-2 border-border bg-background">
+		<footer className="border-t border-border/50 bg-background">
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 gap-10 md:grid-cols-3">
 					<div>
@@ -42,8 +42,9 @@ export function Footer() {
 							itstarun
 						</h3>
 						<p className="mb-6 text-sm text-muted-foreground leading-relaxed max-w-md">
-							Mobile developer building thoughtful iOS and Flutter products with
-							a focus on clarity, performance, and stable releases.
+							Mobile &amp; Full-Stack Engineer building thoughtful mobile and
+							web products with a focus on clarity, performance, and stable
+							releases.
 						</p>
 						<div className="flex gap-3">
 							{socialLinks.map((link) => (
@@ -52,7 +53,7 @@ export function Footer() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex h-11 w-11 items-center justify-center border-2 border-border bg-background text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+									className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-muted/20 text-muted-foreground transition-all hover:border-border hover:bg-muted/50 hover:text-foreground"
 									aria-label={link.label}
 								>
 									<link.icon className="h-4 w-4" />
@@ -115,7 +116,7 @@ export function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-10 border-t-2 border-border pt-6 text-sm text-muted-foreground">
+				<div className="mt-10 border-t border-border/50 pt-6 text-sm text-muted-foreground">
 					<div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
 						<p>© {new Date().getFullYear()} Tarun. All rights reserved.</p>
 						<span className="flex items-center gap-1">

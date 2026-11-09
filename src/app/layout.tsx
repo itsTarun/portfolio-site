@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
@@ -39,19 +40,23 @@ export function generateMetadata(): Metadata {
 
 	return {
 		title: {
-			template: "%s | Tarun Sharma",
-			default: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
+			template: "%s | Tarun",
+			default: "Tarun - Mobile & Full-Stack Engineer | itstarun.fyi",
 		},
 		description:
-			"Personal portfolio showcasing iOS and Flutter work, experience, and projects. Mobile app developer focused on stable releases and product quality.",
+			"Personal portfolio showcasing mobile and full-stack work, experience, and projects. Mobile & Full-Stack Engineer focused on stable releases and product quality.",
 		keywords: [
-			"Mobile App Developer",
+			"Mobile & Full-Stack Engineer",
+			"Mobile Engineer",
+			"Full-Stack Engineer",
 			"iOS Developer",
 			"Flutter Developer",
+			"Next.js",
+			"React",
+			"TypeScript",
 			"Dart",
 			"Portfolio",
 			"App Store",
-			"Firebase",
 		],
 		authors: [{ name: "Tarun" }],
 		creator: "Tarun",
@@ -68,17 +73,17 @@ export function generateMetadata(): Metadata {
 			type: "website",
 			locale: "en_US",
 			url: SITE_URL,
-			title: "Tarun Sharma - Mobile App Developer",
+			title: "Tarun - Mobile & Full-Stack Engineer",
 			description:
-				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
+				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			siteName: SITE_NAME,
 			images: [defaultSocialImage],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: "Tarun Sharma - Mobile App Developer",
+			title: "Tarun - Mobile & Full-Stack Engineer",
 			description:
-				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
+				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			creator: TWITTER_HANDLE,
 			site: TWITTER_HANDLE,
 			images: [defaultSocialImage],
@@ -131,7 +136,7 @@ export default function RootLayout({
 			>
 				<a
 					href="#main-content"
-					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:border focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:shadow-lg"
 				>
 					Skip to main content
 				</a>
@@ -148,12 +153,18 @@ export default function RootLayout({
 							{children}
 						</main>
 						<Footer />
+						<AnalyticsConsent
+							enabled={
+								!IS_PREVIEW_DEPLOYMENT &&
+								Boolean(
+									process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+										process.env.NEXT_PUBLIC_POSTHOG_KEY,
+								)
+							}
+						/>
 					</div>
 				</ThemeProvider>
-				{/* Both load from same-origin /_vercel/* paths in production, so the
-				    CSP's `script-src 'self'` covers them without widening. Cookieless
-				    and aggregate-only, which is what keeps /privacy honest and the
-				    site free of a consent banner. */}
+				{/* Vercel's cookieless measurements are separate from optional analytics. */}
 				<Analytics />
 				<SpeedInsights />
 			</body>

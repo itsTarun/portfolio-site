@@ -8,11 +8,11 @@ import {
 
 const canonical = `${SITE_URL}/privacy`;
 const description =
-	"What itstarun.fyi collects and what it does not. No cookies, no ad tech, no cross-site tracking — cookieless aggregate page counts and the messages you send me.";
+	"How itstarun.fyi handles contact messages, cookieless measurement, and optional Google Analytics and PostHog tracking.";
 const socialTitle = "Privacy Policy - itstarun.fyi";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - No Cookies, No Cross-Site Tracking",
+	title: "Privacy Policy - Analytics and Your Choices",
 	description,
 	alternates: {
 		canonical,
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
 			<span className="eyebrow mb-4 block">Legal</span>
 			<h1 className="section-title mb-4">Privacy Policy</h1>
 
-			<p className="section-subtitle mb-12">Last updated: August 10, 2026</p>
+			<p className="section-subtitle mb-12">Last updated: October 3, 2026</p>
 
 			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">1. Introduction</h2>
@@ -65,8 +65,8 @@ export default function PrivacyPage() {
 					2. Information We Collect
 				</h2>
 				<p className="mb-3 text-muted-foreground">
-					The website has no account sign-up flow. Information is collected only
-					when you choose to send it.
+					The website has no account sign-up flow. It collects contact messages,
+					basic measurement data, and optional analytics when you allow it.
 				</p>
 				<ul className="list-disc space-y-2 pl-6 text-muted-foreground">
 					<li>
@@ -93,41 +93,48 @@ export default function PrivacyPage() {
 					Resend, an email delivery provider, which processes the submitted
 					fields in order to send that message.
 				</p>
-				<p className="text-muted-foreground">
+				<p className="mb-3 text-muted-foreground">
 					The site is hosted on Vercel, which processes technical request data
 					as part of serving the site, and also provides the cookieless
 					analytics and performance measurement described in section 4.
+				</p>
+				<p className="text-muted-foreground">
+					Google Analytics and PostHog process optional analytics. These
+					services receive page URLs, browser and device details, referral
+					information, and generated visitor identifiers. PostHog data is hosted
+					in the US. They receive technical network data, including your IP
+					address, when requests reach their servers.
 				</p>
 			</section>
 
 			<section className="mb-8 neo-panel p-6">
 				<h2 className="mb-4 text-2xl font-semibold">4. Cookies and Tracking</h2>
 				<p className="mb-3 text-muted-foreground">
-					This site sets no cookies at all &mdash; none for tracking, none for
-					advertising, none for sessions. There is no ad tech, no advertising
-					network, no data broker, and nothing that follows you to other
-					websites. That is why you see no cookie banner: there is nothing to
-					consent to.
+					Google Analytics and PostHog load only after you allow optional
+					analytics. Google Analytics stores cookies. PostHog stores generated
+					identifiers in localStorage. Advertising features, session recordings,
+					and PostHog automatic click and form capture are disabled. Contact
+					message contents are not sent to these analytics services.
 				</p>
 				<p className="mb-3 text-muted-foreground">
-					It does measure two things, both cookieless and both aggregate. Vercel
-					Analytics counts page views, and Vercel Speed Insights records how
-					quickly pages load. Between them they see the page you viewed, the
+					Vercel also provides two measurements, both cookieless and aggregate.
+					Vercel Analytics counts page views, and Vercel Speed Insights records
+					how quickly pages load. Between them they see the page you viewed, the
 					site that referred you, your approximate country, and your device,
 					browser and operating system type. They do not see your IP address,
 					build a profile, or store an identifier on your device, and their
 					scripts are served from this domain rather than a third-party one.
 				</p>
 				<p className="mb-3 text-muted-foreground">
-					The one thing stored in your browser is your light or dark theme
-					preference, kept in localStorage. It is written only if you use the
-					theme toggle &mdash; visiting the site without touching it stores
-					nothing. It stays on your device and is never sent anywhere.
+					Your analytics choice and light or dark theme preference are stored in
+					localStorage. Use “Analytics preferences” below the footer to allow or
+					reject optional analytics at any time. Rejecting stops further
+					optional tracking; it does not delete data already received by these
+					services.
 				</p>
 				<p className="text-muted-foreground">
-					If this ever changes &mdash; if a cookie, a consent control or any
-					identifying measurement is introduced &mdash; this policy will be
-					updated before it ships.
+					If your browser cannot save your choice, it applies only to the
+					current page. Optional analytics stays off until you allow it again.
 				</p>
 			</section>
 
@@ -138,6 +145,7 @@ export default function PrivacyPage() {
 				<ul className="list-disc space-y-2 pl-6 text-muted-foreground">
 					<li>To read and reply to contact form and direct email inquiries</li>
 					<li>To maintain site reliability and security</li>
+					<li>To understand which pages visitors use and improve the site</li>
 				</ul>
 				<p className="mt-3 text-muted-foreground">
 					Your information is not sold, and it is not used for advertising or
@@ -161,6 +169,8 @@ export default function PrivacyPage() {
 					an email inbox and are retained only as long as needed to respond and
 					maintain reasonable communication history. Resend and Vercel retain
 					delivery and request logs according to their own retention schedules.
+					Google Analytics and PostHog retain measurement data under the site’s
+					project retention settings and their service policies.
 				</p>
 			</section>
 

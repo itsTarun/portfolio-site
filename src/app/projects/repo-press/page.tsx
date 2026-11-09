@@ -44,7 +44,7 @@ const keyFeatures = [
 	"Instant preview of rendered MDX content alongside the editor.",
 ];
 
-// The root layout appends " | Tarun Sharma" to every title, so the page title
+// The root layout appends " | Tarun" to every title, so the page title
 // stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
 	title: "Repo Press - Git-native MDX Editor for GitHub",
@@ -121,7 +121,7 @@ export default function RepoPressPage() {
 							</div>
 						</div>
 
-						<div className="mb-12 neo-panel p-2">
+						<div className="mb-12 neo-panel overflow-hidden rounded-2xl p-2">
 							<Image
 								src={projectData.imageUrl}
 								alt="Repo Press promo card reading 'Git-native MDX editing', above a mock list of .mdx files including README and getting-started"
@@ -144,7 +144,7 @@ export default function RepoPressPage() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<BookOpen className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Familiar Editing Experience</CardTitle>
@@ -156,7 +156,7 @@ export default function RepoPressPage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<GitBranch className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Git as the Source of Truth</CardTitle>
@@ -168,7 +168,7 @@ export default function RepoPressPage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Globe className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Works with Any Repo</CardTitle>
@@ -180,7 +180,7 @@ export default function RepoPressPage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<ExternalLink className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>No Lock-in</CardTitle>
@@ -222,7 +222,7 @@ export default function RepoPressPage() {
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">What I Built</h2>
 							<div className="grid gap-4 md:grid-cols-2">
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">
 										GitHub OAuth Integration
 									</h3>
@@ -231,7 +231,7 @@ export default function RepoPressPage() {
 										content without leaving the editor.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Block-based MDX Editor</h3>
 									<p className="text-sm text-muted-foreground">
 										Custom block editor that serializes back to valid MDX,
@@ -239,14 +239,14 @@ export default function RepoPressPage() {
 										markdown.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Commit Workflow</h3>
 									<p className="text-sm text-muted-foreground">
 										Each save creates a real Git commit via the GitHub API,
 										preserving authorship and keeping history clean.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Project Index View</h3>
 									<p className="text-sm text-muted-foreground">
 										A press/portfolio-style index of all content files in the

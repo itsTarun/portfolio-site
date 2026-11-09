@@ -5,11 +5,11 @@ import { AVAILABILITY } from "../resume/resume-data";
 import { ContactForm } from "./contact-form";
 
 const helpList = [
-	"iOS app development",
-	"Flutter apps",
-	"App architecture consulting",
-	"Release quality & CI/CD",
-	"Mobile tech advisory",
+	"Mobile app engineering (Flutter & iOS)",
+	"Full-stack web applications (Next.js & React)",
+	"End-to-end architecture & API design",
+	"Release quality & CI/CD automation",
+	"Technical leadership & mobile advisory",
 ];
 
 const resumeLinkClass =

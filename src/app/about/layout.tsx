@@ -3,13 +3,13 @@ import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from "@/lib/site-config";
 
 const canonical = `${SITE_URL}/about`;
 const description =
-	"Mobile developer with 7+ years in iOS and Flutter, based in Delhi. Currently building Chargespot and Domain Collective. Full experience, skills, and resume.";
-// The root title template appends " | Tarun Sharma"; social cards get no
+	"Mobile & Full-Stack Engineer with 8+ years building iOS, Flutter, and web applications, based in Delhi. Currently building Chargespot and Domain Collective. Full experience, skills, and resume.";
+// The root title template appends " | Tarun"; social cards get no
 // template, so they carry the name themselves.
-const socialTitle = "About Tarun Sharma - iOS and Flutter Developer";
+const socialTitle = "About Tarun - Mobile & Full-Stack Engineer";
 
 export const metadata: Metadata = {
-	title: "About - iOS and Flutter Developer in Delhi",
+	title: "About - Mobile & Full-Stack Engineer in Delhi",
 	description,
 	alternates: {
 		canonical,

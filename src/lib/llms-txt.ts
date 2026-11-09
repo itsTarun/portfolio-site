@@ -28,18 +28,18 @@ function getProjectLines(): string[] {
 
 export function buildLlmsTxt(): string {
 	return [
-		"# Tarun Sharma — Mobile App Developer",
+		"# Tarun — Mobile & Full-Stack Engineer",
 		"",
-		"> iOS and Flutter developer focused on stable releases and product quality.",
+		"> Mobile & Full-Stack Engineer focused on mobile and web platforms, clean architecture, and stable releases.",
 		"",
 		"## About",
-		"Mobile developer based in Delhi, India, building and shipping iOS and Flutter products since 2018.",
+		"Mobile & Full-Stack Engineer based in Delhi, India, building and shipping iOS, Flutter, and web products since 2018.",
 		"",
 		"## Projects",
 		...getProjectLines(),
 		"",
 		"## Skills",
-		"iOS, Flutter, Dart, UIKit, VIPER Architecture, Firebase, FCM, Crashlytics, App Store, Git",
+		"Flutter, Dart, Swift, iOS, Android, Next.js, React, TypeScript, Node.js, UIKit, SwiftUI, WidgetKit, VIPER, Clean Architecture, REST APIs, PostgreSQL, Prisma, Sentry, App Store, Git",
 		"",
 		"## Links",
 		`- About: ${BASE_URL}/about`,

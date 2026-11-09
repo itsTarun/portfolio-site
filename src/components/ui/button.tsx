@@ -24,21 +24,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		return (
 			<Comp
 				className={cn(
-					"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none border-2 border-border font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+					"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
 					{
-						"bg-primary text-primary-foreground shadow-[4px_4px_0_hsl(var(--border))] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]":
+						"bg-foreground text-background hover:bg-foreground/90 border border-transparent":
 							variant === "default",
-						"bg-background text-foreground shadow-[4px_4px_0_hsl(var(--border))] hover:bg-muted hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]":
+						"border border-border/80 bg-background/50 text-foreground hover:bg-muted/50 hover:border-border":
 							variant === "outline",
-						"border-transparent bg-transparent text-foreground hover:bg-muted":
+						"border border-transparent bg-transparent text-foreground hover:bg-muted/50":
 							variant === "ghost",
-						"border-transparent bg-transparent text-foreground underline underline-offset-4":
+						"border border-transparent bg-transparent text-foreground underline underline-offset-4":
 							variant === "link",
 					},
 					{
-						"h-10 px-5 text-sm tracking-[0.08em]": size === "default",
-						"h-9 px-4 text-xs tracking-[0.16em]": size === "sm",
-						"h-12 px-8 text-sm tracking-[0.1em]": size === "lg",
+						"h-10 px-5 text-sm": size === "default",
+						"h-8 px-3.5 text-xs": size === "sm",
+						"h-12 px-7 text-sm sm:text-base": size === "lg",
 						"h-10 w-10": size === "icon",
 					},
 					className,

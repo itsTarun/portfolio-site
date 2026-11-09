@@ -4,13 +4,20 @@ import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
 const experiences = [
 	{
-		title: "Mobile Developer",
+		title: "Mobile & Full-Stack Engineer",
 		company: "Chargespot",
 		companyUrl: "https://chargespot.app/",
 		period: "Jul 2023 - Present",
 		description:
-			"Building the Chargespot mobile app and shipping new releases.",
-		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
+			"Architecting the Chargespot EV charging platform in Flutter across iOS & Android, integrating real-time telemetry, Live Activities, and CarPlay.",
+		technologies: [
+			"Flutter",
+			"iOS",
+			"Android",
+			"WidgetKit",
+			"CarPlay",
+			"REST APIs",
+		],
 	},
 	{
 		title: "Software Engineer (Flutter)",
@@ -38,9 +45,7 @@ interface CompanyNameProps {
 
 function CompanyName({ name, url }: CompanyNameProps) {
 	if (!url) {
-		return (
-			<p className="text-sm font-medium text-foreground mt-1">{name}</p>
-		);
+		return <p className="text-sm font-medium text-foreground mt-1">{name}</p>;
 	}
 
 	return (
@@ -63,9 +68,12 @@ export function TimelineSection() {
 		<section className="py-16 md:py-24">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
 				<ScrollReveal className="mb-10">
-					<h2 className="text-3xl font-semibold tracking-tight text-foreground">Experience</h2>
+					<h2 className="text-3xl font-semibold tracking-tight text-foreground">
+						Experience
+					</h2>
 					<p className="mt-3 text-muted-foreground max-w-2xl text-lg">
-						A focused timeline of mobile products delivered with reliable engineering.
+						A focused timeline of mobile and full-stack products delivered with
+						reliable engineering.
 					</p>
 				</ScrollReveal>
 
@@ -78,7 +86,9 @@ export function TimelineSection() {
 						>
 							<div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
 								<div>
-									<h3 className="text-lg font-semibold text-foreground">{exp.title}</h3>
+									<h3 className="text-lg font-semibold text-foreground">
+										{exp.title}
+									</h3>
 									<CompanyName name={exp.company} url={exp.companyUrl} />
 									<p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xl">
 										{exp.description}
