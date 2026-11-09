@@ -40,19 +40,23 @@ export function generateMetadata(): Metadata {
 
 	return {
 		title: {
-			template: "%s | Tarun Sharma",
-			default: "Tarun Sharma - Mobile App Developer | itstarun.fyi",
+			template: "%s | Tarun",
+			default: "Tarun - Mobile & Full-Stack Engineer | itstarun.fyi",
 		},
 		description:
-			"Personal portfolio showcasing iOS and Flutter work, experience, and projects. Mobile app developer focused on stable releases and product quality.",
+			"Personal portfolio showcasing mobile and full-stack work, experience, and projects. Mobile & Full-Stack Engineer focused on stable releases and product quality.",
 		keywords: [
-			"Mobile App Developer",
+			"Mobile & Full-Stack Engineer",
+			"Mobile Engineer",
+			"Full-Stack Engineer",
 			"iOS Developer",
 			"Flutter Developer",
+			"Next.js",
+			"React",
+			"TypeScript",
 			"Dart",
 			"Portfolio",
 			"App Store",
-			"Firebase",
 		],
 		authors: [{ name: "Tarun" }],
 		creator: "Tarun",
@@ -69,17 +73,17 @@ export function generateMetadata(): Metadata {
 			type: "website",
 			locale: "en_US",
 			url: SITE_URL,
-			title: "Tarun Sharma - Mobile App Developer",
+			title: "Tarun - Mobile & Full-Stack Engineer",
 			description:
-				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
+				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			siteName: SITE_NAME,
 			images: [defaultSocialImage],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: "Tarun Sharma - Mobile App Developer",
+			title: "Tarun - Mobile & Full-Stack Engineer",
 			description:
-				"Portfolio showcasing iOS and Flutter work, experience, and projects.",
+				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			creator: TWITTER_HANDLE,
 			site: TWITTER_HANDLE,
 			images: [defaultSocialImage],
@@ -109,8 +113,8 @@ export const viewport: Viewport = {
 	// Browser chrome matches --background from globals.css in each scheme, so the
 	// address bar stops sitting in the default grey against the page.
 	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "#f2f5f8" },
-		{ media: "(prefers-color-scheme: dark)", color: "#14191f" },
+		{ media: "(prefers-color-scheme: light)", color: "#ffffff" },
+		{ media: "(prefers-color-scheme: dark)", color: "#000000" },
 	],
 };
 
@@ -132,7 +136,7 @@ export default function RootLayout({
 			>
 				<a
 					href="#main-content"
-					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:border focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:shadow-lg"
 				>
 					Skip to main content
 				</a>

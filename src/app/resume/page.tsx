@@ -26,13 +26,13 @@ import {
 
 const canonical = `${SITE_URL}/resume`;
 const description =
-	"Full resume for Tarun Sharma, a mobile developer building iOS and Flutter apps since 2018: work history, skills, and education, plus the PDF to download.";
-// The root title template appends " | Tarun Sharma"; social cards get no
+	"Full resume for Tarun, a mobile & full-stack engineer building iOS, Flutter, and web applications: work history, skills, projects, and education, plus the PDF to download.";
+// The root title template appends " | Tarun"; social cards get no
 // template, so they carry the name themselves.
-const socialTitle = "Tarun Sharma Resume - iOS and Flutter Developer";
+const socialTitle = "Tarun Resume - Mobile & Full-Stack Engineer";
 
 export const metadata: Metadata = {
-	title: "Resume - iOS and Flutter Mobile Developer",
+	title: "Resume - Mobile & Full-Stack Engineer",
 	description,
 	alternates: {
 		canonical,
@@ -80,14 +80,14 @@ export default function ResumePage() {
 					<div className="mx-auto max-w-4xl">
 						<Breadcrumb items={toBreadcrumbItems(breadcrumbs)} />
 						<div className="animate-rise mb-12">
-							<h1 className="section-title">Tarun Sharma — Resume</h1>
+							<h1 className="section-title">Tarun — Resume</h1>
 							<p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
 								{RESUME_HEADLINE}
 							</p>
 							<p className="section-subtitle mt-4 max-w-2xl">
-								Mobile developer focused on iOS and Flutter apps that feel calm,
-								intuitive, and reliable. The full history is below; the PDF is
-								the same thing, printed.
+								Mobile & Full-Stack Engineer focused on iOS, Flutter, and web
+								applications that feel calm, intuitive, and reliable. The full
+								history is below; the PDF is the same thing, printed.
 							</p>
 							<div className="mt-8 flex flex-wrap items-center gap-3">
 								<Button asChild>
@@ -186,42 +186,56 @@ export default function ResumePage() {
 						</section>
 
 						<section className="mb-12">
-							<h2 className={sectionHeading}>Selected published apps</h2>
-							<ul className="grid gap-4 md:grid-cols-3">
+							<h2 className={sectionHeading}>Featured projects & apps</h2>
+							<ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 								{publishedApps.map((app) => (
-									<li key={app.name} className="neo-panel p-6">
-										<h3 className="font-semibold">{app.name}</h3>
-										<p className="mt-1 text-sm text-muted-foreground">
-											{app.role}
-										</p>
-										{app.note ? (
-											<p className="mt-3 text-sm text-muted-foreground">
-												{app.note}
+									<li
+										key={app.name}
+										className="neo-panel p-6 flex flex-col justify-between"
+									>
+										<div>
+											<h3 className="font-semibold text-lg">{app.name}</h3>
+											<p className="mt-1 text-sm font-medium text-muted-foreground">
+												{app.role}
 											</p>
-										) : (
-											<div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-												{app.appStore ? (
-													<a
-														href={app.appStore}
-														target="_blank"
-														rel="noopener noreferrer"
-														className="link-underline text-foreground"
-													>
-														App Store
-													</a>
-												) : null}
-												{app.playStore ? (
-													<a
-														href={app.playStore}
-														target="_blank"
-														rel="noopener noreferrer"
-														className="link-underline text-foreground"
-													>
-														Play Store
-													</a>
-												) : null}
-											</div>
-										)}
+											{app.note ? (
+												<p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+													{app.note}
+												</p>
+											) : null}
+										</div>
+										<div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm border-t border-border/50 pt-3">
+											{app.url ? (
+												<a
+													href={app.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="link-underline text-foreground"
+												>
+													Live Product
+												</a>
+											) : null}
+											{app.appStore ? (
+												<a
+													href={app.appStore}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="link-underline text-foreground"
+												>
+													App Store
+												</a>
+											) : null}
+											{app.playStore ? (
+												<a
+													href={app.playStore}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="link-underline text-foreground"
+												>
+													Play Store
+												</a>
+											) : null}
+										</div>
 									</li>
 								))}
 							</ul>
@@ -229,26 +243,32 @@ export default function ResumePage() {
 
 						<section className="mb-12">
 							<h2 className={sectionHeading}>Education</h2>
-							<div className="neo-panel p-6">
-								<div className="flex items-start gap-3">
-									<div className="mt-1 flex h-10 w-10 items-center justify-center border-2 border-border">
-										<GraduationCap className="h-5 w-5 text-foreground" />
+							<div className="space-y-4">
+								{education.map((edu) => (
+									<div key={edu.id} className="neo-panel p-6">
+										<div className="flex items-start gap-3">
+											<div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+												<GraduationCap className="h-5 w-5 text-foreground" />
+											</div>
+											<div className="flex-1">
+												<h3 className="mb-1 text-xl font-semibold">
+													{edu.degree}
+												</h3>
+												<p className="mb-2 text-muted-foreground">
+													{edu.school}
+												</p>
+												<p className="text-sm text-muted-foreground">
+													{edu.period}
+												</p>
+												{edu.description ? (
+													<p className="mt-2 text-muted-foreground leading-relaxed">
+														{edu.description}
+													</p>
+												) : null}
+											</div>
+										</div>
 									</div>
-									<div className="flex-1">
-										<h3 className="mb-1 text-xl font-semibold">
-											{education[0].degree}
-										</h3>
-										<p className="mb-2 text-muted-foreground">
-											{education[0].school}
-										</p>
-										<p className="text-sm text-muted-foreground">
-											{education[0].period}
-										</p>
-										<p className="mt-2 text-muted-foreground">
-											{education[0].description}
-										</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</section>
 
@@ -256,7 +276,7 @@ export default function ResumePage() {
 						    convenience preview of the same resume, so it sits last. */}
 						<section>
 							<h2 className={sectionHeading}>PDF version</h2>
-							<div className="neo-panel overflow-hidden p-2">
+							<div className="neo-panel overflow-hidden rounded-2xl p-2">
 								<object
 									data={RESUME_URL}
 									type="application/pdf"

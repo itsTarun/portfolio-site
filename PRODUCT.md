@@ -10,7 +10,7 @@ Mobile-focused clients, startup CTOs, and engineering leads who need iOS or Flut
 
 ## Product Purpose
 
-Personal portfolio for Tarun Sharma — a mobile developer with 7+ years building iOS and Flutter apps (2018–present), specializing in architecture, release quality, and R&D. The site's job is threefold with roughly equal weight: attract freelance/contract clients, signal credibility to full-time employers, and build an ongoing public presence for writing and open-source work. Success looks like someone arriving uncertain and leaving with no remaining doubt about capability and style.
+Personal portfolio for Tarun — a mobile & full-stack engineer building iOS, Flutter, and web applications (2018–present), specializing in architecture, release quality, and R&D. The site's job is threefold with roughly equal weight: attract freelance/contract clients, signal credibility to full-time employers, and build an ongoing public presence for writing and open-source work. Success looks like someone arriving uncertain and leaving with no remaining doubt about capability and style.
 
 ## Brand Personality
 

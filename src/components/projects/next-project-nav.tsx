@@ -21,7 +21,7 @@ export function NextProjectNav({
 		return (
 			<nav
 				aria-label="Project navigation"
-				className="mt-12 pt-8 border-t-2 border-border"
+				className="mt-12 pt-8 border-t border-border/50"
 			>
 				<Link
 					href="/projects"
@@ -38,7 +38,7 @@ export function NextProjectNav({
 	return (
 		<nav
 			aria-label="Project navigation"
-			className="mt-12 pt-8 border-t-2 border-border grid grid-cols-1 sm:grid-cols-2 gap-4"
+			className="mt-12 pt-8 border-t border-border/50 grid grid-cols-1 sm:grid-cols-2 gap-4"
 		>
 			{/* Either side may be missing — fall back to the index so the slot is never a dead end */}
 			{previousProject ? (

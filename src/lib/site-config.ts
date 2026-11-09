@@ -15,13 +15,13 @@ export const IS_PREVIEW_DEPLOYMENT =
 	!!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production";
 export const SITE_NAME = "Tarun Portfolio";
 export const SITE_DESCRIPTION =
-	"Personal portfolio showcasing iOS and Flutter work, experience, and projects.";
+	"Personal portfolio showcasing mobile and full-stack engineering work, experience, and projects.";
 export const CONTACT_EMAIL = "itstarun1994@gmail.com";
 export const CONTACT_EMAIL_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 export const RESUME_URL = "/resume.pdf";
 
-const RESUME_DOWNLOAD_FILENAME = "Tarun_Sharma_Flutter_Resume.pdf";
+const RESUME_DOWNLOAD_FILENAME = "Tarun_Resume.pdf";
 
 // href and download travel together: without the filename the browser saves
 // the file as "resume.pdf". `download` only honors a filename same-origin.

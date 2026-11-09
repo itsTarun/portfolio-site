@@ -31,11 +31,11 @@ export default function AboutPage() {
 						<div className="animate-rise mb-12 grid gap-8 md:grid-cols-[1fr_300px] md:items-start">
 							<div>
 								<h1 className="section-title">
-									Building mobile products with clarity.
+									Building mobile & full-stack products with clarity.
 								</h1>
 								<p className="section-subtitle mt-4 max-w-2xl">
-									Mobile developer focused on iOS and Flutter apps that feel
-									calm, intuitive, and reliable.
+									Mobile & Full-Stack Engineer focused on iOS, Flutter, and web
+									apps that feel calm, intuitive, and reliable.
 								</p>
 								<div className="mt-8 flex flex-wrap items-center gap-3">
 									<Button asChild>
@@ -53,10 +53,10 @@ export default function AboutPage() {
 								</div>
 							</div>
 							{/* Fixed 300px column from md up, full width below. */}
-							<div className="neo-panel overflow-hidden p-2">
+							<div className="neo-panel overflow-hidden rounded-2xl p-2">
 								<Image
 									src="/images/headshot.webp"
-									alt="Tarun Sharma"
+									alt="Tarun"
 									width={600}
 									height={600}
 									priority
@@ -71,9 +71,10 @@ export default function AboutPage() {
 							style={{ animationDelay: "120ms" }}
 						>
 							<p className="mb-4 text-lg leading-relaxed">
-								I&apos;m a mobile developer focused on iOS and Flutter. Since
-								2018, I&apos;ve built iPhone and iPad apps and shipped multiple
-								App Store releases with stability as the north star.
+								I&apos;m a mobile and full-stack engineer focused on iOS,
+								Flutter, and modern web architectures. Since 2018, I&apos;ve
+								built mobile and web applications and shipped multiple
+								production releases with stability as the north star.
 							</p>
 							<p className="text-lg leading-relaxed text-muted-foreground">
 								I love the R&amp;D phase, clear architecture, and hands-on QA. I
@@ -163,26 +164,32 @@ export default function AboutPage() {
 
 						<ScrollReveal className="mb-12">
 							<h2 className="mb-6 text-2xl font-semibold">Education</h2>
-							<div className="neo-panel p-6">
-								<div className="mb-2 flex items-start gap-3">
-									<div className="mt-1 flex h-10 w-10 items-center justify-center border-2 border-border">
-										<GraduationCap className="h-5 w-5 text-foreground" />
+							<div className="space-y-4">
+								{education.map((edu) => (
+									<div key={edu.id} className="neo-panel p-6">
+										<div className="flex items-start gap-3">
+											<div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+												<GraduationCap className="h-5 w-5 text-foreground" />
+											</div>
+											<div className="flex-1">
+												<h3 className="mb-1 text-xl font-semibold">
+													{edu.degree}
+												</h3>
+												<p className="mb-2 text-muted-foreground">
+													{edu.school}
+												</p>
+												<p className="text-sm text-muted-foreground">
+													{edu.period}
+												</p>
+												{edu.description ? (
+													<p className="mt-2 text-muted-foreground leading-relaxed">
+														{edu.description}
+													</p>
+												) : null}
+											</div>
+										</div>
 									</div>
-									<div className="flex-1">
-										<h3 className="mb-1 text-xl font-semibold">
-											{education[0].degree}
-										</h3>
-										<p className="mb-2 text-muted-foreground">
-											{education[0].school}
-										</p>
-										<p className="text-sm text-muted-foreground">
-											{education[0].period}
-										</p>
-										<p className="mt-2 text-muted-foreground">
-											{education[0].description}
-										</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</ScrollReveal>
 

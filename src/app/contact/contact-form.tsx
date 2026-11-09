@@ -7,7 +7,7 @@ import { CONTACT_EMAIL } from "@/lib/site-config";
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-	"mt-2 w-full border-2 border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50";
+	"mt-2 w-full rounded-xl border border-border/60 bg-muted/20 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-border focus:bg-background focus:outline-none focus:ring-1 focus:ring-foreground/20 disabled:cursor-not-allowed disabled:opacity-50";
 
 export function ContactForm() {
 	const [formState, setFormState] = useState<FormState>("idle");
@@ -208,7 +208,7 @@ export function ContactForm() {
 					value={values.message}
 					onChange={handleChange}
 					placeholder="What are you building? Timeline, stack, what you need from me."
-					className={`${inputClass} resize-y rounded-sm`}
+					className={`${inputClass} resize-y rounded-xl`}
 					disabled={isSubmitting}
 				/>
 			</div>
@@ -216,7 +216,7 @@ export function ContactForm() {
 			{errorMsg && (
 				<div
 					role="alert"
-					className="border-2 border-destructive bg-destructive/5 px-4 py-3 text-sm text-destructive"
+					className="rounded-xl border border-destructive/60 bg-destructive/10 px-4 py-3 text-sm text-destructive"
 				>
 					{errorMsg}
 				</div>

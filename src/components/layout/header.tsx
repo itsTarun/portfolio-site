@@ -108,7 +108,7 @@ export function Header() {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b-2 border-border bg-background">
+		<header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
 			<nav aria-label="Main" className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex h-16 items-center justify-between">
 					<Link
@@ -194,7 +194,7 @@ export function Header() {
 							initial={{ opacity: 0, height: 0 }}
 							animate={{ opacity: 1, height: "auto" }}
 							exit={{ opacity: 0, height: 0 }}
-							className="md:hidden border-t-2 border-border pb-4 pt-4"
+							className="md:hidden border-t border-border/50 pb-4 pt-4"
 						>
 							<div className="flex flex-col space-y-2">
 								{navLinks.map((link, index) => (

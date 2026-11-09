@@ -1,16 +1,23 @@
-import { Calendar } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
 const experiences = [
 	{
-		title: "Mobile Developer",
+		title: "Mobile & Full-Stack Engineer",
 		company: "Chargespot",
 		companyUrl: "https://chargespot.app/",
 		period: "Jul 2023 - Present",
 		description:
-			"Building the Chargespot mobile app and shipping new releases.",
-		technologies: ["iOS", "Flutter", "Firebase", "App Store"],
+			"Architecting the Chargespot EV charging platform in Flutter across iOS & Android, integrating real-time telemetry, Live Activities, and CarPlay.",
+		technologies: [
+			"Flutter",
+			"iOS",
+			"Android",
+			"WidgetKit",
+			"CarPlay",
+			"REST APIs",
+		],
 	},
 	{
 		title: "Software Engineer (Flutter)",
@@ -38,22 +45,19 @@ interface CompanyNameProps {
 
 function CompanyName({ name, url }: CompanyNameProps) {
 	if (!url) {
-		return (
-			<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
-				{name}
-			</p>
-		);
+		return <p className="text-sm font-medium text-foreground mt-1">{name}</p>;
 	}
 
 	return (
-		<p className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
+		<p className="text-sm font-medium mt-1">
 			<a
 				href={url}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="hover:underline"
+				className="inline-flex items-center gap-1 text-foreground hover:text-muted-foreground transition-colors"
 			>
 				{name}
+				<ExternalLink className="h-3 w-3 text-muted-foreground" />
 			</a>
 		</p>
 	);
@@ -61,63 +65,61 @@ function CompanyName({ name, url }: CompanyNameProps) {
 
 export function TimelineSection() {
 	return (
-		<section className="border-b-2 border-border py-16 md:py-20 lg:py-24">
-			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<ScrollReveal className="mb-12">
-					<h2 className="section-title text-balance">Experience that ships.</h2>
-					<p className="section-subtitle mt-4 max-w-2xl">
-						A focused timeline of web and mobile products delivered with
-						reliable engineering and clear outcomes.
+		<section className="py-16 md:py-24">
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+				<ScrollReveal className="mb-10">
+					<h2 className="text-3xl font-semibold tracking-tight text-foreground">
+						Experience
+					</h2>
+					<p className="mt-3 text-muted-foreground max-w-2xl text-lg">
+						A focused timeline of mobile and full-stack products delivered with
+						reliable engineering.
 					</p>
 				</ScrollReveal>
 
-				<div className="space-y-6">
+				<div className="rounded-2xl border border-border bg-background overflow-hidden">
 					{experiences.map((exp, idx) => (
 						<ScrollReveal
 							key={`${exp.company}-${exp.period}`}
-							delay={idx * 80}
-							className="neo-panel p-6"
+							delay={idx * 50}
+							className="p-5 sm:p-6 border-b border-border last:border-b-0"
 						>
-							<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+							<div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
 								<div>
-									<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-										Role
-									</p>
-									<h3 className="text-2xl font-semibold">{exp.title}</h3>
+									<h3 className="text-lg font-semibold text-foreground">
+										{exp.title}
+									</h3>
 									<CompanyName name={exp.company} url={exp.companyUrl} />
+									<p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xl">
+										{exp.description}
+									</p>
+									<div className="mt-4 flex flex-wrap gap-2">
+										{exp.technologies.map((tech) => (
+											<span
+												key={tech}
+												className="px-2.5 py-1 bg-muted rounded-md text-xs font-mono text-muted-foreground"
+											>
+												{tech}
+											</span>
+										))}
+									</div>
 								</div>
-								<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-									<span className="flex h-8 w-8 items-center justify-center border-2 border-border bg-muted text-foreground">
-										<Calendar className="h-4 w-4" />
-									</span>
-									<span className="border-2 border-border bg-background px-3 py-1 text-foreground">
+								<div className="md:text-right shrink-0">
+									<span className="font-mono text-xs text-muted-foreground">
 										{exp.period}
 									</span>
 								</div>
-							</div>
-							<p className="mt-4 text-sm text-muted-foreground">
-								{exp.description}
-							</p>
-							<div className="mt-4 flex flex-wrap gap-2">
-								{exp.technologies.map((tech) => (
-									<span
-										key={tech}
-										className="border-2 border-border bg-background px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
-									>
-										{tech}
-									</span>
-								))}
 							</div>
 						</ScrollReveal>
 					))}
 				</div>
 
-				<ScrollReveal delay={300} className="mt-8">
+				<ScrollReveal delay={300} className="mt-8 flex justify-center">
 					<Link
 						href="/about"
-						className="inline-flex items-center border-2 border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+						className="inline-flex items-center px-4 py-2 text-sm font-medium text-foreground bg-muted hover:bg-muted/80 rounded-full transition-colors"
 					>
-						Full timeline →
+						View full timeline →
 					</Link>
 				</ScrollReveal>
 			</div>

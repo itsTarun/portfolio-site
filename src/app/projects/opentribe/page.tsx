@@ -54,7 +54,7 @@ const keyFeatures = [
 	"Monorepo with Turborepo for streamlined development and deployment.",
 ];
 
-// The root layout appends " | Tarun Sharma" to every title, so the page title
+// The root layout appends " | Tarun" to every title, so the page title
 // stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
 	title: "OpenTribe - Talent Marketplace for Polkadot",
@@ -124,7 +124,7 @@ export default function OpenTribePage() {
 							</div>
 						</div>
 
-						<div className="mb-12 neo-panel p-2">
+						<div className="mb-12 neo-panel overflow-hidden rounded-2xl p-2">
 							<Image
 								src={projectData.imageUrl}
 								alt="OpenTribe promo banner reading 'Enabling builders anywhere to get paid on-chain', with an illustrated developer at a desk"
@@ -148,7 +148,7 @@ export default function OpenTribePage() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Users className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Talent Matching</CardTitle>
@@ -160,7 +160,7 @@ export default function OpenTribePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Blocks className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Grant and Bounty Workflows</CardTitle>
@@ -172,7 +172,7 @@ export default function OpenTribePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<LayoutDashboard className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Organization Dashboards</CardTitle>
@@ -184,7 +184,7 @@ export default function OpenTribePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<LinkIcon className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Blockchain Integration</CardTitle>
@@ -255,28 +255,28 @@ export default function OpenTribePage() {
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">What I Learned</h2>
 							<div className="grid gap-4 md:grid-cols-2">
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Web3 Integration</h3>
 									<p className="text-sm text-muted-foreground">
 										Connecting traditional Web2 interfaces seamlessly with
 										blockchain networks requires careful state management.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Marketplace Dynamics</h3>
 									<p className="text-sm text-muted-foreground">
 										Balancing the needs of organizations and contributors is
 										crucial for a thriving talent ecosystem.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Monorepo Architecture</h3>
 									<p className="text-sm text-muted-foreground">
 										Turborepo significantly accelerates development cycles when
 										managing multiple interconnected packages.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">
 										Real-time Collaboration
 									</h3>

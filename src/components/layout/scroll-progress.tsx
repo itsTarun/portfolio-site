@@ -48,9 +48,9 @@ export function ScrollProgress() {
 						aria-valuenow={Math.round(scrollProgress)}
 						aria-valuemin={0}
 						aria-valuemax={100}
-						className="mx-auto max-w-4xl border-2 border-border bg-background neo-shadow-sm"
+						className="mx-auto max-w-4xl overflow-hidden rounded-full border border-border/50 bg-background/80 backdrop-blur-md shadow-sm"
 					>
-						<div className="h-2 bg-muted">
+						<div className="h-1.5 bg-muted/40">
 							<motion.div
 								className="h-full bg-primary transition-colors"
 								style={{ width: `${scrollProgress}%` }}

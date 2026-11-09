@@ -54,7 +54,7 @@ const keyFeatures = [
 	"End-to-end credential encryption and audit logs for secure team collaboration.",
 ];
 
-// The root layout appends " | Tarun Sharma" to every title, so the page title
+// The root layout appends " | Tarun" to every title, so the page title
 // stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
 	title: "Domain Collective - Multi-Registrar Platform",
@@ -127,7 +127,7 @@ export default function DomainCollectivePage() {
 							</div>
 						</div>
 
-						<div className="mb-12 neo-panel p-2">
+						<div className="mb-12 neo-panel overflow-hidden rounded-2xl p-2">
 							<Image
 								src={projectData.imageUrl}
 								alt="Domain Collective promo banner reading 'One dashboard for all your domains', with a line-art illustration of the dashboard"
@@ -152,7 +152,7 @@ export default function DomainCollectivePage() {
 							<div className="grid gap-4 md:grid-cols-2">
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Layout className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Unified Dashboard</CardTitle>
@@ -164,7 +164,7 @@ export default function DomainCollectivePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Lock className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Credential Security</CardTitle>
@@ -176,7 +176,7 @@ export default function DomainCollectivePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Database className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Provider Abstraction</CardTitle>
@@ -188,7 +188,7 @@ export default function DomainCollectivePage() {
 								</Card>
 								<Card>
 									<CardHeader>
-										<div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-border">
+										<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
 											<Globe className="h-5 w-5 text-foreground" />
 										</div>
 										<CardTitle>Portfolio Visibility</CardTitle>
@@ -259,28 +259,28 @@ export default function DomainCollectivePage() {
 						<div className="mb-12 neo-panel p-6">
 							<h2 className="mb-4 text-2xl font-semibold">What I Learned</h2>
 							<div className="grid gap-4 md:grid-cols-2">
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Abstraction First</h3>
 									<p className="text-sm text-muted-foreground">
 										Consistent domain operations come from normalizing provider
 										APIs into strict internal contracts.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Security by Default</h3>
 									<p className="text-sm text-muted-foreground">
 										Credentials and domain actions need encryption, audit logs,
 										and failure isolation from day one.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">Background Jobs Matter</h3>
 									<p className="text-sm text-muted-foreground">
 										Queue-backed bulk operations keep user interactions fast
 										while handling variable registrar response times.
 									</p>
 								</div>
-								<div className="border-2 border-border p-4">
+								<div className="rounded-xl border border-border/50 bg-muted/10 p-5">
 									<h3 className="mb-2 font-semibold">
 										Visibility Drives Trust
 									</h3>

@@ -7,7 +7,7 @@ export const contentType = "image/png";
 export default function Image() {
 	return createPageOgImage({
 		title: "Tarun",
-		subtitle: "Mobile App Developer",
+		subtitle: "Mobile & Full-Stack Engineer",
 		subtitleFontSize: 32,
 		titleMarginBottom: "16px",
 	});

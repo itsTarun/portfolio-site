@@ -7,47 +7,64 @@
 // NOT here — a number in crawlable HTML gets scraped in a way a PDF does not.
 // Say the word if you want it on the page.
 
-export const RESUME_HEADLINE = "Senior Mobile Engineer | Flutter & iOS";
+export const RESUME_HEADLINE =
+	"Mobile & Full-Stack Engineer | Flutter, iOS & Web";
 
 export const RESUME_SUMMARY =
-	"Senior mobile engineer with 8+ years shipping production apps, including 3+ years in Flutter and Dart. I own delivery end to end, from architecture and API integration to server-driven UI and App Store and Play Store releases, and focus on turning fast prototypes into clean, well-tested, maintainable code that respects the team's existing architecture. A deep native iOS background adds strong platform insight to my Flutter work.";
+	"Mobile & Full-Stack Engineer with 8+ years shipping production mobile and web systems, including 3+ years in Flutter & Dart alongside modern TypeScript/React/Next.js stacks. Proven track record leading delivery end-to-end—from system architecture, REST/real-time APIs, and server-driven UI to CI/CD automation, App Store, Google Play, and cloud production releases. Combines deep native iOS expertise (Swift, UIKit, SwiftUI, WidgetKit) with scalable cross-platform and full-stack web development to build reliable, high-performance, 99%+ crash-free digital products.";
 
 export const skills = [
 	{
-		category: "Flutter & Dart",
+		category: "Mobile Engineering",
 		items: [
 			"Flutter",
 			"Dart",
-			"Provider",
-			"MethodChannel / platform channels",
-			"Custom widgets",
-			"Animations",
-		],
-	},
-	{
-		category: "Architecture",
-		items: ["MVVM", "Clean Architecture", "VIPER", "Modular design"],
-	},
-	{
-		category: "Backend & data",
-		items: [
-			"REST APIs",
-			"Real-time updates",
-			"Push notifications (OneSignal)",
-			"JSON serialization",
-		],
-	},
-	{
-		category: "Native iOS",
-		items: [
 			"Swift",
 			"Objective-C",
-			"UIKit",
 			"SwiftUI",
+			"UIKit",
 			"WidgetKit",
 			"Live Activities",
+			"MethodChannel",
 			"CarPlay",
-			"RxSwift",
+			"Android Auto",
+		],
+	},
+	{
+		category: "Full-Stack & Web",
+		items: [
+			"TypeScript",
+			"JavaScript",
+			"Next.js",
+			"React",
+			"Node.js",
+			"Tailwind CSS",
+			"PostgreSQL",
+			"Prisma",
+			"Convex",
+		],
+	},
+	{
+		category: "Architecture & Patterns",
+		items: [
+			"Clean Architecture",
+			"MVVM",
+			"VIPER",
+			"Modular Design",
+			"Server-Driven UI (SDUI)",
+			"Provider",
+			"TanStack Query",
+		],
+	},
+	{
+		category: "Backend & Real-Time",
+		items: [
+			"REST APIs",
+			"Real-time Updates",
+			"WebSockets",
+			"Push Notifications (OneSignal, FCM)",
+			"BullMQ / Redis",
+			"JSON Serialization",
 		],
 	},
 	{
@@ -61,18 +78,17 @@ export const skills = [
 			"OneSignal",
 			"PostHog",
 			"Sentry",
+			"Better Auth",
 		],
 	},
 	{
-		category: "Delivery & tools",
+		category: "Delivery & DevOps",
 		items: [
 			"CI/CD",
-			"Unit & widget testing",
-			"App Store & Play Store release",
-			"Git",
-			"GitLab",
-			"Bitbucket",
-			"Jira",
+			"Unit & Widget Testing",
+			"App Store Connect",
+			"Google Play Console",
+			"Git / GitHub / GitLab",
 			"Linear",
 			"Postman",
 		],
@@ -82,23 +98,27 @@ export const skills = [
 export const experience = [
 	{
 		id: 1,
-		title: "Mobile Developer",
+		title: "Mobile & Full-Stack Engineer",
 		company: "Chargespot",
 		location: "Delhi, India",
 		period: "July 2023 - Present",
 		description: [
-			"Building the Chargespot EV charging app in Flutter, one codebase shipping to both iOS and Android.",
-			"Added native iOS Live Activities and a home-screen widget with WidgetKit, bridged into Flutter over platform channels (MethodChannel); now adding CarPlay and Android Auto for in-car charging control.",
-			"Wired up OneSignal for push, PostHog for product analytics and Sentry for crash reporting.",
-			"Connected REST APIs for live charging status, station maps, session history and payments, with server-driven UI so screens change without a release.",
-			"Handle the App Store and Play Store releases myself and keep the crash-free rate high.",
+			"Architecting and building the Chargespot EV charging platform in Flutter, shipping a unified, responsive codebase across iOS and Android.",
+			"Engineered native iOS Live Activities and interactive home-screen widgets with WidgetKit, bridged into Flutter over custom MethodChannel platform channels.",
+			"Developing Apple CarPlay and Android Auto integrations for in-car EV charger discovery, turn-by-turn navigation, and charging session control.",
+			"Connected REST APIs for real-time station availability, interactive maps, session telemetry, and automated payments, with server-driven UI (SDUI) for zero-release updates.",
+			"Instrumented production observability with OneSignal (push notifications), PostHog (product analytics), and Sentry (crash reporting and performance monitoring).",
+			"Handle the App Store and Play Store releases end-to-end, maintaining a 99%+ crash-free user session benchmark.",
 		],
 		technologies: [
 			"Flutter",
+			"Dart",
 			"WidgetKit",
 			"Live Activities",
+			"CarPlay",
 			"MethodChannel",
 			"OneSignal",
+			"PostHog",
 			"Sentry",
 		],
 	},
@@ -109,11 +129,11 @@ export const experience = [
 		location: "Delhi, India",
 		period: "October 2022 - July 2023",
 		description: [
-			"Developed and maintained UI components for backend-driven layouts.",
-			"Created and styled product UI across new screens and features.",
-			"Worked with Firebase, Git, GitLab, Jira, and Confluence.",
+			"Engineered modular Flutter UI component libraries that supported server-driven dynamic UI layouts and remote content delivery.",
+			"Styled and shipped production screens and wired backend REST endpoints with optimized state management and offline-first caching.",
+			"Collaborated in sprint planning, architecture reviews, and delivery using Git, GitLab, Jira, and Linear.",
 		],
-		technologies: ["Flutter", "Firebase", "GitLab", "Jira", "Confluence"],
+		technologies: ["Flutter", "Dart", "Firebase", "GitLab", "Jira", "Linear"],
 	},
 	{
 		id: 3,
@@ -122,89 +142,122 @@ export const experience = [
 		location: "Gurugram, Haryana, India",
 		period: "August 2021 - October 2022",
 		description: [
-			"Built the EyeMyEye app from the ground up and set up VIPER architecture.",
-			"Shipped App Store updates with a 99% crash-free user base.",
-			"Coordinated feature parity and release monitoring with cross-platform teams.",
+			"Built the flagship EyeMyEye iOS e-commerce application from the ground up, establishing a modular VIPER architecture.",
+			"Shipped multiple production App Store releases while maintaining a 99%+ crash-free user session benchmark.",
+			"Coordinated closely with Product, UX, QA, and Android teams to establish UI design parity, API contracts, and release velocity.",
 		],
-		technologies: ["iOS", "VIPER", "UIKit", "App Store"],
+		technologies: ["Swift", "iOS", "VIPER", "UIKit", "REST APIs", "App Store"],
 	},
 	{
 		id: 4,
-		title: "Lead iOS Engineer",
+		title: "Lead iOS Engineer (promoted from iOS Developer)",
 		company: "DailyObjects",
 		location: "New Delhi, India",
-		period: "January 2020 - August 2021",
+		period: "July 2019 - August 2021",
 		description: [
-			"Promoted from iOS Developer to Lead iOS Engineer in January 2020.",
-			"Led the DailyObjects iOS shopping app revamp, now rated 4.7 on the App Store: API-driven personalised content, rich push notifications and dark mode.",
-			"Wrote unit and UI tests to 40%+ coverage and mentored the mobile team.",
+			"Promoted to Lead iOS Engineer in January 2020 after joining as iOS Developer in July 2019.",
+			"Led the comprehensive revamp of the DailyObjects iOS shopping app (achieving a 4.7-star App Store rating): API-driven personalized discovery feeds, dynamic dark mode, and rich interactive push notifications via FCM.",
+			"Enforced clean architecture using the Coordinator pattern, protocol-oriented programming, and robust RESTful networking.",
+			"Expanded automated unit and UI test coverage to 40%+, established code review guidelines, and mentored junior engineers on the mobile team.",
 		],
-		technologies: ["iOS", "FCM", "REST APIs", "UIKit"],
+		technologies: [
+			"Swift",
+			"iOS",
+			"UIKit",
+			"Coordinator Pattern",
+			"REST APIs",
+			"FCM",
+			"Crashlytics",
+			"Unit Testing",
+		],
 	},
 	{
 		id: 5,
 		title: "iOS Developer",
-		company: "DailyObjects",
-		location: "New Delhi, India",
-		period: "July 2019 - January 2020",
-		description: [
-			"Used Firebase Crashlytics to track bugs and improve stability.",
-			"Tested API endpoints with Postman and maintained REST/JSON workflows.",
-			"Built features using Coordinator pattern, protocol-oriented programming, and unit/UI tests.",
-		],
-		technologies: ["Crashlytics", "Postman", "REST", "UIKit", "Unit Tests"],
-	},
-	{
-		id: 6,
-		title: "iOS Developer",
 		company: "Startxlabs Technologies",
-		location: "India",
+		location: "New Delhi, India",
 		period: "May 2018 - June 2019",
 		description: [
-			"Refined product tickets and shipped rating/share features.",
-			"Crafted reusable code that teams could implement quickly.",
-			"Mentored junior developers during project transitions.",
+			"Developed modular, reusable iOS components, app rating prompts, and social sharing features across client applications.",
+			"Mentored junior developers on Swift best practices and assisted in technical project transitions and client handoffs.",
 		],
-		technologies: ["iOS", "Reusable Components", "Mentorship", "App Features"],
+		technologies: [
+			"Swift",
+			"iOS",
+			"UIKit",
+			"REST APIs",
+			"Reusable Components",
+			"Mentorship",
+		],
 	},
 ];
 
 export const publishedApps = [
 	{
+		name: "Chargespot",
+		role: "Mobile & Real-Time EV Platform (Flutter, iOS & Android)",
+		url: "https://chargespot.app/",
+		note: "EV charging companion with real-time station availability, interactive maps, WidgetKit Live Activities, and CarPlay integration.",
+	},
+	{
+		name: "Repo Press",
+		role: "Full-Stack Web (Next.js, TypeScript, Convex)",
+		url: "https://repo-press.vercel.app/",
+		note: "Git-native MDX block editor connecting to GitHub repositories with instant rendering and zero vendor lock-in.",
+	},
+	{
+		name: "Domain Collective",
+		role: "Full-Stack Web (Next.js, PostgreSQL, BullMQ, Redis)",
+		url: "https://collective.domains/",
+		note: "Unified multi-registrar domain portfolio management platform with automated background sync and bulk operations.",
+	},
+	{
+		name: "OpenTribe",
+		role: "Web3 Full-Stack (Next.js, TypeScript, Polkadot)",
+		url: "https://opentribe.io/",
+		note: "Decentralized talent marketplace connecting developers and organizations within the Polkadot ecosystem.",
+	},
+	{
 		name: "DailyObjects",
-		role: "Lead iOS",
+		role: "Lead iOS Engineer (Swift, UIKit)",
 		appStore: "https://apps.apple.com/app/id1141900369",
 		playStore: "https://play.google.com/store/apps/details?id=com.dailyobjects",
+		note: "High-scale e-commerce shopping app (4.7-star rating on the App Store) with personalized feeds and rich push notifications.",
 	},
 	{
 		name: "EyeMyEye",
-		role: "iOS, VIPER",
+		role: "iOS Developer (Swift, VIPER)",
 		appStore: "https://apps.apple.com/app/id1614376688",
 		playStore:
 			"https://play.google.com/store/apps/details?id=com.eyemyeye.emeapp",
-	},
-	{
-		name: "Chargespot",
-		role: "Current, Flutter",
-		note: "EV-charging app, iOS & Android",
+		note: "Full-featured eyewear e-commerce mobile application built from greenfield to production with 99%+ crash-free stability.",
 	},
 ];
 
 export const education = [
 	{
 		id: 1,
-		degree: "Bachelor’s Degree, English Honours",
-		school: "Delhi University",
-		period: "2013 - June 2016",
-		description: "Computer Software and Media Applications",
+		degree: "Bachelor of Computer Applications (BCA)",
+		school: "Punjab Technical University",
+		period: "2014 - 2017",
+		description:
+			"Core computer science, software engineering principles, algorithms, and application development.",
+	},
+	{
+		id: 2,
+		degree: "DOEACC 'A' Level Certificate",
+		school: "NIELIT / DOEACC Society",
+		period: "2018",
+		description:
+			"Advanced Diploma in Computer Applications, object-oriented design, systems analysis, and data structures.",
 	},
 ];
 
 export const AVAILABILITY = {
 	// experience[0] is the current role, said in one line.
-	now: "Building the Chargespot EV charging app in Flutter, one codebase shipping to both iOS and Android.",
+	now: "Building the Chargespot EV charging platform in Flutter, shipping to both iOS and Android.",
 	openTo:
-		"Open to iOS and Flutter contract work. No agencies or generic dev-shop briefs.",
+		"Open to mobile and full-stack contract work. No agencies or generic dev-shop briefs.",
 	// Phrased without a start date on purpose: the previous "from July 2026" was
 	// a future date when it was written and reads as an unrevisited page now that
 	// it is past. This sentence stays true without needing maintenance.

@@ -152,10 +152,10 @@ export default function ProjectsPage() {
 					{flagshipProjects.map((project, idx) => (
 						<div
 							key={project.id}
-							className="animate-rise neo-panel flex flex-col overflow-hidden transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_hsl(var(--border))]"
+							className="animate-rise neo-panel flex flex-col overflow-hidden rounded-2xl transition-all duration-200 hover:border-border/80 hover:bg-muted/30"
 							style={{ animationDelay: `${idx * 80}ms` }}
 						>
-							<div className="relative h-40 w-full flex-shrink-0 overflow-hidden border-b-2 border-border">
+							<div className="relative h-44 w-full flex-shrink-0 overflow-hidden border-b border-border/50">
 								<Image
 									src={project.imageUrl}
 									alt={project.imageAlt}
@@ -191,7 +191,7 @@ export default function ProjectsPage() {
 									{project.description}
 								</p>
 
-								<div className="border-t-2 border-border pt-4">
+								<div className="border-t border-border/50 pt-4">
 									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
 										Stack
 									</p>

@@ -39,7 +39,7 @@ const keyFeatures = [
 
 const projectData = PROJECTS.chargespot;
 
-// The root layout appends " | Tarun Sharma" to every title, so the page title
+// The root layout appends " | Tarun" to every title, so the page title
 // stops short of the name rather than carrying a second suffix of its own.
 export const metadata: Metadata = createProjectMetadata({
 	title: "Chargespot - Flutter EV Charging Platform",
@@ -109,7 +109,7 @@ export default function ChargespotPage() {
 							)}
 						</div>
 
-						<div className="mb-12 neo-panel p-2">
+						<div className="mb-12 neo-panel overflow-hidden rounded-2xl p-2">
 							<Image
 								src={projectData.imageUrl}
 								alt="Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board"
@@ -128,7 +128,7 @@ export default function ChargespotPage() {
 								drivers, addressing the fragmented charging infrastructure
 								across India.
 							</p>
-							<div className="grid gap-6 border-t-2 border-border pt-6 md:grid-cols-2">
+							<div className="grid gap-6 border-t border-border/50 pt-6 md:grid-cols-2">
 								<div>
 									<h3 className="mb-1 text-sm font-semibold">
 										Real-time Station Discovery

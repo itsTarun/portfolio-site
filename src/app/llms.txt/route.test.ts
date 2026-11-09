@@ -47,7 +47,7 @@ describe("llms.txt route", () => {
 
 		expect(response.status).toBe(200);
 		expect(response.headers.get("Content-Type")).toContain("text/plain");
-		expect(content).toContain("# Tarun Sharma — Mobile App Developer");
+		expect(content).toContain("# Tarun — Mobile & Full-Stack Engineer");
 		expect(content).toContain("## Projects");
 		expect(content).toContain("## Links");
 		expect(content).not.toContain("/blog");
