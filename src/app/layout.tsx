@@ -21,14 +21,14 @@ import {
 
 const displayFont = Bricolage_Grotesque({
 	subsets: ["latin"],
-	weight: ["400", "600", "700", "800"],
 	variable: "--font-display",
+	display: "swap",
 });
 
 const bodyFont = Instrument_Sans({
 	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
 	variable: "--font-body",
+	display: "swap",
 });
 
 export function generateMetadata(): Metadata {
