@@ -1,131 +1,88 @@
 {
-  "title": "Choose the visual world for Tarun's portfolio",
-  "question": "The roll assigned the Vintage Apple HIG Binder. Keep it, take an alternate, or re-roll.",
-  "options": [
-    {
-      "id": "assigned",
-      "label": "Apple HIG Binder",
-      "kicker": "THE ROLL",
-      "lineage": "vintage apple human interface guidelines",
-      "thesis": "The developer portfolio as an authoritative system manual.",
-      "palette": [
-        "#fdfbf7",
-        "#222222",
-        "#e54028",
-        "#d3cfc8"
-      ],
-      "materials": [
-        "spiral binding",
-        "tabbed dividers",
-        "matte paper"
-      ],
-      "viewport": "A ring-bound manual spread introducing the developer, structured exactly like an OS spec.",
-      "risk": "Might feel too archival if the typography isn't razor-sharp.",
-      "raised": [
-        {
-          "from": "challenger-microfiche",
-          "raise": "The manual commands extreme focus by owning the entire viewport as one continuous printed spread."
-        },
-        {
-          "from": "challenger-datamatics",
-          "raise": "Typographic alignment follows absolute, uncompromising grid discipline."
-        }
-      ],
-      "comp": ".impeccable/mocks/decision/assigned.webp",
-      "hero": "https://impeccable.style/worlds/cards/software-manuals-vintage-apple-hig-hero.webp",
-      "board": "https://impeccable.style/worlds/cards/software-manuals-vintage-apple-hig.webp"
-    },
-    {
-      "id": "model-pick",
-      "label": "Aerospace Mission Control",
-      "kicker": "IMPECCABLE’S PICK",
-      "lineage": "flight telemetry screens",
-      "thesis": "A crash-free mobile portfolio visualized as a mission-critical telemetry dashboard.",
-      "palette": [
-        "#0f111a",
-        "#4ade80",
-        "#38bdf8",
-        "#94a3b8"
-      ],
-      "materials": [
-        "data grids",
-        "monospace readouts"
-      ],
-      "viewport": "A dense terminal dashboard tracking live app stability and project metrics.",
-      "risk": "Can feel too chaotic if the information architecture isn't strict.",
-      "comp": ".impeccable/mocks/decision/model-pick.webp"
-    },
-    {
-      "id": "challenger-vu-meter",
-      "label": "VU Meter Bridge",
-      "verdict": "competitive",
-      "lineage": "analog recording desk",
-      "thesis": "Crash-free stats and performance metrics visualized as physical ballistic needles.",
-      "palette": [
-        "#fcfaf5",
-        "#111111",
-        "#dc2626"
-      ],
-      "materials": [
-        "warm glass",
-        "black ink",
-        "walnut"
-      ],
-      "viewport": "A row of identical meters monitoring different domains of mobile development.",
-      "case": "Fuses perfectly: mobile performance metrics map exactly to analog ballistics.",
-      "risk": "Requires flawless canvas animation to feel authentic.",
-      "comp": ".impeccable/mocks/decision/challenger-vu-meter.webp",
-      "hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp"
-    },
-    {
-      "id": "challenger-brick",
-      "label": "Brick Build Instructions",
-      "verdict": "competitive",
-      "lineage": "toy assembly booklets",
-      "thesis": "Building apps treated as step-by-step physical assembly.",
-      "palette": [
-        "#7dd3fc",
-        "#1e293b",
-        "#ef4444",
-        "#facc15"
-      ],
-      "materials": [
-        "sky blue paper",
-        "ink outlines"
-      ],
-      "viewport": "Numbered exploded steps showing the developer's tech stack snapping together.",
-      "case": "Very strong conceptual map to 'building' products.",
-      "risk": "Might feel slightly too playful for enterprise clients.",
-      "comp": ".impeccable/mocks/decision/challenger-brick.webp",
-      "hero": "https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions-hero.webp"
-    }
-  ],
-  "reroll": {
-    "registers": [
-      "safer",
-      "bolder"
-    ]
-  },
-  "buildPath": {
-    "value": "code",
-    "toggle": false
-  },
-  "canon": true,
-  "canonCard": {
-    "label": "The category standard",
-    "thesis": "A standard dark mode developer portfolio.",
-    "palette": [
-      "#0f172a",
-      "#f8fafc",
-      "#3b82f6"
-    ],
-    "materials": [
-      "bento grids",
-      "neon glow"
-    ],
-    "viewport": "A standard hero section with a bento box layout below.",
-    "risk": "Indistinguishable from thousands of other developer portfolios.",
-    "comp": ".impeccable/mocks/decision/canon.webp"
-  },
-  "steer": true
+	"title": "Choose the visual world for Tarun's portfolio",
+	"question": "The roll assigned the Vintage Apple HIG Binder. Keep it, take an alternate, or re-roll.",
+	"options": [
+		{
+			"id": "assigned",
+			"label": "Apple HIG Binder",
+			"kicker": "THE ROLL",
+			"lineage": "vintage apple human interface guidelines",
+			"thesis": "The developer portfolio as an authoritative system manual.",
+			"palette": ["#fdfbf7", "#222222", "#e54028", "#d3cfc8"],
+			"materials": ["spiral binding", "tabbed dividers", "matte paper"],
+			"viewport": "A ring-bound manual spread introducing the developer, structured exactly like an OS spec.",
+			"risk": "Might feel too archival if the typography isn't razor-sharp.",
+			"raised": [
+				{
+					"from": "challenger-microfiche",
+					"raise": "The manual commands extreme focus by owning the entire viewport as one continuous printed spread."
+				},
+				{
+					"from": "challenger-datamatics",
+					"raise": "Typographic alignment follows absolute, uncompromising grid discipline."
+				}
+			],
+			"comp": ".impeccable/mocks/decision/assigned.webp",
+			"hero": "https://impeccable.style/worlds/cards/software-manuals-vintage-apple-hig-hero.webp",
+			"board": "https://impeccable.style/worlds/cards/software-manuals-vintage-apple-hig.webp"
+		},
+		{
+			"id": "model-pick",
+			"label": "Aerospace Mission Control",
+			"kicker": "IMPECCABLE’S PICK",
+			"lineage": "flight telemetry screens",
+			"thesis": "A crash-free mobile portfolio visualized as a mission-critical telemetry dashboard.",
+			"palette": ["#0f111a", "#4ade80", "#38bdf8", "#94a3b8"],
+			"materials": ["data grids", "monospace readouts"],
+			"viewport": "A dense terminal dashboard tracking live app stability and project metrics.",
+			"risk": "Can feel too chaotic if the information architecture isn't strict.",
+			"comp": ".impeccable/mocks/decision/model-pick.webp"
+		},
+		{
+			"id": "challenger-vu-meter",
+			"label": "VU Meter Bridge",
+			"verdict": "competitive",
+			"lineage": "analog recording desk",
+			"thesis": "Crash-free stats and performance metrics visualized as physical ballistic needles.",
+			"palette": ["#fcfaf5", "#111111", "#dc2626"],
+			"materials": ["warm glass", "black ink", "walnut"],
+			"viewport": "A row of identical meters monitoring different domains of mobile development.",
+			"case": "Fuses perfectly: mobile performance metrics map exactly to analog ballistics.",
+			"risk": "Requires flawless canvas animation to feel authentic.",
+			"comp": ".impeccable/mocks/decision/challenger-vu-meter.webp",
+			"hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp"
+		},
+		{
+			"id": "challenger-brick",
+			"label": "Brick Build Instructions",
+			"verdict": "competitive",
+			"lineage": "toy assembly booklets",
+			"thesis": "Building apps treated as step-by-step physical assembly.",
+			"palette": ["#7dd3fc", "#1e293b", "#ef4444", "#facc15"],
+			"materials": ["sky blue paper", "ink outlines"],
+			"viewport": "Numbered exploded steps showing the developer's tech stack snapping together.",
+			"case": "Very strong conceptual map to 'building' products.",
+			"risk": "Might feel slightly too playful for enterprise clients.",
+			"comp": ".impeccable/mocks/decision/challenger-brick.webp",
+			"hero": "https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions-hero.webp"
+		}
+	],
+	"reroll": {
+		"registers": ["safer", "bolder"]
+	},
+	"buildPath": {
+		"value": "code",
+		"toggle": false
+	},
+	"canon": true,
+	"canonCard": {
+		"label": "The category standard",
+		"thesis": "A standard dark mode developer portfolio.",
+		"palette": ["#0f172a", "#f8fafc", "#3b82f6"],
+		"materials": ["bento grids", "neon glow"],
+		"viewport": "A standard hero section with a bento box layout below.",
+		"risk": "Indistinguishable from thousands of other developer portfolios.",
+		"comp": ".impeccable/mocks/decision/canon.webp"
+	},
+	"steer": true
 }
