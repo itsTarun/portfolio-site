@@ -17,13 +17,19 @@ function getProjectLines(): string[] {
 
 			return a.name.localeCompare(b.name);
 		})
-		.map(
+		.map((project) => {
 			// The case study is the primary link — pointing straight at the product
 			// site left an LLM with no way to discover these pages exist. The live
 			// product URL rides along as secondary context.
-			(project) =>
-				`- [${project.name}](${BASE_URL}/projects/${project.slug}) — ${project.tagline} (live product: ${project.url})`,
-		);
+			const storeLinks = [
+				project.appStoreUrl ? `App Store: ${project.appStoreUrl}` : null,
+				project.playStoreUrl ? `Google Play: ${project.playStoreUrl}` : null,
+			]
+				.filter(Boolean)
+				.join(", ");
+
+			return `- [${project.name}](${BASE_URL}/projects/${project.slug}) — ${project.tagline} (live product: ${project.url})${storeLinks ? ` (${storeLinks})` : ""}`;
+		});
 }
 
 export function buildLlmsTxt(): string {

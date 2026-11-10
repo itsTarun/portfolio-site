@@ -2,6 +2,8 @@
 // artifact and /about renders the same arrays, so the two pages cannot drift.
 // AVAILABILITY lives here too because /about and /contact both state it.
 
+import { PROJECTS } from "@/config/projects";
+
 // Transcribed from public/resume.pdf so the HTML and the PDF say the same
 // thing. TODO(tarun): the PDF also carries your phone number. It is deliberately
 // NOT here — a number in crawlable HTML gets scraped in a way a PDF does not.
@@ -192,11 +194,22 @@ export const experience = [
 	},
 ];
 
-export const publishedApps = [
+export interface PublishedApp {
+	name: string;
+	role: string;
+	url?: string;
+	appStore?: string;
+	playStore?: string;
+	note?: string;
+}
+
+export const publishedApps: PublishedApp[] = [
 	{
 		name: "Chargespot",
 		role: "Mobile & Real-Time EV Platform (Flutter, iOS & Android)",
-		url: "https://chargespot.app/",
+		url: PROJECTS.chargespot.url,
+		appStore: PROJECTS.chargespot.appStoreUrl,
+		playStore: PROJECTS.chargespot.playStoreUrl,
 		note: "EV charging companion with real-time station availability, interactive maps, WidgetKit Live Activities, and CarPlay integration.",
 	},
 	{
@@ -255,7 +268,7 @@ export const education = [
 
 export const AVAILABILITY = {
 	// experience[0] is the current role, said in one line.
-	now: "Building the Chargespot EV charging platform in Flutter, shipping to both iOS and Android.",
+	now: "Building the Chargespot EV charging platform in Flutter, live on the App Store and Google Play.",
 	openTo:
 		"Open to mobile and full-stack contract work. No agencies or generic dev-shop briefs.",
 	// Phrased without a start date on purpose: the previous "from July 2026" was

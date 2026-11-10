@@ -3,15 +3,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { PROJECTS } from "@/config/projects";
 
-const flagshipProjects = [
+interface FlagshipProject {
+	id: string;
+	title: string;
+	imageUrl: string;
+	imageAlt: string;
+	description: string;
+	technologies: string[];
+	highlights: string[];
+	githubUrl: string | null;
+	liveUrl: string | null;
+	appStoreUrl?: string;
+	playStoreUrl?: string;
+}
+
+const flagshipProjects: FlagshipProject[] = [
 	{
-		id: "chargespot",
-		title: "Chargespot",
-		imageUrl: "/images/projects/chargespot.webp",
-		// Marketing-site capture, not an app screenshot
+		id: PROJECTS.chargespot.id,
+		title: PROJECTS.chargespot.name,
+		imageUrl: PROJECTS.chargespot.imageUrl,
+		// Marketing-site capture showing live map, mobile app screen, and status cards
 		imageAlt:
-			"Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board",
+			"Chargespot marketing site hero reading 'Anywhere is in range.', showing a map of Delhi, mobile EV charging app screen, vehicle card, and live charger status",
 		description:
 			"EV charging station finder and management platform for India. Real-time station discovery, AI-powered trip planning, live charging sessions with iOS Dynamic Island, and multi-wallet payments.",
 		technologies: [
@@ -35,13 +50,15 @@ const flagshipProjects = [
 			"Multi-Wallet Integration",
 			"Offline-First Architecture",
 		],
-		githubUrl: null,
-		liveUrl: "https://chargespot.app/",
+		githubUrl: PROJECTS.chargespot.githubUrl,
+		liveUrl: PROJECTS.chargespot.url,
+		appStoreUrl: PROJECTS.chargespot.appStoreUrl,
+		playStoreUrl: PROJECTS.chargespot.playStoreUrl,
 	},
 	{
-		id: "opentribe",
-		title: "OpenTribe",
-		imageUrl: "/images/projects/opentribe.webp",
+		id: PROJECTS.opentribe.id,
+		title: PROJECTS.opentribe.name,
+		imageUrl: PROJECTS.opentribe.imageUrl,
 		// Marketing-site capture, not an app screenshot
 		imageAlt:
 			"OpenTribe promo banner reading 'Enabling builders anywhere to get paid on-chain', with an illustrated developer at a desk",
@@ -68,13 +85,13 @@ const flagshipProjects = [
 			"Real-time Collaboration",
 			"Monorepo with Turborepo",
 		],
-		githubUrl: null,
-		liveUrl: "https://opentribe.io",
+		githubUrl: PROJECTS.opentribe.githubUrl,
+		liveUrl: PROJECTS.opentribe.url,
 	},
 	{
-		id: "domain-collective",
-		title: "Domain Collective",
-		imageUrl: "/images/projects/domain-collective.webp",
+		id: PROJECTS.domainCollective.id,
+		title: PROJECTS.domainCollective.name,
+		imageUrl: PROJECTS.domainCollective.imageUrl,
 		// Marketing-site capture, not an app screenshot
 		imageAlt:
 			"Domain Collective promo banner reading 'One dashboard for all your domains', with a line-art illustration of the dashboard",
@@ -101,13 +118,13 @@ const flagshipProjects = [
 			"Encrypted Credential Storage",
 			"Background Job Processing",
 		],
-		githubUrl: null,
-		liveUrl: "https://collective.domains/",
+		githubUrl: PROJECTS.domainCollective.githubUrl,
+		liveUrl: PROJECTS.domainCollective.url,
 	},
 	{
-		id: "repo-press",
-		title: "Repo Press",
-		imageUrl: "/images/projects/repo-press.webp",
+		id: PROJECTS.repoPress.id,
+		title: PROJECTS.repoPress.name,
+		imageUrl: PROJECTS.repoPress.imageUrl,
 		// Marketing-site capture, not an app screenshot
 		imageAlt:
 			"Repo Press promo card reading 'Git-native MDX editing', above a mock list of .mdx files including README and getting-started",
@@ -131,8 +148,8 @@ const flagshipProjects = [
 			"No Proprietary Lock-in",
 			"Full Edit History via Git",
 		],
-		githubUrl: "https://github.com/itsyogesh/repo-press",
-		liveUrl: "https://repo-press.vercel.app/",
+		githubUrl: PROJECTS.repoPress.githubUrl,
+		liveUrl: PROJECTS.repoPress.url,
 	},
 ];
 
@@ -190,6 +207,31 @@ export default function ProjectsPage() {
 								<p className="mb-5 text-sm text-muted-foreground leading-relaxed flex-1">
 									{project.description}
 								</p>
+
+								{(project.appStoreUrl || project.playStoreUrl) && (
+									<div className="mb-4 flex flex-wrap gap-x-4 gap-y-2 text-xs font-mono">
+										{project.appStoreUrl && (
+											<a
+												href={project.appStoreUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="link-underline text-muted-foreground hover:text-foreground"
+											>
+												App Store ↗
+											</a>
+										)}
+										{project.playStoreUrl && (
+											<a
+												href={project.playStoreUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="link-underline text-muted-foreground hover:text-foreground"
+											>
+												Google Play ↗
+											</a>
+										)}
+									</div>
+								)}
 
 								<div className="border-t border-border/50 pt-4">
 									<p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">

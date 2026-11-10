@@ -63,6 +63,7 @@ export default function ChargespotPage() {
 				image={`${SITE_URL}${projectData.imageUrl}`}
 				technologies={technologies}
 				category={projectData.category}
+				sameAs={[projectData.url]}
 			/>
 			<BreadcrumbSchema breadcrumbs={breadcrumbs} />
 			<div className="min-h-screen">
@@ -92,19 +93,49 @@ export default function ChargespotPage() {
 								<Badge>Flagship Project</Badge>
 								<Badge variant="outline">Mobile App</Badge>
 							</div>
-							{projectData.url && (
-								<div className="mt-6">
-									<Button asChild>
-										<a
-											href={projectData.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="gap-2"
-										>
-											<ExternalLink className="h-4 w-4" />
-											View Live
-										</a>
-									</Button>
+							{(projectData.url ||
+								projectData.appStoreUrl ||
+								projectData.playStoreUrl) && (
+								<div className="mt-6 flex flex-wrap gap-3">
+									{projectData.url && (
+										<Button asChild>
+											<a
+												href={projectData.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="gap-2"
+											>
+												<ExternalLink className="h-4 w-4" />
+												View Live
+											</a>
+										</Button>
+									)}
+									{projectData.appStoreUrl && (
+										<Button asChild variant="outline">
+											<a
+												href={projectData.appStoreUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="gap-2"
+											>
+												<ExternalLink className="h-4 w-4" />
+												App Store
+											</a>
+										</Button>
+									)}
+									{projectData.playStoreUrl && (
+										<Button asChild variant="outline">
+											<a
+												href={projectData.playStoreUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="gap-2"
+											>
+												<ExternalLink className="h-4 w-4" />
+												Google Play
+											</a>
+										</Button>
+									)}
 								</div>
 							)}
 						</div>
@@ -112,10 +143,10 @@ export default function ChargespotPage() {
 						<div className="mb-12 neo-panel overflow-hidden rounded-2xl p-2">
 							<Image
 								src={projectData.imageUrl}
-								alt="Chargespot marketing site hero reading 'Powering India's EV charging future', with a 3D roadside charger and price board"
-								className="h-auto w-full"
-								width={2924}
-								height={1428}
+								alt="Chargespot marketing site hero reading 'Anywhere is in range.', showing a map of Delhi, mobile EV charging app screen, vehicle card, and live charger status"
+								className="h-auto w-full rounded-xl"
+								width={2016}
+								height={1005}
 								sizes="(min-width: 1280px) 1008px, (min-width: 1024px) 944px, (min-width: 768px) 704px, (min-width: 640px) 576px, calc(100vw - 48px)"
 								priority
 							/>
@@ -180,10 +211,35 @@ export default function ChargespotPage() {
 						<div className="mb-12 neo-panel p-8">
 							<h2 className="mb-4 text-2xl font-semibold">Results</h2>
 							<p className="text-muted-foreground leading-relaxed">
-								Currently in beta on TestFlight and Google Play, covering 50+
-								active charging stations across India. Every release candidate
-								goes through hands-on QA on physical devices before it reaches
-								beta testers.
+								Live on the{" "}
+								{projectData.appStoreUrl ? (
+									<a
+										href={projectData.appStoreUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="link-underline text-foreground"
+									>
+										App Store
+									</a>
+								) : (
+									"App Store"
+								)}{" "}
+								and{" "}
+								{projectData.playStoreUrl ? (
+									<a
+										href={projectData.playStoreUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="link-underline text-foreground"
+									>
+										Google Play
+									</a>
+								) : (
+									"Google Play"
+								)}
+								, covering 50+ active charging stations across India. Every
+								production release goes through hands-on QA on physical iOS and
+								Android devices before shipping to EV drivers.
 								{/* TODO(tarun): this section describes process, not outcome.
 								    It needs one verifiable number you can stand behind — a
 								    crash-free rate and the window it covers, a session count,

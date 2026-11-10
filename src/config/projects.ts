@@ -3,6 +3,8 @@ export interface ProjectConfig {
 	name: string;
 	slug: string;
 	url: string;
+	appStoreUrl?: string;
+	playStoreUrl?: string;
 	tagline: string;
 	category: "mobile" | "web";
 	featured: boolean;
@@ -19,6 +21,10 @@ export const PROJECTS: Record<string, ProjectConfig> = {
 		name: "Chargespot",
 		slug: "chargespot",
 		url: "https://chargespot.app/",
+		appStoreUrl:
+			"https://apps.apple.com/app/chargespot-ev-trip-planner/id6477337215",
+		playStoreUrl:
+			"https://play.google.com/store/apps/details?id=com.charge23.chargespot",
 		tagline: "Your EV charging companion - Find, charge, track, repeat",
 		category: "mobile",
 		featured: true,
