@@ -6,9 +6,10 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Mobile & Full-Stack Engineer",
 		title: "Tarun",
 		subtitle:
-			"Mobile & Full-Stack Engineer building calm, fast, and dependable apps across iOS, Flutter, and the web.",
+			"Building calm, fast, and dependable apps across iOS, Flutter, and the web.",
 		badge: "Available for select work",
 		footerText: "iOS  ·  Flutter  ·  Next.js  ·  TypeScript",
 		footerRightText: "Based in India (IST)",

@@ -15,6 +15,7 @@ export const pageOgContentType = ogContentType;
 type CreatePageOgImageOptions = {
 	title: string;
 	subtitle: string;
+	eyebrow?: string;
 	badge?: string;
 	pathLabel?: string;
 	footerText?: string;
@@ -33,6 +34,7 @@ type CreatePageOgImageOptions = {
 export function createPageOgImage({
 	title,
 	subtitle,
+	eyebrow,
 	badge,
 	pathLabel,
 	footerText,
@@ -50,6 +52,7 @@ export function createPageOgImage({
 	return renderOgCard({
 		title,
 		subtitle,
+		eyebrow,
 		badge,
 		pathLabel,
 		footerText,

@@ -6,6 +6,7 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Engineering Profile",
 		title: "About Me",
 		subtitle:
 			"Mobile & Full-Stack Engineer focused on iOS, Flutter, and web architecture with 8+ years shipping production apps.",

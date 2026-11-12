@@ -25,6 +25,7 @@ export type OgFloatingMetric = {
 export type RenderOgCardOptions = {
 	title: string;
 	subtitle: string;
+	eyebrow?: string;
 	badge?: string;
 	pathLabel?: string;
 	footerText?: string;
@@ -50,6 +51,17 @@ const DEFAULT_PANEL_ROWS: OgCardRow[] = [
 	{ label: "Chargespot", value: "App Store · Play", live: true },
 	{ label: "Domain Collective", value: "Next.js · Redis" },
 ];
+
+function hexToRgba(hex: string, alpha: number): string {
+	const cleaned = hex.replace("#", "");
+	if (!/^[0-9a-fA-F]{6}$/.test(cleaned)) {
+		return `rgba(34, 197, 94, ${alpha})`;
+	}
+	const r = Number.parseInt(cleaned.slice(0, 2), 16);
+	const g = Number.parseInt(cleaned.slice(2, 4), 16);
+	const b = Number.parseInt(cleaned.slice(4, 6), 16);
+	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 let fontsPromise: Promise<LoadedFonts> | null = null;
 
@@ -208,7 +220,7 @@ function RouteChartCard({
 
 			<svg
 				width={compact ? "190" : "212"}
-				height={compact ? "64" : "76"}
+				height={compact ? "54" : "68"}
 				viewBox="0 0 212 76"
 				fill="none"
 				role="img"
@@ -237,6 +249,24 @@ function RouteChartCard({
 				/>
 				<circle cx="200" cy="14" r="5" fill={accentColor} />
 			</svg>
+
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+					borderTop: "1px solid #1b1b23",
+					paddingTop: "7px",
+					width: "100%",
+				}}
+			>
+				<span style={{ fontSize: 10, fontWeight: 400, color: "#71717a" }}>
+					Release Health
+				</span>
+				<span style={{ fontSize: 10, fontWeight: 600, color: accentColor }}>
+					Production
+				</span>
+			</div>
 		</div>
 	);
 }
@@ -370,7 +400,7 @@ function WebWindowWireframe({
 						color: "#a1a1aa",
 					}}
 				>
-					{pathLabel ? `itstarun.fyi${pathLabel}` : panelTitle}
+					{pathLabel ? `itstarun.fyi${pathLabel}` : "itstarun.fyi"}
 				</span>
 			</div>
 
@@ -424,12 +454,12 @@ function WebWindowWireframe({
 					>
 						<div
 							style={{
-								width: "102px",
-								height: "36px",
-								borderRadius: "8px",
-								border: "1px solid #222229",
+								width: "96px",
+								height: "42px",
+								borderRadius: "9px",
+								border: "1px solid #24242d",
 								backgroundColor: "#14141b",
-								padding: "7px 10px",
+								padding: "6px 8px",
 								display: "flex",
 								flexDirection: "column",
 								justifyContent: "space-between",
@@ -437,54 +467,53 @@ function WebWindowWireframe({
 						>
 							<div
 								style={{
-									width: "54px",
-									height: "5px",
-									borderRadius: "999px",
-									backgroundColor: accentColor,
 									display: "flex",
+									alignItems: "center",
+									gap: "5px",
 								}}
-							/>
-							<div
-								style={{
-									width: "76px",
-									height: "5px",
-									borderRadius: "999px",
-									backgroundColor: "#32323d",
-									display: "flex",
-								}}
-							/>
+							>
+								<div
+									style={{
+										width: "5px",
+										height: "5px",
+										borderRadius: "999px",
+										backgroundColor: accentColor,
+										display: "flex",
+									}}
+								/>
+								<span
+									style={{
+										fontSize: 10,
+										fontWeight: 600,
+										color: "#fafafa",
+									}}
+								>
+									Next.js
+								</span>
+							</div>
+							<span style={{ fontSize: 10, fontWeight: 400, color: "#a1a1aa" }}>
+								App Router
+							</span>
 						</div>
 						<div
 							style={{
-								width: "102px",
-								height: "36px",
-								borderRadius: "8px",
-								border: "1px solid #222229",
+								width: "96px",
+								height: "42px",
+								borderRadius: "9px",
+								border: "1px solid #24242d",
 								backgroundColor: "#14141b",
-								padding: "7px 10px",
+								padding: "6px 8px",
 								display: "flex",
 								flexDirection: "column",
 								justifyContent: "space-between",
 							}}
 						>
-							<div
-								style={{
-									width: "66px",
-									height: "5px",
-									borderRadius: "999px",
-									backgroundColor: "#3f3f4a",
-									display: "flex",
-								}}
-							/>
-							<div
-								style={{
-									width: "44px",
-									height: "5px",
-									borderRadius: "999px",
-									backgroundColor: "#272730",
-									display: "flex",
-								}}
-							/>
+							<span style={{ fontSize: 10, fontWeight: 600, color: "#e4e4e7" }}>
+								TypeScript
+							</span>
+							<span style={{ fontSize: 10, fontWeight: 400, color: "#a1a1aa" }}>
+								Vercel Edge
+							</span>
 						</div>
 					</div>
 				) : (
@@ -528,7 +557,7 @@ function FloatingProofCard({
 			style={{
 				position: "absolute",
 				...(placement === "middle"
-					? { top: "252px", right: "10px" }
+					? { top: "268px", right: "10px" }
 					: { bottom: "24px", right: "18px" }),
 				borderRadius: "14px",
 				border: "1px solid #2e2e38",
@@ -661,8 +690,8 @@ function RightShowcase({
 			<div
 				style={{
 					position: "absolute",
-					top: "18px",
-					right: "14px",
+					top: "16px",
+					right: "8px",
 					display: "flex",
 				}}
 			>
@@ -677,8 +706,8 @@ function RightShowcase({
 			<div
 				style={{
 					position: "relative",
-					marginTop: "96px",
-					marginRight: "96px",
+					marginTop: "80px",
+					marginRight: "112px",
 					display: "flex",
 				}}
 			>
@@ -703,13 +732,14 @@ function RightShowcase({
 export async function renderOgCard({
 	title,
 	subtitle,
+	eyebrow,
 	badge = "Portfolio",
 	pathLabel,
 	footerText = "iOS  ·  Flutter  ·  Next.js  ·  TypeScript",
 	footerRightText = "Since 2018",
 	accentText,
 	accentColor = "#22c55e",
-	subtitleColor = "#a1a1aa",
+	subtitleColor = "#b4b4bd",
 	titleFontSize = 76,
 	subtitleFontSize = 26,
 	visualVariant = "hybrid",
@@ -836,6 +866,32 @@ export async function renderOgCard({
 								flexDirection: "column",
 							}}
 						>
+							{eyebrow ? (
+								<div
+									style={{
+										display: "flex",
+										alignItems: "center",
+										gap: "8px",
+										fontSize: 13,
+										fontWeight: 600,
+										letterSpacing: "0.14em",
+										textTransform: "uppercase",
+										color: accentColor,
+										marginBottom: "14px",
+									}}
+								>
+									<div
+										style={{
+											width: "18px",
+											height: "2px",
+											borderRadius: "999px",
+											backgroundColor: accentColor,
+											display: "flex",
+										}}
+									/>
+									<span>{eyebrow}</span>
+								</div>
+							) : null}
 							<div
 								style={{
 									fontFamily: "Bricolage Grotesque",
@@ -844,7 +900,7 @@ export async function renderOgCard({
 									color: "#ffffff",
 									letterSpacing: "-0.03em",
 									lineHeight: 1.04,
-									marginBottom: "20px",
+									marginBottom: "18px",
 								}}
 							>
 								{title}
@@ -854,7 +910,7 @@ export async function renderOgCard({
 									fontSize: subtitleFontSize,
 									fontWeight: 400,
 									color: subtitleColor,
-									lineHeight: 1.4,
+									lineHeight: 1.44,
 									maxWidth: "560px",
 								}}
 							>
@@ -899,8 +955,7 @@ export async function renderOgCard({
 							height: "100%",
 							borderLeft: "1px solid #1f1f24",
 							backgroundColor: "#0a0a0d",
-							backgroundImage:
-								"radial-gradient(circle at 65% 28%, rgba(255,255,255,0.06) 0%, rgba(10,10,13,0) 70%)",
+							backgroundImage: `radial-gradient(circle at 58% 42%, ${hexToRgba(accentColor, 0.16)} 0%, rgba(10,10,13,0) 68%)`,
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",

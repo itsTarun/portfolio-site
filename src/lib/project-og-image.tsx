@@ -15,6 +15,7 @@ export const projectOgContentType = ogContentType;
 type CreateProjectOgImageOptions = {
 	title: string;
 	description: string;
+	eyebrow?: string;
 	badge?: string;
 	pathLabel?: string;
 	footerText?: string;
@@ -32,12 +33,13 @@ type CreateProjectOgImageOptions = {
 export function createProjectOgImage({
 	title,
 	description,
+	eyebrow,
 	badge = "Case Study",
 	pathLabel,
 	footerText = "Shipped Production Build",
 	footerRightText = "Case Study",
 	accentColor = "#22c55e",
-	descriptionColor = "#a1a1aa",
+	descriptionColor = "#b4b4bd",
 	descriptionFontSize = 26,
 	titleFontSize = 72,
 	visualVariant = "mobile",
@@ -48,6 +50,7 @@ export function createProjectOgImage({
 	return renderOgCard({
 		title,
 		subtitle: description,
+		eyebrow: eyebrow ?? badge,
 		badge,
 		pathLabel,
 		footerText,

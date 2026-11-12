@@ -6,6 +6,7 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Work History & Skills",
 		title: "Resume",
 		subtitle:
 			"Mobile & Full-Stack Engineer: work history, skills, live App Store & Google Play releases, and PDF download.",

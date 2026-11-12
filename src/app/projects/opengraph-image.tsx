@@ -6,6 +6,7 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Selected Builds",
 		title: "Selected Work",
 		subtitle:
 			"Shipped iOS, Flutter, and full-stack products engineered for stable production releases.",

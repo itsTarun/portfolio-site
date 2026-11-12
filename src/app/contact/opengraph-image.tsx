@@ -6,6 +6,7 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Contract & Full-Time",
 		title: "Get In Touch",
 		subtitle:
 			"Open to mobile and full-stack contract work, remote or hybrid within 3h of IST.",

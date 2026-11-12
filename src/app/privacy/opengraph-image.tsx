@@ -6,6 +6,7 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Privacy & Telemetry",
 		title: "Privacy Policy",
 		subtitle:
 			"How itstarun.fyi handles contact inquiries, cookieless measurement, and analytics consent.",
