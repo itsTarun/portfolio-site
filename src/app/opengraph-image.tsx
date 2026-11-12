@@ -9,7 +9,7 @@ export default function Image() {
 		eyebrow: "Mobile & Full-Stack Engineer",
 		title: "Tarun",
 		subtitle:
-			"Building calm, fast, and dependable apps across iOS, Flutter, and the web.",
+			"8+ years turning R&D into fast iOS, Flutter, and Next.js releases teams trust.",
 		badge: "Available for select work",
 		footerText: "iOS  ·  Flutter  ·  Next.js  ·  TypeScript",
 		footerRightText: "Based in India (IST)",

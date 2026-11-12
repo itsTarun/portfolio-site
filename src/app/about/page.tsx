@@ -34,8 +34,8 @@ export default function AboutPage() {
 									Building mobile & full-stack products with clarity.
 								</h1>
 								<p className="section-subtitle mt-4 max-w-2xl">
-									Mobile & Full-Stack Engineer focused on iOS, Flutter, and web
-									apps that feel calm, intuitive, and reliable.
+									Mobile & Full-Stack Engineer with 8+ years turning R&D into
+									fast iOS, Flutter, and Next.js releases teams trust.
 								</p>
 								<div className="mt-8 flex flex-wrap items-center gap-3">
 									<Button asChild>

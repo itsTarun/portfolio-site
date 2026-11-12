@@ -39,7 +39,7 @@ export function HeroSection() {
 							</div>
 
 							<h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-foreground text-balance">
-								Mobile apps that feel calm, fast, and dependable.
+								Production apps across mobile and web, built to ship.
 							</h1>
 
 							<p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
