@@ -15,6 +15,12 @@ describe("llms.txt route", () => {
 				`[${project.name}](${SITE_URL}/projects/${project.slug})`,
 			);
 			expect(content).toContain(`(live product: ${project.url})`);
+			if (project.appStoreUrl) {
+				expect(content).toContain(project.appStoreUrl);
+			}
+			if (project.playStoreUrl) {
+				expect(content).toContain(project.playStoreUrl);
+			}
 		}
 	});
 

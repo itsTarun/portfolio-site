@@ -9,7 +9,7 @@ const experiences = [
 		companyUrl: "https://chargespot.app/",
 		period: "Jul 2023 - Present",
 		description:
-			"Architecting the Chargespot EV charging platform in Flutter across iOS & Android, integrating real-time telemetry, Live Activities, and CarPlay.",
+			"Architecting the Chargespot EV charging platform in Flutter—shipped live on the App Store and Google Play with real-time telemetry, Live Activities, and CarPlay.",
 		technologies: [
 			"Flutter",
 			"iOS",

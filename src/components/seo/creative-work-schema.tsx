@@ -10,6 +10,7 @@ interface CreativeWorkSchemaProps {
 	dateCreated?: string;
 	technologies?: string[];
 	category?: string;
+	sameAs?: string[];
 }
 
 export function CreativeWorkSchema({
@@ -20,6 +21,7 @@ export function CreativeWorkSchema({
 	dateCreated,
 	technologies = [],
 	category,
+	sameAs,
 }: CreativeWorkSchemaProps) {
 	const schema = {
 		"@context": "https://schema.org",
@@ -32,6 +34,7 @@ export function CreativeWorkSchema({
 		image,
 		url,
 		...(dateCreated && { dateCreated }),
+		...(sameAs && sameAs.length > 0 && { sameAs }),
 		author: {
 			"@type": "Person",
 			name: "Tarun",
