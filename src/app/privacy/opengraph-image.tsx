@@ -16,5 +16,11 @@ export default function Image() {
 		footerRightText: "itstarun.fyi",
 		titleFontSize: 70,
 		visualVariant: "web",
+		panelTitle: "Privacy Controls",
+		panelRows: [
+			{ label: "Analytics", value: "Opt-in Only", live: true },
+			{ label: "Cookies", value: "None by Default" },
+			{ label: "Inquiries", value: "Direct Email" },
+		],
 	});
 }

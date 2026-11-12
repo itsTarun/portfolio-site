@@ -11,6 +11,17 @@ export const ogContentType = OG_IMAGE_CONTENT_TYPE;
 
 export type OgVisualVariant = "hybrid" | "mobile" | "web";
 
+export type OgCardRow = {
+	label: string;
+	value: string;
+	live?: boolean;
+};
+
+export type OgFloatingMetric = {
+	value: string;
+	label: string;
+};
+
 export type RenderOgCardOptions = {
 	title: string;
 	subtitle: string;
@@ -24,6 +35,9 @@ export type RenderOgCardOptions = {
 	titleFontSize?: number;
 	subtitleFontSize?: number;
 	visualVariant?: OgVisualVariant;
+	panelTitle?: string;
+	panelRows?: OgCardRow[];
+	floatingMetrics?: OgFloatingMetric[];
 };
 
 type LoadedFonts = {
@@ -31,6 +45,11 @@ type LoadedFonts = {
 	bodyRegular: ArrayBuffer;
 	bodySemibold: ArrayBuffer;
 };
+
+const DEFAULT_PANEL_ROWS: OgCardRow[] = [
+	{ label: "Chargespot", value: "App Store · Play", live: true },
+	{ label: "Domain Collective", value: "Next.js · Redis" },
+];
 
 let fontsPromise: Promise<LoadedFonts> | null = null;
 
@@ -58,16 +77,190 @@ function loadOgFonts(): Promise<LoadedFonts> {
 	return fontsPromise;
 }
 
-function MobileWireframe({ accentColor }: { accentColor: string }) {
+function PanelRows({
+	rows,
+	accentColor,
+	compact = false,
+}: {
+	rows: OgCardRow[];
+	accentColor: string;
+	compact?: boolean;
+}) {
 	return (
 		<div
 			style={{
-				width: "236px",
-				height: "420px",
+				display: "flex",
+				flexDirection: "column",
+				gap: compact ? "8px" : "10px",
+				width: "100%",
+			}}
+		>
+			{rows.map((row) => (
+				<div
+					key={`${row.label}-${row.value}`}
+					style={{
+						width: "100%",
+						height: compact ? "34px" : "40px",
+						borderRadius: "10px",
+						border: "1px solid #222229",
+						backgroundColor: "#111116",
+						padding: compact ? "0 10px" : "0 14px",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+					}}
+				>
+					<div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+						<div
+							style={{
+								width: "6px",
+								height: "6px",
+								borderRadius: "999px",
+								backgroundColor: row.live ? accentColor : "#52525b",
+								display: "flex",
+							}}
+						/>
+						<span
+							style={{
+								fontSize: compact ? 12 : 14,
+								fontWeight: 600,
+								color: "#e4e4e7",
+							}}
+						>
+							{row.label}
+						</span>
+					</div>
+					<span
+						style={{
+							fontSize: compact ? 11 : 13,
+							fontWeight: 400,
+							color: row.live ? accentColor : "#a1a1aa",
+						}}
+					>
+						{row.value}
+					</span>
+				</div>
+			))}
+		</div>
+	);
+}
+
+function RouteChartCard({
+	accentColor,
+	title,
+	compact = false,
+}: {
+	accentColor: string;
+	title: string;
+	compact?: boolean;
+}) {
+	return (
+		<div
+			style={{
+				width: "100%",
+				borderRadius: "14px",
+				border: "1px solid #23232a",
+				backgroundColor: "#0e0e13",
+				padding: compact ? "10px 12px" : "14px",
+				display: "flex",
+				flexDirection: "column",
+				gap: compact ? "8px" : "10px",
+			}}
+		>
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+					width: "100%",
+				}}
+			>
+				<div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+					<div
+						style={{
+							width: "7px",
+							height: "7px",
+							borderRadius: "999px",
+							backgroundColor: accentColor,
+							display: "flex",
+						}}
+					/>
+					<span
+						style={{
+							fontSize: compact ? 12 : 13,
+							fontWeight: 600,
+							color: "#fafafa",
+						}}
+					>
+						{title}
+					</span>
+				</div>
+				<span
+					style={{
+						fontSize: 11,
+						fontWeight: 600,
+						color: accentColor,
+					}}
+				>
+					LIVE
+				</span>
+			</div>
+
+			<svg
+				width={compact ? "190" : "212"}
+				height={compact ? "64" : "76"}
+				viewBox="0 0 212 76"
+				fill="none"
+				role="img"
+				aria-label="Route and telemetry spline"
+				style={{ display: "flex" }}
+			>
+				<path
+					d="M8 60 L204 60 M8 38 L204 38 M8 16 L204 16 M64 8 L64 68 M148 8 L148 68"
+					stroke="#1e1e26"
+					strokeWidth="1"
+				/>
+				<path
+					d="M12 60 C 52 60, 66 20, 106 34 C 138 44, 158 18, 200 14"
+					stroke={accentColor}
+					strokeWidth="2.5"
+					strokeLinecap="round"
+				/>
+				<circle cx="12" cy="60" r="4.5" fill="#fafafa" />
+				<circle
+					cx="106"
+					cy="34"
+					r="4"
+					fill="#18181b"
+					stroke={accentColor}
+					strokeWidth="2"
+				/>
+				<circle cx="200" cy="14" r="5" fill={accentColor} />
+			</svg>
+		</div>
+	);
+}
+
+function MobileWireframe({
+	accentColor,
+	panelTitle,
+	rows,
+	compact = false,
+}: {
+	accentColor: string;
+	panelTitle: string;
+	rows: OgCardRow[];
+	compact?: boolean;
+}) {
+	return (
+		<div
+			style={{
+				width: compact ? "248px" : "276px",
+				height: compact ? "386px" : "428px",
 				borderRadius: "34px",
 				border: "1.5px solid #3a3a44",
-				backgroundColor: "#070709",
-				padding: "16px",
+				backgroundColor: "#07070a",
+				padding: compact ? "14px" : "16px",
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "space-between",
@@ -78,262 +271,53 @@ function MobileWireframe({ accentColor }: { accentColor: string }) {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					gap: "16px",
+					gap: "12px",
+					width: "100%",
 				}}
 			>
 				<div
 					style={{
-						width: "72px",
+						width: "70px",
 						height: "18px",
 						borderRadius: "999px",
-						backgroundColor: "#18181d",
+						backgroundColor: "#16161b",
 						border: "1px solid #27272f",
 						display: "flex",
 					}}
 				/>
-				<div
-					style={{
-						width: "100%",
-						height: "152px",
-						borderRadius: "16px",
-						border: "1px solid #23232a",
-						backgroundColor: "#0f0f13",
-						padding: "12px",
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "space-between",
-					}}
-				>
-					<div
-						style={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-							width: "100%",
-						}}
-					>
-						<div
-							style={{
-								display: "flex",
-								alignItems: "center",
-								gap: "6px",
-							}}
-						>
-							<div
-								style={{
-									width: "7px",
-									height: "7px",
-									borderRadius: "999px",
-									backgroundColor: accentColor,
-									display: "flex",
-								}}
-							/>
-							<div
-								style={{
-									width: "56px",
-									height: "6px",
-									borderRadius: "999px",
-									backgroundColor: "#3f3f46",
-									display: "flex",
-								}}
-							/>
-						</div>
-						<div
-							style={{
-								width: "28px",
-								height: "6px",
-								borderRadius: "999px",
-								backgroundColor: "#27272f",
-								display: "flex",
-							}}
-						/>
-					</div>
-
-					<svg
-						width="178"
-						height="96"
-						viewBox="0 0 178 96"
-						fill="none"
-						role="img"
-						aria-label="Mobile route geometry"
-						style={{ display: "flex" }}
-					>
-						<path
-							d="M12 76 C 48 76, 56 26, 94 42 C 122 54, 134 22, 166 18"
-							stroke={accentColor}
-							strokeWidth="2.5"
-							strokeLinecap="round"
-						/>
-						<path
-							d="M12 58 L 166 58 M 12 34 L 166 34 M 58 10 L 58 86 M 118 10 L 118 86"
-							stroke="#1e1e26"
-							strokeWidth="1"
-						/>
-						<circle cx="12" cy="76" r="4.5" fill="#fafafa" />
-						<circle
-							cx="94"
-							cy="42"
-							r="4"
-							fill="#18181b"
-							stroke={accentColor}
-							strokeWidth="2"
-						/>
-						<circle cx="166" cy="18" r="5" fill={accentColor} />
-					</svg>
-				</div>
-
-				<div
-					style={{
-						width: "100%",
-						display: "flex",
-						gap: "8px",
-					}}
-				>
-					<div
-						style={{
-							flex: 1,
-							height: "36px",
-							borderRadius: "10px",
-							border: "1px solid #23232a",
-							backgroundColor: "#0e0e12",
-							padding: "0 10px",
-							display: "flex",
-							alignItems: "center",
-							gap: "6px",
-						}}
-					>
-						<div
-							style={{
-								width: "6px",
-								height: "6px",
-								borderRadius: "999px",
-								backgroundColor: accentColor,
-								display: "flex",
-							}}
-						/>
-						<div
-							style={{
-								width: "44px",
-								height: "5px",
-								borderRadius: "999px",
-								backgroundColor: "#52525b",
-								display: "flex",
-							}}
-						/>
-					</div>
-					<div
-						style={{
-							flex: 1,
-							height: "36px",
-							borderRadius: "10px",
-							border: "1px solid #23232a",
-							backgroundColor: "#0e0e12",
-							padding: "0 10px",
-							display: "flex",
-							alignItems: "center",
-						}}
-					>
-						<div
-							style={{
-								width: "50px",
-								height: "5px",
-								borderRadius: "999px",
-								backgroundColor: "#3f3f46",
-								display: "flex",
-							}}
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					gap: "12px",
-					backgroundColor: "#101015",
-					border: "1px solid #24242c",
-					borderRadius: "18px",
-					padding: "14px",
-				}}
-			>
-				<div
-					style={{
-						width: "34px",
-						height: "4px",
-						borderRadius: "999px",
-						backgroundColor: "#2e2e36",
-						alignSelf: "center",
-						display: "flex",
-					}}
+				<RouteChartCard
+					accentColor={accentColor}
+					title={panelTitle}
+					compact={compact}
 				/>
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						gap: "8px",
-					}}
-				>
-					<div
-						style={{
-							width: "118px",
-							height: "8px",
-							borderRadius: "999px",
-							backgroundColor: "#e4e4e7",
-							display: "flex",
-						}}
-					/>
-					<div
-						style={{
-							width: "84px",
-							height: "6px",
-							borderRadius: "999px",
-							backgroundColor: "#52525b",
-							display: "flex",
-						}}
-					/>
-				</div>
-				<div
-					style={{
-						width: "100%",
-						height: "32px",
-						borderRadius: "999px",
-						backgroundColor: "#fafafa",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
-					<div
-						style={{
-							width: "64px",
-							height: "6px",
-							borderRadius: "999px",
-							backgroundColor: "#09090b",
-							display: "flex",
-						}}
-					/>
-				</div>
 			</div>
+
+			<PanelRows rows={rows.slice(0, 3)} accentColor={accentColor} compact />
 		</div>
 	);
 }
 
 function WebWindowWireframe({
 	accentColor,
+	panelTitle,
+	rows,
+	pathLabel,
 	compact = false,
 }: {
 	accentColor: string;
+	panelTitle: string;
+	rows: OgCardRow[];
+	pathLabel?: string;
 	compact?: boolean;
 }) {
 	return (
 		<div
 			style={{
-				width: compact ? "290px" : "326px",
-				height: compact ? "250px" : "300px",
+				width: compact ? "300px" : "344px",
+				height: compact ? "212px" : "336px",
 				borderRadius: "16px",
-				border: "1px solid #2c2c34",
-				backgroundColor: "#0d0d11",
+				border: "1px solid #2c2c35",
+				backgroundColor: "#0c0c10",
 				display: "flex",
 				flexDirection: "column",
 				overflow: "hidden",
@@ -343,7 +327,7 @@ function WebWindowWireframe({
 				style={{
 					height: "36px",
 					borderBottom: "1px solid #222229",
-					backgroundColor: "#121217",
+					backgroundColor: "#121218",
 					padding: "0 14px",
 					display: "flex",
 					alignItems: "center",
@@ -379,25 +363,24 @@ function WebWindowWireframe({
 						}}
 					/>
 				</div>
-				<div
+				<span
 					style={{
-						width: "110px",
-						height: "14px",
-						borderRadius: "999px",
-						backgroundColor: "#1b1b22",
-						border: "1px solid #272730",
-						display: "flex",
+						fontSize: 12,
+						fontWeight: 600,
+						color: "#a1a1aa",
 					}}
-				/>
+				>
+					{pathLabel ? `itstarun.fyi${pathLabel}` : panelTitle}
+				</span>
 			</div>
 
 			<div
 				style={{
 					flex: 1,
-					padding: "16px",
+					padding: compact ? "12px 14px" : "18px",
 					display: "flex",
 					flexDirection: "column",
-					gap: "12px",
+					justifyContent: "space-between",
 				}}
 			>
 				<div
@@ -407,147 +390,188 @@ function WebWindowWireframe({
 						justifyContent: "space-between",
 					}}
 				>
-					<div
+					<span
 						style={{
-							width: "96px",
-							height: "10px",
-							borderRadius: "999px",
-							backgroundColor: "#e4e4e7",
-							display: "flex",
+							fontSize: compact ? 14 : 15,
+							fontWeight: 600,
+							color: "#fafafa",
 						}}
-					/>
-					<div
+					>
+						{panelTitle}
+					</span>
+					<span
 						style={{
-							width: "44px",
-							height: "16px",
+							fontSize: 11,
+							fontWeight: 600,
+							color: accentColor,
 							borderRadius: "999px",
 							border: `1px solid ${accentColor}`,
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
+							padding: "2px 8px",
 						}}
 					>
-						<div
-							style={{
-								width: "20px",
-								height: "4px",
-								borderRadius: "999px",
-								backgroundColor: accentColor,
-								display: "flex",
-							}}
-						/>
-					</div>
+						SHIPPED
+					</span>
 				</div>
 
-				<div
-					style={{
-						display: "flex",
-						gap: "10px",
-						flex: 1,
-					}}
-				>
+				{compact ? (
 					<div
 						style={{
-							flex: 1,
-							borderRadius: "10px",
-							border: "1px solid #23232b",
-							backgroundColor: "#121218",
-							padding: "12px",
 							display: "flex",
 							flexDirection: "column",
-							justifyContent: "space-between",
-						}}
-					>
-						<div
-							style={{
-								width: "52px",
-								height: "6px",
-								borderRadius: "999px",
-								backgroundColor: "#3f3f46",
-								display: "flex",
-							}}
-						/>
-						<svg
-							width="100"
-							height="68"
-							viewBox="0 0 100 68"
-							fill="none"
-							role="img"
-							aria-label="System chart geometry"
-							style={{ display: "flex" }}
-						>
-							<path
-								d="M4 54 L26 42 L48 48 L72 22 L96 14"
-								stroke={accentColor}
-								strokeWidth="2.5"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-							<circle cx="96" cy="14" r="3.5" fill={accentColor} />
-						</svg>
-					</div>
-
-					<div
-						style={{
-							width: "84px",
-							display: "flex",
-							flexDirection: "column",
+							alignItems: "flex-end",
 							gap: "8px",
 						}}
 					>
 						<div
 							style={{
-								flex: 1,
-								borderRadius: "10px",
-								border: "1px solid #23232b",
-								backgroundColor: "#121218",
+								width: "102px",
+								height: "36px",
+								borderRadius: "8px",
+								border: "1px solid #222229",
+								backgroundColor: "#14141b",
+								padding: "7px 10px",
 								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-between",
 							}}
-						/>
+						>
+							<div
+								style={{
+									width: "54px",
+									height: "5px",
+									borderRadius: "999px",
+									backgroundColor: accentColor,
+									display: "flex",
+								}}
+							/>
+							<div
+								style={{
+									width: "76px",
+									height: "5px",
+									borderRadius: "999px",
+									backgroundColor: "#32323d",
+									display: "flex",
+								}}
+							/>
+						</div>
 						<div
 							style={{
-								flex: 1,
-								borderRadius: "10px",
-								border: "1px solid #23232b",
-								backgroundColor: "#121218",
+								width: "102px",
+								height: "36px",
+								borderRadius: "8px",
+								border: "1px solid #222229",
+								backgroundColor: "#14141b",
+								padding: "7px 10px",
 								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-between",
 							}}
-						/>
+						>
+							<div
+								style={{
+									width: "66px",
+									height: "5px",
+									borderRadius: "999px",
+									backgroundColor: "#3f3f4a",
+									display: "flex",
+								}}
+							/>
+							<div
+								style={{
+									width: "44px",
+									height: "5px",
+									borderRadius: "999px",
+									backgroundColor: "#272730",
+									display: "flex",
+								}}
+							/>
+						</div>
 					</div>
-				</div>
+				) : (
+					<PanelRows rows={rows.slice(0, 3)} accentColor={accentColor} />
+				)}
 
+				{!compact ? (
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-between",
+							borderTop: "1px solid #1e1e26",
+							paddingTop: "10px",
+						}}
+					>
+						<span style={{ fontSize: 12, fontWeight: 400, color: "#71717a" }}>
+							Architecture · Release QA
+						</span>
+						<span style={{ fontSize: 12, fontWeight: 600, color: accentColor }}>
+							Production
+						</span>
+					</div>
+				) : null}
+			</div>
+		</div>
+	);
+}
+
+function FloatingProofCard({
+	metrics,
+	accentColor,
+	placement = "bottom",
+}: {
+	metrics: OgFloatingMetric[];
+	accentColor: string;
+	placement?: "bottom" | "middle";
+}) {
+	return (
+		<div
+			style={{
+				position: "absolute",
+				...(placement === "middle"
+					? { top: "252px", right: "10px" }
+					: { bottom: "24px", right: "18px" }),
+				borderRadius: "14px",
+				border: "1px solid #2e2e38",
+				backgroundColor: "#121217",
+				padding: "12px 16px",
+				display: "flex",
+				alignItems: "center",
+				gap: "18px",
+			}}
+		>
+			{metrics.map((metric, idx) => (
 				<div
+					key={metric.label}
 					style={{
-						height: "44px",
-						borderRadius: "10px",
-						border: "1px solid #23232b",
-						backgroundColor: "#121218",
-						padding: "0 12px",
 						display: "flex",
-						alignItems: "center",
-						justifyContent: "space-between",
+						flexDirection: "column",
+						paddingLeft: idx > 0 ? "16px" : "0px",
+						borderLeft: idx > 0 ? "1px solid #27272f" : "none",
 					}}
 				>
-					<div
+					<span
 						style={{
-							width: "120px",
-							height: "7px",
-							borderRadius: "999px",
-							backgroundColor: "#52525b",
-							display: "flex",
+							fontFamily: "Bricolage Grotesque",
+							fontSize: 24,
+							fontWeight: 700,
+							color: idx === 0 ? accentColor : "#ffffff",
+							lineHeight: 1.05,
 						}}
-					/>
-					<div
+					>
+						{metric.value}
+					</span>
+					<span
 						style={{
-							width: "24px",
-							height: "7px",
-							borderRadius: "999px",
-							backgroundColor: accentColor,
-							display: "flex",
+							fontSize: 12,
+							fontWeight: 400,
+							color: "#a1a1aa",
+							marginTop: "2px",
 						}}
-					/>
+					>
+						{metric.label}
+					</span>
 				</div>
-			</div>
+			))}
 		</div>
 	);
 }
@@ -555,25 +579,70 @@ function WebWindowWireframe({
 function RightShowcase({
 	accentColor,
 	visualVariant,
+	panelTitle,
+	panelRows,
+	floatingMetrics,
+	pathLabel,
 }: {
 	accentColor: string;
 	visualVariant: OgVisualVariant;
+	panelTitle: string;
+	panelRows: OgCardRow[];
+	floatingMetrics?: OgFloatingMetric[];
+	pathLabel?: string;
 }) {
 	if (visualVariant === "web") {
-		return <WebWindowWireframe accentColor={accentColor} />;
+		return (
+			<div
+				style={{
+					position: "relative",
+					width: "100%",
+					height: "100%",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				<WebWindowWireframe
+					accentColor={accentColor}
+					panelTitle={panelTitle}
+					rows={panelRows}
+					pathLabel={pathLabel}
+				/>
+				{floatingMetrics && floatingMetrics.length > 0 ? (
+					<FloatingProofCard
+						metrics={floatingMetrics}
+						accentColor={accentColor}
+					/>
+				) : null}
+			</div>
+		);
 	}
 
 	if (visualVariant === "mobile") {
 		return (
 			<div
 				style={{
+					position: "relative",
+					width: "100%",
+					height: "100%",
 					display: "flex",
 					alignItems: "flex-start",
 					justifyContent: "center",
-					marginTop: "68px",
+					paddingTop: "22px",
 				}}
 			>
-				<MobileWireframe accentColor={accentColor} />
+				<MobileWireframe
+					accentColor={accentColor}
+					panelTitle={panelTitle}
+					rows={panelRows}
+				/>
+				{floatingMetrics && floatingMetrics.length > 0 ? (
+					<FloatingProofCard
+						metrics={floatingMetrics}
+						accentColor={accentColor}
+					/>
+				) : null}
 			</div>
 		);
 	}
@@ -592,23 +661,41 @@ function RightShowcase({
 			<div
 				style={{
 					position: "absolute",
-					top: "26px",
-					right: "18px",
+					top: "18px",
+					right: "14px",
 					display: "flex",
 				}}
 			>
-				<WebWindowWireframe accentColor={accentColor} compact />
+				<WebWindowWireframe
+					accentColor={accentColor}
+					panelTitle="Full-Stack Web"
+					rows={panelRows}
+					pathLabel={pathLabel}
+					compact
+				/>
 			</div>
 			<div
 				style={{
 					position: "relative",
-					marginTop: "110px",
-					marginRight: "86px",
+					marginTop: "96px",
+					marginRight: "96px",
 					display: "flex",
 				}}
 			>
-				<MobileWireframe accentColor={accentColor} />
+				<MobileWireframe
+					accentColor={accentColor}
+					panelTitle={panelTitle}
+					rows={panelRows}
+					compact
+				/>
 			</div>
+			{floatingMetrics && floatingMetrics.length > 0 ? (
+				<FloatingProofCard
+					metrics={floatingMetrics}
+					accentColor={accentColor}
+					placement="middle"
+				/>
+			) : null}
 		</div>
 	);
 }
@@ -626,6 +713,9 @@ export async function renderOgCard({
 	titleFontSize = 76,
 	subtitleFontSize = 26,
 	visualVariant = "hybrid",
+	panelTitle = "Impact Board",
+	panelRows = DEFAULT_PANEL_ROWS,
+	floatingMetrics,
 }: RenderOgCardOptions) {
 	const fonts = await loadOgFonts();
 	const bottomCopy = accentText ?? footerText;
@@ -734,7 +824,7 @@ export async function renderOgCard({
 						style={{
 							flex: 1,
 							height: "100%",
-							padding: "46px 44px 36px 44px",
+							padding: "44px 40px 34px 44px",
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "space-between",
@@ -765,7 +855,7 @@ export async function renderOgCard({
 									fontWeight: 400,
 									color: subtitleColor,
 									lineHeight: 1.4,
-									maxWidth: "600px",
+									maxWidth: "560px",
 								}}
 							>
 								{subtitle}
@@ -805,7 +895,7 @@ export async function renderOgCard({
 
 					<div
 						style={{
-							width: "396px",
+							width: "436px",
 							height: "100%",
 							borderLeft: "1px solid #1f1f24",
 							backgroundColor: "#0a0a0d",
@@ -814,13 +904,17 @@ export async function renderOgCard({
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
-							padding: "24px",
+							padding: "20px",
 							overflow: "hidden",
 						}}
 					>
 						<RightShowcase
 							accentColor={accentColor}
 							visualVariant={visualVariant}
+							panelTitle={panelTitle}
+							panelRows={panelRows}
+							floatingMetrics={floatingMetrics}
+							pathLabel={pathLabel}
 						/>
 					</div>
 				</div>

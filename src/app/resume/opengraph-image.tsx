@@ -8,12 +8,18 @@ export default function Image() {
 	return createPageOgImage({
 		title: "Resume",
 		subtitle:
-			"Mobile & Full-Stack Engineer — work history, skills, live App Store & Google Play releases, and PDF download.",
-		badge: "2018 – Present",
+			"Mobile & Full-Stack Engineer: work history, skills, live App Store & Google Play releases, and PDF download.",
+		badge: "2018 - Present",
 		pathLabel: "/resume",
 		footerText: "Chargespot  ·  DailyObjects  ·  EyeMyEye  ·  App Store & Play",
 		footerRightText: "PDF Available",
 		titleFontSize: 82,
 		visualVariant: "mobile",
+		panelTitle: "Published Apps",
+		panelRows: [
+			{ label: "Chargespot", value: "App Store · Play", live: true },
+			{ label: "DailyObjects", value: "4.7 App Store" },
+			{ label: "EyeMyEye", value: "99%+ Crash-Free" },
+		],
 	});
 }

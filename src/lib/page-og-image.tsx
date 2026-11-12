@@ -1,4 +1,6 @@
 import {
+	type OgCardRow,
+	type OgFloatingMetric,
 	type OgVisualVariant,
 	ogContentType,
 	ogRuntime,
@@ -23,6 +25,9 @@ type CreatePageOgImageOptions = {
 	subtitleFontSize?: number;
 	titleFontSize?: number;
 	visualVariant?: OgVisualVariant;
+	panelTitle?: string;
+	panelRows?: OgCardRow[];
+	floatingMetrics?: OgFloatingMetric[];
 };
 
 export function createPageOgImage({
@@ -38,6 +43,9 @@ export function createPageOgImage({
 	subtitleFontSize = 26,
 	titleFontSize = 76,
 	visualVariant = "hybrid",
+	panelTitle,
+	panelRows,
+	floatingMetrics,
 }: CreatePageOgImageOptions) {
 	return renderOgCard({
 		title,
@@ -52,5 +60,8 @@ export function createPageOgImage({
 		subtitleFontSize,
 		titleFontSize,
 		visualVariant,
+		panelTitle,
+		panelRows,
+		floatingMetrics,
 	});
 }

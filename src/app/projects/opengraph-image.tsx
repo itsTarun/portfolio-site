@@ -15,5 +15,15 @@ export default function Image() {
 		footerRightText: "4 Flagship Builds",
 		titleFontSize: 76,
 		visualVariant: "hybrid",
+		panelTitle: "Shipped Work",
+		panelRows: [
+			{ label: "Chargespot", value: "iOS & Android", live: true },
+			{ label: "Domain Collective", value: "Next.js · Redis" },
+			{ label: "Repo Press", value: "Git MDX CMS" },
+		],
+		floatingMetrics: [
+			{ value: "4", label: "Flagship Builds" },
+			{ value: "Live", label: "Stores & Web" },
+		],
 	});
 }

@@ -15,5 +15,14 @@ export default function Image() {
 		footerRightText: "5 Teams · 3 Platforms",
 		titleFontSize: 78,
 		visualVariant: "hybrid",
+		panelTitle: "Engineering",
+		panelRows: [
+			{ label: "Mobile Apps", value: "iOS & Flutter", live: true },
+			{ label: "Web Platforms", value: "Next.js · Node" },
+		],
+		floatingMetrics: [
+			{ value: "5", label: "Product Teams" },
+			{ value: "3", label: "Platforms" },
+		],
 	});
 }

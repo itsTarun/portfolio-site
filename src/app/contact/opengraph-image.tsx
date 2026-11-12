@@ -8,7 +8,7 @@ export default function Image() {
 	return createPageOgImage({
 		title: "Get In Touch",
 		subtitle:
-			"Open to mobile and full-stack contract work — remote or hybrid within 3h of IST.",
+			"Open to mobile and full-stack contract work, remote or hybrid within 3h of IST.",
 		badge: "Direct Inquiry",
 		pathLabel: "/contact",
 		accentText: "itstarun1994@gmail.com",
@@ -16,5 +16,11 @@ export default function Image() {
 		footerRightText: "Replies within 24h",
 		titleFontSize: 74,
 		visualVariant: "web",
+		panelTitle: "Contract & Advisory",
+		panelRows: [
+			{ label: "Availability", value: "Open Now", live: true },
+			{ label: "Timezone", value: "IST +/- 3h" },
+			{ label: "Focus", value: "Mobile & Web" },
+		],
 	});
 }

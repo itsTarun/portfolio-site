@@ -16,5 +16,11 @@ export default function Image() {
 		accentColor: "#22c55e",
 		titleFontSize: 78,
 		visualVariant: "mobile",
+		panelTitle: "Chargespot EV",
+		panelRows: [
+			{ label: "iOS App", value: "App Store Live", live: true },
+			{ label: "Android App", value: "Google Play Live", live: true },
+			{ label: "Extensions", value: "WidgetKit · CarPlay" },
+		],
 	});
 }

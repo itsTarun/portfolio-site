@@ -16,5 +16,11 @@ export default function Image() {
 		accentColor: "#a78bfa",
 		titleFontSize: 74,
 		visualVariant: "web",
+		panelTitle: "opentribe.io",
+		panelRows: [
+			{ label: "Ecosystem", value: "Polkadot", live: true },
+			{ label: "Marketplace", value: "Talent & Teams" },
+			{ label: "Identity", value: "Decentralized" },
+		],
 	});
 }

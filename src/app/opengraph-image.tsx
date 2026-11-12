@@ -15,5 +15,14 @@ export default function Image() {
 		titleFontSize: 88,
 		subtitleFontSize: 27,
 		visualVariant: "hybrid",
+		panelTitle: "Chargespot EV",
+		panelRows: [
+			{ label: "Chargespot", value: "App Store · Play", live: true },
+			{ label: "Domain Collective", value: "Next.js · Redis" },
+		],
+		floatingMetrics: [
+			{ value: "8+", label: "Years Building" },
+			{ value: "99%", label: "Crash-Free Rate" },
+		],
 	});
 }

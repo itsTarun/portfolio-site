@@ -8,7 +8,7 @@ export default function Image() {
 	return createProjectOgImage({
 		title: "Repo Press",
 		description:
-			"Git-native MDX editing — publish straight from your repository with your content and history.",
+			"Git-native MDX editing: publish straight from your repository with your content and history.",
 		badge: "Developer Tool",
 		pathLabel: "/projects/repo-press",
 		footerText: "Next.js  ·  MDX  ·  GitHub API  ·  TypeScript",
@@ -16,5 +16,11 @@ export default function Image() {
 		accentColor: "#f59e0b",
 		titleFontSize: 74,
 		visualVariant: "web",
+		panelTitle: "repo-press.vercel.app",
+		panelRows: [
+			{ label: "Storage", value: "GitHub Native", live: true },
+			{ label: "Editor", value: "Block MDX / MD" },
+			{ label: "Ownership", value: "Zero Lock-in" },
+		],
 	});
 }

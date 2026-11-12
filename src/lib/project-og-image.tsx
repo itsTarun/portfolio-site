@@ -1,4 +1,6 @@
 import {
+	type OgCardRow,
+	type OgFloatingMetric,
 	type OgVisualVariant,
 	ogContentType,
 	ogRuntime,
@@ -22,6 +24,9 @@ type CreateProjectOgImageOptions = {
 	descriptionFontSize?: number;
 	titleFontSize?: number;
 	visualVariant?: OgVisualVariant;
+	panelTitle?: string;
+	panelRows?: OgCardRow[];
+	floatingMetrics?: OgFloatingMetric[];
 };
 
 export function createProjectOgImage({
@@ -36,6 +41,9 @@ export function createProjectOgImage({
 	descriptionFontSize = 26,
 	titleFontSize = 72,
 	visualVariant = "mobile",
+	panelTitle,
+	panelRows,
+	floatingMetrics,
 }: CreateProjectOgImageOptions) {
 	return renderOgCard({
 		title,
@@ -49,5 +57,8 @@ export function createProjectOgImage({
 		subtitleFontSize: descriptionFontSize,
 		titleFontSize,
 		visualVariant,
+		panelTitle,
+		panelRows,
+		floatingMetrics,
 	});
 }
