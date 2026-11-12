@@ -7,7 +7,6 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { toBreadcrumbItems } from "@/lib/project-breadcrumbs";
 import {
-	OG_IMAGE_SIZE,
 	RESUME_DOWNLOAD_LINK_PROPS,
 	RESUME_URL,
 	SITE_NAME,
@@ -44,16 +43,6 @@ export const metadata: Metadata = {
 		title: socialTitle,
 		description,
 		siteName: SITE_NAME,
-		// Same trap as /privacy: this route has no opengraph-image.tsx of its
-		// own, and declaring openGraph replaces the root object outright — so
-		// name the site-wide card explicitly or the page ships with no og:image.
-		images: [
-			{
-				url: "/opengraph-image",
-				...OG_IMAGE_SIZE,
-				alt: SITE_NAME,
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",

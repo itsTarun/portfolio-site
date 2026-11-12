@@ -39,11 +39,6 @@ export const SOCIAL_LINKS = {
 // twitter:creator / twitter:site want the @handle, not the profile URL.
 export const TWITTER_HANDLE = "@itstarun1994";
 
-export const OG_IMAGE_SIZE = {
-	width: 1200,
-	height: 630,
-} as const;
-
 export const SOCIAL_PROFILE_URLS = [
 	SOCIAL_LINKS.github,
 	SOCIAL_LINKS.linkedin,

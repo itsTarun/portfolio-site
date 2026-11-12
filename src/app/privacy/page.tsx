@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-	OG_IMAGE_SIZE,
-	SITE_NAME,
-	SITE_URL,
-	TWITTER_HANDLE,
-} from "@/lib/site-config";
+import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from "@/lib/site-config";
 
 const canonical = `${SITE_URL}/privacy`;
 const description =
@@ -24,16 +19,6 @@ export const metadata: Metadata = {
 		title: socialTitle,
 		description,
 		siteName: SITE_NAME,
-		// Unlike /about, /contact and /projects this route has no
-		// opengraph-image.tsx of its own, and declaring openGraph here replaces
-		// the root object outright — so name the site-wide card explicitly.
-		images: [
-			{
-				url: "/opengraph-image",
-				...OG_IMAGE_SIZE,
-				alt: SITE_NAME,
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",
