@@ -6,7 +6,14 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
-		title: "Projects",
-		subtitle: "Shipped iOS, Flutter, and full-stack products",
+		title: "Selected Work",
+		subtitle:
+			"Shipped iOS, Flutter, and full-stack products engineered for stable production releases.",
+		badge: "Case Studies",
+		pathLabel: "/projects",
+		footerText: "Chargespot  ·  Domain Collective  ·  OpenTribe  ·  Repo Press",
+		footerRightText: "4 Flagship Builds",
+		titleFontSize: 76,
+		visualVariant: "hybrid",
 	});
 }

@@ -8,12 +8,13 @@ export default function Image() {
 	return createProjectOgImage({
 		title: "Domain Collective",
 		description:
-			"Unified domain management across GoDaddy, Namecheap, Gandi, and more",
-		backgroundColor: "#0f172a",
-		backgroundImage: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
-		descriptionColor: "#94a3b8",
-		titleFontSize: 72,
-		descriptionFontSize: 28,
-		descriptionLineHeight: 1.4,
+			"Unified domain management across GoDaddy, Namecheap, Gandi, and Porkbun from a single dashboard.",
+		badge: "Web Platform",
+		pathLabel: "/projects/domain-collective",
+		footerText: "Next.js  ·  TypeScript  ·  Registrar APIs  ·  PostgreSQL",
+		footerRightText: "Case Study",
+		accentColor: "#38bdf8",
+		titleFontSize: 64,
+		visualVariant: "web",
 	});
 }

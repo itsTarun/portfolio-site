@@ -7,8 +7,13 @@ export const contentType = "image/png";
 export default function Image() {
 	return createPageOgImage({
 		title: "Tarun",
-		subtitle: "Mobile & Full-Stack Engineer",
-		subtitleFontSize: 32,
-		titleMarginBottom: "16px",
+		subtitle:
+			"Mobile & Full-Stack Engineer building calm, fast, and dependable apps across iOS, Flutter, and the web.",
+		badge: "Available for select work",
+		footerText: "iOS  ·  Flutter  ·  Next.js  ·  TypeScript",
+		footerRightText: "Based in India (IST)",
+		titleFontSize: 88,
+		subtitleFontSize: 27,
+		visualVariant: "hybrid",
 	});
 }

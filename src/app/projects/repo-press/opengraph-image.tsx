@@ -8,12 +8,13 @@ export default function Image() {
 	return createProjectOgImage({
 		title: "Repo Press",
 		description:
-			"Git-native MDX editing — your content, your history, your rules.",
-		backgroundColor: "#0a0a0f",
-		backgroundImage: "linear-gradient(135deg, #0a0a0f 0%, #141d2b 100%)",
-		descriptionColor: "#94a3b8",
-		titleFontSize: 92,
-		descriptionFontSize: 30,
-		descriptionLineHeight: 1.3,
+			"Git-native MDX editing — publish straight from your repository with your content and history.",
+		badge: "Developer Tool",
+		pathLabel: "/projects/repo-press",
+		footerText: "Next.js  ·  MDX  ·  GitHub API  ·  TypeScript",
+		footerRightText: "Case Study",
+		accentColor: "#f59e0b",
+		titleFontSize: 74,
+		visualVariant: "web",
 	});
 }

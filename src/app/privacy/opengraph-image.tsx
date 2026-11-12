@@ -7,6 +7,14 @@ export const contentType = "image/png";
 export default function Image() {
 	return createPageOgImage({
 		title: "Privacy Policy",
-		subtitle: "Analytics, privacy, and your choices on itstarun.fyi",
+		subtitle:
+			"How itstarun.fyi handles contact inquiries, cookieless measurement, and analytics consent.",
+		badge: "Transparency",
+		pathLabel: "/privacy",
+		footerText:
+			"Minimal data  ·  Explicit consent  ·  Zero trackers by default",
+		footerRightText: "itstarun.fyi",
+		titleFontSize: 70,
+		visualVariant: "web",
 	});
 }

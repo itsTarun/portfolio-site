@@ -1,76 +1,53 @@
-import { ImageResponse } from "next/og";
 import {
-	OG_IMAGE_CONTENT_TYPE,
-	OG_IMAGE_RUNTIME,
-	OG_IMAGE_SIZE,
-} from "./og-image-constants";
+	type OgVisualVariant,
+	ogContentType,
+	ogRuntime,
+	ogSize,
+	renderOgCard,
+} from "./og-card";
 
-export const projectOgRuntime = OG_IMAGE_RUNTIME;
-
-export const projectOgSize = OG_IMAGE_SIZE;
-
-export const projectOgContentType = OG_IMAGE_CONTENT_TYPE;
+export const projectOgRuntime = ogRuntime;
+export const projectOgSize = ogSize;
+export const projectOgContentType = ogContentType;
 
 type CreateProjectOgImageOptions = {
-	backgroundColor: string;
-	backgroundImage: string;
-	description: string;
-	descriptionColor: string;
-	descriptionFontSize: number;
-	descriptionLineHeight: number;
 	title: string;
-	titleFontSize: number;
+	description: string;
+	badge?: string;
+	pathLabel?: string;
+	footerText?: string;
+	footerRightText?: string;
+	accentColor?: string;
+	descriptionColor?: string;
+	descriptionFontSize?: number;
+	titleFontSize?: number;
+	visualVariant?: OgVisualVariant;
 };
 
 export function createProjectOgImage({
-	backgroundColor,
-	backgroundImage,
-	description,
-	descriptionColor,
-	descriptionFontSize,
-	descriptionLineHeight,
 	title,
-	titleFontSize,
+	description,
+	badge = "Case Study",
+	pathLabel,
+	footerText = "Shipped Production Build",
+	footerRightText = "Case Study",
+	accentColor = "#22c55e",
+	descriptionColor = "#a1a1aa",
+	descriptionFontSize = 26,
+	titleFontSize = 72,
+	visualVariant = "mobile",
 }: CreateProjectOgImageOptions) {
-	return new ImageResponse(
-		<div
-			style={{
-				height: "100%",
-				width: "100%",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				justifyContent: "center",
-				backgroundColor,
-				backgroundImage,
-				fontFamily: "system-ui, -apple-system, sans-serif",
-				padding: "48px",
-			}}
-		>
-			<div
-				style={{
-					fontSize: titleFontSize,
-					fontWeight: 700,
-					color: "#ffffff",
-					letterSpacing: "-0.03em",
-					marginBottom: "20px",
-				}}
-			>
-				{title}
-			</div>
-			<div
-				style={{
-					fontSize: descriptionFontSize,
-					fontWeight: 500,
-					color: descriptionColor,
-					textAlign: "center",
-					maxWidth: "920px",
-					lineHeight: descriptionLineHeight,
-				}}
-			>
-				{description}
-			</div>
-		</div>,
-		{ ...projectOgSize },
-	);
+	return renderOgCard({
+		title,
+		subtitle: description,
+		badge,
+		pathLabel,
+		footerText,
+		footerRightText,
+		accentColor,
+		subtitleColor: descriptionColor,
+		subtitleFontSize: descriptionFontSize,
+		titleFontSize,
+		visualVariant,
+	});
 }

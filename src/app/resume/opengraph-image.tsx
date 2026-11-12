@@ -7,6 +7,13 @@ export const contentType = "image/png";
 export default function Image() {
 	return createPageOgImage({
 		title: "Resume",
-		subtitle: "Tarun — Mobile & Full-Stack Engineer",
+		subtitle:
+			"Mobile & Full-Stack Engineer — work history, skills, live App Store & Google Play releases, and PDF download.",
+		badge: "2018 – Present",
+		pathLabel: "/resume",
+		footerText: "Chargespot  ·  DailyObjects  ·  EyeMyEye  ·  App Store & Play",
+		footerRightText: "PDF Available",
+		titleFontSize: 82,
+		visualVariant: "mobile",
 	});
 }

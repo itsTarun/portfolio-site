@@ -8,6 +8,12 @@ export default function Image() {
 	return createPageOgImage({
 		title: "About Me",
 		subtitle:
-			"Mobile & Full-Stack Engineer focused on iOS, Flutter, and web experiences",
+			"Mobile & Full-Stack Engineer focused on iOS, Flutter, and web architecture with 8+ years shipping production apps.",
+		badge: "8+ Years · Since 2018",
+		pathLabel: "/about",
+		footerText: "Swift  ·  Dart / Flutter  ·  TypeScript  ·  Node.js",
+		footerRightText: "5 Teams · 3 Platforms",
+		titleFontSize: 78,
+		visualVariant: "hybrid",
 	});
 }
