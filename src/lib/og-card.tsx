@@ -65,26 +65,41 @@ function hexToRgba(hex: string, alpha: number): string {
 
 let fontsPromise: Promise<LoadedFonts> | null = null;
 
+async function fetchFont(url: URL): Promise<ArrayBuffer> {
+	const res = await fetch(url);
+	if (!res.ok) {
+		throw new Error(
+			`Failed to load font from ${url.pathname}: ${res.status} ${res.statusText}`,
+		);
+	}
+	return res.arrayBuffer();
+}
+
 function loadOgFonts(): Promise<LoadedFonts> {
 	if (!fontsPromise) {
 		fontsPromise = Promise.all([
-			fetch(
+			fetchFont(
 				new URL(
 					"../assets/fonts/bricolage-grotesque-700.woff",
 					import.meta.url,
 				),
-			).then((res) => res.arrayBuffer()),
-			fetch(
+			),
+			fetchFont(
 				new URL("../assets/fonts/instrument-sans-400.woff", import.meta.url),
-			).then((res) => res.arrayBuffer()),
-			fetch(
+			),
+			fetchFont(
 				new URL("../assets/fonts/instrument-sans-600.woff", import.meta.url),
-			).then((res) => res.arrayBuffer()),
-		]).then(([display, bodyRegular, bodySemibold]) => ({
-			display,
-			bodyRegular,
-			bodySemibold,
-		}));
+			),
+		])
+			.then(([display, bodyRegular, bodySemibold]) => ({
+				display,
+				bodyRegular,
+				bodySemibold,
+			}))
+			.catch((err) => {
+				fontsPromise = null;
+				throw err;
+			});
 	}
 	return fontsPromise;
 }
@@ -161,10 +176,16 @@ function RouteChartCard({
 	accentColor,
 	title,
 	compact = false,
+	statusBadge = "LIVE",
+	footerLeft = "Release Health",
+	footerRight = "Production",
 }: {
 	accentColor: string;
 	title: string;
 	compact?: boolean;
+	statusBadge?: string;
+	footerLeft?: string;
+	footerRight?: string;
 }) {
 	return (
 		<div
@@ -214,7 +235,7 @@ function RouteChartCard({
 						color: accentColor,
 					}}
 				>
-					LIVE
+					{statusBadge}
 				</span>
 			</div>
 
@@ -261,10 +282,10 @@ function RouteChartCard({
 				}}
 			>
 				<span style={{ fontSize: 10, fontWeight: 400, color: "#71717a" }}>
-					Release Health
+					{footerLeft}
 				</span>
 				<span style={{ fontSize: 10, fontWeight: 600, color: accentColor }}>
-					Production
+					{footerRight}
 				</span>
 			</div>
 		</div>
@@ -319,6 +340,27 @@ function MobileWireframe({
 					accentColor={accentColor}
 					title={panelTitle}
 					compact={compact}
+					statusBadge={
+						panelTitle === "Published Apps"
+							? "VERIFIED"
+							: panelTitle === "Engineering"
+								? "ACTIVE"
+								: "LIVE"
+					}
+					footerLeft={
+						panelTitle === "Published Apps"
+							? "Crash-Free"
+							: panelTitle === "Engineering"
+								? "Experience"
+								: "Release Health"
+					}
+					footerRight={
+						panelTitle === "Published Apps"
+							? "99%+"
+							: panelTitle === "Engineering"
+								? "8+ Years"
+								: "Production"
+					}
 				/>
 			</div>
 
@@ -512,7 +554,7 @@ function WebWindowWireframe({
 								TypeScript
 							</span>
 							<span style={{ fontSize: 10, fontWeight: 400, color: "#a1a1aa" }}>
-								Vercel Edge
+								Full-Stack
 							</span>
 						</div>
 					</div>

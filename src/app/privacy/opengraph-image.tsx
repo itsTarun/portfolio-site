@@ -12,15 +12,14 @@ export default function Image() {
 			"How itstarun.fyi handles contact inquiries, cookieless measurement, and analytics consent.",
 		badge: "Transparency",
 		pathLabel: "/privacy",
-		footerText:
-			"Minimal data  ·  Explicit consent  ·  Zero trackers by default",
+		footerText: "Minimal data  ·  Cookieless metrics  ·  Opt-in analytics",
 		footerRightText: "itstarun.fyi",
 		titleFontSize: 70,
 		visualVariant: "web",
 		panelTitle: "Privacy Controls",
 		panelRows: [
-			{ label: "Analytics", value: "Opt-in Only", live: true },
-			{ label: "Cookies", value: "None by Default" },
+			{ label: "Optional Analytics", value: "Opt-in Only", live: true },
+			{ label: "Site Measurement", value: "Cookieless" },
 			{ label: "Inquiries", value: "Direct Email" },
 		],
 	});
