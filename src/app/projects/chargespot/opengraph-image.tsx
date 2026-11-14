@@ -8,12 +8,19 @@ export default function Image() {
 	return createProjectOgImage({
 		title: "Chargespot",
 		description:
-			"EV charging platform with real-time station discovery, trip planning, and in-app charging flows.",
-		backgroundColor: "#0a0a0a",
-		backgroundImage: "linear-gradient(135deg, #0a0a0a 0%, #1f2937 100%)",
-		descriptionColor: "#cbd5e1",
-		titleFontSize: 92,
-		descriptionFontSize: 30,
-		descriptionLineHeight: 1.3,
+			"EV charging platform with real-time station discovery, route planning, and live in-app charging flows.",
+		badge: "Live on iOS & Android",
+		pathLabel: "/projects/chargespot",
+		footerText: "Flutter  ·  App Store  ·  Google Play  ·  chargespot.app",
+		footerRightText: "Case Study",
+		accentColor: "#22c55e",
+		titleFontSize: 78,
+		visualVariant: "mobile",
+		panelTitle: "Chargespot EV",
+		panelRows: [
+			{ label: "iOS App", value: "App Store Live", live: true },
+			{ label: "Android App", value: "Google Play Live", live: true },
+			{ label: "Extensions", value: "WidgetKit · CarPlay" },
+		],
 	});
 }

@@ -13,7 +13,6 @@ import { WebSiteSchema } from "@/components/seo/website-schema";
 import { ThemeProvider } from "@/components/theme-provider";
 import {
 	IS_PREVIEW_DEPLOYMENT,
-	OG_IMAGE_SIZE,
 	SITE_NAME,
 	SITE_URL,
 	TWITTER_HANDLE,
@@ -32,12 +31,6 @@ const bodyFont = Instrument_Sans({
 });
 
 export function generateMetadata(): Metadata {
-	const defaultSocialImage = {
-		url: "/opengraph-image",
-		...OG_IMAGE_SIZE,
-		alt: SITE_NAME,
-	};
-
 	return {
 		title: {
 			template: "%s | Tarun",
@@ -68,7 +61,9 @@ export function generateMetadata(): Metadata {
 		robots: IS_PREVIEW_DEPLOYMENT ? "noindex, nofollow" : undefined,
 		// This is also the homepage's own card, so the title has to be the real
 		// page title. Every route that declares its own `openGraph` replaces this
-		// object wholesale — Next does not merge it key by key.
+		// object wholesale — Next does not merge it key by key. Leave `images`
+		// unset here so Next resolves `src/app/opengraph-image.tsx` with its
+		// content hash for both `og:image` and `twitter:image`.
 		openGraph: {
 			type: "website",
 			locale: "en_US",
@@ -77,7 +72,6 @@ export function generateMetadata(): Metadata {
 			description:
 				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			siteName: SITE_NAME,
-			images: [defaultSocialImage],
 		},
 		twitter: {
 			card: "summary_large_image",
@@ -86,7 +80,6 @@ export function generateMetadata(): Metadata {
 				"Portfolio showcasing mobile and full-stack engineering work, experience, and projects.",
 			creator: TWITTER_HANDLE,
 			site: TWITTER_HANDLE,
-			images: [defaultSocialImage],
 		},
 		icons: {
 			icon: "/favicon.svg",

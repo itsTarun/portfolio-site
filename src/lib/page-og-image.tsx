@@ -1,94 +1,70 @@
-import { ImageResponse } from "next/og";
 import {
-	OG_IMAGE_CONTENT_TYPE,
-	OG_IMAGE_RUNTIME,
-	OG_IMAGE_SIZE,
-} from "./og-image-constants";
+	type OgCardRow,
+	type OgFloatingMetric,
+	type OgVisualVariant,
+	ogContentType,
+	ogRuntime,
+	ogSize,
+	renderOgCard,
+} from "./og-card";
 
-export const pageOgRuntime = OG_IMAGE_RUNTIME;
-
-export const pageOgSize = OG_IMAGE_SIZE;
-
-export const pageOgContentType = OG_IMAGE_CONTENT_TYPE;
+export const pageOgRuntime = ogRuntime;
+export const pageOgSize = ogSize;
+export const pageOgContentType = ogContentType;
 
 type CreatePageOgImageOptions = {
 	title: string;
 	subtitle: string;
+	eyebrow?: string;
+	badge?: string;
+	pathLabel?: string;
+	footerText?: string;
+	footerRightText?: string;
 	accentText?: string;
+	accentColor?: string;
 	subtitleColor?: string;
 	subtitleFontSize?: number;
 	titleFontSize?: number;
-	titleMarginBottom?: string;
+	visualVariant?: OgVisualVariant;
+	panelTitle?: string;
+	panelRows?: OgCardRow[];
+	floatingMetrics?: OgFloatingMetric[];
 };
 
 export function createPageOgImage({
 	title,
 	subtitle,
+	eyebrow,
+	badge,
+	pathLabel,
+	footerText,
+	footerRightText,
 	accentText,
-	subtitleColor = "#888888",
-	subtitleFontSize = 28,
-	titleFontSize = 96,
-	// Must not be undefined: Satori calls .trim() on style values, so an absent
-	// margin crashed rendering and returned a 0-byte PNG (About, Contact).
-	titleMarginBottom = "0px",
+	accentColor,
+	subtitleColor,
+	subtitleFontSize = 26,
+	titleFontSize = 76,
+	visualVariant = "hybrid",
+	panelTitle,
+	panelRows,
+	floatingMetrics,
 }: CreatePageOgImageOptions) {
-	return new ImageResponse(
-		<div
-			style={{
-				height: "100%",
-				width: "100%",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				justifyContent: "center",
-				backgroundColor: "#0a0a0a",
-				backgroundImage: "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)",
-				fontFamily: "system-ui, -apple-system, sans-serif",
-			}}
-		>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-					gap: "24px",
-				}}
-			>
-				<div
-					style={{
-						fontSize: titleFontSize,
-						fontWeight: 700,
-						color: "#ffffff",
-						letterSpacing: "-0.02em",
-						marginBottom: titleMarginBottom,
-					}}
-				>
-					{title}
-				</div>
-				<div
-					style={{
-						fontSize: subtitleFontSize,
-						fontWeight: 500,
-						color: subtitleColor,
-						letterSpacing: "0.01em",
-					}}
-				>
-					{subtitle}
-				</div>
-				{accentText ? (
-					<div
-						style={{
-							fontSize: 18,
-							fontWeight: 600,
-							color: "#1169d4",
-							marginTop: "16px",
-						}}
-					>
-						{accentText}
-					</div>
-				) : null}
-			</div>
-		</div>,
-		{ ...pageOgSize },
-	);
+	return renderOgCard({
+		title,
+		subtitle,
+		eyebrow,
+		badge,
+		pathLabel,
+		footerText,
+		footerRightText,
+		accentText,
+		accentColor,
+		subtitleColor,
+		subtitleFontSize,
+		titleFontSize,
+		visualVariant,
+		panelTitle,
+		panelRows,
+		floatingMetrics,
+	});
 }

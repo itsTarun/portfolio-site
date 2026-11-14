@@ -7,12 +7,20 @@ export const contentType = "image/png";
 export default function Image() {
 	return createProjectOgImage({
 		title: "OpenTribe",
-		description: "Talent marketplace for Polkadot ecosystem",
-		backgroundColor: "#000000",
-		backgroundImage: "linear-gradient(135deg, #000000 0%, #141d2b 100%)",
-		descriptionColor: "#a78bfa",
-		titleFontSize: 72,
-		descriptionFontSize: 28,
-		descriptionLineHeight: 1.4,
+		description:
+			"Talent marketplace connecting Web3 builders and bounties across the Polkadot ecosystem.",
+		badge: "Web Marketplace",
+		pathLabel: "/projects/opentribe",
+		footerText: "Next.js  ·  React  ·  TypeScript  ·  Polkadot Ecosystem",
+		footerRightText: "Case Study",
+		accentColor: "#a78bfa",
+		titleFontSize: 74,
+		visualVariant: "web",
+		panelTitle: "opentribe.io",
+		panelRows: [
+			{ label: "Ecosystem", value: "Polkadot", live: true },
+			{ label: "Marketplace", value: "Talent & Teams" },
+			{ label: "Identity", value: "Decentralized" },
+		],
 	});
 }

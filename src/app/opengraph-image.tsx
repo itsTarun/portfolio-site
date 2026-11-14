@@ -6,9 +6,24 @@ export const contentType = "image/png";
 
 export default function Image() {
 	return createPageOgImage({
+		eyebrow: "Mobile & Full-Stack Engineer",
 		title: "Tarun",
-		subtitle: "Mobile & Full-Stack Engineer",
-		subtitleFontSize: 32,
-		titleMarginBottom: "16px",
+		subtitle:
+			"8+ years turning R&D into fast iOS, Flutter, and Next.js releases teams trust.",
+		badge: "Available for select work",
+		footerText: "iOS  ·  Flutter  ·  Next.js  ·  TypeScript",
+		footerRightText: "Based in India (IST)",
+		titleFontSize: 88,
+		subtitleFontSize: 27,
+		visualVariant: "hybrid",
+		panelTitle: "Chargespot EV",
+		panelRows: [
+			{ label: "Chargespot", value: "App Store · Play", live: true },
+			{ label: "Domain Collective", value: "Next.js · Redis" },
+		],
+		floatingMetrics: [
+			{ value: "8+", label: "Years Building" },
+			{ value: "99%", label: "Crash-Free Rate" },
+		],
 	});
 }
